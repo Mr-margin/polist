@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="../../css/plugins/sweetalert/sweetalert.css"rel="stylesheet">
+<style>
+.lmtitle {
+	border: 1px solid rgb(204, 204, 204);
+	border-image: none;
+	height: 54px;
+	background-color: rgb(255, 255, 255);
+}
+
+.lmtitle .name {
+	padding: 0px 10px 0px 54px;
+	color: rgb(79, 135, 209);
+	line-height: 54px;
+	font-size: 14px;
+	font-weight: bold;
+	float: left;
+	background-repeat: no-repeat;
+}
+
+.box_dashed {
+	padding: 7px;
+/* 	border: 1px dashed rgb(76, 177, 45); */
+	border-image: none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.sort_link {
+	/* float: left; */
+	margin: 0 9px 9px 9px;
+	display: block;
+	width: 200px;
+}
+
+.sort_link .x_name {
+	display: block;
+	line-height: 40px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	font-family: "Microsoft YaHei", "FZLTXHK";
+	font-size: 16px;
+	border-radius: 5px 5px 0 0;
+	border-bottom: 1px solid #4cb12d;
+	color: #4f87d1;
+	background-position: left center;
+}
+
+.table thead tr th {
+	text-align: center;
+}
+.table>tbody>tr>td, .table>tbody>tr>th{
+	padding: 4px
+}
+
+ .checkbox-right.checkbox  label {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.checkbox-info{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.checkbox-info code{
+	float: right;
+}
+.input-group span.noBoder{
+	border: 0;
+}
+.dateDiv span{
+	padding: 4px;
+    background-color: #f3f3f3;
+}
+.input-group input{
+	padding:6px;
+}
+.checkbox  label{
+	        margin-right: 40px;
+    		
+    		margin-top: 5px;
+		}
+.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }		
+</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight "
+		style="height:100%;">
+<!-- 		<div class="row" style="height:100%;"> -->
+<!-- 			<div class="col-sm-12" style="height:100%;"> -->
+<!-- 				<div class="lmtitle"> -->
+<!-- 					<span class="name" -->
+<!-- 						style='background-image: url(/polist/zp01/ui/images/icon_lm_fwdt.png);'> -->
+<!-- 						<div class="tp-zhongduan"> -->
+<!-- 							<span>任务创建</span> -->
+<!-- 						</div> -->
+<!-- 					</span> -->
+<!-- 				</div> -->
+<!-- 				<div  id="title" class="box_dashed" style="min-height:calc(100% - 100px);"> -->
+					<!-- <div class="row">
+						<div class="col-sm-4" style="padding-right: 0px;">
+							<div class='sort_link'>
+								<span class="x_name">基本信息</span>
+							</div>
+						</div>
+					</div> -->
+					<div class="row" >
+						<div class="col-sm-4">
+							<div class="input-group">
+					          <span class="input-group-addon "> 任务名称：</span>
+					          	<div class="chaxundiv_2 selectDiv" id="">
+					          		<input type="text" id="rwmc" maxlength="20" style="width: 100%;height: 33px;"/>
+					          	</div>
+					        </div>
+						</div>
+						<div class="col-sm-4">
+							<div class="input-group ">
+					          <span class="input-group-addon "> 清单年份：</span>
+					          	<div class="dateDiv" id="data_1">
+									<div class="input-group date" style="width: 100%;">
+										<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+										<input type="text" id="qdnf" style="width: 100%;height: 33px;" readonly="true"/>
+									</div>
+							   	</div>
+					    	</div>
+					    </div>
+					<div class="col-sm-4">
+						<div class="input-group " style="width: 100%;">
+				          <span class="input-group-addon "> 任务截止日期：</span>
+				          	<div class="dateDiv" id="data_2">
+								<div class="input-group date">
+									<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+									<input type="text" id="rwjzrq" readonly="true" style="width: 100%;height: 33px;"/>
+								</div>
+						   	</div>
+				         </div>
+					</div>
+							
+				</div><br>
+					<!-- <div class="row">
+						<div class="col-sm-4" style="padding-right: 0px;">
+							<div class='sort_link'>
+								<span class="x_name">目标下达用户</span>
+							</div>
+						</div>
+					</div> -->
+					<div class="row">
+						<!-- 标签体 开始-->
+						<div class="tabs-container" style="margin-left: 15px;width: 98%;">
+							<!-- 分栏目的标题 开始-->
+							<ul class="nav nav-tabs">
+								<li class="active" style="background-color: #dff0d8;"><a
+									data-toggle="tab" href="#tab-1" aria-expanded="true"
+									id="qytb_a">企业用户</a></li>
+								<li style="background-color: #dff0d8;"><a data-toggle="tab"
+									href="#tab-2" aria-expanded="false" id="sjtb_a">市填报用户</a></li>
+							</ul>
+							<!-- 分栏目的标题   结束-->
+							<!-- tab页面的内容 开始-->
+							<div class="tab-content">
+								<!-- 企业用户 开始 -->
+								<div id="tab-1" class="tab-pane active" style="padding-left:0">
+									<div class="panel-body" style="padding-top: 0;border: 0px solid #e7eaec;padding-left:0">
+										<div class="row">
+											<div style="margin-top: 18px;margin-left:0px;">
+												<div class="col-sm-12">
+													<div class="example-wrap">
+														<div class="example">
+															<table class="table table-striped table-bordered tabbb">
+																<thead>
+<!-- 																	<tr> -->
+<!-- 																		<th><strong>企业状态</strong></th> -->
+<!-- 																		<th colspan="7" style="text-align: left;"> -->
+<!-- 																			<div> -->
+<!-- 																				<div class="radio radio-info radio-inline"> -->
+<!-- 																					<input onclick="updataqytable();" type="radio" id="qiyezhuangtai1" value="2" -->
+<!-- 																						name="qiyezhuangtai"><label -->
+<!-- 																						for="qiyezhuangtai1">关停</label> -->
+<!-- 																				</div> -->
+<!-- 																				<div class="radio radio-info radio-inline"> -->
+<!-- 																					<input onclick="updataqytable();" type="radio" id="qiyezhuangtai2" value="1" -->
+<!-- 																						name="qiyezhuangtai"><label -->
+<!-- 																						for="qiyezhuangtai2">未关停</label> -->
+<!-- 																				</div> -->
+<!-- 																			</div> -->
+<!-- 																		</th> -->
+<!-- 																	</tr> -->
+																	<tr>
+																		<th style="width: 18%;">部门</th>
+																		<th style="width: 9%;text-align: left;border-right: 0px;border-left: 0px;">&nbsp;&nbsp;行业</th>
+																		<th style="width: 11%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 11%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 14%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 16%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 11%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																	</tr>
+																</thead>
+																<tbody style="text-align: center;" id="qy_tbody">
+																	<tr>
+																		<td style='text-align: center;'rowspan="8">
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','0');"id='qy_checkbox0' name='qy_checkbox0' type='checkbox' value='化石燃料固定燃烧源/工艺过程源' disabled="disabled"/> -->
+																				<label for='qy_checkbox0'style="width: 100%;">化石燃料固定燃烧源<br>工艺过程源<code id='qy_code0'></code></label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_6' type='checkbox' value='7' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_6'>其它采矿业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_5' type='checkbox' value='6' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_5'>开采辅助活动</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_4' type='checkbox' value='5' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_4'>非金属矿采选业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_0' type='checkbox' value='1' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_0'>煤炭开采和洗选业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_1' type='checkbox' value='2' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_1'>石油和天然气开采业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_3' type='checkbox' value='4' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_3'>有色金属矿采选业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_2' type='checkbox' value='3' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_2'>黑色金属矿采选业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_11' type='checkbox' value='12' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_11'>纺织业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_8' type='checkbox' value='9' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_8'>食品制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_7' type='checkbox' value='8' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_7'>农副食品加工业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_34' type='checkbox' value='35' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_34'>仪器仪表制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_26' type='checkbox' value='27' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_26'>有色金属冶炼和压延加工业</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_13' type='checkbox' value='14' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_13'>皮革、毛皮、羽毛及其制品和制鞋业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_21' type='checkbox' value='22' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_21'>医药制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_27' type='checkbox' value='28' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_27'>金属制品业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_23' type='checkbox' value='24' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_23'>橡胶和塑料制品业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_9' type='checkbox' value='10' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_9'>酒、饮料和精制茶制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_36' type='checkbox' value='37' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_36'>废弃资源综合利用业</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_18' type='checkbox' value='19' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_18'>文教、工美、体育和娱乐用品制造业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_35' type='checkbox' value='36' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_35'>其它制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_10' type='checkbox' value='11' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_10'>烟草制品业</label>
+																			</div>
+																		</td>
+																		
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_24' type='checkbox' value='25' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_24'>非金属矿物制品业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_17' type='checkbox' value='18' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_17'>印刷和记录媒介复制业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_25' type='checkbox' value='26' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_25'>黑色金属冶炼和压延加工业</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_33' type='checkbox' value='34' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_33'>计算机、通信和其它电子设备制造业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_30' type='checkbox' value='31' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_30'>汽车制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_29' type='checkbox' value='30' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_29'>专用设备制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_16' type='checkbox' value='17' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_16'>造纸和纸制品业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_32' type='checkbox' value='33' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_32'>电气机械和器材制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_20' type='checkbox' value='21' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_20'>化学原料和化学制品制造业</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_14' type='checkbox' value='15' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_14'>木材加工和木、竹、藤、棕、草制品业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_15' type='checkbox' value='16' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_15'>家具制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_28' type='checkbox' value='29' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_28'>通用设备制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_12' type='checkbox' value='13' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_12'>纺织服装、服饰业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_22' type='checkbox' value='23' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_22'>化学纤维制造业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_37' type='checkbox' value='38' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_37'>金属制品、机械和设备修理业</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_19' type='checkbox' value='20' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_19'>石油加工、炼焦和核燃料加工业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="7" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_31' type='checkbox' value='32' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_31'>铁路、船舶、航空航天和其它运输设备制造业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_38' type='checkbox' value='39' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_38'>电力生产</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_39' type='checkbox' value='40' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_39'>电力供应</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_42' type='checkbox' value='43' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_42'>燃气生产和供应业</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_41' type='checkbox' value='42' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_41'>民用热力生产和供应</label>
+																			</div>
+																		</td>
+																		<td colspan="3" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','0');" id='qy_checkbox0_40' type='checkbox' value='41' name='qy_add_class0' disabled="disabled"/>
+																				<label for='qy_checkbox0_40'>工业热力生产和供应</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','1');" id='qy_checkbox1' name='qy_checkbox1' type='checkbox' value='移动源' disabled="disabled"/> -->
+																				<label for='qy_checkbox1'>移动源</label>
+																				<code id='qy_code1'></code>
+																			</div>
+																		</td>
+																		<td colspan="7" style='text-align: left;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','1');" id='qy_checkbox1_0' type='checkbox' value='44' name='qy_add_class1' disabled="disabled"/>
+																				<label for='qy_checkbox1_0'>民航飞机</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','2');" id='qy_checkbox2' name='qy_checkbox2' type='checkbox' value='溶剂使用源'  disabled="disabled"/> -->
+																				<label for='qy_checkbox2'>溶剂使用源</label>
+																				<code id='qy_code2'></code>
+																			</div></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','2');" id='qy_checkbox2_0' type='checkbox' value='45' name='qy_add_class2' disabled="disabled"/>
+																				<label for='qy_checkbox2_0'>印刷印染</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','2');" id='qy_checkbox2_1' type='checkbox' value='46' name='qy_add_class2' disabled="disabled"/>
+																				<label for='qy_checkbox2_1'>工业喷涂</label>
+																			</div>
+																		</td>
+																		<td colspan="4" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','2');" id='qy_checkbox2_2' type='checkbox' value='47' name='qy_add_class2' disabled="disabled"/>
+																				<label for='qy_checkbox2_2'>其它溶剂使用</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','3');" id='qy_checkbox3' name='qy_checkbox3' type='checkbox' value='农业源' disabled="disabled"/> -->
+																				<label for='qy_checkbox3'>农业源</label>
+																				<code id='qy_code3'></code>
+																			</div>
+																		</td>
+																		<td colspan="7" style='text-align: left;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','3');" id='qy_checkbox3_0' type='checkbox' value='48' name='qy_add_class3' disabled="disabled"/>
+																				<label for='qy_checkbox3_0'>畜禽养殖</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','4');" id='qy_checkbox4' name='qy_checkbox4' type='checkbox' value='扬尘源' disabled="disabled"/> -->
+																				<label for='qy_checkbox4'>扬尘源</label>
+																				<code id='qy_code4'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','4');" id='qy_checkbox4_0' type='checkbox' value='49' name='qy_add_class4' disabled="disabled"/>
+																				<label for='qy_checkbox4_0'>施工扬尘</label>
+																			</div>
+																		</td>
+																		<td colspan="6" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','4');" id='qy_checkbox4_1' type='checkbox' value='50' name='qy_add_class4' disabled="disabled"/>
+																				<label for='qy_checkbox4_1'>堆场扬尘</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','5');" id='qy_checkbox5' name='qy_checkbox5' type='checkbox' value='生物质燃烧源'  disabled="disabled"/> -->
+																				<label for='qy_checkbox5'>生物质燃烧源</label>
+																				<code id='qy_code5'></code>
+																			</div>
+																		</td>
+																		<td colspan="7" style='text-align: left;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','5');" id='qy_checkbox5_0' type='checkbox' value='51' name='qy_add_class5' disabled="disabled"/>
+																				<label for='qy_checkbox5_0'>生物质燃料</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','6');" id='qy_checkbox6' name='qy_checkbox6' type='checkbox' value='储存运输' disabled="disabled"/> -->
+																				<label for='qy_checkbox6'>储存运输</label>
+																				<code id='qy_code6'></code>
+																			</div>
+																		</td>
+																		<td colspan="7s" style='text-align: left;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','6');" id='qy_checkbox6_0' type='checkbox' value='52' name='qy_add_class6' disabled="disabled"/>
+																				<label for='qy_checkbox6_0'>油气储运</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','7');" id='qy_checkbox7' name='qy_checkbox7' type='checkbox' value='废弃物处理源'  disabled="disabled"/> -->
+																				<label for='qy_checkbox7'>废弃物处理源</label>
+																				<code id='qy_code7'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','7');" id='qy_checkbox7_0' type='checkbox' value='53' name='qy_add_class7' disabled="disabled"/>
+																				<label for='qy_checkbox7_0'>废水处理</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','7');" id='qy_checkbox7_1' type='checkbox' value='54' name='qy_add_class7' disabled="disabled"/>
+																				<label for='qy_checkbox7_1'>固废处理</label>
+																			</div>
+																		</td>
+																		<td colspan="4" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','7');" id='qy_checkbox7_2' type='checkbox' value='55' name='qy_add_class7' disabled="disabled"/>
+																				<label for='qy_checkbox7_2'>烟气脱硝</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'qy','8');" id='qy_checkbox8' name='qy_checkbox8' type='checkbox' value='其它排放源' disabled="disabled"/> -->
+																					<label for='qy_checkbox8'>其它排放源</label>
+																				<code id='qy_code8'></code>
+																			</div></td>
+																		<td colspan="7" style='text-align: left;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'qy','8');" id='qy_checkbox8_0' type='checkbox' value='56' name='qy_add_class8' disabled="disabled"/>
+																				<label for='qy_checkbox8_0'>餐饮油烟</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																	<td style='text-align: center;'>
+																		<div class=''>
+<!-- 																			<input onclick="djbm(this.name,'qy','9');" id='qy_checkbox9' name='qy_checkbox9' type='checkbox' value='其它' disabled="disabled"/>
+ -->																				<label for='qy_checkbox9'>其它</label>
+																			<code id='qy_code9'></code>
+																		</div></td>
+																	<td colspan="7" style='text-align: left;'>
+																		<div class='checkbox checkbox-info checkbox-right'>
+																			<input onclick="djhy(this.name,'qy','9');" id='qy_checkbox9_0' type='checkbox' value='-1' name='qy_add_class9' disabled="disabled"/>
+																			<label for='qy_checkbox9_0'>其他</label>
+																		</div>
+																	</td>
+																</tr>
+																</tbody>
+															</table>
+															<div class="row" style="padding: 10px;">
+																<div class="col-sm-4" style="margin-top: 10px;margin-left: 20px;">
+																	<strong> <code>*</code>共有<code id="totle_foot"></code>家企业将参与此次填报任务 </strong>
+																</div>
+																<div class="col-sm-6" style="text-align: right;">
+																	<button type="button" class="btn btn-outline btn-lG"
+																		onclick="qy_button(1);"><i class='fa fa-arrow-right'></i> 下一步</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 企业用户 结束 -->
+								<!-- 市填报用户 开始-->
+								<div id="tab-2" class="tab-pane">
+									<div class="panel-body" style="padding-top: 0;padding-left:0">
+										<div class="row">
+											<div style="margin-top: 18px;">
+												<div class="col-sm-12">
+													<div class="example-wrap">
+														<div class="example">
+															<table class="table table-striped table-bordered tabbb">
+																<thead>
+																	<tr>
+																		<th style="width: 20%;">部门</th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;行业</th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 30%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																	</tr>
+																</thead>
+																<tbody style="text-align: center;" id="sj_tbody">
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','0');" id='sj_checkbox0' name='sj_checkbox0' type='checkbox' value='化石燃料固定燃烧源' disabled="disabled"/> -->
+																				<label for='sj_checkbox0'>化石燃料固定燃烧源</label>
+																				<code id='sj_code0'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','0');" id='sj_checkbox0_0' type='checkbox' value='11' name='sj_add_class0' disabled="disabled"/>
+																				<label for='sj_checkbox0_0'>电力</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','0');" id='sj_checkbox0_1' type='checkbox' value='12' name='sj_add_class0' disabled="disabled"/>
+																				<label for='sj_checkbox0_1'>工业锅炉</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','0');" id='sj_checkbox0_2' type='checkbox' value='13' name='sj_add_class0' disabled="disabled"/>
+																				<label for='sj_checkbox0_2'>民用源</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','1');" id='sj_checkbox1' name='sj_checkbox1' type='checkbox' value='工艺过程源' disabled="disabled"/> -->
+																				<label for='sj_checkbox1'>工艺过程源</label>
+																				<code id='sj_code1'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','1');" id='sj_checkbox1_0' type='checkbox' value='14' name='sj_add_class1' disabled="disabled"/>
+																				<label for='sj_checkbox1_0'>玻璃</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','1');" id='sj_checkbox1_1' type='checkbox' value='15' name='sj_add_class1' disabled="disabled"/>
+																				<label for='sj_checkbox1_1'>独立焦化</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','1');" id='sj_checkbox1_2' type='checkbox' value='16' name='sj_add_class1' disabled="disabled"/>
+																				<label for='sj_checkbox1_2'>钢铁</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','1');" id='sj_checkbox1_3' type='checkbox' value='17' name='sj_add_class1' disabled="disabled"/>
+																				<label for='sj_checkbox1_3'>化工化纤</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','1');" id='sj_checkbox1_4' type='checkbox' value='18' name='sj_add_class1' disabled="disabled"/>
+																				<label for='sj_checkbox1_4'>水泥</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','1');" id='sj_checkbox1_5' type='checkbox' value='19' name='sj_add_class1' disabled="disabled"/>
+																				<label for='sj_checkbox1_5'>其它工业企业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=' '>
+<!-- 																				<input onclick="djbm(this.name,'sj','2');" id='sj_checkbox2' name='sj_checkbox2' type='checkbox' value='移动源'  disabled="disabled"/> -->
+																				<label for='sj_checkbox2'>移动源</label>
+																				<code id='sj_code2'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','2');" id='sj_checkbox2_0' type='checkbox' value='20' name='sj_add_class2' disabled="disabled"/>
+																				<label for='sj_checkbox2_0'>机动车</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','2');" id='sj_checkbox2_1' type='checkbox' value='21' name='sj_add_class2' disabled="disabled"/>
+																				<label for='sj_checkbox2_1'>飞机</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','2');" id='sj_checkbox2_2' type='checkbox' value='22' name='sj_add_class2' disabled="disabled"/>
+																				<label for='sj_checkbox2_2'>船舶</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','2');" id='sj_checkbox2_3' type='checkbox' value='23' name='sj_add_class2' disabled="disabled"/>
+																				<label for='sj_checkbox2_3'>非道移机械</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','3');" id='sj_checkbox3' name='sj_checkbox3' type='checkbox' value='溶剂使用源'  disabled="disabled"/> -->
+																				<label for='sj_checkbox3'>溶剂使用源</label>
+																				<code id='sj_code3'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','3');" id='sj_checkbox3_0' type='checkbox' value='24' name='sj_add_class3' disabled="disabled"/>
+																				<label for='sj_checkbox3_0'>工业喷涂</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','3');" id='sj_checkbox3_1' type='checkbox' value='25' name='sj_add_class3' disabled="disabled"/>
+																				<label for='sj_checkbox3_1'>建筑涂料</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','3');" id='sj_checkbox3_2' type='checkbox' value='26' name='sj_add_class3' disabled="disabled"/>
+																				<label for='sj_checkbox3_2'>印刷印染</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','3');" id='sj_checkbox3_3' type='checkbox' value='27' name='sj_add_class3' disabled="disabled"/>
+																				<label for='sj_checkbox3_3'>农药使用</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','3');" id='sj_checkbox3_4' type='checkbox' value='28' name='sj_add_class3' disabled="disabled"/>
+																				<label for='sj_checkbox3_4'>其它溶剂使用</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','4');" id='sj_checkbox4' name='sj_checkbox4' type='checkbox' value='农业源'  disabled="disabled"/> -->
+																				<label for='sj_checkbox4'>农业源</label>
+																				<code id='sj_code4'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','4');" id='sj_checkbox4_0' type='checkbox' value='29' name='sj_add_class4' disabled="disabled"/>
+																				<label for='sj_checkbox4_0'>氮肥施用</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','4');" id='sj_checkbox4_1' type='checkbox' value='30' name='sj_add_class4' disabled="disabled"/>
+																				<label for='sj_checkbox4_1'>固氮植物</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','4');" id='sj_checkbox4_2' type='checkbox' value='31' name='sj_add_class4' disabled="disabled"/>
+																				<label for='sj_checkbox4_2'>秸秆堆肥</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','4');" id='sj_checkbox4_3' type='checkbox' value='32' name='sj_add_class4' disabled="disabled"/>
+																				<label for='sj_checkbox4_3'>人体粪便</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','4');" id='sj_checkbox4_4' type='checkbox' value='33' name='sj_add_class4' disabled="disabled"/>
+																				<label for='sj_checkbox4_4'>畜禽养殖</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','4');" id='sj_checkbox4_5' type='checkbox' value='34' name='sj_add_class4' disabled="disabled"/>
+																				<label for='sj_checkbox4_5'>土壤本底</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','5');" id='sj_checkbox5' name='sj_checkbox5' type='checkbox' value='扬尘源'  disabled="disabled"/> -->
+																				<label for='sj_checkbox5'>扬尘源</label>
+																				<code id='sj_code5'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','5');" id='sj_checkbox5_0' type='checkbox' value='35' name='sj_add_class5' disabled="disabled"/>
+																				<label for='sj_checkbox5_0'>道路扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','5');" id='sj_checkbox5_1' type='checkbox' value='36' name='sj_add_class5' disabled="disabled"/>
+																				<label for='sj_checkbox5_1'>堆场扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','5');" id='sj_checkbox5_2' type='checkbox' value='37' name='sj_add_class5' disabled="disabled"/>
+																				<label for='sj_checkbox5_2'>施工扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','5');" id='sj_checkbox5_3' type='checkbox' value='38' name='sj_add_class5' disabled="disabled"/>
+																				<label for='sj_checkbox5_3'>土壤扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','6');" id='sj_checkbox6' name='sj_checkbox6' type='checkbox' value='储存运输'  disabled="disabled"/> -->
+																				<label for='sj_checkbox6'>储存运输</label>
+																				<code id='sj_code6'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','6');" id='sj_checkbox6_0' type='checkbox' value='41' name='sj_add_class6' disabled="disabled"/>
+																				<label for='sj_checkbox6_0'>油气输送</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','6');" id='sj_checkbox6_1' type='checkbox' value='40' name='sj_add_class6' disabled="disabled"/>
+																				<label for='sj_checkbox6_1'>油气储存</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','6');" id='sj_checkbox6_2' type='checkbox' value='39' name='sj_add_class6' disabled="disabled"/>
+																				<label for='sj_checkbox6_2'>加油站</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','7');" id='sj_checkbox7' name='sj_checkbox7' type='checkbox' value='生物质燃烧源' disabled="disabled"/> -->
+																				<label for='sj_checkbox7'>生物质燃烧源</label>
+																				<code id='sj_code7'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','7');" id='sj_checkbox7_0' type='checkbox' value='42' name='sj_add_class7' disabled="disabled"/>
+																				<label for='sj_checkbox7_0'>生物质燃料</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','7');" id='sj_checkbox7_1' type='checkbox' value='43' name='sj_add_class7' disabled="disabled"/>
+																				<label for='sj_checkbox7_1'>生物质开放燃烧</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'sj','8');" id='sj_checkbox8' name='sj_checkbox8' type='checkbox' value='废弃物处理源' disabled="disabled"/> -->
+																				<label for='sj_checkbox8'>废弃物处理源</label>
+																				<code id='sj_code8'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','8');" id='sj_checkbox8_0' type='checkbox' value='44' name='sj_add_class8' disabled="disabled"/>
+																				<label for='sj_checkbox8_0'>废水处理</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>	
+																				<input onclick="djhy(this.name,'sj','8');" id='sj_checkbox8_1' type='checkbox' value='45' name='sj_add_class8' disabled="disabled"/>
+																				<label for='sj_checkbox8_1'>固废处理</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','8');" id='sj_checkbox8_2' type='checkbox' value='46' name='sj_add_class8' disabled="disabled"/>
+																				<label for='sj_checkbox8_2'>烟气脱硝</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: center;'>
+																			<div class=''> 
+<!-- 																			<input onclick="djbm(this.name,'sj','9');" id='sj_checkbox9' name='sj_checkbox9' type='checkbox' value='其它排放源' disabled="disabled"/> -->
+																			<label for='sj_checkbox9'>其它排放源</label>
+																			<code id='sj_code9'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'sj','9');" id='sj_checkbox9_0' type='checkbox' value='47' name='sj_add_class9' disabled="disabled"/>
+																				<label for='sj_checkbox9_0'>餐饮油烟</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																</tbody>
+															</table>
+															<div class="row" style="padding: 10px;">
+																<div class="col-sm-10" style="text-align: right;">
+																	<button type="button" class="btn btn-outline btn-lG"
+																		onclick="qy_button(2);"><i class='fa fa-arrow-left'></i> 上一步</button>
+																		<button id="update_button" type="button" class="btn btn-outline btn-lB" onclick="sj_button();"><i class='fa fa-plus-square'></i> 确定修改</button>
+																	<!--  -->
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 市填报用户 结束-->
+								<!-- 环保部门用户 开始 -->
+								<div id="tab-3" class="tab-pane">
+									<div class="" style="padding-top: 0;">
+										<div class="row">
+											<div style="margin-top: 18px;">
+												<div class="col-sm-12">
+													<div class="col-sm-12" style="padding:0px;margin-bottom:5px;">
+														<div class="input-group group-select">
+															<span class="input-group-addon" > 填报内容： </span>
+															<div class="chaxundiv_2 selectDiv" id="szdw_3">
+																<div class='checkbox checkbox-info checkbox-right' style="margin-bottom: 0px;margin-top: 0px;" id="permi">
+																<input id='pf1' type='checkbox' value='排放因子' name='permission1' disabled="disabled" checked/><label for='pf1' >排放因子</label>
+																<input id='1001' type='checkbox' value='1001' name='hb_add_class10' disabled="disabled"/><label for='1001'>末端去除效率</label>
+																<input id='1002' type='checkbox' value='1002'  name='hb_add_class10' disabled="disabled"/><label  for='1002'>气象参数</label>
+																<input id='1003' type='checkbox'  value='1003' name='hb_add_class10' disabled="disabled"/><label  for='1003'>社会经济参数</label>
+																<input id='1005' type='checkbox' value='1005'  name='hb_add_class10' disabled="disabled"/><label  for='1005'>时空分配参数</label>
+																<input id='1004' type='checkbox' value='1004'   name='hb_add_class10' disabled="disabled"/><label  for='1004'>源谱数据</label>
+																</div>
+															</div>
+															
+														</div>
+													</div>
+													<div class="example-wrap">
+														<div class="example">
+															<table class="table table-striped table-bordered tabbb">
+																<thead>
+																	<tr>
+																		<th style="width: 20%;">部门</th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;行业</th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 10%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																		<th style="width: 30%;text-align: left;border-right: 0px;border-left: 0px;"></th>
+																	</tr>
+																</thead>
+																<tbody style="text-align: center;" id="hb_tbody">
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','0');" id='hb_checkbox0' name='hb_checkbox0' type='checkbox' value='化石燃料固定燃烧源' disabled="disabled"/>
+ -->																				<label for='hb_checkbox0'>化石燃料固定燃烧源</label>
+																				<code id='hb_code0'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','0');" id='hb_checkbox0_0' type='checkbox' value='11' name='hb_add_class0' disabled="disabled"/>
+																				<label for='hb_checkbox0_0'>电力</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','0');" id='hb_checkbox0_1' type='checkbox' value='12' name='hb_add_class0' disabled="disabled"/>
+																				<label for='hb_checkbox0_1'>工业锅炉</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','0');" id='hb_checkbox0_2' type='checkbox' value='13' name='hb_add_class0' disabled="disabled"/>
+																				<label for='hb_checkbox0_2'>民用源</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','1');" id='hb_checkbox1' name='hb_checkbox1' type='checkbox' value='工艺过程源' disabled="disabled"/>
+ -->																				<label for='hb_checkbox1'>工艺过程源</label>
+																				<code id='hb_code1'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','1');" id='hb_checkbox1_0' type='checkbox' value='14' name='hb_add_class1' disabled="disabled"/>
+																				<label for='hb_checkbox1_0'>玻璃</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','1');" id='hb_checkbox1_1' type='checkbox' value='15' name='hb_add_class1' disabled="disabled"/>
+																				<label for='hb_checkbox1_1'>独立焦化</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','1');" id='hb_checkbox1_2' type='checkbox' value='16' name='hb_add_class1' disabled="disabled"/>
+																				<label for='hb_checkbox1_2'>钢铁</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','1');" id='hb_checkbox1_3' type='checkbox' value='17' name='hb_add_class1' disabled="disabled"/>
+																				<label for='hb_checkbox1_3'>化工化纤</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','1');" id='hb_checkbox1_4' type='checkbox' value='18' name='hb_add_class1' disabled="disabled"/>
+																				<label for='hb_checkbox1_4'>水泥</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','1');" id='hb_checkbox1_5' type='checkbox' value='19' name='hb_add_class1' disabled="disabled"/>
+																				<label for='hb_checkbox1_5'>其它工业企业</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','2');" id='hb_checkbox2' name='hb_checkbox2' type='checkbox' value='移动源'  disabled="disabled"/>
+ -->																				<label for='hb_checkbox2'>移动源</label>
+																				<code id='hb_code2'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','2');" id='hb_checkbox2_0' type='checkbox' value='20' name='hb_add_class2' disabled="disabled"/>
+																				<label for='hb_checkbox2_0'>机动车</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','2');" id='hb_checkbox2_1' type='checkbox' value='21' name='hb_add_class2' disabled="disabled"/>
+																				<label for='hb_checkbox2_1'>飞机</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','2');" id='hb_checkbox2_2' type='checkbox' value='22' name='hb_add_class2' disabled="disabled"/>
+																				<label for='hb_checkbox2_2'>船舶</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','2');" id='hb_checkbox2_3' type='checkbox' value='23' name='hb_add_class2' disabled="disabled"/>
+																				<label for='hb_checkbox2_3'>非道移机械</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','3');" id='hb_checkbox3' name='hb_checkbox3' type='checkbox' value='溶剂使用源'  disabled="disabled"/>
+ -->																				<label for='hb_checkbox3'>溶剂使用源</label>
+																				<code id='hb_code3'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','3');" id='hb_checkbox3_0' type='checkbox' value='24' name='hb_add_class3' disabled="disabled"/>
+																				<label for='hb_checkbox3_0'>工业喷涂</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','3');" id='hb_checkbox3_1' type='checkbox' value='25' name='hb_add_class3' disabled="disabled"/>
+																				<label for='hb_checkbox3_1'>建筑涂料</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','3');" id='hb_checkbox3_2' type='checkbox' value='26' name='hb_add_class3' disabled="disabled"/>
+																				<label for='hb_checkbox3_2'>印刷印染</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','3');" id='hb_checkbox3_3' type='checkbox' value='27' name='hb_add_class3' disabled="disabled"/>
+																				<label for='hb_checkbox3_3'>农药使用</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','3');" id='hb_checkbox3_4' type='checkbox' value='28' name='hb_add_class3' disabled="disabled"/>
+																				<label for='hb_checkbox3_4'>其它溶剂使用</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','4');" id='hb_checkbox4' name='hb_checkbox4' type='checkbox' value='农业源'  disabled="disabled"/>
+ -->																				<label for='hb_checkbox4'>农业源</label>
+																				<code id='hb_code4'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','4');" id='hb_checkbox4_0' type='checkbox' value='29' name='hb_add_class4' disabled="disabled"/>
+																				<label for='hb_checkbox4_0'>氮肥施用</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','4');" id='hb_checkbox4_1' type='checkbox' value='30' name='hb_add_class4' disabled="disabled"/>
+																				<label for='hb_checkbox4_1'>固氮植物</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','4');" id='hb_checkbox4_2' type='checkbox' value='31' name='hb_add_class4' disabled="disabled"/>
+																				<label for='hb_checkbox4_2'>秸秆堆肥</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','4');" id='hb_checkbox4_3' type='checkbox' value='32' name='hb_add_class4' disabled="disabled"/>
+																				<label for='hb_checkbox4_3'>人体粪便</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','4');" id='hb_checkbox4_4' type='checkbox' value='33' name='hb_add_class4' disabled="disabled"/>
+																				<label for='hb_checkbox4_4'>畜禽养殖</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','4');" id='hb_checkbox4_5' type='checkbox' value='34' name='hb_add_class4' disabled="disabled"/>
+																				<label for='hb_checkbox4_5'>土壤本底</label>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','5');" id='hb_checkbox5' name='hb_checkbox5' type='checkbox' value='扬尘源'  disabled="disabled"/>
+ -->																				<label for='hb_checkbox5'>扬尘源</label>
+																				<code id='hb_code5'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','5');" id='hb_checkbox5_0' type='checkbox' value='35' name='hb_add_class5' disabled="disabled"/>
+																				<label for='hb_checkbox5_0'>道路扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','5');" id='hb_checkbox5_1' type='checkbox' value='36' name='hb_add_class5' disabled="disabled"/>
+																				<label for='hb_checkbox5_1'>堆场扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','5');" id='hb_checkbox5_2' type='checkbox' value='37' name='hb_add_class5' disabled="disabled"/>
+																				<label for='hb_checkbox5_2'>施工扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','5');" id='hb_checkbox5_3' type='checkbox' value='38' name='hb_add_class5' disabled="disabled"/>
+																				<label for='hb_checkbox5_3'>土壤扬尘</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','6');" id='hb_checkbox6' name='hb_checkbox6' type='checkbox' value='储存运输'  disabled="disabled"/>
+ -->																				<label for='hb_checkbox6'>储存运输</label>
+																				<code id='hb_code6'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','6');" id='hb_checkbox6_0' type='checkbox' value='41' name='hb_add_class6' disabled="disabled"/>
+																				<label for='hb_checkbox6_0'>油气输送</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','6');" id='hb_checkbox6_1' type='checkbox' value='40' name='hb_add_class6' disabled="disabled"/>
+																				<label for='hb_checkbox6_1'>油气储存</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','6');" id='hb_checkbox6_2' type='checkbox' value='39' name='hb_add_class6' disabled="disabled"/>
+																				<label for='hb_checkbox6_2'>加油站</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','7');" id='hb_checkbox7' name='hb_checkbox7' type='checkbox' value='生物质燃烧源' disabled="disabled"/>
+ -->																				<label for='hb_checkbox7'>生物质燃烧源</label>
+																				<code id='hb_code7'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','7');" id='hb_checkbox7_0' type='checkbox' value='42' name='hb_add_class7' disabled="disabled"/>
+																				<label for='hb_checkbox7_0'>生物质燃料</label>
+																			</div>
+																		</td>
+																		<td colspan="2" style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','7');" id='hb_checkbox7_1' type='checkbox' value='43' name='hb_add_class7' disabled="disabled"/>
+																				<label for='hb_checkbox7_1'>生物质开放燃烧</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''>
+<!-- 																				<input onclick="djbm(this.name,'hb','8');" id='hb_checkbox8' name='hb_checkbox8' type='checkbox' value='废弃物处理源' disabled="disabled"/>
+ -->																				<label for='hb_checkbox8'>废弃物处理源</label>
+																				<code id='hb_code8'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','8');" id='hb_checkbox8_0' type='checkbox' value='44' name='hb_add_class8' disabled="disabled"/>
+																				<label for='hb_checkbox8_0'>废水处理</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>	
+																				<input onclick="djhy(this.name,'hb','8');" id='hb_checkbox8_1' type='checkbox' value='45' name='hb_add_class8' disabled="disabled"/>
+																				<label for='hb_checkbox8_1'>固废处理</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','8');" id='hb_checkbox8_2' type='checkbox' value='46' name='hb_add_class8' disabled="disabled"/>
+																				<label for='hb_checkbox8_2'>烟气脱硝</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																	<tr>
+																		<td style='text-align: left;'>
+																			<div class=''> 
+<!-- 																			<input onclick="djbm(this.name,'hb','9');" id='hb_checkbox9' name='hb_checkbox9' type='checkbox' value='其它排放源' disabled="disabled"/>
+ -->																			<label for='hb_checkbox9'>其它排放源</label>
+																			<code id='hb_code9'></code>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'>
+																			<div class='checkbox checkbox-info checkbox-right'>
+																				<input onclick="djhy(this.name,'hb','9');" id='hb_checkbox9_0' type='checkbox' value='47' name='hb_add_class9' disabled="disabled"/>
+																				<label for='hb_checkbox9_0'>餐饮油烟</label>
+																			</div>
+																		</td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																		<td style='text-align: left;border-right: 0px;border-left: 0px;'></td>
+																	</tr>
+																</tbody>
+															</table>
+															<div class="row" style="padding: 10px;">
+																<div class="col-sm-10" style="text-align: right;">
+																	<button type="button" class="btn btn-outline btn-lG"
+																		onclick="qy_button(4);"><i class='fa fa-arrow-left'></i> 上一步</button>
+																	<button type="button" class="btn btn-outline btn-lB"
+																		onclick="sj_button();"><i class='fa fa-plus-square'></i> 确定修改</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- <div id="tab-3" class="tab-pane">
+									<div class="panel-body">
+										<div class="row">
+											<div style="margin-top: 18px;margin-left:3px;">
+												<div class="col-sm-12">
+													<div class="example-wrap">
+														<div class="example">环保部门用户</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> -->
+								<!-- 环保部门用户 结束 -->
+							</div>
+						</div>
+						<!-- 标签体 结束-->
+					<!-- </div>-->
+				</div>
+			</div> 
+		</div>
+	</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- 自定义js -->
+	<script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script
+		src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script
+		src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+	<!-- iCheck -->
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<!-- 消息框 -->
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<!-- 对话框 -->
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<!-- 日期选择器 -->
+	<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	<script src="../0201/bmhy1.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script src="cha_0201.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+body {
+	margin: 0 auto;
+	text-align: center;
+	font: 12px/1.5 arial;
+	color: #242424;
+	background: #212222;
+}
+
+/* div {
+	text-align: left;
+} */
+
+:focus {
+	outline: none;
+}
+
+form, ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+img {
+	border: none;
+	vertical-align: middle;
+}
+
+input{
+	font-size: 1em;
+	margin: 0;
+	font-family: tahoma, arial, simsun, sans-serif;
+	color: #484848;
+}
+
+a {
+	color: #f27f02;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.donate:hover {
+	text-decoration: none;
+	background-color: #fff79f;
+}
+
+.cls:after {
+	content: "";
+	font-size: 0;
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+} 
+*:first-child+html .cls {
+	zoom: 1;
+}
+
+.latestcomment a:hover {
+	text-decoration: none;
+}
+
+
+
+.comment .comment-meta a:hover {
+	text-decoration: none;
+}
+
+#Validform_msg a.Validform_close:hover {
+	color: #ccc;
+}

@@ -1,0 +1,71 @@
+#addEdit{
+    float: right;
+}
+#addEdit ul{
+    overflow: hidden;
+}
+#addEdit ul li{
+    float: left;
+}
+#addFixed{
+    position: fixed;
+    left: 0;
+    right:0;
+    top:0;
+    height: 200px;
+    /*background-color: #fff;*/
+    /*border-bottom:1px solid rgb(204, 204, 204);*/
+    z-index: 999;
+}
+#mainCon{
+    position: relative;
+    top:186px;
+}
+.body_mid{
+    position: relative;
+    top:196px;
+}
+#banner_qian{
+    width:1200px;
+    margin: auto;
+    background-color:#fff!important;
+}
+#menu{
+    width: 1020px;
+    margin: auto;
+    /*padding: 0px;*/
+}
+.lmtitleCon{
+    width: 1150px;
+    margin: auto;
+    padding: 0 25px;
+    background-color: #fff;
+    padding-top: 10px;
+}
+.lmtitle{
+    border:none;
+    background-color:#fff;
+    border:1px solid rgb(204, 204, 204);
+}
+#addEdit a{
+    width: auto;
+}
+#addEdit a button{
+    outline: none;
+}
+.btn-default{
+    height: auto;
+    background-color: rgb(79, 135, 209);
+}
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover{
+    background-color: rgb(46, 99, 167);
+    color: #fff;
+}
+.btn-default:hover{
+    background-color: rgb(46, 99, 167);
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+    background-color: rgb(46, 99, 167);
+
+}
+

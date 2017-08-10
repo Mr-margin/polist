@@ -1,0 +1,57 @@
+Starting PoListSampleApplication on 你不懂 with PID 5892 (E:\cd\eerduosi\polist\target\classes started by 太年轻 in E:\cd\eerduosi\polist)
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2de832d7: startup date [Thu Aug 10 14:30:07 CST 2017]; root of context hierarchy
+Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4981f1c4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Tomcat initialized with port(s): 8081 (http)
+Starting service Tomcat
+Starting Servlet Engine: Apache Tomcat/7.0.55
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2339 ms
+Mapping servlet: 'statViewServlet' to [/druid2/*]
+Mapping servlet: 'dispatcherServlet' to [/]
+Mapping servlet: 'com.gistone.controller.DruidStatViewServlet' to [/druid/*]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapping filter: 'webStatFilter' to urls: [/*]
+Mapping filter: 'druidWebStatFilter' to urls: [/*]
+Mapping filter: 'myFilter' to urls: [/*]
+Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2de832d7: startup date [Thu Aug 10 14:30:07 CST 2017]; root of context hierarchy
+Mapped "{[/img.do]}" onto public void com.gistone.controller.LoginController.execute(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+Mapped "{[/forgetPassword_Controller.do]}" onto public void com.gistone.controller.LoginController.forgetPassword_Controller(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.security.NoSuchAlgorithmException,java.io.IOException,javax.mail.MessagingException
+Mapped "{[/getLogin_Controller.do]}" onto public void com.gistone.controller.LoginController.getLogin_Controler(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.security.NoSuchAlgorithmException,java.io.IOException
+Mapped "{[/checkyzm_Controller]}" onto public void com.gistone.controller.LoginController.checkyzm_Controller(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.security.NoSuchAlgorithmException,java.io.IOException,javax.mail.MessagingException
+Mapped "{[/login_out.do]}" onto public void com.gistone.controller.LoginController.login_out(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+Mapped "{[/yzm.do]}" onto public void com.gistone.controller.LoginController.yzm(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+Mapped "{[/menu.do]}" onto public void com.gistone.controller.LoginController.menu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/getLogin_message.do]}" onto public void com.gistone.controller.LoginController.getLogin_message(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+Mapped "{[/changePassword.do]}" onto public void com.gistone.controller.LoginController.changePassword(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.security.NoSuchAlgorithmException,java.io.IOException
+Mapped "{[/login_jouranl.do]}" onto public void com.gistone.controller.LoginController.login_jouranl(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/onclose]}" onto public void com.gistone.controller.LoginController.onclose(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/updatePassword.do]}" onto public void com.gistone.controller.LoginController.updatePassword(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.security.NoSuchAlgorithmException,java.io.IOException
+Mapped "{[/selectTask.do]}" onto public void com.gistone.controller.Messages.selectTask(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/saveStak.do]}" onto public void com.gistone.controller.Messages.saveStak(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/getUpdateTemplate.do]}" onto public void com.gistone.controller.QuestTemplate.getUpdateTemplate(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/QuestTemplateTOjson.do]}" onto public void com.gistone.controller.QuestTemplate.QuestTemplateTOjson(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/getCalculationTemplate.do]}" onto public void com.gistone.controller.QuestTemplate.getCalculationTemplate(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Adding welcome page: class path resource [META-INF/resources/index.html]
+Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+LiveReload server is running on port 35729
+Registering beans for JMX exposure on startup
+Bean with name 'dataSource' has been autodetected for JMX exposure
+Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+Initializing ProtocolHandler ["http-nio-8081"]
+Starting ProtocolHandler ["http-nio-8081"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8081 (http)
+Started PoListSampleApplication in 40.806 seconds (JVM running for 11318.539)
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 29 ms
+{dataSource-1} inited

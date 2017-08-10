@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+
+
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+<!-- <LINK href="../../zp01/style/global_static.css" rel="stylesheet" type="text/css"> -->
+<LINK href="../../zp01/style/main_style.css" rel="stylesheet" type="text/css">
+
+<!-- <link href="../../css/cd/cd.css" rel="stylesheet"> -->
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<style>
+.lmtitle {
+	border: 1px solid rgb(204, 204, 204);
+	border-image: none;
+	height: 54px;
+	background-color: rgb(255, 255, 255);
+}
+
+.lmtitle .name {
+	padding: 0px 10px 0px 54px;
+	color: rgb(79, 135, 209);
+	line-height: 54px;
+	font-size: 14px;
+	font-weight: bold;
+	float: left;
+	background-repeat: no-repeat;
+}
+
+.box_dashed {
+	padding: 7px;
+/* 	border: 1px dashed rgb(76, 177, 45); */
+	border-image: none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.table-hover>thead>tr>th, .table-hover>thead>tr>td {
+	text-align: center;
+	background-color: #F5F5F6;
+}
+
+.table-hover>tbody>tr>td {
+	text-align: center;
+}
+
+
+.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .selectDiv .noSelectBorder select{
+	    	border:0;
+	        appearance:none;
+	        -moz-appearance:none;
+	        -webkit-appearance:none;
+	        padding-right:20px;
+	    }
+	    .selectDiv .noSelectBorder{
+	    	display:inline-block;
+	    	position: relative;
+	    	margin-right:10px;
+	    }
+	    .selectDiv .noSelectBorder:hover i{
+	    	display:block;
+	    }
+	    .selectDiv .noSelectBorder i{
+	    	position:absolute;
+	    	display:none;
+	    	/* width:19px;
+	    	height:19px; */
+	    	right:0;
+	    	top:7px;
+	    	border-left:8px solid transparent;
+	    	border-top:16px solid #333;
+	    	border-right:8px solid transparent;
+	    	border-bottom:1px solid transparent;
+	    }
+	    .selectDiv select{
+	    	width:100%;
+	    	border:0;
+	    }
+	    .selectDiv select:focus{
+	    	border:0;
+	    }
+.table thead tr th {
+	text-align: center;
+}
+
+
+</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="col-sm-12" style="padding-left:0px;">
+			<div class="col-sm-12 box_dashed" style="padding-left:0px;padding-top:0px;margin-top:0px;">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class='col-sm-4' style='padding-left:0px'>
+						<div class="input-group group-select">
+				          <span class="input-group-addon">
+						           化学模式：
+				          </span>
+				          <div>
+							<select class='form-control m-b' id="select_1" onchange="changesele(this.value);" style="min-width: 23%;"></select>
+				          </div>
+				        </div>
+					</div>
+					<div class='col-sm-4'>
+						<div class="input-group group-select">
+				          <span class="input-group-addon">
+						           	网格化清单名称：
+				          </span>
+				          <div>
+							<select class='form-control m-b'  id="select_2" style="min-width: 23%;">
+								<option>化学</option>
+								<option>化学</option>
+							</select>
+						</div>
+				        </div>
+					</div>
+					<div class='col-sm-3'>
+						<button class='btn btn-outline btn-lG'>
+							<i class='fa fa-search-minus'></i> 搜索
+						</button>
+						
+					</div>
+					<div class="col-sm-1">
+						<button class='btn btn-outline btn-lG' id="create">
+							<i class='fa fa-plus-square'></i> 创建
+						</button>
+					</div>
+				</div>
+				</div><br>
+				<div class="col-sm-12" style="padding:0px;">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>网格化清单名称</th>
+								<th>模式名称</th>
+								<th>空间分辨率</th>
+								<th>时间范围</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="list_table">
+							<tr>
+								<td><input type="checkbox">1</td>
+								<td>网格化清单1</td>
+								<td>CMAQ4.7</td>
+								<td>36km×12km×4km</td>
+								<td>2013.1.1-201.1.1</td>
+								<td>生成中</td>
+								<td><a ><i class="fa fa-binoculars"></i>&nbsp;查看&nbsp;&nbsp;</a><a hidden><i class="fa fa-binoculars"></i>&nbsp;查看&nbsp;&nbsp;</a><a><i class="fa fa-pause"></i>&nbsp;暂停&nbsp;&nbsp;</a><a><i class="fa fa-play"></i>&nbsp;续跑&nbsp;&nbsp;</a><a ><i class="fa fa-stop"></i>&nbsp;终止&nbsp;&nbsp;</a><a><i class="fa fa-download"></i>&nbsp;下载&nbsp;&nbsp;</a><a ><i class="fa fa-trash"></i>&nbsp;删除</a></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox">2</td>
+								<td>网格化清单1</td>
+								<td>CMAQ4.7</td>
+								<td>36km×12km×4km</td>
+								<td>2013.1.1-201.1.1</td>
+								<td>生成中</td>
+								<td><a hidden><i class="fa fa-binoculars"></i>&nbsp;查看&nbsp;&nbsp;</a><a><i class="fa fa-pause"></i>&nbsp;暂停&nbsp;&nbsp;</a><a><i class="fa fa-play"></i>&nbsp;续跑&nbsp;&nbsp;</a><a ><i class="fa fa-stop"></i>&nbsp;终止&nbsp;&nbsp;</a><a><i class="fa fa-download"></i>&nbsp;下载&nbsp;&nbsp;</a><a ><i class="fa fa-trash"></i>&nbsp;删除</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="modal inmodal fade" style="margin-top: 100px" id="show_rough" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 90%" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>清单生成</h2>
+				</div>
+					<div class="row" style="padding-top:30px; padding-left: 15px;">
+						<!-- 左边 -->
+						<div class="col-sm-6">
+							<table class="table table-bordered zhong" style="margin-top: 0px;">
+								<tbody>
+									<tr>
+										<td width="30%" class="dise"> 网络化清单名称<code>*</code>：</td>
+										<td width="70%" ><a id="netordername"></a></td>
+									</tr>
+									<tr>
+										<td class="dise">模式参数版本<code>*</code>：</td>
+										<td ><a id="modeversion"></a></td>
+									</tr>
+								</tbody>
+							</table>
+							<br>
+						
+							<div class="row">
+								<div class="col-sm-6">
+									
+									<table class="table table-bordered zhong" style="margin-top: 0px;margin-left:5px;">
+										<tbody>
+											<tr>
+												<td colspan="2">基本信息</td>
+											</tr>
+											<tr>
+												<td width="40%" class="dise">大气化学模式</td>
+												<td width="60%"><a id="airmode"></a></td>
+											</tr>
+											<tr>
+												<td >排放文件</td>
+												<td><a id="letfile"></a></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<table class="table table-bordered zhong" style="margin-top: 0px;margin-left:5px;">
+										<tbody>
+											<tr>
+												<td colspan="2">空间信息</td>
+											</tr>
+											<tr>
+												<td width="40%" class="dise">投影类型</td>
+												<td width="60%"><a id="projectiontype"></a></td>
+											</tr>
+											<tr>
+												<td >标准经纬线</td>
+												<td><a id="stangeographic"></a></td>
+											</tr>
+											<tr>
+												<td >参考点</td>
+												<td ><a id="referpoint"></a></td>
+											</tr>
+											<tr>
+												<td >嵌套层数</td>
+												<td><a id="nestnum"></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="col-sm-6">
+									
+									<table class="table table-bordered zhong" style="margin-top: 0px;">
+										<tbody>
+											<tr>
+												<td >第</td>
+												<td><a id="domainnum"></a></td>
+												<td colspan="2">层domain</td>
+											</tr>
+											<tr>
+												<td colspan="2">网格大小</td>
+												<td colspan="2"><a id="netsize"></a></td>
+											</tr>
+											<tr>
+												<td width="20%">dx(米)</td>
+												<td width="30%"><a id="dx"></a></td>
+												<td width="20%">dy(米)</td>
+												<td width="30%"><a id="dy"></a></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									
+									
+									<table class="table table-bordered zhong" style="margin-top: 0px;">
+										<tbody>
+											<tr>
+												<td colspan="4">网格个数</td>
+											</tr>
+											<tr>
+												<td width="20%">xcells(个)</td>
+												<td width="30%"><a id="xcells"></a></td>
+												<td width="20%">ycells(个)</td>
+												<td width="30%"><a id="ycells"></a></td>
+											</tr>
+										</tbody>
+									</table>
+									
+									
+									<table class="table table-bordered zhong" style="margin-top: 0px;">
+										<tbody>
+											<tr>
+												<td colspan="4">左下角位置</td>
+											</tr>
+											<tr>
+												<td width="20%">xorlg(米)</td>
+												<td width="30%"><a id="xorlg"></a></td>
+												<td width="20%">yorlg(米)</td>
+												<td width="30%"><a id="yorlg"></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!-- 右边 -->
+						<div class="col-sm-6" style="padding-right: 30px;">
+							<table class="table table-bordered zhong" style="margin-top: 0px;margin-right:10px;">
+								<tbody>
+									<tr>
+										<td  class="dise">模拟起止时间<code>*</code>：</td>
+										<td width="30%"><a id="starttime"></a></td>
+										<td width="5%">－</td>
+										<td width="30%"><a id="endtime"></a></td>
+									</tr>
+									<tr>
+										<td class="dise">拼接清单版本<code>*</code>：</td>
+										<td colspan="3"><a id="listversion"></a></td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+					</div>
+					<div class="modal-footer" style="border-top: 0px solid #e5e5e5; ">
+					<input type="submit" class="btn btn-w-m btn-info" style="" onclick="add_formation()" value="下一步">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- 自定义js -->
+
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+	<script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+	<!-- iCheck -->
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script src="0601_table.js"></script>
+	<script src="0601.js"></script>
+
+</body>
+</html>

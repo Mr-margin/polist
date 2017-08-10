@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+<!-- <LINK href="../../zp01/style/global_static.css" rel="stylesheet" type="text/css"> -->
+<LINK href="../../zp01/style/main_style.css" rel="stylesheet" type="text/css">
+<!-- <link href="../../css/cd/cd.css" rel="stylesheet"> -->
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<style>
+.lmtitle {
+	border: 1px solid rgb(204, 204, 204);
+	border-image: none;
+	height: 54px;
+	background-color: rgb(255, 255, 255);
+}
+
+.lmtitle .name {
+	padding: 0px 10px 0px 54px;
+	color: rgb(79, 135, 209);
+	line-height: 54px;
+	font-size: 14px;
+	font-weight: bold;
+	float: left;
+	background-repeat: no-repeat;
+}
+
+.box_dashed {
+	padding: 7px;
+/* 	border: 1px dashed rgb(76, 177, 45); */
+	border-image: none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.table-hover>thead>tr>th, .table-hover>thead>tr>td {
+	text-align: center;
+	background-color: #F5F5F6;
+}
+
+.table-hover>tbody>tr>td {
+	text-align: center;
+}
+
+.sort_link {
+	/* float: left; */
+	margin: 0 9px 9px 9px;
+	display: block;
+	width: 200px;
+}
+
+.sort_link .x_name {
+	display: block;
+	line-height: 40px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	font-family: "Microsoft YaHei", "FZLTXHK";
+	font-size: 16px;
+	border-radius: 5px 5px 0 0;
+	border-bottom: 1px solid #4cb12d;
+	color: #4f87d1;
+	background-position: left center;
+}
+</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight pd_top0">
+		<div class="col-sm-12">
+			<div class="col-sm-12 box_dashed ">
+				<div class='col-sm-12 mar_bottom10' >
+					<div class='col-sm-6'>
+						<div class="input-group group-select">
+				          <span class="input-group-addon">
+						           	清单年份：
+				          </span>
+				          <div>
+							<select class='form-control m-b' style="min-width: 23%;">
+								<option>2016</option>
+								<option>2015</option>
+							</select>
+							</div>
+				        </div>
+					</div>
+					<div class='col-sm-6'>
+						<div class="input-group group-select">
+				          <span class="input-group-addon">
+						           	污染物：
+				          </span>
+				          <div>
+							<select class='form-control m-b' style="min-width: 23%;">
+								<option>2016</option>
+								<option>2015</option>
+							</select>
+							</div>
+				        </div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<img src="../img/pn7.png">
+				</div>
+				<div class="col-sm-6">
+					<img src="../img/pn8.png">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- 自定义js -->
+
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+
+	<!-- iCheck -->
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<!--     <script src="0701.js"></script> -->
+
+</body>
+</html>

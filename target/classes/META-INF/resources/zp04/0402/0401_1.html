@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+<!-- <LINK href="../../zp01/style/global_static.css" rel="stylesheet"type="text/css"> -->
+<LINK href="../../zp01/style/main_style.css" rel="stylesheet"
+	type="text/css">
+
+<!-- 	<link href="../../css/cd/cd.css" rel="stylesheet"> -->
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<style>
+.lmtitle {
+	border: 1px solid rgb(204, 204, 204);
+	border-image: none;
+	height: 54px;
+	background-color: rgb(255, 255, 255);
+}
+
+.lmtitle .name {
+	padding: 0px 10px 0px 54px;
+	color: rgb(79, 135, 209);
+	line-height: 54px;
+	font-size: 14px;
+	font-weight: bold;
+	float: left;
+	background-repeat: no-repeat;
+}
+
+.box_dashed {
+	padding: 7px;
+/* 	border: 1px dashed rgb(76, 177, 45); */
+	border-image: none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.table-hover>thead>tr>th, .table-hover>thead>tr>td {
+	text-align: center;
+	background-color: #F5F5F6;
+}
+
+.table-hover>tbody>tr>td {
+	text-align: center;
+}
+
+.sort_link {
+	/* float: left; */
+	margin: 0 9px 9px 9px;
+	display: block;
+	width: 200px;
+}
+
+.sort_link .x_name {
+	display: block;
+	line-height: 40px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	font-family: "Microsoft YaHei", "FZLTXHK";
+	font-size: 16px;
+	border-radius: 5px 5px 0 0;
+	border-bottom: 1px solid #4cb12d;
+	color: #4f87d1;
+	background-position: left center;
+}
+</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight pd_top0">
+
+		<div class="row">
+
+<!-- 			<div class="col-sm-12"> -->
+<!-- 				<DIV class="lmtitle"> -->
+<!-- 					<span class="name" -->
+<!-- 						style="background-image: url(../../zp01/ui/images/icon_lm_fwdt.png);"> -->
+<!-- 					</span> <a id="add_sb" href="javascript:;" class="sp-column" -->
+<!-- 						style='background-image: url("../../zp01/ui/images/icon_14.png"); height:43px; font-size:14px;' -->
+<!-- 						onclick="add_sb()" style="display:none;">&nbsp;&nbsp;保存</a> -->
+<!-- 				</DIV> -->
+<!-- 			</div> -->
+			<div id="biao" class="col-sm-12">
+				<div class="col-sm-12 box_dashed">
+					<div class="col-sm-6">
+						<div id="cang" class="col-sm-6">
+							<div class="col-sm-12"
+								style="border-right-width: 1px;border-bottom-color:#008800;border-bottom-style: solid; border-bottom-width: 1px;">
+								<div class="col-sm-12">
+									<img id="pic_s" src="../img/pn4.png"
+										style="width:16px;height:16px;margin-top:3px;"
+										onclick="qiangdan()"><span>清单耦合</span>
+								</div>
+							</div>
+							<div id="shang">
+								<div class="col-sm-12">备选清单</div>
+								<div class="col-sm-12">
+									<div id="tab-j-1" class="tab-pane active">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-sm-12">
+													<table class="table table-hover">
+														<thead>
+															<tr>
+																<th>选择</th>
+																<th>清单名称</th>
+																<th>备注</th>
+															</tr>
+														</thead>
+														<tbody id="list_table">
+															<tr>
+																<td><input type="checkbox"></td>
+																<td>2014_河北排放清单</td>
+																<td>国家发布</td>
+															</tr>
+															<tr>
+																<td><input type="checkbox"></td>
+																<td>2014_河北排放清单</td>
+																<td>国家发布</td>
+
+															</tr>
+															<tr>
+																<td><input type="checkbox"></td>
+																<td>2014_石家庄排放清单</td>
+																<td>自主编制</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="col-sm-12">
+								<div class="col-sm-12"
+									style="border-right-width: 1px;border-bottom-color:#008800;border-bottom-style: solid; border-bottom-width: 1px;">
+									<img id="pic_x" src="../img/pn3.png"
+										style="width:16px;height:16px;margin-top:3px;"
+										onclick="xiuzheng()"><span>排放结果修正</span>
+								</div>
+								<br>
+								<div id="xia" style="display:none;">
+									<div class="col-sm-12 lmtitle" style="height:40px;">
+										<div class="col-sm-1"
+											style="padding-top:6px;background-color:#DDDDDD;width:90px;height:40px;margin-left:-15px;">
+											<span style="font-size:12px;">部门</span>
+										</div>
+										<div class="col-sm-10">
+											<input type="checkbox"><span style="font-size:12px;">溶剂使用源</span>
+											<input type="checkbox"><span style="font-size:12px;">固定燃料源</span>
+											<input type="checkbox"><span style="font-size:12px;">工艺过程源</span>
+											<input type="checkbox"><span style="font-size:12px;">移动源</span>
+											<input type="checkbox"><span style="font-size:12px;">全选</span>
+
+										</div>
+									</div>
+
+									<div class="col-sm-12 lmtitle" style="height:40px;">
+										<div class="col-sm-1"
+											style="padding-top:6px;background-color:#DDDDDD;width:90px;height:40px;margin-left:-15px;">
+											<span style="font-size:12px;">污染物</span>
+										</div>
+										<div class="col-sm-10">
+											<input type="checkbox"><span style="font-size:12px;">SO2</span>
+											<input type="checkbox"><span style="font-size:12px;">NOx</span>
+											<input type="checkbox"><span style="font-size:12px;">VOc</span>
+											<input type="checkbox"><span style="font-size:12px;">PM2.5</span>
+											<input type="checkbox"><span style="font-size:12px;">全选</span>
+										</div>
+									</div>
+
+									<div class="col-sm-12 lmtitle" style="height:40px;">
+										<div class="col-sm-1"
+											style="padding-top:6px;background-color:#DDDDDD;width:90px;height:40px;margin-left:-15px;">
+											<span style="font-size:12px;">行业</span>
+										</div>
+										<div class="col-sm-10">
+											<input type="checkbox"><span style="font-size:12px;">电力</span>
+											<input type="checkbox"><span style="font-size:12px;">部门</span>
+											<input type="checkbox"><span style="font-size:12px;">行业</span>
+											<input type="checkbox"><span style="font-size:12px;">排放量</span>
+											<input type="checkbox"><span style="font-size:12px;">全选</span>
+										</div>
+									</div>
+
+								</div>
+
+
+
+							</div>
+
+
+						</div>
+						<div id="caozuo" class="col-sm-6">
+							<div class="col-sm-12"
+								style="border-right-width: 1px;border-bottom-color:#008800;border-bottom-style: solid; border-bottom-width: 1px;">
+								<span>操作区</span>
+							</div>
+							<div class="col-sm-12">
+								<img src="../img/pn1.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="col-sm-12"
+							style="border-right-width: 1px;border-bottom-color:#008800;border-bottom-style: solid; border-bottom-width: 1px;">
+							<span>排放结果展示</span>
+<!-- 							<button class='btn btn-outline btn-lB'><i class='fa fa-check'></i> 保存</button> -->
+						</div>
+						<div class="col-sm-12">
+							<img src="../img/pn2.png">
+						</div>
+					</div>
+
+
+				</div>
+				<div class='col-sm-2 col-sm-offset-10'>
+					<button class='btn btn-outline btn-lB'><i class='fa fa-check'></i> 保存</button>
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- 自定义js -->
+
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+
+	<!-- iCheck -->
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script type="text/javascript">
+		function qiangdan () {
+			$("#shang").show();
+			$("#xia").hide();
+			$("#caozuo").show();
+			$("#caozuo").attr("class","col-sm-6");
+			$("#cang").attr("class","col-sm-6");
+			$("#pic_x").attr("src","../img/pn3.png");
+			$("#pic_s").attr("src","../img/pn4.png");
+		
+		}
+		function xiuzheng(){
+			$("#shang").hide();
+			$("#xia").show();
+			$("#caozuo").hide();
+			$("#caozuo").attr("class","col-sm-0");
+			$("#cang").attr("class","col-sm-12");
+			$("#pic_x").attr("src","../img/pn4.png");
+			$("#pic_s").attr("src","../img/pn3.png");
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../../js/plugins/webuploader/webuploader.css" rel="stylesheet">
+	
+	<style type="text/css">  
+		.sort_link {
+		    /* float: left; */
+		    margin: 0 9px 9px 9px;
+		    display: block;
+		    width: 400px;
+		}
+		.sort_link .x_name {
+		    display: block;
+		    line-height: 40px;
+		    background-repeat: no-repeat;
+		    padding-left: 30px;
+		    font-family: "Microsoft YaHei","FZLTXHK";
+		    font-size: 16px;
+		    border-radius: 5px 5px 0 0;
+		    border-bottom: 1px solid #4cb12d;
+		    color: #4f87d1;
+		    background-position: left center;
+		}
+		.a_xhx{
+			text-decoration:underline;
+			padding: 0px;
+		}
+		.tudiv{
+			height: 300px;
+/* 			background-color: cornsilk; */
+			margin-bottom: 20px;
+		}
+		.file {
+		    position: relative;
+		    display: inline-block;
+		    background: #D0EEFF;
+		    border: 1px solid #99D3F5;
+		    border-radius: 4px;
+		    padding: 4px 12px;
+		    overflow: hidden;
+		    color: #1E88C7;
+		    text-decoration: none;
+		    text-indent: 0;
+		    line-height: 20px;
+		}
+		.file input {
+		    position: absolute;
+		    font-size: 100px;
+		    right: 0;
+		    top: 0;
+		    opacity: 0;
+		}
+		.file:hover {
+		    background: #AADFFD;
+		    border-color: #78C3F3;
+		    color: #004974;
+		    text-decoration: none;
+		}
+		.div_call_1{/* 横轴 */
+    		padding-right: 0px;
+		}
+		.div_call{/* 纵轴 */
+			padding-left: 0px;
+    		padding-right: 0px;
+		}
+		.lmtitle {
+			border: 1px solid rgb(204, 204, 204); border-image: none; height: 54px; background-color: rgb(255, 255, 255);
+		}
+		.lmtitle .name {
+			padding: 0px 10px 0px 54px; color: rgb(79, 135, 209); line-height: 54px; font-size: 14px; font-weight: bold; float: left; background-repeat: no-repeat;
+		}
+		.box_dashed {
+			padding: 7px; border: 1px dashed rgb(76, 177, 45); border-image: none; margin-top: 10px; margin-bottom: 20px;
+		}
+		.tbody_div{/* 表格内的div */
+		    border-bottom: 1px solid #e7e7e7;
+		    padding-bottom: 5px;
+		    padding-left: 0;
+		    padding-right: 0;
+		}
+  	</style>
+  </head>
+  
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;padding-top: 10px">
+		<div class="row">
+			<div class="tabs-container">
+				<div style="padding-left:15px;padding-right: 20px;">
+					<div class="row">
+						
+						<div class="col-sm-4 col-xs-4">
+							<div class="input-group group-select " >
+					          <span class="input-group-addon">任务列表：</span>
+					          <div>
+							  	<select class='form-control m-b' id="data_up_sel" onchange="changetask(this.value);"></select>
+							  </div>
+							 </div>
+				        </div>
+						<div class='"col-sm-8 col-xs-8' id="data_type" style="padding-bottom:5px;padding-left:15px;padding-right:15px" hidden>
+							<div class="input-group group-select">
+					          <span class="input-group-addon">数据类型：</span>
+					          <div class='form-control m-b' id="dt">
+					          </div>
+					        </div>
+						</div>
+						<div class="col-sm-4 col-xs-4 si">
+							<div class="input-group group-select " style="padding-left:0">
+					          <span class="input-group-addon">部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;门：</span>
+						          <div>
+								  	<select class='form-control m-b' id="paifangjisuanqu_sel" onchange="paifangjisuanqu_sel()">
+<!-- 								  		<option value="化石燃料固定燃烧源">化石燃料固定燃烧源</option> -->
+<!-- 								  		<option value="工艺过程源">工艺过程源</option> -->
+<!-- 								  		<option value="移动源">移动源</option> -->
+<!-- 								  		<option value="溶剂使用源">溶剂使用源</option> -->
+<!-- 								  		<option value="农业源">农业源</option> -->
+<!-- 								  		<option value="扬尘源">扬尘源</option> -->
+<!-- 								  		<option value="存储运输源">存储运输源</option> -->
+<!-- 								  		<option value="生物质燃烧源">生物质燃烧源</option> -->
+<!-- 								  		<option value="废物处理源">废物处理源</option> -->
+<!-- 								  		<option value="其他排放源">其他排放源</option> -->
+								  	</select>
+								  </div>
+					        	</div>
+				        	</div>
+			        
+				        <div class="col-sm-4 col-xs-4 si">
+							<div class="input-group group-select " >
+					          <span class="input-group-addon">行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</span>
+					          <div>
+							  	<select class='form-control m-b' id="paifangyuan_sel" onchange="paifangyuan_sel()">
+<!-- 							  			<option value="1">电力</option> -->
+<!-- 								  		<option value="2">工业锅炉</option> -->
+<!-- 								  		<option value="3">民用源</option> -->
+							  	</select>
+							  </div>
+					        </div>
+				        </div>
+			        
+			        </div>
+			        <div class="row" id="si">
+			        	
+			        </div>
+			        <br>
+					<div class="row">
+						<div id="data_list" class="col-sm-12 col-xs-12" ><!-- style="margin-top: 10px;" -->
+						
+							<div class="panel-heading" style="background-color: #f5f5f5;">
+								<h5 class="panel-title">
+									<i class="glyphicon glyphicon-upload"></i><span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">数据上传列表</span>
+                    			</h5>
+							</div><br>
+							
+							<table class="table table-striped table-bordered tabbb">
+								<!-- <thead>
+									<tr>
+										<th colspan="12"><i class="glyphicon glyphicon-upload"></i>&nbsp;数据上传列表</th>
+									</tr>
+								</thead> -->
+								<tbody style="text-align: center;" id="sj_tbody">
+								</tbody>
+							</table>
+						</div>
+						<div id="pic_all" class="col-sm-12" style="display: none;">
+							
+							<div class="panel-heading" style="background-color: #f5f5f5;">
+								<h5 class="panel-title">
+									<i class="fa fa-bar-chart"></i><span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">数据分析图表</span>
+                    			</h5>
+							</div><br>
+							
+							<div class='row' id='pic_row'>
+								<div class="col-sm-6" id="sm1">
+									<div class="input-group group-select col-sm-12">
+							          <span class="input-group-addon">查询条件：</span>
+							          <div id="file_1">
+									  </div>
+							        </div>
+									<div id="1" class="tudiv"></div>
+								</div>
+								<div class="col-sm-6" id="sm2">
+									<div class="input-group group-select col-sm-12">
+							          <span class="input-group-addon">查询条件：</span>
+							          <div id="file_2">
+									  	<select class='form-control m-b' onchange="openPic('2',this.value);"></select>
+									  </div>
+							        </div>
+									<div id="2" class="tudiv"></div>
+								</div>
+								<div class="col-sm-6" id="sm3">
+									<div class="input-group group-select col-sm-12">
+							          <span class="input-group-addon">查询条件：</span>
+							          <div id="file_3">
+									  	<select class='form-control m-b'  onchange="openPic('3',this.value);"></select>
+									  </div>
+							        </div>
+									<div id="3" class="tudiv"></div>
+								</div>
+								<div class="col-sm-6" id="sm4">
+									<div class="input-group group-select col-sm-12">
+							          <span class="input-group-addon">查询条件：</span>
+							          <div id="file_4">
+									  	<select class='form-control m-b'  onchange="openPic('1',this.value);"></select>
+									  </div>
+							        </div>
+									<div id="4" class="tudiv"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	
+	<div class="modal inmodal" id="Import_modal" tabindex="-1"role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content animated bounceInRight">
+				<div class="modal-header" id="mod_head_1">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+					</button>
+                  	<h2 class="modal-title"><img src="upload.png"  style="padding-left:12px;"></h2>
+					<h2 class="modal-title" style="font-size:20px; margin-top:12px;">选择要上传的文件</h2>
+                    <h2 class="modal-title" style="font-size:14px; margin-top:12px;">请选择要上传的单个<span style="color: #23A40F">“.xlsx”</span>文件进行上传。</h2>
+				</div>
+				<div class="modal-header" id="mod_head_2" style="display: none;">
+					<h2 class='modal-title' style='font-size:20px; margin-top:12px;'>文件上传中，请等待。。。</h2>
+				</div>
+				<div class="modal-body" style="background-color:#b6d8ff;padding-bottom: 10px;padding-top: 10px;">
+					<form class="form-horizontal" id="ImportForm" name="ImportForm" action="http://192.168.1.211:8090/file/uploadData" method="post"  enctype="multipart/form-data">
+						<div id="file-pretty" style="padding:0px;450px;0px:250pxk; ">
+							<div class="form-group" style="padding-top:0px;padding-left:135px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+								<label class="font-noraml" style="padding-left:80px; color:#FFFFFF;">文件选择（单选）</label>
+								<a style=""><input type="file" id="file" name="file" class="file" accept=".xlsx" style="padding:10px 20px 10px 20px; width:260px;"/></a>
+							</div>
+						</div>
+					</form>
+					<div id="ImportForm_2" style="display: none;">
+						
+					</div>
+				</div>
+				<div class="modal-footer" id="modal_foot">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="../../js/jquery.min.js"></script>
+	 <!-- 上传 -->
+    <script src="ajaxfileupload.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/plugins/echarts/echarts.js"></script>
+    <script src="../../js/plugins/echarts/macarons.js"></script>
+	<!-- 消息框 -->
+    <script src="../../js/plugins/toastr/toastr.min.js"></script>
+    <!-- 对话框 -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/content.js"></script>
+    <script src="../../BackstageIP.js"></script>
+    <script src="Top_json.js"></script>
+    <script src="../../js/ajax.js"></script>
+    <script src="9999.js"></script>
+</body>
+</html>

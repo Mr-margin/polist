@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+<!-- 		<META content="IE=11.0000" http-equiv="X-UA-Compatible"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<TITLE></TITLE>
+		<link href="../css/plugins/jQueryUI/jquery-ui.css" rel="stylesheet">
+		<link href="../css/bootstrap.qiye.css" rel="stylesheet">
+   		<link href="../css/plugins/webuploader/webuploader.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/plugins/webuploader/webuploader-demo.min.css">
+		<LINK href="style/global_static.css" rel="stylesheet" type="text/css">
+		<LINK href="style/main_style.css" rel="stylesheet" type="text/css">
+		<link href="../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+		<link href="../css/font-awesome.css" rel="stylesheet">
+    	<link href="../css/animate.css" rel="stylesheet">
+		<link href="../css/style.css" rel="stylesheet">
+		<link href="../css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
+<!-- 		<link href="../css/1.css" rel="stylesheet"> -->
+		<style>
+			ul{margin-top:0;margin-bottom:10px}
+			ul{display:block;list-style-type:disc;-webkit-margin-before:1em;-webkit-margin-after:1em;-webkit-margin-start:0;-webkit-margin-end:0;-webkit-padding-start:40px}
+			li{display:list-item;text-align:-webkit-match-parent;font-size:12px;margin:0 0 8px 0}
+			.table-hover>thead>tr>td,.table-hover>thead>tr>th{text-align:center;background-color:#F5F5F6}
+			.table-hover>tbody>tr>td{text-align:center}
+			.table-bordered{border:1px solid #ddd}
+			.table{width:100%;max-width:100%;margin-bottom:20px;margin-top:20px}
+			table{background-color:transparent}
+			table{border-spacing:0;border-collapse:collapse}
+			.dise{background-color:#F5F5F6;text-align:center}
+			.zhong{text-align:center}
+			#navgo{margin:0 30px 0 0;text-align:center;float:right}
+			#navgo ul ul{display:none}
+			#navgo ul li:hover>ul{display:block}
+			#navgo ul{padding:0 0;border-radius:10px;list-style:none;position:relative;display:inline-table}
+			#navgo ul:after{content:"";clear:both;display:block}
+			#navgo ul li{float:left}
+			#navgo ul li:hover{background:#72a7de}
+			#navgo ul li:hover a{color:#fff}
+			#navgo ul li a{display:block;padding:0 0 10px 0;color:#757575;text-decoration:none}
+			#navgo ul ul{background:#5f6975;border-radius:0;padding:0;position:absolute;top:100%}
+			#navgo ul ul li{float:none}
+			#navgo ul ul li a{padding:10px 5px;color:#fff}
+			#navgo ul ul li a:hover{background:#2e63a7}
+			#navgo ul ul ul{position:absolute;left:100%;top:0}
+			.ui-widget-header {
+			    color: rgb(32, 132, 218);
+			}
+			.anchorBL{  
+		       display:none;  
+		   	}
+		</style>
+	</HEAD>
+	
+<BODY>
+	<DIV class="body_mid">
+		<DIV id="banner_qian"></DIV>
+		<DIV id="menu">
+			<A id="sy" class="cur" style='background-image: url("ui/images/icon_01.png");' href="#">系统首页</A> 
+			<A id="gkgs" style='background-image: url("ui/images/icon_05.png");display:none;' href="b.html">企业信息</A>
+			<A id="gkgs_s" style='background-image: url("ui/images/icon_10.png");display:none;' href="c.html">设备信息</A>
+		</DIV>
+		
+		<DIV class="floor">
+			<DIV class="right_list" style="width: 100%;">
+			
+				<div style = "width: 32%;float: left;padding-right: 10px;padding-left: 0px;">
+					<DIV class="lmtitle">
+						<SPAN class="name" style='background-image: url(ui/images/icon_lm_fwdt.png);'>重要公告</SPAN>
+					</DIV>
+					<DIV class="box_dashed" style="padding: 0px;height:180px;overflow-y: auto;">
+						<ul id="task_select">
+	                    </ul>
+						<DIV style="clear: both;"></DIV>
+					</DIV>
+				</div>
+				<div style = "width: 32%;float: left;padding-right: 10px;padding-left: 10px;">
+					<DIV class="lmtitle">
+						<SPAN class="name" style='background-image: url(ui/images/icon_lm_fwdt.png);'>倒计时通知</SPAN>
+					</DIV>
+					<DIV class="box_dashed" style="padding: 0px;height:180px;overflow-y: auto;">
+						<ul id="tian_num">
+	                    </ul>
+						<DIV style="clear: both;"></DIV>
+					</DIV>
+				</div>
+				<div style = "width: 32%;float: left;padding-right: 0px;padding-left: 10px;">
+					<DIV class="lmtitle">
+						<SPAN class="name" style='background-image: url(ui/images/icon_lm_fwdt.png);'>登录日志</SPAN>
+					</DIV>
+					<DIV class="box_dashed" style="padding: 0px;height:180px;">
+						<ul id="show_journal">
+	                    </ul>
+						<DIV style="clear: both;"></DIV>
+					</DIV>
+				</div>
+				
+				
+				<DIV style="clear: both;"></DIV>
+			</DIV>
+			
+			<DIV class="right_list" style="width: 100%;">
+				
+				<DIV class="lmtitle">
+					<SPAN class="name" style='background-image: url(ui/images/icon_lm_fwdt.png);'>填报任务列表</SPAN>
+				</DIV>
+				<DIV class="box_dashed" style="padding: 0px;">
+					<table class="table table-hover" style="width: 96%;margin:20px 20px 20px 20px;">
+		                <thead>
+		                    <tr>
+		                        <th>序号</th>
+		                        <th>任务名称</th>
+		                        <th>状态</th>
+		                        <th>发布时间</th>
+		                        <th>截止时间</th>
+		                        <th>操作</th>
+		                    </tr>
+		                </thead>
+		                <tbody id="show_renwu"></tbody>
+		            </table>
+					<DIV style="clear: both;"></DIV>
+				</DIV>
+				<div id="zhanwei" style="display:none;"></div>
+			</DIV>
+			
+			
+			<DIV style="clear: both;"></DIV>
+		</DIV>
+		
+		
+		<!-- 底部 -->
+		<DIV class="copyright" id="foouft"></DIV>
+	</DIV>
+	<!-- 修改密码 -->
+	<div id="dialog-update" title="修改密码" style="display: none;">
+		<DIV id="dialog-update-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">
+
+			<div id="oldpassword" class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>原密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="old_pass" id="old_pass" style="" required="required" cp="true" placeholder="原密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5></label>
+			</div>
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>新密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass" id="new_pass" style="" required="required" placeholder="新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_2" style="color:red;"></h5></label>
+			</div>
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>确认密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass_2" id="new_pass_2" style="" required equalTo="#new_pass" placeholder="请再次输入新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_3 style="color:red;"></h5></label>
+			</div>
+
+		</DIV>
+	</div>
+	<!-- 查看公告信息 -->
+	<div id="dialog-task" title="公告详细信息" style="display: none;">
+		<DIV id="dialog-task-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">
+			
+			<div class="row">
+				<div class="col-sm-11 form-group">
+					<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布公告人:</h3></label>
+					<div class="col-sm-6" id="data_1">
+						<input type="text" name="task_fbr" id="task_fbr" style="" autocomplete="off" class="form-control" readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-11 form-group">
+					<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布标题:</h3></label>
+					<div class="col-sm-6" id="data_1">
+						<input type="text" name="task_title" id="task_title" style="" autocomplete="off" class="form-control" readonly="readonly">
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-11 form-group">
+					<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布时间:</h3></label>
+					<div class="col-sm-6" id="data_1">
+						<input type="text" name="task_time" id="task_time" autocomplete="off" class="form-control" readonly="readonly">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-11 form-group">
+					<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布内容:</h3></label>
+					<div class="col-sm-6" id="data_1">
+						<textarea  name="task_content" id="task_content"  autocomplete="off" class="form-control" readonly="readonly"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-11 form-group" id="fujian" hidden>
+					<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>附件下载:</h3></label>
+					<div class="col-sm-6 " id="data_2" >
+					</div>
+				</div>			
+			</div>
+		</DIV>
+	</div>
+	<!--未提交的原因-->
+	<div id="dialog-yuanyin" title="未进行调查理由说明" style="display: none;">
+		<DIV id="dialog-update-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">
+			<div id="oldpassword" class="col-sm-11">
+				<textarea rows="" cols="" id="yunyin" placeholder="请简述该企业未进行调查的理由（100字内）" style="width :100%;height:200px;border:1px solid rgb(204, 204, 204);"></textarea>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5></label>
+			</div>
+		</DIV>
+	</div>
+		<!--现场照片-->
+	<div id="dialog-photo" title="上传现场照片" style="display: none;">
+	
+	
+<!-- 		<DIV id="dialog-xmsb-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV> -->
+		
+		 <div id="cuoshi_img_load">
+		 	<div class="page-container">
+		 		<p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮。支持：gif,jpg,jpeg,png,bmp。</p>
+		 		<div id="uploader" class="wu-example">
+					<div class="queueList"><div id="dndArea" class="placeholder">
+						<div id="filePicker"></div>
+						<p>或将照片拖到这里，单次最多可选15张，单张照片限5M，总共限45M</p></div>
+					</div>
+					<div class="statusBar" style="display:none;">
+						<div class="progress"><span class="text">0%</span><span class="percentage"></span></div>
+						<div class="info"></div>
+						<div class="btns">
+							<div id="filePicker2"></div>
+							<div class="uploadBtn">开始上传</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="">
+			<div class=""  id="yidi_pic_show">
+				<div class="" id="qilegeguaile">
+					<div class="lightBoxGallery">
+						<div class="queueList filled">
+							<ul class="filelist" id="poht_list"></ul>
+						</div>
+						<div id="blueimp-gallery" class="blueimp-gallery">
+		                             <div class="slides"></div><a class="prev">‹</a><a class="next">›</a><a class="close">×</a><a class="play-pause"></a><ol class="indicator"></ol>
+		                         </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="dialog-tiaozhuan" title="提示" style="display: none;">
+		<DIV id="dialog-tiaozhuan-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	<script src="../BackstageIP.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/plugins/jquery-ui/jquery-ui.js"></script>
+	<!-- 消息框 -->
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../js/plugins/sweetalert/sweetalert.min.js"></script> -->
+	
+	<script src="../js/plugins/webuploader/webuploader.min.js"></script>
+    <script src="../js/Img_load.js"></script>
+  
+    <script src="../js/plugins/bootstrap-table/moment.js"></script> -->
+	
+	
+	<script src="../js/ajax.js"></script>
+	<script src="../js/public.js"></script>
+	
+	<SCRIPT src="homeUI.js"></script>
+	<SCRIPT src="a_home.js"></script>
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+	
+	
+</BODY>
+</HTML>

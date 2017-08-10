@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../../css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">
+<!-- 按钮css -->
+<link href="../../css/bootstrap-select.css" rel="stylesheet">
+
+
+
+<base target="_blank">
+
+<style >
+	.col{
+		position: absolute;bottom: 10px;width: 100px;height:100px;left:50%;
+	}
+	 .blurInfo {position: absolute;width: 100px;background-color: #FFFFFF;border: 2px solid #57585A; border-radius: 50%;height:100%;}
+     .btnleft {
+    	background: url(../../img/btnLeft.png);
+    	left: -50%;
+    	overflow: hidden;
+    	width: 50px;
+    	position: absolute;
+    	height: 85px;
+    	bottom:5px;
+    }
+	.btnleft:hover {
+    	background: url(../../img/btnleft_1.png);
+    	left: -50%;
+    	overflow: hidden;
+    	width: 50px;
+    	position: absolute;
+    	height: 85px;
+    	bottom:5px;
+	}.btnright {
+		right: -50%;
+		background: url(../../img/btnright.png);
+		overflow: hidden;
+		width: 50px;
+		position: absolute;
+		height: 85px;
+		bottom:5px;
+	}.btnright:hover {
+		right: -50%;
+		background: url(../../img/btnright_1.png);
+		overflow: hidden;
+		width: 50px;
+		position: absolute;
+		height: 85px;
+		bottom:5px;
+	}
+	#info1,#info2 {
+        width: 14.0625em;
+        background-color: rgb(242, 242, 242);
+        color: #000;
+        position: absolute;
+        bottom: 0;
+        padding-left: 10px;
+        padding-top: 10px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        border-top-right-radius: 20px;
+      }
+      .group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .radio-info label {
+	    	margin-right:25px;
+	    }
+	    .checkbox-info label{
+	    	margin-right:25px;
+	    }
+	    .zdy {
+	   	 	padding-top:10px;
+	    }
+</style>
+
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+		<div class="row" style="height:100%;padding-left:10px;">
+			<div class="col-sm-6" style="height:100%;">
+				<div id="mapDiv1" style="height:100%;"></div>
+				<div id="info1">
+					<div id="legendWrapper1"></div>
+					<!-- 点的图例 -->
+					<div id="point_tuli1" style="display:none;">
+						<div class="point_html1"></div>
+						<div class="row" id="">
+							<div class="col-sm-6">
+								<div style="height:50px;width:50px;border:2px solid #57585A; border-radius: 50%;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:10px;">&gt;15000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:40px;width:40px;border:2px solid #57585A; border-radius: 50%;margin-left:5px;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:10px;">10000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:30px;width:30px;border:2px solid #57585A; border-radius: 50%;margin-left:10px;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:5px;">3000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:20px;width:20px;border:2px solid #57585A; border-radius: 50%;margin-left:15px;"></div>
+							</div>
+							<div class="col-sm-6" >1000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:10px;width:10px;border:2px solid #57585A; border-radius: 50%;margin-left:20px;"></div>
+							</div>
+							<div class="col-sm-6">&lt;200</div>
+						</div>
+					</div>
+				</div>
+				<div class="input-group group-select" style="position:absolute;top:0px">
+					<div class="form-control m-b">
+						<span id="left_name"> </span>
+					</div>
+				</div>
+				
+				
+				<div class="input-group group-select" style="width:150px;position:absolute;top:0px;right:16px;">
+					<span class="input-group-addon" style=""> 对比： </span>
+					<div>
+						<select class="form-control m-b" id="contrast_right" style="min-width: 23%;" onchange="ratio(this.value)">
+							<option value="原图">原图</option>
+							<option value="差值">差值</option>
+							<option value="比值">比值</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6" style="height:100%;">
+				<div id="mapDiv2" style="height:100%;"></div>
+				<div id="info2">
+					<div id="legendWrapper2"></div>
+					<div id="point_tuli2" style="display:none;">
+						<div class="point_html2"></div>
+						<div class="row" id="">
+							<div class="col-sm-6">
+								<div style="height:50px;width:50px;border:2px solid #57585A; border-radius: 50%;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:10px;">&gt;15000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:40px;width:40px;border:2px solid #57585A; border-radius: 50%;margin-left:5px;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:10px;">10000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:30px;width:30px;border:2px solid #57585A; border-radius: 50%;margin-left:10px;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:5px;">3000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:20px;width:20px;border:2px solid #57585A; border-radius: 50%;margin-left:15px;"></div>
+							</div>
+							<div class="col-sm-6" >1000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:10px;width:10px;border:2px solid #57585A; border-radius: 50%;margin-left:20px;"></div>
+							</div>
+							<div class="col-sm-6">&lt;200</div>
+						</div>
+					</div>	
+				</div>
+				<div class="input-group group-select" style="position:absolute;top:0px">
+					<div class="form-control m-b">
+						<span id="right_name"> </span>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/ajax.js"></script>
+	<script src="../../js/arcgisUrl.js"></script>
+	<script src="contrast.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 网页宽度等于设备宽度 -->
+	<meta name="renderer" content="webkit">
+	<title></title>
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet"><!-- css提示框 -->
+    <link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet"><!-- 单元格编辑 -->
+    <link href="../../css/resolution.css" rel="stylesheet">
+    <style>
+		.zhong{text-align:center}
+		.dise{background-color:#F5F5F6;text-align:center}
+		.chaxundiv_2{
+			 min-height: 30px;
+/* 			 line-height: 30px; */
+			 border:1px solid #cccccc;
+		}
+		.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .selectDiv .noSelectBorder select{
+	    	border:0;
+	        appearance:none;
+	        -moz-appearance:none;
+	        -webkit-appearance:none;
+	        padding-right:20px;
+	    }
+	    .selectDiv .noSelectBorder{
+	    	display:inline-block;
+	    	position: relative;
+	    	margin-right:10px;
+	    }
+	    .selectDiv .noSelectBorder:hover i{
+	    	display:block;
+	    }
+	    .selectDiv .noSelectBorder i{
+	    	position:absolute;
+	    	display:none;
+	    	/* width:19px;
+	    	height:19px; */
+	    	right:0;
+	    	top:7px;
+	    	border-left:8px solid transparent;
+	    	border-top:16px solid #333;
+	    	border-right:8px solid transparent;
+	    	border-bottom:1px solid transparent;
+	    }
+	    .selectDiv select{
+	    	width:100%;
+	    	border:0;
+	    }
+	    .selectDiv select:focus{
+	    	border:0;
+	    }
+	    .checkbox-info label{
+	    	margin-right:25px;
+	    }
+		.tudiv{
+			height: 300px;
+			margin-bottom: 20px;
+		}
+		.tiaojian{min-height: 23px;border-bottom:1px solid #cccccc;position:relative;border-left:1px solid #cccccc;padding-bottom:1px;margin:4px 10px 0px 0px;padding-left:5px;padding-right:17px;display:block;white-space:nowrap;background:#ECECEC;float:left;height:17px;border-top:1px solid #cccccc;border-right:1px solid #cccccc;padding-top:1px;font-size:14px;}
+		.tiaojian:hover{ background-color:#fff;}
+		.tiaojian label{font-size:12px;font-weight: 100;}
+		.tiaojian em{ background-image:url(../../zp07/close.gif);cursor:pointer;display:block;height:13px;overflow:hidden;position:absolute;right:2px;top:3px;width:13px;}
+		.zhezhao { 
+			 width:100%; 
+			 height:100%; 
+			 background-color:#000; 
+			 filter:alpha(opacity=50); 
+			 -moz-opacity:0.5; 
+			 opacity:0.5; 
+			 position:absolute; 
+			 left:0px; 
+			 top:0px; 
+			 display:none; 
+			 z-index:1000; 
+		}
+	.zhezhao_title { 
+			 width:280px; 
+			 height:180px; 
+			 position:absolute; 
+			 top:200px; 
+			 left:50%; 
+			 margin-left:-140px; 
+			 display:none; 
+			 z-index:1500; 
+		}
+	</style>
+  </head>
+  
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="zhezhao" id="zhezhao" style="display:none;"></div>
+	<div class="zhezhao_title" id="zhezhao_title" style="display:none;">
+		<div class="sk-spinner sk-spinner-wave" style="width: 200px;">
+			<h2><b><span style="color: #fff;">耦合中......</span></b></h2>
+		</div>
+		<div class="sk-spinner sk-spinner-wave">
+	        <div class="sk-rect1"></div>
+	        <div class="sk-rect2"></div>
+	        <div class="sk-rect3"></div>
+	        <div class="sk-rect4"></div>
+	        <div class="sk-rect5"></div>
+	    </div>
+	</div>
+    <div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+    	<div class ="row">
+	    	<div class ="col-sm-7">
+		    		<div class="col-sm-6" style="padding-left: 0px">
+						<div class="input-group m-b" style="margin-bottom: 0px">
+							<span class="input-group-addon" style="border: 1px solid #E5E6E7;">年份:</span>
+							<select class="form-control m-b" id="taskId" name="taskId" onchange="change();">
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+					
+						<button type="button" class="btn btn-outline btn-lG" id="Calculation" onclick="calcPro()"><i class='fa fa-deviantart'></i> 耦合</button>
+						<button type="button" class="btn btn-outline btn-lG" id="jisuanrenwu_save" onclick="shengchengqingdan()" style="margin-left:10px;display:none;"><i class='fa fa-ioxhost'></i> 生成清单</button>
+						<button type="button" class="btn btn-outline btn-lG" id="jisuanrenwu_update" onclick="save()" style="margin-left:10px;display:none;"><i class='fa fa-save'></i> 保存</button><!-- 原始按钮 -->
+					</div>
+			</div>
+			<div class="col-sm-5">
+				<div class="panel-heading" style="background-color: #f5f5f5;">
+					<h5 class="panel-title">
+						<a data-toggle="collapse" data-parent="#version" href="">
+							<i class="fa fa-bars"></i><span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">排放结果展示</span>
+						</a>
+					</h5>
+				</div>
+			</div>
+    	</div>
+    	<br>
+    	<!-- <div class="row">
+    		<div class="col-sm-6">
+    		
+    		</div>
+    	</div> -->
+   		<div class="row" style="height:100%;">
+			<div class="col-sm-7" style="height:100%;">
+				<div class="panel-group" style="height:calc(100% - 15px);"id="version">
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: #f5f5f5;">
+							<h5 class="panel-title">
+								<a data-toggle="collapse" data-parent="#version" href="#v41">
+									<i class="fa fa-bars"></i><span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">清单耦合</span>
+								</a>
+							</h5>
+						</div><br>
+						<div id="v41" class="panel-collapse collapse in">
+							<div class="row">
+								<div class="col-sm-6">
+								
+								<div class="">
+									<i class="fa fa-minus-square-o"></i><span style="font-size: 12px;"> 备选清单</span><br> 
+								</div><br> 
+								
+								<div class="panel-body" style="padding: 0px 0px;">
+									<table class="table table-bordered" id="metTable1">
+									</table></div>
+								</div>
+								<!-- 操作区 -->
+								<div class="col-sm-6">
+									<div class="tp-zhongduan" style="">
+										<i class="fa fa-minus-square-o"></i><span style="font-size: 12px;">操作区</span>
+										
+									</div><br>
+									<div id="mapDiv" style="height:538px;">
+									
+									</div> 
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color: #f5f5f5;">
+							<h5 class="panel-title">
+								<a data-toggle="collapse" data-parent="#version" href="#v42">
+									<i class="fa fa-bars"></i><span
+									style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">排放结果修正</span>
+								</a>
+							</h5>
+						</div>
+						<div id="v42" class="panel-collapse collapse">
+							<div class="panel-body" style="padding: 10px 0px;">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="input-group m-b" style="margin-bottom: 0px">
+											<span class="input-group-addon" style="border: 1px solid #E5E6E7;">部门: </span> 
+												<select class="form-control m-b" id="section_select" name="">
+													<option>化石燃料固定燃烧源</option>
+													<option>工艺过程源</option>
+													<option>移动源</option>
+													<option>溶剂使用源</option>
+													<option>农业源</option>
+													<option>扬尘源</option>
+													<option>生物质燃烧源</option>
+													<option>储存运输源</option>
+													<option>废物处理源</option>
+													<option>其他排放源</option>
+												</select>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="input-group m-b" style="margin-bottom: 0px">
+											<span class="input-group-addon" style="border: 1px solid #E5E6E7;">行业: </span> 
+											<select class="form-control m-b" id="trade" name="">
+											</select>
+										</div>
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group group-select">
+											<span class="input-group-addon">地区</span>
+											<div class="chaxundiv_2 selectDiv" id="">
+												<div style="margin-top: 5px;">
+													<div class="checkbox checkbox-info checkbox-right" id="region">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group group-select">
+											<span class="input-group-addon">污染物筛选</span>
+											<div class="chaxundiv_2 selectDiv" id="qyzt_2">
+												<div style="margin-top: 5px;">
+													<div class="checkbox checkbox-info checkbox-right" id="q_div">
+														<input type="checkbox" id="q" value="q" name="q" onclick="all_checkbox();"><label for="q">全选</label>
+														<input type="checkbox" id="w1" value="SO2" name="w" onclick="click_w();"><label for="w1">SO2</label> 
+														<input type="checkbox" id="w2" value="NOx" name="w" onclick="click_w();"><label for="w2">NOx</label>
+														<input type="checkbox" id="w3" value="VOC" name="w" onclick="click_w();"><label for="w3">VOC</label> 
+														<input type="checkbox" id="w4" value="NH3" name="w" onclick="click_w();"><label for="w4">NH3</label>
+														<input type="checkbox" id="w5" value="PM2.5" name="w" onclick="click_w();"><label for="w5">PM2.5</label> 
+														<input type="checkbox" id="w6" value="PMcoarse" name="w" onclick="click_w();"><label for="w6">PMcoarse</label>
+														<input type="checkbox" id="w7" value="PM10more" name="w" onclick="click_w();"><label for="w7">PM10more</label> 
+														<input type="checkbox" id="w8" value="BC" name="w" onclick="click_w();"><label for="w8">BC</label> 
+														<input type="checkbox" id="w9" value="OC" name="w" onclick="click_w();"><label for="w9">OC</label> 
+														<input type="checkbox" id="w10" value="CO" name="w"onclick="click_w();"><label for="w10">CO</label>
+														<input type="checkbox" id="w11" value="CO2" name="w"onclick="click_w();"><label for="w11">CO2</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group group-select">
+											<span class="input-group-addon">污染物筛选</span>
+											<div class="chaxundiv_2 selectDiv" id="qyzt_2">
+												<div class="row" style="padding-top:5px;">
+													<div class="col-sm-2" style="padding-top:7px;">修正系数</div>
+													<div class="col-sm-5" style="padding-top:5px;">
+														<input type="text" id="xzxs">
+													</div>
+													<div class="col-sm-5">
+														<button class="btn btn-primary btn-lG" style="float:right;margin-right:5px;" onclick="add_div()"> 确定</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group group-select">
+											<span class="input-group-addon">修正记录</span>
+											<div class="chaxundiv_2 selectDiv" id="qyzt_2">
+												<div class="row" style="padding-top:5px;overflow-y:auto;height:100px;">
+													<div class="col-sm-12">
+														<button class="btn btn-warning btn-lG" style="float:right;margin-right:5px;" onclick="delete_div('all')">清除</button>
+														<div id="xishu"></div><!-- 用于存放修正记录的参数 -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 数据修正主要内容 -->
+								<div id="Data_correction" style="padding-top: 45px;"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- 排放结果展示统计图开始 -->
+			<div class="col-sm-5" style="height:100%;">
+				<div class="row">
+					<div class="col-sm-12" ><!-- 右上柱形图 -->
+						<div id="paifangzhanshi_echarts" class="paifangzhanshi_echarts" style="height:400px;"></div>
+					</div><br>
+					<div class="col-sm-12"><!-- 右下饼图 -->
+						<div class="col-sm-6"><!-- 右下饼图1 -->
+							<div id="paifangzhanshi_pie1" class="paifangzhanshi_pie" ></div>
+						</div>
+						<div class="col-sm-6"><!-- 右下饼图2 -->
+							<div id="paifangzhanshi_pie2" class="paifangzhanshi_pie" ></div>
+						</div>	
+					</div>
+				</div>
+   			</div>
+   			<!-- 排放结果展示统计图开始 -->
+   		</div>
+    </div>
+    
+	<!-- 保存排放版本开始 -->
+    <div class="modal inmodal fade" style="margin-top: 100px" id="shengchengqingdan_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<!-- <h2>生成清单</h2> -->
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>生成清单</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="col-sm-12">
+							<div class="tabs-container"> <!-- 标签体 -->
+								<!-- <ul class="nav nav-tabs" id="tab_ul">
+									分栏目的标题
+									<li class="active" id="" onclick="" style="background-color: #dff0d8;" quanming="0">
+										<a data-toggle="tab" href="#tab-pic1" aria-expanded="true">新建排放版本</a>
+									</li>
+								</ul> -->
+								<!-- 分栏目的标题 -->
+								<div class="tab-content">
+									<!-- tab页面的内容 -->
+									<div id="tab-pic1" class="tab-pane active">
+										<div class="panel-body">
+											<div class="row" style="height: calc(100% - 78px);">
+												<form id="changepassword_form" onsubmit="return false">
+													<div class="col-sm-12 form-group">
+														<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3><code>*</code>清单版本名称:</h3></label>
+														<div class="col-sm-8" id="data_1">
+															<input type="text" name="qingdan_name" id="qingdan_name" style="" required="required" cp="true" autocomplete="off" class="form-control">
+														</div>
+													</div>
+													<div class="col-sm-12 form-group">
+														<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>&nbsp;&nbsp;&nbsp;&nbsp;版本描述:</h3></label>
+														<div class="col-sm-8" id="data_1">
+															<input type="text" name="qingdan_miaoshu" id="qingdan_miaoshu" placeholder="例如：国家发布、自主编制" style="" required="required" autocomplete="off" class="form-control">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<!-- <div id="tab-pic2" class="tab-pane">
+										<div class="panel-body">
+											<div class="col-sm-12" style="height:200px;overflow :auto">
+												<table class="table table-bordered">
+													<thead>
+														<th style="text-align: center;">选择</th>
+														<th style="text-align: center;">清单名称</th>
+													</thead>
+													<tbody id="uplist" style="text-align: center;">
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div> -->
+								</div>
+							</div>
+							<!-- 标签体 -->
+						</div> 
+					</div>
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" id="jisuan_zhende_save" onclick="create()"><i class='fa fa-check'></i> 确定</button>
+					<button type="button" class="btn btn-white" data-dismiss="modal" id="jisuan_close"><i class='fa fa-close'></i> 关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 保存排放版本结束 -->
+		
+    <script src="../../BackstageIP.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/content.js"></script><!-- 自定义js -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- echarts -->
+    <script src="../../js/jquery-ui.custom.min.js"></script>
+    <script src="../../js/plugins/echarts/echarts.js"></script>
+    <script src="../../js/plugins/echarts/macarons.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+    <!-- iCheck -->
+    <script src="../../js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../../js/ajax.js"></script>
+    <script src="../../js/arcgisUrl.js"></script>
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script><!-- js提示框 -->
+    <!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-editable-jisuan.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+    <script src="../../zp01/checkSelect.js"></script>
+    <script src="0401_gis.js"></script>
+<!--     <script src="../../js/plugins/echarts/echarts-all.js"></script> -->
+    <script src="0401.js"></script>
+ </body>
+</html>

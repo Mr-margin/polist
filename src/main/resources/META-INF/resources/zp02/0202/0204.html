@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<style>
+	.checkbox-info label {
+		padding-right: 25px;
+	}
+	.checkbox  label{
+	       margin-right: 40px;
+	  		margin-bottom: 5px;
+	  		margin-top: 5px;
+	}
+	.group-select{
+		margin-bottom:10px;
+	}
+	.group-select .inputBorder{
+		border:1px solid #cccccc; 	
+		padding:0 10px;
+	}
+	table tr th {
+		text-align: center;
+	}
+	table tr td {
+		text-align: center;
+	}
+	.zhezhao { 
+			 width:100%; 
+			 height:100%; 
+			 background-color:#000; 
+			 filter:alpha(opacity=50); 
+			 -moz-opacity:0.5; 
+			 opacity:0.5; 
+			 position:absolute; 
+			 left:0px; 
+			 top:0px; 
+			 display:none; 
+			 z-index:1000; 
+		}
+	.zhezhao_title { 
+			 width:280px; 
+			 height:180px; 
+			 position:absolute; 
+			 top:200px; 
+			 left:50%; 
+			 margin-left:-140px; 
+			 display:none; 
+			 z-index:1500; 
+		}
+</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="zhezhao" id="zhezhao" style="display:none;"></div>
+	<div class="zhezhao_title" id="zhezhao_title" style="display:none;">
+		<div class="sk-spinner sk-spinner-wave" style="width: 200px;">
+			<h2><b><span style="color: #fff;">分析中......</span></b></h2>
+		</div>
+		<div class="sk-spinner sk-spinner-wave">
+	        <div class="sk-rect1"></div>
+	        <div class="sk-rect2"></div>
+	        <div class="sk-rect3"></div>
+	        <div class="sk-rect4"></div>
+	        <div class="sk-rect5"></div>
+	    </div>
+	</div>
+	
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 任务名称： </span>
+					<div>
+						<select class="form-control m-b" id="renwu_select" style="min-width: 23%;" onchange="chonse_renwu()"></select>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-6' id="checked_status">
+				<div class="input-group group-select">
+					<span class="input-group-addon">状&nbsp;&nbsp;&nbsp;态：</span>
+					<div class='form-control m-b' style="width:auto;">
+						<div class='checkbox checkbox-info' style="margin:0px;" >
+							<input type='checkbox' id='checked_0' name='hzyj' value="全选" onclick="all_checkbox()" checked="checked" /> <label for="checked_0">全选</label> 
+							<input type='checkbox' id='checked_1' name='v1' value="4" onclick="onle_checked('checked_1')" checked="checked" /> <label for="checked_1">通过</label> 
+							<input type='checkbox' id='checked_2' name='v1' value="5" onclick="onle_checked('checked_2')" checked="checked" /> <label for="checked_2">驳回</label>
+							<input type='checkbox' id='checked_3' name='v1' value="3" onclick="onle_checked('checked_3')" checked="checked" /> <label for="checked_3">待审核</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12" >
+				<button id="selectButton" type="button" class="btn btn-outline btn-lG" onclick="show_table();"><i class='fa fa-binoculars'></i> 查询</button>
+				<button id="" type="button" class="btn btn-outline btn-lG"  onclick="all_adopt()"><i class="fa fa-google-wallet">全部通过</i></button>
+				<button id="" type="button" class="btn btn-outline btn-lG"  onclick="adopt(4)"><i class="fa fa-check"> 通过</i></button>
+				<button id="" type="button" class="btn btn-outline btn-lG"   onclick="reject()"><i class="fa fa-close"> 驳回</i></button>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-4">
+				<table class="table table-bordered" id="table_qing">
+					<thead>
+						<tr>
+							<th colspan="5" style="text-align:left;"><i class="fa fa-list"></i>清单列表</th>
+						</tr>
+						
+						<tr>
+							<!-- <th style="width:5px;">
+								<div class="checkbox-info checkbox-right" style="margin-top: -10px;height: 10px;">
+									<input onclick="table_all_checked();" id="all" type="checkbox" value="all" name="all" >
+									<label for="all"></label>
+								</div>
+							</th> -->
+							<th style="width:10%"><input onclick="table_all_checked();" id="all" type="checkbox" value="all" name="all" >
+									</th>
+							<th>城市</th>
+							<th>清单名称</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="list_table">
+						
+					</tbody>
+				</table>
+
+			</div>
+			<div class="col-sm-8">
+				<div class="row">
+					<table class="table table-bordered" id="table_qing" style="width:97%;" >
+					<thead>
+						<tr>
+							<th colspan="5" style="text-align:left;"><i class="fa fa-list"></i>诊断图</th>
+						</tr>
+						
+					</thead>
+					
+					</table>
+					<div class="col-sm-6" id="show_bar" >
+						<div id="bar" style="height:400px;">
+						</div>
+					</div>
+					<div class="col-sm-6" id="show_pie1" style="display:none;">
+						<div id="pie1" style="height:200px;">
+						</div>
+					</div>
+					<div class="col-sm-6" id="show_pie2" style="display:none;">
+						<div id="pie2" style="height:200px">
+						</div>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 驳回弹窗 -->
+	<div class="modal inmodal fade" id="reject_table" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%;    padding-top: 0%;">
+			<div class="modal-content animated bounceInRight">
+				<div class="modal-header" id="mod_head_1" style="padding:15px 15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="color: rgb(79, 135, 209);"><h2>驳回内容</h2></span>
+				</div>
+				<div class="modal-header" id="mod_head_2" style="display: none;">
+					<h2 class='modal-title' style='font-size:20px; margin-top:12px;'>文件上传中，请等待。。。</h2>
+				</div>
+				<div class="modal-body" style="background-color:#b6d8ff;padding-bottom:10px;padding-top: 10px;">
+					<div class="col-sm-12">
+						<form class="form-horizontal" id="ImportForm" name="ImportForm" >
+							<div id="file-pretty" style="padding:0px; ">
+								<div class="form-group" style=" margin-bottom:0px;">
+									<div class="col-sm-2">
+										<label class="control-label" style="color:#FFFFFF;text-align:left;"><h3>文件选择:</h3></label>
+									</div>
+									<div class="col-sm-10 "><a style=""><input type="file" id="file" name="file" class="file" accept="" style="padding:10px 20px 10px 20px; width:100%;"/></a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="ImportForm_2" style="display: none;"></div>
+					<div id="modal-re" class="background-color:#b6d8ff;col-sm-12 form-group" style="padding-top:30px;">
+						<div class="col-sm-2">
+							<label class="control-label"><h3>驳回原因:</h3></label>
+						</div>
+						<div class="col-sm-10" id="data_2">
+							<textarea  name="reject_content" id="reject_content" style="height:80px;margin-bottom:10px;" placeholder="驳回原因" autocomplete="off" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal-footer" id="mod_foot">
+					<input type="submit" class="btn btn-w-m btn-info" style=""
+						onclick="rejectbody('5');" value="确认驳回">
+					<button type="button" class="btn btn-white" data-dismiss="modal" style="width:120px;">关&nbsp;&nbsp;闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- 自定义js -->
+
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+	
+	<script src="../../js/plugins/echarts/echarts.js"></script>
+	<script src="../../js/plugins/echarts/macarons.js"></script>
+	<!-- iCheck -->
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	 <script src="../../zp01/9999/ajaxfileupload.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/ajax.js"></script>
+	<script src="0204.js"></script>
+	<!--     <script src="0701.js"></script> -->
+
+</body>
+</html>

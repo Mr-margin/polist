@@ -1,0 +1,1303 @@
+
+{
+	"":
+{
+		"附件simep1_规下企业调查表":
+{
+			"表simep04_溶剂使用信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"有机溶剂使用情况","colspan":5,"align":"center"
+					},
+{
+						"title":"SO2排放量（吨）(必填)","field":"SO2","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"SO2排放量（吨）","type":"text","field":"SO2","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"NOx排放量（吨）(必填)","field":"NOx","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"NOx排放量（吨）","type":"text","field":"NOx","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"NH3排放量（吨）(必填)","field":"NH3","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"NH3排放量（吨）","type":"text","field":"NH3","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"PM25排放量（吨）(必填)","field":"PM25","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"PM25排放量（吨）","type":"text","field":"PM25","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"VOC排放量（吨）(必填)","field":"VOC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"VOC排放量（吨）","type":"text","field":"VOC","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"PM10排放量（吨）(必填)","field":"PM10","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"PM10排放量（吨）","type":"text","field":"PM10","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"TSP排放量（吨）(必填)","field":"TSP","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"TSP排放量（吨）","type":"text","field":"TSP","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"BC排放量（吨）(必填)","field":"BC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"BC排放量（吨）","type":"text","field":"BC","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"OC排放量（吨）(必填)","field":"OC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"OC排放量（吨）","type":"text","field":"OC","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"CO排放量（吨）(必填)","field":"CO","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"CO排放量（吨）","type":"text","field":"CO","validate":"validate_5_3","metTable":0
+						}
+					},
+{
+						"title":"CO2排放量（吨）(必填)","field":"CO2","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"CO2排放量（吨）","type":"text","field":"CO2","validate":"validate_5_3","metTable":0
+						}
+					}
+				],
+[
+					
+{
+						"title":"溶剂类型(必填)","field":"asolventtypename","align":"center","valign":"middle","Op":"list-solventtype","RealTemplate":"1","Select":"","Update":"0","list":"油漆/涂料,油墨,胶黏剂,其他有机溶剂","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"溶剂类型","type":"select","noeditFormatter":"asolventtypename","source":"list-solventtype","metTable":0
+						}
+					},
+{
+						"title":"溶剂名称(必填)","field":"asolventname","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"溶剂名称","type":"text","field":"asolventname","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"溶剂性质(必填)","field":"solventstate","align":"center","valign":"middle","Op":"list-solventstate","RealTemplate":"1","Select":"","Update":"0","list":"水性,溶剂型,粉末,高固分,其他","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"溶剂性质","type":"select","noeditFormatter":"solventstate","source":"list-solventstate","metTable":0
+						}
+					},
+{
+						"title":"年使用量(吨)(必填)","field":"asolventtotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"年使用量(吨)","type":"text","field":"asolventtotal","validate":"validate_5","metTable":0
+						}
+					},
+{
+						"title":"VOC治理技术(必填)","field":"etaVOCname","align":"center","valign":"middle","Op":"list-voc","RealTemplate":"1","Select":"","Update":"0","list":"吸收法,吸附法,冷凝法,膜分离法,其他,热力燃烧法,催化燃烧法,生物降解法,光催化降解法,等离子体技术,水幕,植物喷淋,其他,无","level1":"表simep04_溶剂使用信息表","editable":
+{
+							"title":"VOC治理技术","type":"select","noeditFormatter":"etaVOCname","source":"list-voc","metTable":0
+						}
+					}
+				]
+			],"表simep00_企业基本信息表":
+[
+				
+[
+					
+{
+						"title":"企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"企业名称(必填)","field":"companyname","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"企业名称","type":"text","field":"companyname","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"组织机构代码(必填)","field":"companaynumber","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"组织机构代码","type":"text","field":"companaynumber","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"企业联系人(必填)","field":"legalentitylx","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"企业联系人","type":"text","field":"legalentitylx","validate":"validate_1_1","metTable":1
+						}
+					},
+{
+						"title":"联系电话(必填)","field":"legaltel","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"联系电话","type":"text","field":"legaltel","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"所属行业(必填)","field":"industrytype","align":"center","valign":"middle","rowspan":2,"Op":"list-industrytype","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"所属行业","type":"select","noeditFormatter":"industrytype","source":"list-industrytype","metTable":1
+						}
+					},
+{
+						"title":"年工业总产值(万元)","field":"gdp","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"年工业总产值(万元)","type":"text","field":"gdp","validate":"validate_5_3_1","metTable":1
+						}
+					},
+{
+						"title":"年用电量(度)","field":"poweramount","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"年用电量(度)","type":"text","field":"poweramount","validate":"validate_5_3_1","metTable":1
+						}
+					},
+{
+						"title":"连续/间歇生产(必填)","field":"intermitornot","align":"center","valign":"middle","rowspan":2,"Op":"list-intermitornot","RealTemplate":"1","Select":"","Update":"0","list":"连续生产,间歇生产","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"连续/间歇生产","type":"select","noeditFormatter":"intermitornot","source":"list-intermitornot","metTable":1
+						}
+					},
+{
+						"title":"生产月份(必填)","field":"openmonths","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"生产月份","type":"text","field":"openmonths","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"年生产天数","field":"openhours","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"年生产天数","type":"text","field":"openhours","validate":"validate_5_1","metTable":1
+						}
+					},
+{
+						"title":"投产年份","field":"openyear","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"投产年份","type":"text","field":"openyear","validate":"validate_6_10_1","metTable":1
+						}
+					},
+{
+						"title":"地址信息","colspan":6,"align":"center"
+					},
+{
+						"title":"中心经度","colspan":3,"align":"center"
+					},
+{
+						"title":"中心纬度","colspan":3,"align":"center"
+					},
+{
+						"title":"调查员(必填)","field":"interviewperson","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"调查员","type":"text","field":"interviewperson","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"手机号(必填)","field":"interviewtel","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"手机号","type":"text","field":"interviewtel","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"填表人(必填)","field":"informant","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"填表人","type":"text","field":"informant","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"手机号(必填)","field":"tel","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"手机号","type":"text","field":"tel","validate":"validate_1_2","metTable":1
+						}
+					}
+				],
+[
+					
+{
+						"title":"省(必填)","field":"prov","align":"center","valign":"middle","Op":"list-region_1","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"省","type":"select","noeditFormatter":"prov","source":"list-region_1","metTable":1
+						}
+					},
+{
+						"title":"市(必填)","field":"city","align":"center","valign":"middle","Op":"list-region_2","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"市","type":"select","noeditFormatter":"city","source":"list-region_2","metTable":1
+						}
+					},
+{
+						"title":"区（县）(必填)","field":"county","align":"center","valign":"middle","Op":"list-region_3","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"区（县）","type":"select","noeditFormatter":"county","source":"list-region_3","metTable":1
+						}
+					},
+{
+						"title":"乡(镇)","field":"vill","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"乡(镇)","type":"text","field":"vill","validate":"validate_1_1","metTable":1
+						}
+					},
+{
+						"title":"村（街道办）","field":"street","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"村（街道办）","type":"text","field":"street","validate":"validate_1_1","metTable":1
+						}
+					},
+{
+						"title":"路/门牌号","field":"streetNO","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"路/门牌号","type":"text","field":"streetNO","validate":"validate_1_1","metTable":1
+						}
+					},
+{
+						"title":"度(必填)","field":"lon1","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"度","type":"text","field":"lon1","validate":"validate_6_6","metTable":1
+						}
+					},
+{
+						"title":"分(必填)","field":"lon2","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"分","type":"text","field":"lon2","validate":"validate_6_8","metTable":1
+						}
+					},
+{
+						"title":"秒(必填)","field":"lon3","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"秒","type":"text","field":"lon3","validate":"validate_6_8","metTable":1
+						}
+					},
+{
+						"title":"度(必填)","field":"lat1","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"度","type":"text","field":"lat1","validate":"validate_6_7","metTable":1
+						}
+					},
+{
+						"title":"分(必填)","field":"lat2","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"分","type":"text","field":"lat2","validate":"validate_6_8","metTable":1
+						}
+					},
+{
+						"title":"秒(必填)","field":"lat3","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep00_企业基本信息表","editable":
+{
+							"title":"秒","type":"text","field":"lat3","validate":"validate_6_8","metTable":1
+						}
+					}
+				]
+			],"表simep02_锅炉信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":2
+						}
+					},
+{
+						"title":"编号(必填)","field":"equipId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"编号","type":"text","field":"equipId","validate":"validate_1","metTable":2
+						}
+					},
+{
+						"title":"基本信息","colspan":3,"align":"center"
+					},
+{
+						"title":"燃料信息","colspan":3,"align":"center"
+					},
+{
+						"title":"治理措施","colspan":2,"align":"center"
+					},
+{
+						"title":"排放口高度(米)","field":"pfkheight","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"排放口高度(米)","type":"text","field":"pfkheight","validate":"validate_5_3_1","metTable":2
+						}
+					},
+{
+						"title":"SO2排放量（吨）(必填)","field":"SO2","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"SO2排放量（吨）","type":"text","field":"SO2","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"NOx排放量（吨）(必填)","field":"NOx","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"NOx排放量（吨）","type":"text","field":"NOx","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"NH3排放量（吨）(必填)","field":"NH3","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"NH3排放量（吨）","type":"text","field":"NH3","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"PM25排放量（吨）(必填)","field":"PM25","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"PM25排放量（吨）","type":"text","field":"PM25","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"VOC排放量（吨）(必填)","field":"VOC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"VOC排放量（吨）","type":"text","field":"VOC","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"PM10排放量（吨）(必填)","field":"PM10","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"PM10排放量（吨）","type":"text","field":"PM10","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"TSP排放量（吨）(必填)","field":"TSP","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"TSP排放量（吨）","type":"text","field":"TSP","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"BC排放量（吨）(必填)","field":"BC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"BC排放量（吨）","type":"text","field":"BC","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"OC排放量（吨）(必填)","field":"OC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"OC排放量（吨）","type":"text","field":"OC","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"CO排放量（吨）(必填)","field":"CO","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"CO排放量（吨）","type":"text","field":"CO","validate":"validate_5_3","metTable":2
+						}
+					},
+{
+						"title":"CO2排放量（吨）(必填)","field":"CO2","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"CO2排放量（吨）","type":"text","field":"CO2","validate":"validate_5_3","metTable":2
+						}
+					}
+				],
+[
+					
+{
+						"title":"锅炉容量","field":"capacity","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"锅炉容量","type":"text","field":"capacity","validate":"validate_5_1","metTable":2
+						}
+					},
+{
+						"title":"投运时间(年/月)","field":"startdate","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"投运时间(年/月)","type":"text","field":"startdate","validate":"validate_3_1","metTable":2
+						}
+					},
+{
+						"title":"关停时间(年/月)","field":"enddate","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"关停时间(年/月)","type":"text","field":"enddate","validate":"validate_3_1","metTable":2
+						}
+					},
+{
+						"title":"燃料名称(必填)","field":"fueltype","align":"center","valign":"middle","Op":"list-fueltype","RealTemplate":"1","Select":"1","Update":"0","list":"原煤,型煤,煤矸石,生物质成型燃料,柴油,重油,天然气,煤气,其他","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"燃料名称","type":"select","noeditFormatter":"fueltype","source":"list-fueltype","metTable":2
+						}
+					},
+{
+						"title":"年消耗量(必填)","field":"aheatfueltotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"年消耗量","type":"text","field":"aheatfueltotal","validate":"validate_5","metTable":2
+						}
+					},
+{
+						"title":"单位(必填)","field":"fuelunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"单位","type":"text","field":"fuelunit","validate":"validate_1","metTable":2
+						}
+					},
+{
+						"title":"脱硫工艺(必填)","field":"etaSO2name","align":"center","valign":"middle","Op":"list-etaSO2name","RealTemplate":"1","Select":"1","Update":"1","list":"烟气循环流化床法,炉内喷钙法,石灰石/石灰-石膏法,双碱法,海水法,氧化镁法,氨法,密相干法,旋转喷雾干燥法,其它脱硫技术,无","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"脱硫工艺","type":"select","noeditFormatter":"etaSO2name","source":"list-etaSO2name","metTable":2
+						}
+					},
+{
+						"title":"除尘工艺(必填)","field":"etaPMname","align":"center","valign":"middle","Op":"list-etaPMname","RealTemplate":"1","Select":"1","Update":"1","list":"重力沉降法,惯性除尘法,湿法除尘法,普通静电除尘法,高效静电除尘法,过滤式除尘法,电袋复合除尘法,单筒旋风除尘法,多管旋风除尘法,无组织尘一般控制技术,无组织尘高效控制技术,其它除尘技术,无","level1":"表simep02_锅炉信息表","editable":
+{
+							"title":"除尘工艺","type":"select","noeditFormatter":"etaPMname","source":"list-etaPMname","metTable":2
+						}
+					}
+				]
+			],"表simep03_露天堆场信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":3
+						}
+					},
+{
+						"title":"编号(必填)","field":"equipId","align":"center","valign":"middle","rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"编号","type":"text","field":"equipId","validate":"validate_1","metTable":3
+						}
+					},
+{
+						"title":"露天堆场信息","colspan":8,"align":"center"
+					},
+{
+						"title":"SO2排放量（吨）(必填)","field":"SO2","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"SO2排放量（吨）","type":"text","field":"SO2","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"NOx排放量（吨）(必填)","field":"NOx","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"NOx排放量（吨）","type":"text","field":"NOx","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"NH3排放量（吨）(必填)","field":"NH3","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"NH3排放量（吨）","type":"text","field":"NH3","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"PM25排放量（吨）(必填)","field":"PM25","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"PM25排放量（吨）","type":"text","field":"PM25","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"VOC排放量（吨）(必填)","field":"VOC","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"VOC排放量（吨）","type":"text","field":"VOC","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"PM10排放量（吨）(必填)","field":"PM10","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"PM10排放量（吨）","type":"text","field":"PM10","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"TSP排放量（吨）(必填)","field":"TSP","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"TSP排放量（吨）","type":"text","field":"TSP","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"BC排放量（吨）(必填)","field":"BC","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"BC排放量（吨）","type":"text","field":"BC","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"OC排放量（吨）(必填)","field":"OC","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"OC排放量（吨）","type":"text","field":"OC","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"CO排放量（吨）(必填)","field":"CO","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"CO排放量（吨）","type":"text","field":"CO","validate":"validate_5_3","metTable":3
+						}
+					},
+{
+						"title":"CO2排放量（吨）(必填)","field":"CO2","align":"center","valign":"middle","sortable":true,"rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"CO2排放量（吨）","type":"text","field":"CO2","validate":"validate_5_3","metTable":3
+						}
+					}
+				],
+[
+					
+{
+						"title":"基本信息","colspan":5,"align":"center"
+					},
+{
+						"title":"运载信息","colspan":2,"align":"center"
+					},
+{
+						"title":"扬尘控制措施(必填)","field":"dustcontrol","align":"center","valign":"middle","rowspan":2,"Op":"list-dealtype","RealTemplate":"1","Select":"1","Update":"0","list":"洒水,围挡,化学剂,编织布覆盖,出入车辆冲洗,洒水、围挡,洒水、化学剂,洒水、编织布覆盖洒水、出入车辆冲洗,围挡、化学剂,围挡、编织布覆盖,围挡、出入车辆冲洗,化学剂、编织布覆盖,化学剂、出入车辆冲洗,编织布覆盖、出入车辆冲洗,洒水、围挡、化学剂,洒水、围挡、编织布覆盖,洒水、围挡、出入车辆冲洗,围挡、化学剂、编织布覆盖,围挡、化学剂、出入车辆冲洗,化学剂、编织布覆盖、出入车辆冲洗,无","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"扬尘控制措施","type":"select","noeditFormatter":"dustcontrol","source":"list-dealtype","metTable":3
+						}
+					}
+				],
+[
+					
+{
+						"title":"堆场类型(必填)","field":"dctype","align":"center","valign":"middle","Op":"list-dctype","RealTemplate":"1","Select":"1","Update":"0","list":"工业原料堆,建筑原料堆,工业固体废弃物,建筑渣土及垃圾,生活垃圾","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"堆场类型","type":"select","noeditFormatter":"dctype","source":"list-dctype","metTable":3
+						}
+					},
+{
+						"title":"堆场材料(必填)","field":"dcmat","align":"center","valign":"middle","Op":"list-dcmat","RealTemplate":"1","Select":"1","Update":"0","list":"球团矿,块矿,煤炭,炉渣,烟道灰,碎焦炭,混合矿石,烧结矿,石灰岩,陈年石灰石,各种石灰石产品,芯球,尾矿,表土,接触地面,煤粉尘堆,铁矿石,煤矸石","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"堆场材料","type":"select","noeditFormatter":"dcmat","source":"list-dcmat","metTable":3
+						}
+					},
+{
+						"title":"占地面积（平方米）(必填)","field":"dcaera","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"占地面积（平方米）","type":"text","field":"dcaera","validate":"validate_5","metTable":3
+						}
+					},
+{
+						"title":"料堆高度（米）(必填)","field":"dcheight","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"料堆高度（米）","type":"text","field":"dcheight","validate":"validate_5","metTable":3
+						}
+					},
+{
+						"title":"日常存储量（吨）(必填)","field":"dcamount","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"日常存储量（吨）","type":"text","field":"dcamount","validate":"validate_5","metTable":3
+						}
+					},
+{
+						"title":"单车运载量（吨）(必填)","field":"dcmeantrans","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"单车运载量（吨）","type":"text","field":"dcmeantrans","validate":"validate_5","metTable":3
+						}
+					},
+{
+						"title":"年物料运载车次(必填)","field":"dctransamount","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep03_露天堆场信息表","editable":
+{
+							"title":"年物料运载车次","type":"text","field":"dctransamount","validate":"validate_5","metTable":3
+						}
+					}
+				]
+			],"表simep01_产品生产信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"编号(必填)","field":"equipId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"编号","type":"text","field":"equipId","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"工段/工艺名称(必填)","field":"equiptype","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"工段/工艺名称","type":"text","field":"equiptype","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"产品信息","colspan":3,"align":"center"
+					},
+{
+						"title":"原料信息","colspan":3,"align":"center"
+					},
+{
+						"title":"燃料信息","colspan":3,"align":"center"
+					},
+{
+						"title":"治理措施","colspan":2,"align":"center"
+					},
+{
+						"title":"排放口高度(米)","field":"pfkheight","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"排放口高度(米)","type":"text","field":"pfkheight","validate":"validate_5_3_1","metTable":4
+						}
+					},
+{
+						"title":"SO2排放量（吨）(必填)","field":"SO2","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"SO2排放量（吨）","type":"text","field":"SO2","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"NOx排放量（吨）(必填)","field":"NOx","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"NOx排放量（吨）","type":"text","field":"NOx","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"NH3排放量（吨）(必填)","field":"NH3","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"NH3排放量（吨）","type":"text","field":"NH3","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"PM25排放量（吨）(必填)","field":"PM25","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"PM25排放量（吨）","type":"text","field":"PM25","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"VOC排放量（吨）(必填)","field":"VOC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"VOC排放量（吨）","type":"text","field":"VOC","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"PM10排放量（吨）(必填)","field":"PM10","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"PM10排放量（吨）","type":"text","field":"PM10","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"TSP排放量（吨）(必填)","field":"TSP","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"TSP排放量（吨）","type":"text","field":"TSP","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"BC排放量（吨）(必填)","field":"BC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"BC排放量（吨）","type":"text","field":"BC","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"OC排放量（吨）(必填)","field":"OC","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"OC排放量（吨）","type":"text","field":"OC","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"CO排放量（吨）(必填)","field":"CO","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"CO排放量（吨）","type":"text","field":"CO","validate":"validate_5_3","metTable":4
+						}
+					},
+{
+						"title":"CO2排放量（吨）(必填)","field":"CO2","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"CO2排放量（吨）","type":"text","field":"CO2","validate":"validate_5_3","metTable":4
+						}
+					}
+				],
+[
+					
+{
+						"title":"产品名称(必填)","field":"aproducttype","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"产品名称","type":"text","field":"aproducttype","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"年产量(必填)","field":"aproducttotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"年产量","type":"text","field":"aproducttotal","validate":"validate_5","metTable":4
+						}
+					},
+{
+						"title":"单位(必填)","field":"productunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"单位","type":"text","field":"productunit","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"原料名称(必填)","field":"materialtype","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"原料名称","type":"text","field":"materialtype","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"年消耗量(必填)","field":"amaterialtotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"年消耗量","type":"text","field":"amaterialtotal","validate":"validate_5","metTable":4
+						}
+					},
+{
+						"title":"单位(必填)","field":"materialunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"单位","type":"text","field":"materialunit","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"燃料名称(必填)","field":"fueltype","align":"center","valign":"middle","Op":"list-fueltype","RealTemplate":"1","Select":"1","Update":"0","list":"原煤,型煤,煤矸石,生物质成型燃料,柴油,重油,天然气,煤气,其他","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"燃料名称","type":"select","noeditFormatter":"fueltype","source":"list-fueltype","metTable":4
+						}
+					},
+{
+						"title":"年消耗量(必填)","field":"aheatfueltotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"年消耗量","type":"text","field":"aheatfueltotal","validate":"validate_5","metTable":4
+						}
+					},
+{
+						"title":"单位(必填)","field":"fuelunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"单位","type":"text","field":"fuelunit","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"脱硫工艺(必填)","field":"etaSO2name","align":"center","valign":"middle","Op":"list-etaSO2name","RealTemplate":"1","Select":"1","Update":"1","list":"烟气循环流化床法,炉内喷钙法,石灰石/石灰-石膏法,双碱法,海水法,氧化镁法,氨法,密相干法,旋转喷雾干燥法,其它脱硫技术,无","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"脱硫工艺","type":"select","noeditFormatter":"etaSO2name","source":"list-etaSO2name","metTable":4
+						}
+					},
+{
+						"title":"除尘工艺(必填)","field":"etaPMname","align":"center","valign":"middle","Op":"list-etaPMname","RealTemplate":"1","Select":"1","Update":"1","list":"重力沉降法,惯性除尘法,湿法除尘法,普通静电除尘法,高效静电除尘法,过滤式除尘法,电袋复合除尘法,单筒旋风除尘法,多管旋风除尘法,无组织尘一般控制技术,无组织尘高效控制技术,其它除尘技术,无","level1":"表simep01_产品生产信息表","editable":
+{
+							"title":"除尘工艺","type":"select","noeditFormatter":"etaPMname","source":"list-etaPMname","metTable":4
+						}
+					}
+				]
+			],"head":
+[
+				"表simep04_溶剂使用信息表","表simep00_企业基本信息表","表simep02_锅炉信息表","表simep03_露天堆场信息表","表simep01_产品生产信息表"
+			]
+		},"附件simp1_规下企业调查表":
+{
+			"表simp01_产品生产信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"编号(必填)","field":"equipId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"编号","type":"text","field":"equipId","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"工段/工艺名称(必填)","field":"equiptype","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"工段/工艺名称","type":"text","field":"equiptype","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"产品信息","colspan":3,"align":"center"
+					},
+{
+						"title":"原料信息","colspan":3,"align":"center"
+					},
+{
+						"title":"燃料信息","colspan":3,"align":"center"
+					},
+{
+						"title":"治理措施","colspan":2,"align":"center"
+					},
+{
+						"title":"排放口高度(米)","field":"pfkheight","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"排放口高度(米)","type":"text","field":"pfkheight","validate":"validate_5_3_1","metTable":0
+						}
+					}
+				],
+[
+					
+{
+						"title":"产品名称(必填)","field":"aproducttype","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"产品名称","type":"text","field":"aproducttype","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"年产量(必填)","field":"aproducttotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"年产量","type":"text","field":"aproducttotal","validate":"validate_5","metTable":0
+						}
+					},
+{
+						"title":"单位(必填)","field":"productunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"单位","type":"text","field":"productunit","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"原料名称(必填)","field":"materialtype","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"原料名称","type":"text","field":"materialtype","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"年消耗量(必填)","field":"amaterialtotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"年消耗量","type":"text","field":"amaterialtotal","validate":"validate_5","metTable":0
+						}
+					},
+{
+						"title":"单位(必填)","field":"materialunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"单位","type":"text","field":"materialunit","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"燃料名称(必填)","field":"fueltype","align":"center","valign":"middle","Op":"list-fueltype","RealTemplate":"1","Select":"1","Update":"0","list":"原煤,型煤,煤矸石,生物质成型燃料,柴油,重油,天然气,煤气,其他","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"燃料名称","type":"select","noeditFormatter":"fueltype","source":"list-fueltype","metTable":0
+						}
+					},
+{
+						"title":"年消耗量(必填)","field":"aheatfueltotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"年消耗量","type":"text","field":"aheatfueltotal","validate":"validate_5","metTable":0
+						}
+					},
+{
+						"title":"单位(必填)","field":"fuelunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"单位","type":"text","field":"fuelunit","validate":"validate_1","metTable":0
+						}
+					},
+{
+						"title":"脱硫工艺(必填)","field":"etaSO2name","align":"center","valign":"middle","Op":"list-etaSO2name","RealTemplate":"1","Select":"1","Update":"1","list":"烟气循环流化床法,炉内喷钙法,石灰石/石灰-石膏法,双碱法,海水法,氧化镁法,氨法,密相干法,旋转喷雾干燥法,其它脱硫技术,无","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"脱硫工艺","type":"select","noeditFormatter":"etaSO2name","source":"list-etaSO2name","metTable":0
+						}
+					},
+{
+						"title":"除尘工艺(必填)","field":"etaPMname","align":"center","valign":"middle","Op":"list-etaPMname","RealTemplate":"1","Select":"1","Update":"1","list":"重力沉降法,惯性除尘法,湿法除尘法,普通静电除尘法,高效静电除尘法,过滤式除尘法,电袋复合除尘法,单筒旋风除尘法,多管旋风除尘法,无组织尘一般控制技术,无组织尘高效控制技术,其它除尘技术,无","level1":"表simp01_产品生产信息表","editable":
+{
+							"title":"除尘工艺","type":"select","noeditFormatter":"etaPMname","source":"list-etaPMname","metTable":0
+						}
+					}
+				]
+			],"表simp03_露天堆场信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"编号(必填)","field":"equipId","align":"center","valign":"middle","rowspan":3,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"编号","type":"text","field":"equipId","validate":"validate_1","metTable":1
+						}
+					},
+{
+						"title":"露天堆场信息","colspan":8,"align":"center"
+					}
+				],
+[
+					
+{
+						"title":"基本信息","colspan":5,"align":"center"
+					},
+{
+						"title":"运载信息","colspan":2,"align":"center"
+					},
+{
+						"title":"扬尘控制措施(必填)","field":"dustcontrol","align":"center","valign":"middle","rowspan":2,"Op":"list-dealtype","RealTemplate":"1","Select":"1","Update":"0","list":"洒水,围挡,化学剂,编织布覆盖,出入车辆冲洗,洒水、围挡,洒水、化学剂,洒水、编织布覆盖洒水、出入车辆冲洗,围挡、化学剂,围挡、编织布覆盖,围挡、出入车辆冲洗,化学剂、编织布覆盖,化学剂、出入车辆冲洗,编织布覆盖、出入车辆冲洗,洒水、围挡、化学剂,洒水、围挡、编织布覆盖,洒水、围挡、出入车辆冲洗,围挡、化学剂、编织布覆盖,围挡、化学剂、出入车辆冲洗,化学剂、编织布覆盖、出入车辆冲洗,无","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"扬尘控制措施","type":"select","noeditFormatter":"dustcontrol","source":"list-dealtype","metTable":1
+						}
+					}
+				],
+[
+					
+{
+						"title":"堆场类型(必填)","field":"dctype","align":"center","valign":"middle","Op":"list-dctype","RealTemplate":"1","Select":"1","Update":"0","list":"工业原料堆,建筑原料堆,工业固体废弃物,建筑渣土及垃圾,生活垃圾","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"堆场类型","type":"select","noeditFormatter":"dctype","source":"list-dctype","metTable":1
+						}
+					},
+{
+						"title":"堆场材料(必填)","field":"dcmat","align":"center","valign":"middle","Op":"list-dcmat","RealTemplate":"1","Select":"1","Update":"0","list":"球团矿,块矿,煤炭,炉渣,烟道灰,碎焦炭,混合矿石,烧结矿,石灰岩,陈年石灰石,各种石灰石产品,芯球,尾矿,表土,接触地面,煤粉尘堆,铁矿石,煤矸石","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"堆场材料","type":"select","noeditFormatter":"dcmat","source":"list-dcmat","metTable":1
+						}
+					},
+{
+						"title":"占地面积（平方米）(必填)","field":"dcaera","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"占地面积（平方米）","type":"text","field":"dcaera","validate":"validate_5","metTable":1
+						}
+					},
+{
+						"title":"料堆高度（米）(必填)","field":"dcheight","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"料堆高度（米）","type":"text","field":"dcheight","validate":"validate_5","metTable":1
+						}
+					},
+{
+						"title":"日常存储量（吨）(必填)","field":"dcamount","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"日常存储量（吨）","type":"text","field":"dcamount","validate":"validate_5","metTable":1
+						}
+					},
+{
+						"title":"单车运载量（吨）(必填)","field":"dcmeantrans","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"单车运载量（吨）","type":"text","field":"dcmeantrans","validate":"validate_5","metTable":1
+						}
+					},
+{
+						"title":"年物料运载车次(必填)","field":"dctransamount","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp03_露天堆场信息表","editable":
+{
+							"title":"年物料运载车次","type":"text","field":"dctransamount","validate":"validate_5","metTable":1
+						}
+					}
+				]
+			],"表simp02_锅炉信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":2
+						}
+					},
+{
+						"title":"编号(必填)","field":"equipId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"编号","type":"text","field":"equipId","validate":"validate_1","metTable":2
+						}
+					},
+{
+						"title":"基本信息","colspan":3,"align":"center"
+					},
+{
+						"title":"燃料信息","colspan":3,"align":"center"
+					},
+{
+						"title":"治理措施","colspan":2,"align":"center"
+					},
+{
+						"title":"排放口高度(米)","field":"pfkheight","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"排放口高度(米)","type":"text","field":"pfkheight","validate":"validate_5_3_1","metTable":2
+						}
+					}
+				],
+[
+					
+{
+						"title":"锅炉容量","field":"capacity","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"锅炉容量","type":"text","field":"capacity","validate":"validate_5_1","metTable":2
+						}
+					},
+{
+						"title":"投运时间(年/月)","field":"startdate","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"投运时间(年/月)","type":"text","field":"startdate","validate":"validate_3_1","metTable":2
+						}
+					},
+{
+						"title":"关停时间(年/月)","field":"enddate","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"关停时间(年/月)","type":"text","field":"enddate","validate":"validate_3_1","metTable":2
+						}
+					},
+{
+						"title":"燃料名称(必填)","field":"fueltype","align":"center","valign":"middle","Op":"list-fueltype","RealTemplate":"1","Select":"1","Update":"0","list":"原煤,型煤,煤矸石,生物质成型燃料,柴油,重油,天然气,煤气,其他","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"燃料名称","type":"select","noeditFormatter":"fueltype","source":"list-fueltype","metTable":2
+						}
+					},
+{
+						"title":"年消耗量(必填)","field":"aheatfueltotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"年消耗量","type":"text","field":"aheatfueltotal","validate":"validate_5","metTable":2
+						}
+					},
+{
+						"title":"单位(必填)","field":"fuelunit","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"单位","type":"text","field":"fuelunit","validate":"validate_1","metTable":2
+						}
+					},
+{
+						"title":"脱硫工艺(必填)","field":"etaSO2name","align":"center","valign":"middle","Op":"list-etaSO2name","RealTemplate":"1","Select":"1","Update":"1","list":"烟气循环流化床法,炉内喷钙法,石灰石/石灰-石膏法,双碱法,海水法,氧化镁法,氨法,密相干法,旋转喷雾干燥法,其它脱硫技术,无","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"脱硫工艺","type":"select","noeditFormatter":"etaSO2name","source":"list-etaSO2name","metTable":2
+						}
+					},
+{
+						"title":"除尘工艺(必填)","field":"etaPMname","align":"center","valign":"middle","Op":"list-etaPMname","RealTemplate":"1","Select":"1","Update":"1","list":"重力沉降法,惯性除尘法,湿法除尘法,普通静电除尘法,高效静电除尘法,过滤式除尘法,电袋复合除尘法,单筒旋风除尘法,多管旋风除尘法,无组织尘一般控制技术,无组织尘高效控制技术,其它除尘技术,无","level1":"表simp02_锅炉信息表","editable":
+{
+							"title":"除尘工艺","type":"select","noeditFormatter":"etaPMname","source":"list-etaPMname","metTable":2
+						}
+					}
+				]
+			],"表simp04_溶剂使用信息表":
+[
+				
+[
+					
+{
+						"title":"所属企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"0","Update":"0","list":"","level1":"表simp04_溶剂使用信息表","editable":
+{
+							"title":"所属企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":3
+						}
+					},
+{
+						"title":"有机溶剂使用情况","colspan":5,"align":"center"
+					}
+				],
+[
+					
+{
+						"title":"溶剂类型(必填)","field":"asolventtypename","align":"center","valign":"middle","Op":"list-solventtype","RealTemplate":"1","Select":"","Update":"0","list":"油漆/涂料,油墨,胶黏剂,其他有机溶剂","level1":"表simp04_溶剂使用信息表","editable":
+{
+							"title":"溶剂类型","type":"select","noeditFormatter":"asolventtypename","source":"list-solventtype","metTable":3
+						}
+					},
+{
+						"title":"溶剂名称(必填)","field":"asolventname","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp04_溶剂使用信息表","editable":
+{
+							"title":"溶剂名称","type":"text","field":"asolventname","validate":"validate_1","metTable":3
+						}
+					},
+{
+						"title":"溶剂性质(必填)","field":"solventstate","align":"center","valign":"middle","Op":"list-solventstate","RealTemplate":"1","Select":"","Update":"0","list":"水性,溶剂型,粉末,高固分,其他","level1":"表simp04_溶剂使用信息表","editable":
+{
+							"title":"溶剂性质","type":"select","noeditFormatter":"solventstate","source":"list-solventstate","metTable":3
+						}
+					},
+{
+						"title":"年使用量(吨)(必填)","field":"asolventtotal","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表simp04_溶剂使用信息表","editable":
+{
+							"title":"年使用量(吨)","type":"text","field":"asolventtotal","validate":"validate_5","metTable":3
+						}
+					},
+{
+						"title":"VOC治理技术(必填)","field":"etaVOCname","align":"center","valign":"middle","Op":"list-voc","RealTemplate":"1","Select":"","Update":"0","list":"吸收法,吸附法,冷凝法,膜分离法,其他,热力燃烧法,催化燃烧法,生物降解法,光催化降解法,等离子体技术,水幕,植物喷淋,其他,无","level1":"表simp04_溶剂使用信息表","editable":
+{
+							"title":"VOC治理技术","type":"select","noeditFormatter":"etaVOCname","source":"list-voc","metTable":3
+						}
+					}
+				]
+			],"表simp00_企业基本信息表":
+[
+				
+[
+					
+{
+						"title":"企业编号(必填)","field":"companyId","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"企业编号","type":"text","field":"companyId","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"企业名称(必填)","field":"companyname","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"企业名称","type":"text","field":"companyname","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"组织机构代码(必填)","field":"companaynumber","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"组织机构代码","type":"text","field":"companaynumber","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"企业联系人(必填)","field":"legalentitylx","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"企业联系人","type":"text","field":"legalentitylx","validate":"validate_1_1","metTable":4
+						}
+					},
+{
+						"title":"联系电话(必填)","field":"legaltel","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"联系电话","type":"text","field":"legaltel","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"所属行业(必填)","field":"industrytype","align":"center","valign":"middle","rowspan":2,"Op":"list-industrytype","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"所属行业","type":"select","noeditFormatter":"industrytype","source":"list-industrytype","metTable":4
+						}
+					},
+{
+						"title":"年工业总产值(万元)","field":"gdp","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"年工业总产值(万元)","type":"text","field":"gdp","validate":"validate_5_3_1","metTable":4
+						}
+					},
+{
+						"title":"年用电量(度)","field":"poweramount","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"年用电量(度)","type":"text","field":"poweramount","validate":"validate_5_3_1","metTable":4
+						}
+					},
+{
+						"title":"连续/间歇生产(必填)","field":"intermitornot","align":"center","valign":"middle","rowspan":2,"Op":"list-intermitornot","RealTemplate":"1","Select":"","Update":"0","list":"连续生产,间歇生产","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"连续/间歇生产","type":"select","noeditFormatter":"intermitornot","source":"list-intermitornot","metTable":4
+						}
+					},
+{
+						"title":"生产月份(必填)","field":"openmonths","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"生产月份","type":"text","field":"openmonths","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"年生产天数","field":"openhours","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"年生产天数","type":"text","field":"openhours","validate":"validate_5_1","metTable":4
+						}
+					},
+{
+						"title":"投产年份","field":"openyear","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"投产年份","type":"text","field":"openyear","validate":"validate_6_10_1","metTable":4
+						}
+					},
+{
+						"title":"地址信息","colspan":6,"align":"center"
+					},
+{
+						"title":"中心经度","colspan":3,"align":"center"
+					},
+{
+						"title":"中心纬度","colspan":3,"align":"center"
+					},
+{
+						"title":"调查员(必填)","field":"interviewperson","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"调查员","type":"text","field":"interviewperson","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"手机号(必填)","field":"interviewtel","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"手机号","type":"text","field":"interviewtel","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"填表人(必填)","field":"informant","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"填表人","type":"text","field":"informant","validate":"validate_1","metTable":4
+						}
+					},
+{
+						"title":"手机号(必填)","field":"tel","align":"center","valign":"middle","rowspan":2,"Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"手机号","type":"text","field":"tel","validate":"validate_1_2","metTable":4
+						}
+					}
+				],
+[
+					
+{
+						"title":"省(必填)","field":"prov","align":"center","valign":"middle","Op":"list-region_1","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"省","type":"select","noeditFormatter":"prov","source":"list-region_1","metTable":4
+						}
+					},
+{
+						"title":"市(必填)","field":"city","align":"center","valign":"middle","Op":"list-region_2","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"市","type":"select","noeditFormatter":"city","source":"list-region_2","metTable":4
+						}
+					},
+{
+						"title":"区（县）(必填)","field":"county","align":"center","valign":"middle","Op":"list-region_3","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"区（县）","type":"select","noeditFormatter":"county","source":"list-region_3","metTable":4
+						}
+					},
+{
+						"title":"乡(镇)","field":"vill","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"乡(镇)","type":"text","field":"vill","validate":"validate_1_1","metTable":4
+						}
+					},
+{
+						"title":"村（街道办）","field":"street","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"村（街道办）","type":"text","field":"street","validate":"validate_1_1","metTable":4
+						}
+					},
+{
+						"title":"路/门牌号","field":"streetNO","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"路/门牌号","type":"text","field":"streetNO","validate":"validate_1_1","metTable":4
+						}
+					},
+{
+						"title":"度(必填)","field":"lon1","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"度","type":"text","field":"lon1","validate":"validate_6_6","metTable":4
+						}
+					},
+{
+						"title":"分(必填)","field":"lon2","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"分","type":"text","field":"lon2","validate":"validate_6_8","metTable":4
+						}
+					},
+{
+						"title":"秒(必填)","field":"lon3","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"秒","type":"text","field":"lon3","validate":"validate_6_8","metTable":4
+						}
+					},
+{
+						"title":"度(必填)","field":"lat1","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"度","type":"text","field":"lat1","validate":"validate_6_7","metTable":4
+						}
+					},
+{
+						"title":"分(必填)","field":"lat2","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"分","type":"text","field":"lat2","validate":"validate_6_8","metTable":4
+						}
+					},
+{
+						"title":"秒(必填)","field":"lat3","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表simp00_企业基本信息表","editable":
+{
+							"title":"秒","type":"text","field":"lat3","validate":"validate_6_8","metTable":4
+						}
+					}
+				]
+			],"head":
+[
+				"表simp01_产品生产信息表","表simp03_露天堆场信息表","表simp02_锅炉信息表","表simp04_溶剂使用信息表","表simp00_企业基本信息表"
+			]
+		}
+	}
+}

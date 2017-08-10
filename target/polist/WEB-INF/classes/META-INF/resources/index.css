@@ -1,0 +1,184 @@
+/* CSS Document */
+body,html{
+	height:100%;
+	position:absolute;
+	width:100%
+}
+body {
+	font-family:Helvetica, sans-serif;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+	color: #333;
+}
+a:link {
+	color: #666;
+	text-decoration: none;	
+}
+a:visited {
+	color: #666;
+	text-decoration: none;	
+}
+a:hover {
+	color: #C00;
+	text-decoration: none;	
+}
+ul,ol,li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;	
+}
+dl,dt,dd {
+	margin: 0;
+	padding: 0;
+}
+img {
+	border: 0;	
+}
+br {
+	font-size: 0;
+	line-height: 10px;
+	height: 10px;
+}
+
+/* 澶撮儴 */
+.top {
+	width: 100%;
+	height: 90px;
+	margin: 0 auto;
+	background: url(img/tp01_20170621.png) no-repeat left center;	
+}
+.top ul {
+	height: 90px;
+	line-height: 90px;
+	float: right;
+}
+.top ul li {
+	float: left;
+	margin-left: 30px;
+	font-weight: bold;
+}
+.top ul li a.hover {
+	color: #F60;
+}
+.top ul li a.hover:hover {
+	color: #C00;
+}
+
+
+/*杩斿洖椤堕儴寮�*/
+#code,#code_hover{width:40px;height:195px;background:url(img/icon.png) no-repeat;position:fixed;cursor:pointer; left::0px;}
+#code{background-position: -189px 0px;bottom:390px;_margin-bottom:390px; z-index:9999;}
+#code_hover{background-position: -189px 0px;bottom:390px;_margin-bottom:390px;z-index:9998;}
+#code_img{width:220px;height:355px;
+background: url(img/icon.png) 52px 89px no-repeat;
+z-index:9996;
+position:fixed;
+left:10px;
+bottom:337px;
+cursor:pointer;
+display:none;
+_position:absolute;
+_bottom:auto;
+_margin-bottom:67px;}
+/*杩斿洖椤堕儴缁撴潫*/
+
+/* 鐧诲綍涓讳綋 */
+.main {
+	position:absolute;
+	top:90px;
+	bottom:70px;
+	left:0;
+	right:0;
+	background: url(img/tp02_20140320.png) repeat-x;
+}
+.main .denglu {
+	width: 100%;
+	height: 100%;
+	/* background: url(img/pic01_20140320.jpg) no-repeat; */
+	background: url(img/logo/chengdubg.jpg) no-repeat;
+	margin: 0 auto;
+	position: relative;
+	background-position:center bottom;
+}
+.main .denglu .text {
+	width: 450px;
+	position: absolute;
+	left: 260px;
+	top: 155px;
+	line-height: 26px;
+}
+.main .denglu .dlk {
+	width: 354px;
+	height: 328px;
+	background: url(img/tp03_20140320.png) no-repeat;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	color: #999;
+}
+.main .denglu .dlk a.mm {
+	color: #000;
+	font-size: 18px;
+}
+.main .denglu .dlk a.mm:hover {
+	color: #C00;
+}
+.main .denglu .dlk a.zc {
+	color: #F60;
+}
+.main .denglu .dlk a.zc:hover {
+	color: #C00;
+}
+
+/* 鐧诲綍搴曢儴 */
+.footer {
+	font-size: 13px;
+	height: 70px;
+	line-height:70px;
+	/* background: url(img/footerbj.png) repeat-x; */
+	text-align: center;
+	color: #666;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0
+}
+
+/* button,input */
+.dlinput {
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	width: 222px;
+	height: 34px;
+	line-height: 34px;
+	text-indent: 2px;
+	font-size: 14px;
+	
+}
+.loginbtn {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: url(img/tp06_20140320.png) no-repeat;
+	border: none 0;
+	width: 224px;
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	font-family: "寰蒋闆呴粦";
+	font-size: 16px;
+	color: #FFF;
+	padding: 0;
+	margin: 0;
+}
+.loginbtn:hover, .loginbtn:focus {
+	background: url(img/tp07_20140320.png) no-repeat;
+}
+.loginbtn:active {
+	color: #ccc;
+}
+

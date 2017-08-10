@@ -1,0 +1,263 @@
+.cd_title {
+	height: 54px;
+    border: 1px solid #ccc;
+    padding: 7px;
+}
+.cd_title1 {
+	height: 40px;
+    border: 1px solid #ccc;
+    padding: 7px;
+}
+.cd_table{
+	border: 1px dashed #4cb12d;
+    padding: 7px;
+    margin-top: 10px;
+}
+.cd_botton {
+	float: right;
+	
+}
+.cd_select1{
+	height: 30px;
+    width: 100px;
+    border-radius:5px;
+}
+.cd_select2{
+    width: 200px;
+    color:rgb(79, 135, 209);
+    border-radius:5px;
+    size:13px;
+    font-weight:bold;
+    border: 0px solid;
+}
+.cd_font{
+	font-size: 16px;
+    color: #4f87d1;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "ËÎÌå", Arial, "ÐÂËÎÌå";
+	font-size: 12px;
+	color: #000;
+	list-style: none;
+}
+
+.clear {
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	color: red;
+	text-decoration: underline;
+}
+
+a img {
+	border: 0;
+	vertical-align: middle;
+}
+
+A.list:link {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 550px;
+}
+
+#xiala {
+	width: 150px;
+	margin-left: 40px;
+}
+
+#xiala  .card-drop {
+	position: relative;
+	margin: 0 auto;
+	-moz-perspective: 800px;
+	-webkit-perspective: 800px;
+	perspective: 800px;
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#xiala  .card-drop a {
+	line-height: 18px;
+	display: block;
+	width: 100%;
+	padding: 10px 0 0px 0px;
+	height: 25px;
+	text-decoration: none;
+	color: #217dbb;
+	background-color: #fafafa;
+	border: 1px solid #ddd;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	text-align: left;
+	padding-left: 10px;
+}
+#xiala  .card-drop>a.toggle {
+	position: relative;
+	z-index: 100;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-moz-transform-origin: 50% 0%;
+	-ms-transform-origin: 50% 0%;
+	-webkit-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+	-moz-transition: linear 0.1s;
+	-o-transition: linear 0.1s;
+	-webkit-transition: linear 0.1s;
+	transition: linear 0.1s;
+}
+#xiala1  .card-drop>a.toggle {
+	position: relative;
+	z-index: 100;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-moz-transform-origin: 50% 0%;
+	-ms-transform-origin: 50% 0%;
+	-webkit-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+	-moz-transition: linear 0.1s;
+	-o-transition: linear 0.1s;
+	-webkit-transition: linear 0.1s;
+	transition: linear 0.1s;
+}
+#xiala  .card-drop>a.toggle:active {
+	-moz-transform: rotateX(60deg);
+	-webkit-transform: rotateX(60deg);
+	transform: rotateX(60deg);
+}
+
+#xiala  .card-drop>a.toggle:active:after {
+	-moz-transform: rotateX(180deg);
+	-webkit-transform: rotateX(180deg);
+	transform: rotateX(180deg);
+}
+
+#xiala  .card-drop>a.toggle:before, .card-drop>a.toggle:after {
+	content: "";
+	position: absolute;
+}
+
+#xiala  .card-drop>a.toggle:before {
+	right: 10px;
+	top: 50%;
+	margin-top: -2.5px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid rgba(0, 0, 0, 0.8);
+}
+
+#xiala  .card-drop>a.toggle.active:before {
+	transform: rotate(180deg);
+}
+
+#xiala  .card-drop ul {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	display: block;
+	width: 100%;
+}
+
+#xiala  .card-drop ul li {
+	margin: 0 auto;
+	-moz-transition: all, ease-out 0.3s;
+	-o-transition: all, ease-out 0.3s;
+	-webkit-transition: all, ease-out 0.3s;
+	transition: all, ease-out 0.3s;
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	width: 100%;
+}
+
+#xiala  .card-drop ul li a {
+	border-top: none;
+}
+
+#xiala  .card-drop ul li a:hover {
+	background-color: #4aa3df;
+	color: #f3f9fd;
+}
+
+#xiala  .card-drop ul li.active a {
+	color: #fff;
+	background-color: #258cd1;
+	cursor: default;
+}
+
+#xiala  .card-drop ul li.closed a:hover {
+	cursor: default;
+	background-color: #3498db;
+}
+*{margin:0;padding:0;font-family: "ËÎÌå", Arial, "ÐÂËÎÌå";font-size:12px;color:#000;list-style:none;} 
+.clear{clear:both;height:0;visibility:hidden;}
+a{text-decoration:none;cursor:pointer;}
+a:hover{color:red;text-decoration:underline;}
+a img{border:0;vertical-align:middle;}
+	A.list:link {
+		white-space:nowrap;
+		overflow : hidden;
+		text-overflow : ellipsis;
+		width :550px;
+	}
+ #parent .box{
+ border:1px solid #C0C0C0;
+ width:182px;
+ height:36px;
+ clip:rect(0px,170px,18px,0px);
+ overflow:hidden;
+} 
+ #parent .box2{
+ border:1px solid #F4F4F4;
+ width:182px;
+ height:36px;
+ clip:rect(0px,169px,16px,0px);
+ overflow:hidden;
+} 
+ #parent  select{
+ position:relative;
+ left:0px;
+ top:1px;
+ font-size:12px;
+ width:183px;			
+ line-height:19px;
+ border:0px;color:#909993;
+} 
+
+/* popup */
+.popup{position:absolute;border-collapse:collapse;z-index:2000; }
+.popup td.corner{height:15px;width:19px;}
+.popup td#topleft{background-image:url(images/yuan/bubble-1.png);}
+.popup td.top{background-image:url(images/yuan/bubble-2.png);text-align:center;}
+.popup td#topright{background-image:url(images/yuan/bubble-3.png);}
+.popup td.left{background-image:url(images/yuan/bubble-4.png);}
+.popup td.right{background-image:url(images/yuan/bubble-5.png);}
+.popup td#bottomleft{background-image:url(images/yuan/bubble-6.png);}
+.popup td.bottom{background-image:url(images/yuan/bubble-7.png);text-align:center;}
+.popup td#bottomright{background-image:url(images/yuan/bubble-8.png);}
+.popup td.bottom img{display:block;margin:0 auto;}
+.popup table.popup-contents{font-size:12px;line-height:1.2em;background-color:#fff;color:#666;}
+table.popup-contents th{text-align:right;text-transform:lowercase;padding:5px; font-size:12px !important;font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif, "Î¢ÈíÑÅºÚ";}
+table.popup-contents td{text-align:left;padding:5px; font-size:12px !important;font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, serif, "Î¢ÈíÑÅºÚ";}
+tr#release-notes th{text-align:left;text-indent:-9999px;background:url(images/starburst.gif) no-repeat right 4px;height:20px;}
+tr#release-notes td a{color:#333;}
+

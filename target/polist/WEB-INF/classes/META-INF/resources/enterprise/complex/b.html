@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+<!-- 		<META content="IE=11.0000" http-equiv="X-UA-Compatible"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<TITLE></TITLE>
+		<link href="../../css/plugins/jQueryUI/jquery-ui.css" rel="stylesheet">
+		<link href="../../css/bootstrap.qiye.css" rel="stylesheet">
+		<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+		<LINK href="../style/global_static.css" rel="stylesheet" type="text/css">
+		<LINK href="../style/main_style.css" rel="stylesheet" type="text/css">
+		
+		<link href="../../css/font-awesome.css" rel="stylesheet">
+    	<link href="../../css/animate.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		
+		<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+		
+		<style>
+			/* ul{margin-top:0;margin-bottom:10px}
+			ul{display:block;list-style-type:disc;-webkit-margin-before:1em;-webkit-margin-after:1em;-webkit-margin-start:0;-webkit-margin-end:0;-webkit-padding-start:40px}
+			li{display:list-item;text-align:-webkit-match-parent;font-size:12px;margin:0 0 8px 0}
+			.table-hover>thead>tr>td,.table-hover>thead>tr>th{text-align:center;background-color:#F5F5F6}
+			.table-hover>tbody>tr>td{text-align:center} */
+			.table-bordered{border:1px solid #ddd}
+			.table{width:100%;max-width:100%;margin-bottom:20px;margin-top:20px}
+			table{background-color:transparent}
+			table{border-spacing:0;border-collapse:collapse}
+			.dise{background-color:#F5F5F6;text-align:center}
+			.zhong{text-align:center}
+			#navgo{margin:0 30px 0 0;height:54px;text-align:center;float:right}
+			#navgo ul ul{display:none}
+			#navgo ul li:hover>ul{display:block}
+			#navgo ul{padding:0 0;border-radius:10px;height:54px;list-style:none;position:relative;display:inline-table}
+			#navgo ul:after{content:"";clear:both;display:block}
+			#navgo ul li{float:left;height:54px;}
+			#navgo ul li:hover{background:#72a7de}
+			#navgo ul li:hover a{color:#fff}
+			#navgo ul li a{display:block;padding:0 0 0px 0;color:#757575;text-decoration:none}
+			#navgo ul ul{background:#5f6975;border-radius:0;padding:0;position:absolute;top:100%}
+			#navgo ul ul li{float:none}
+			#navgo ul ul li a{padding:10px 5px;color:#fff}
+			#navgo ul ul li a:hover{background:#2e63a7}
+			#navgo ul ul ul{position:absolute;left:100%;top:0}
+			.ui-widget-header {
+			    color: rgb(32, 132, 218);
+			}
+			.anchorBL{  
+		       display:none;  
+		   	}  
+		</style>
+	</HEAD>
+	
+<BODY>
+	<DIV class="body_mid">
+		<DIV id="banner_qian"></DIV>
+		<!-- 浮动说明 -->
+		<!-- <ul id="goTop" class="mod-sidebar"></ul> -->
+		
+		<DIV id="menu">
+			<A id="sy" style='background-image: url("../ui/images/icon_01.png");' href="#">系统首页</A> 
+			<A id="gkgs" class="cur" style='background-image: url("../ui/images/icon_05.png");' href="#">企业信息</A>
+			<A id="gkgs_s" style='background-image: url("../ui/images/icon_10.png");' href="#">设备信息</A>
+		</DIV>
+		
+		<DIV class="floor" style="margin: 10px 25px 25px 25px;">
+			<DIV class="right_list" style="width: 100%;">
+				
+				<DIV class="lmtitle">
+					<SPAN class="name" style='background-image: url(../ui/images/icon_lm_fwdt.png);'>企业信息</SPAN>
+					<!-- <a id="add_sb" href="javascript:;" class="sp-column" style='background-image: url("ui/images/icon_11.png"); height:43px; font-size:14px;' onclick="SaveJjiben(0)">&nbsp;&nbsp;<span>保存</span></a> -->
+					<div id='navgo' style='float: right;'>
+						<ul>
+							<li><a id='edit' class='sp-column' style="width: 90px;"><img src='../../img/icon18.png'> 编辑</a></li>
+							<li><a id='save' class='sp-column' style="width: 90px;display:none;"><img src='../../img/icon16.png'> 保存</a></li>
+							<li><a id='close' class='sp-column' style="width: 90px;display:none;"><img src='../../img/icon24.png'> 取消</a></li>
+							<li><a id='close_Return' class='sp-column' style="width: 90px;display:none;"><img src='../../img/icon24.png'> 取消</a></li>
+						</ul>
+					</div>
+				</DIV>
+
+				<DIV class="box_dashed">
+					<form id="qiye" class="upForm">
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">基本信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<a id="companyId" style="display:none;"></a>
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">企业名称<code>*</code></td>
+								<td width="35%"><a id="companyname"></a></td>
+								<td width="10%" class="dise">组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">统一社会信用代码<code>*</code></td>
+								<td width="15%"><a id="companysocietynumber"></a></td>
+								
+							</tr>
+							<tr>
+								<td class="dise">排污许可证编号<code>*</code></td>
+								<td><a id="pwnumber"></a></td>
+								<td class="dise">SO2总量控制限值<code>*</code>（吨/年）</td>
+								<td><a id="pwSO2"></a></td>
+								<td class="dise">NOx总量控制限值<code>*</code>（吨/年）</td>
+								<td><a id="pwNOx"></a></td>
+							</tr>
+							<tr>
+								<td class="dise">法人代表</td>
+								<td><a id="legalentity"></a></td>
+								<td class="dise">行业类别<code>*</code></td>
+								<td><a id="industrytype"></a></td>
+								<td class="dise">开业时间<br>(年/月/日)</td>
+								<td><a id="opendate"></a></td>
+							</tr>
+							<tr>
+								<td id="nian_title" class="dise">年工业总产值<br>(万元)</td>
+								<td id="nian_count"><a id="gdp"></a></td>
+								<td id="qijiang_title" style="display:none;" class="dise">起降架次<br>(架次)<code>*</code></td>
+								<td id="qijiang_count" style="display:none;"><a id="aflynums"></a></td>
+							</tr>
+						</table>
+						<div id="jiben_2">
+							<table class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr>
+									<td width="10%" class="dise">环统是否覆盖</td>
+									<td width="15%"><a id="htornot"></a></td>
+									<td width="10%" id="jiben_2_1" class="dise">环境统计年份</td>
+									<td width="15%"><a id="htyear"></a></td>
+									<td width="10%" id="jiben_2_2" class="dise">环统二氧化硫排放量<br>（吨）</td>
+									<td width="15%"><a id="htSO2"></a></td>
+								</tr>
+								
+								<tr id="jiben_2_tr">
+									<td id="jiben_2_3" class="dise">氮氧化物排放量<br>（吨）</td>
+									<td><a id="htNOx"></a></td>
+									<td id="jiben_2_4" class="dise">VOC排放量<br>（吨）</td>
+									<td><a id="htVOC"></a></td>
+									<td id="jiben_2_5" class="dise">环统烟粉尘排放量<br>（吨）</td>
+									<td><a id="htPM"></a></td>
+								</tr>
+								
+							</table>
+						</div>
+						<div id="jiben_3">
+							<table class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr>
+									<td width="10%" class="dise">总量核查是否覆盖</td>
+									<td width="15%"><a id="zlornot"></a></td>
+									<td width="10%" id="jiben_3_1" class="dise">总量核查年份</td>
+									<td width="15%"><a id="zlyear"></a></td>
+									<td width="10%" id="jiben_3_2" class="dise">总量核查SO2<br>排放量（吨）</td>
+									<td width="15%"><a id="zlSO2"></a></td>
+									<td width="10%" id="jiben_3_3" class="dise">总量核查NOx<br>排放量（吨）</td>
+									<td width="15%"><a id="zlNOx"></a></td>
+								</tr>
+							</table>
+						</div>
+						
+						
+						<div id="gongyeshebei">
+							<div class="wd-msg" style="text-align: left;">
+								<b style="font-size:12px;">设备统计</b>
+							</div>
+							<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+							<table class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr>
+									<td width="10%" class="dise">工业窑炉数<br>(座)</td>
+									<td width="15%"><a id="kilnnumbers"></a></td>
+									<td width="10%" class="dise">工业锅炉个数<br>(个)</td>
+									<td width="15%"><a id="boilernumbers"></a></td>
+									<td width="10%" class="dise">工业锅炉总蒸吨数<br>(吨/小时)</td>
+									<td width="15%"><a id="boilertons"></a></td>
+									<td width="10%" class="dise">年生产天数<br>(天)</td>
+									<td width="15%"><a id="openhours"></a></td>
+								</tr>
+								
+								<tr>
+									<td class="dise">自备发电机组数<code>*</code><br>(个)</td>
+									<td><a id="zbjznums"></a></td>
+									<td class="dise">有机液体储罐数<code>*</code><br>(个)</td>
+									<td><a id="cgnums"></a></td>
+									<td class="dise">露天堆场个数<code>*</code><br>(个)</td>
+									<td><a id="dcnums"></a></td>
+									<td class="dise"></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						
+						<div id="jiayouzhan" style="display:none;">
+							<div class="wd-msg" style="text-align: left;">
+								<b style="font-size:12px;">加油站信息</b>
+							</div>
+							<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+							<table class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr height="51px">
+									<td width="15%" class="dise" rowspan=2>活动水平</td>
+									<td width="15%" class="dise">汽油销售量(吨)<code>*</code></td>
+									<td width="20%"><a id="agasolinesale"></a></td>
+									<td width="15%" class="dise" rowspan=2>油气回收</td>
+									<td width="15%" class="dise">回收方式<code>*</code></td>
+									<td width="20%"><a id="contype"></a></td>
+								</tr>
+								<tr height="51px">
+									<td class="dise">柴油销售量(吨)<code>*</code></td>
+									<td><a id="adieselsale"></a></td>
+									<td class="dise">去除效率(%)</td>
+									<td><a id="conratio"></a></td>
+								</tr>
+							</table>
+						</div>
+						
+						<div id="canyin" style="display:none;">
+							<div class="wd-msg" style="text-align: left;">
+								<b style="font-size:12px;">设备统计</b>
+							</div>
+							<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+							<table class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr height="51px">
+									<td width="15%" class="dise" rowspan=2>活动水平</td>
+									<td width="20%" colspan="2" class="dise">年总经营时间<code>*</code><br>(小时)</td>
+									<td width="25%" colspan="2"><a id="ahours"></a></td>
+									<td width="10%" class="dise" rowspan=2>油气回收</td>
+									<td width="15%" class="dise">油烟净化器类型<code>*</code></td>
+									<td width="15%"><a id="contype"></a></td>
+								</tr>
+								<tr>
+									<td width="10%"  class="dise">固定灶头数<code>*</code><br>(个)</td>
+									<td width="10%"><a id="acooknums"></a></td>
+									<td width="10%" class="dise">烟气排放速率<code>*</code><br>(立方米/小时)</td>
+									<td width="15%"><a id="agasspeed"></a></td>
+									<td class="dise">去除效率<br>(%)</td>
+									<td><a id="conratio"></a></td>
+								</tr>
+							</table>
+						</div>
+						<!-- 表p211_化学原料和化学制品制造企业基本信息 -->
+						<div id="p211_huxue">
+							<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+							<table id="p211_huxue_table" class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr height="51px">
+									<td width="15%"  class="dise">是否有焚烧炉<code>*</code></td>
+									<td width="10%"><a id=""></a></td>
+									<td width="15%" class="dise">燃料类型<code>*</code></td>
+									<td width="10%"><a id=""></a></td>
+									<td width="15%" class="dise">燃料使用量<br>（吨）</td>
+									<td width="10%"><a id=""></a></td>
+									<td width="15%" class="dise">是否存在有机液体装卸</td>
+									<td width="10%"><a id=""></a></td>
+								</tr>
+								<tr height="51px">
+									<td  class="dise">污水排放量<br>（吨）</td>
+									<td><a id=""></a></td>
+									<td class="dise">自处理率<br>（%）</td>
+									<td><a id=""></a></td>
+									<td class="dise">是否存在有机液体装卸</td>
+									<td><a id=""></a></td>
+									<td class="dise"></td>
+									<td><a id=""></a></td>
+								</tr>
+								<!-- 生产线/工序信息 -->
+								<tr height="51px">
+									<td width="15%" class="dise" colspan=8>生产线/工序信息  <a id="add_p211" title="添加生产线" >
+										<img src="../images/jia.png" style="margin-top:-3px;width:24px;height:24px;">
+									</a></td>
+								</tr>
+								<tr height="51px">
+									<td width="15%"  class="dise" colspan="3">产品类型<code>*</code></td>
+									<td width="15%" class="dise" colspan="3">产品名称</td>
+									<td width="10%" class="dise" colspan="1">产品产量（吨）</td>
+									<td width="20%" class="dise" colspan="1">操作</td>
+								</tr>
+								
+							</table>
+						</div>
+						
+						<!-- 表p212_化学纤维制造业信息表 -->
+						<div id="p212_huxue" >
+							<table id="p212_huxue_table" class="table table-bordered zhong" style="margin-top: 0px;">
+								<tr height="51px">
+									<td width="10%"  class="dise">是否有焚烧炉<code>*</code><br>个</td>
+									<td width="15%"><a id=""></a></td>
+									<td width="10%" class="dise">燃料类型<code>*</code></td>
+									<td width="15%"><a id=""></a></td>
+									<td width="10%" class="dise">燃料使用量<br>（吨）</td>
+									<td width="15%"><a id=""></a></td>
+									<td width="10%" class="dise">有机液体储罐数<code>*</code><br>（个）</td>
+									<td width="15%"><a id=""></a></td>
+								</tr>
+								<tr height="51px">
+									<td class="dise">露天堆场个数<code>*</code><br>（个）</td>
+									<td ><a id=""></a></td>
+									<td class="dise">是否存在有机液体装卸</td>
+									<td><a id=""></a></td>
+									<td class="dise">污水排放量<br>（吨）</td>
+									<td><a id=""></a></td>
+									<td class="dise">自处理率<br>（%）</td>
+									<td><a id=""></a></td>
+								</tr>
+								<tr height="51px">
+									<td class="dise">是否存在有机液体装卸</td>
+									<td><a id=""></a></td>
+									<td class="dise" colspan=2>通入火炬废气量<br>（干基吨）</td>
+									<td><a id=""></a></td>
+									<td class="dise" colspan=2>冷却塔循环水流量<br>(m3/h)</td>
+									<td><a id=""></a></td>
+								</tr>
+								
+								<!-- 生产线/工序信息 -->
+								<tr height="51px">
+									<td class="dise" colspan=8>生产线/工序信息  <a id="add_p212" title="添加生产线" >
+										<img src="../images/jia.png" style="margin-top:-3px;width:24px;height:24px;">
+									</a></td>
+								</tr>
+								<tr height="51px">
+									<td class="dise" colspan=2>产品类型<code>*</code></td>
+									<td class="dise" colspan=2>其他产品类型</td>
+									<td class="dise" colspan=2>产品名称</td>
+									<td class="dise" colspan=1>产品产量（吨）</td>
+									<td class="dise">操作</td>
+								</tr>
+								
+							</table>
+						</div>
+						
+						
+						
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%" class="dise">邮箱<code>*</code></td>
+								<td width="25%"><a id="mail"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">企业填报人<code>*</code></td>
+								<td><a id="legalentitylx"></a></td>
+								<td class="dise">企业联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td class="dise">企业邮箱<code>*</code></td>
+								<td><a id="legalmail"></a></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">所在地</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">省(自治区、直辖市)<code>*</code></td>
+								<td width="20%" id="prov"></td>
+								<td width="15%" class="dise">市(地区、盟)<code>*</code></td>
+								<td width="20%" id="city"></td>
+								<td width="15%" class="dise">县(县级市、区、旗)<code>*</code></td>
+								<td width="15%"><a id="county"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">乡(镇)</td>
+								<td><a id="vill"></a></td>
+								<td class="dise">街(村)</td>
+								<td colspan="3"><a id="street"></a></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">精确定位</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="15%" rowspan="2">中心经度</td>
+								<td width="12%">度<code>*</code></td>
+								<td width="12%">分<code>*</code></td>
+								<td width="11%">秒<code>*</code></td>
+								<td width="15%" rowspan="2">中心纬度</td>
+								<td width="12%">度<code>*</code></td>
+								<td width="12%">分<code>*</code></td>
+								<td width="11%">秒<code>*</code></td>
+							</tr>
+							<tr height="35px">
+								<td><a id="lon1"></a></td>
+								<td><a id="lon2"></a></td>
+								<td><a id="lon3"></a></td>
+								<td><a id="lat1"></a></td>
+								<td><a id="lat2"></a></td>
+								<td><a id="lat3"></a></td>
+							</tr>
+							<tr id="map_tr">
+								<td colspan="8">
+									<div id="map" style="padding:0px 0px;height:300px;width:100%;"></div>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</DIV>
+
+				<DIV style="clear: both;"></DIV>
+			</DIV>
+			<DIV style="clear: both;"></DIV>
+		</DIV>
+		
+		
+		<!-- 底部 -->
+		<DIV class="copyright" id="foouft"></DIV>
+	</DIV>
+	
+	<div id="dialog-xmsb" title="校验未通过：下列为必填项，请补充。" style="display: none;">
+		<DIV id="dialog-xmsb-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	
+	<div id="dialog-tiaozhuan" title="提示" style="display: none;">
+		<DIV id="dialog-tiaozhuan-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	
+	<div id="dialog-dengdai" title="提示" style="display: none;">
+		<DIV id="dialog-dengdai-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	<!-- 修改密码 -->
+	<div id="dialog-update" title="修改密码" style="display: none;">
+		<DIV id="dialog-update-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>原密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="old_pass" id="old_pass" style="" required="required" cp="true" placeholder="原密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5></label>
+			</div>
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>新密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass" id="new_pass" style="" required="required" placeholder="新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_2" style="color:red;"></h5></label>
+			</div>
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>确认密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass_2" id="new_pass_2" style="" required equalTo="#new_pass" placeholder="请再次输入新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_3 style="color:red;"></h5></label>
+			</div>
+
+		</DIV>
+	</div>
+	
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	
+	<!-- 消息框 -->
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+	<!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+	
+	<script src="../../js/ajax.js"></script>
+	<script src="public.js"></script>
+	<SCRIPT src="../homeUI1.js"></script>
+	<script src="b_editable.js"></script>
+	<script src="../../js/plugins/jquery-ui/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yZEmTwz9a4lk2NVBs8XigIeB"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+	<script type="text/javascript" src="b.js"></script>
+	
+</BODY>
+</HTML>

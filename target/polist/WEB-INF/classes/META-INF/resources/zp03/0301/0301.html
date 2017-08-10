@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min-0301.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/resolution.css" rel="stylesheet"><!-- 自定义控制适应分辨率 -->
+	
+	<!-- 单元格编辑 -->
+	<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+    <style>
+		.box_dashed {
+			padding: 7px; border: 1px dashed rgb(76, 177, 45); border-image: none; margin-top: 10px; margin-bottom: 20px;
+		}
+		.table-hover > thead > tr > th, .table-hover > thead > tr > td {
+			text-align:center; background-color: #F5F5F6;
+		}
+		.table-hover > tbody > tr > td {
+			text-align:center;
+		}
+
+		.zhong{text-align:center}
+		.dise{background-color:#F5F5F6;text-align:center}
+		#navgo{margin:0 30px 0 0;height:54px;text-align:center;float:right}
+		#navgo ul ul{display:none}
+		#navgo ul li:hover>ul{display:block}
+		#navgo ul{padding:0 0;border-radius:10px;height:40px;list-style:none;position:relative;display:inline-table}
+		#navgo ul:after{content:"";clear:both;display:block}
+		#navgo ul li{float:left;height:40px;}
+		#navgo ul li:hover{background:#72a7de}
+		#navgo ul li:hover a{color:#fff}
+		#navgo ul li a{display:block;padding:0 0 0px 0;color:#757575;text-decoration:none}
+		#navgo ul ul{background:#5f6975;border-radius:0;padding:0;position:absolute;top:100%}
+		#navgo ul ul li{float:none}
+		#navgo ul ul li a{padding:10px 5px;color:#fff}
+		#navgo ul ul li a:hover{background:#2e63a7}
+		#navgo ul ul ul{position:absolute;left:100%;top:0}
+		.chaxundiv_2{
+			 min-height: 30px;
+			 border:1px solid #cccccc;
+		}
+		.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .selectDiv .noSelectBorder select{
+	    	border:0;
+	        appearance:none;
+	        -moz-appearance:none;
+	        -webkit-appearance:none;
+	        padding-right:20px;
+	    }
+	    .selectDiv .noSelectBorder{
+	    	display:inline-block;
+	    	position: relative;
+	    	margin-right:10px;
+	    }
+	    .selectDiv .noSelectBorder:hover i{
+	    	display:block;
+	    }
+	    .selectDiv .noSelectBorder i{
+	    	position:absolute;
+	    	display:none;
+	    	right:0;
+	    	top:7px;
+	    	border-left:8px solid transparent;
+	    	border-top:16px solid #333;
+	    	border-right:8px solid transparent;
+	    	border-bottom:1px solid transparent;
+	    }
+	    .selectDiv select{
+	    	width:100%;
+	    	border:0;
+	    }
+	    .selectDiv select:focus{
+	    	border:0;
+	    }
+	    .tiaojian{min-height: 23px;border-bottom:1px solid #cccccc;position:relative;border-left:1px solid #cccccc;padding-bottom:1px;margin:4px 10px 0px 0px;padding-left:5px;padding-right:17px;display:block;white-space:nowrap;background:#ECECEC;float:left;height:17px;border-top:1px solid #cccccc;border-right:1px solid #cccccc;padding-top:1px;font-size:14px;}
+		.tiaojian:hover{ background-color:#fff;}
+		.tiaojian label{font-size:12px;font-weight: 100;}
+		.tiaojian em{ background-image:url(close.gif);cursor:pointer;display:block;height:13px;overflow:hidden;position:absolute;right:2px;top:3px;width:13px;}
+		.zhezhao { 
+			 width:100%; 
+			 height:100%; 
+			 background-color:#000; 
+			 filter:alpha(opacity=50); 
+			 -moz-opacity:0.5; 
+			 opacity:0.5; 
+			 position:absolute; 
+			 left:0px; 
+			 top:0px; 
+			 display:none; 
+			 z-index:1000; 
+		}
+		.zhezhao_title { 
+			 width:280px; 
+			 height:180px; 
+			 position:absolute; 
+			 top:200px; 
+			 left:50%; 
+			 margin-left:-140px; 
+			 display:none; 
+			 z-index:1500; 
+		} 
+		.tudiv{
+			height: 300px;
+			width:	400px;
+			margin-bottom: 20px;
+		}
+		 .table span { 
+			text-align: center; 
+		}
+		.table{ 
+			    font-size: 12px;
+		}
+		#Data_correction{
+			white-space:nowrap;
+		}
+	</style>
+  </head>
+  
+<body class="gray-bg" style="background-color: #fff;">
+
+	<div class="zhezhao" id="zhezhao" style="display:none;"></div>
+	<div class="zhezhao_title" id="zhezhao_title" style="display:none;">
+		<div class="sk-spinner sk-spinner-wave" style="width: 200px;">
+			<h2><b><span style="color: #fff;">计算中......</span></b></h2>
+		</div>
+		<div class="sk-spinner sk-spinner-wave">
+	        <div class="sk-rect1"></div>
+	        <div class="sk-rect2"></div>
+	        <div class="sk-rect3"></div>
+	        <div class="sk-rect4"></div>
+	        <div class="sk-rect5"></div>
+	    </div>
+	</div>
+	
+    <div class="wrapper wrapper-content animated fadeInRight" style="height:100%;padding-top: 10px">
+   		<div class="row" style="height:100%;">
+   		
+	   		<div class="col-sm-12" style="margin-bottom: 10px;">
+					<table class="table table-bordered zhong" style="margin-bottom:0px;">
+						<tr height="34px">
+							<td width="6%" rowspan="2" class="dise">
+								<h5 class="panel-title">
+									<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">排放结果</span>
+								</h5>
+							</td>
+							<td class="dise">SO<sub>2</sub></td>
+							<td class="dise">NO<sub>x</sub></td>
+							<td class="dise">PM<sub>2.5</sub></td>
+							<td class="dise">VOC</td>
+							<td class="dise">NH<sub>3</sub></td>
+							<td class="dise">PM<sub>10</sub></td>
+							<td class="dise"><sub>TSP</sub></td>
+							<td class="dise">BC</td>
+							<td class="dise">OC</td>
+							<td class="dise">CO</td>
+						</tr>
+						<tr height="34px" >
+							<td id="so" class="tab_data"></td>
+							<td id="no" class="tab_data"></td>
+							<td id="pm" class="tab_data"></td>
+							<td id="voc" class="tab_data"></td>
+							<td id="nh" class="tab_data"></td>
+							<td id="pm10" class="tab_data"></td>
+							<td id="tsp" class="tab_data"></td>
+							<td id="bc" class="tab_data"></td>
+							<td id="oc" class="tab_data"></td>
+							<td id="co" class="tab_data"></td>
+						</tr>
+					</table>
+					
+	   			<div class="col-sm-12" style="height:100%;padding-left:0;padding-right:0px;">
+					<div class="col-sm-12" style="padding-top: 15px;padding-left:0;padding-right:0px;">
+								<div class="tabs-container" id="tab_jbqk"><!-- tabs-container开始 -->
+									<ul class="nav nav-pills nav-justified" id="jiben_ul" style="height:35px;"><!-- 分栏目的标题 -->
+					                   	<li class="active" id="jiben_moren_li" style="border-left:0px;height:35px;" >
+					                       	<a data-toggle="tab" href="#tab-j-1" aria-expanded="true"  style="height:35px;"><i class="fa fa-table"></i> 数据源选取</a>
+					                    </li>
+					                    <li class="" style="border-left:0px;height:35px;">
+					                       	<a data-toggle="tab" href="#tab-j-2" aria-expanded="false" style="height:35px;"><i class="fa fa-pencil-square"></i> 数据修正</a>
+					                    </li>
+					                    <li class="" style="border-left:0px;height:px;">
+					                       	<a data-toggle="tab" href="#tab-j-3" aria-expanded="false" style="height:35px;"><i class="fa fa-line-chart"></i> 排放分析</a>
+					                    </li>
+		                    		</ul><!-- 分栏目的标题 -->
+		                    		
+									<div class="tab-content" id="jiben_tab" style="margin-top: 10px;"><!-- tab页面的内容开始 -->
+										<div id="tab-j-1" class="tab-pane active"><!-- tab-j-1开始 -->
+											<div class="panel panel-default">
+					                             <div id="v41" class="panel-collapse collapse in">
+					                                 <div class="panel-body" style="padding: 0px 0px;">
+					                                 
+					                                 	 <div class="row">
+							                                 <div class="col-sm-12">
+							                                 
+							                                 	<div class="col-sm-3" style='padding-left:0'>
+																	<div class="input-group m-b" style="margin-bottom: 0px">
+																		<span class="input-group-addon" style="border: 1px solid #E5E6E7;">任务列表: </span>
+																		<select class="form-control m-b" id="taskId" name="taskId"></select>
+																	</div>
+																</div>
+							                                 	<div class="col-sm-3" >
+																	<div class="input-group m-b" style="margin-bottom: 0px">
+																		<span class="input-group-addon" style="border: 1px solid #E5E6E7;">部门: </span>
+																		<select class="form-control m-b" id="paifangjisuanqu_select" name="taskId" onchange="paifangjisuanqu_select()">
+																		</select>
+																	</div>
+																</div>
+																
+																<div class="col-sm-3" style="padding-right: 15px;">
+																	<div class="input-group m-b" style="margin-bottom: 0px">
+																		<span class="input-group-addon" style="border: 1px solid #E5E6E7;">行业: </span>
+																		<select class="form-control m-b" id="bigIndex" name="bigIndex"></select>
+																	</div>
+																</div>
+																<div class="col-sm-3" style="padding-right: 15px;">
+																	<button type="button" class="btn btn-outline btn-lG" id="Calculation"><i class='fa fa-calculator'></i> 计算</button>
+																	<!-- <button type="button" class="btn btn-outline btn-lG" id="jisuanrenwu_save" style="margin-left:10px;display:none;"><i class='fa fa-binoculars'></i> 保存</button><i class='fa fa-refresh'> -->
+																	
+																	<button type="button" class="btn btn-outline btn-lG" id="jisuanrenwu_save" style="margin-left:10px;display:none;"><i class='fa fa-save'></i> 另存</button>
+																	<button type="button" class="btn btn-outline btn-lG" id="jisuanrenwu_update" style="margin-left:10px;display:none;"><i class='fa fa-file-o'></i> 保存</button><!-- 原始按钮 -->
+																</div>
+							                                 </div>
+							                       		</div><br>
+					                                 	
+					                                 
+														<table class="table table-bordered">
+																<tr>
+																	<th colspan="4" class="dise zhong">&nbsp;&nbsp;<!-- <i class="fa fa-th"> -->&nbsp;&nbsp;基本信息</th>
+																</tr>
+															<tr height="34px">
+																<td width="10%" rowspan="3" class="dise zhong">点源</td>
+																<td width="45%"><div id="spot_0" class="checkbox checkbox-info checkbox-right t1"></div></td>
+																<td width="45%"><div id="spot_1" class="checkbox checkbox-info checkbox-right t1"></div></td>
+															</tr>
+															<tr height="34px">
+																<td><div id="spot_2" class="checkbox checkbox-info checkbox-right t1"></div></td>
+																<td><div id="spot_3" class="checkbox checkbox-info checkbox-right t1"></div></td>
+															</tr>
+															<tr height="34px">
+																<td><div id="spot_4" class="checkbox checkbox-info checkbox-right t1"></div></td>
+																<td><div id="spot_5" class="checkbox checkbox-info checkbox-right t1"></div></td>
+															</tr>
+															<tr height="34px">
+																<td width="10%" rowspan="3" class="dise zhong">面源</td>
+																<td width="45%" ><div id="Noodles_0" class="checkbox checkbox-info checkbox-right t1"></div></td>
+																<td width="45%" ><div id="Noodles_1" class="checkbox checkbox-info checkbox-right t1"></div></td>
+															</tr>
+															<tr height="34px">
+																<td ><div id="Noodles_2" class="checkbox checkbox-info checkbox-right t1"></div></td>
+																<td ><div id="Noodles_3" class="checkbox checkbox-info checkbox-right t1"></div></td>
+															</tr>
+															<tr height="34px">
+																<td ><div id="Noodles_4" class="checkbox checkbox-info checkbox-right t1"></div></td>
+																<td ><div id="Noodles_5" class="checkbox checkbox-info checkbox-right t1"></div></td>
+															</tr>
+														</table>
+														
+														<table class="table table-bordered">
+															<tr>
+																<th colspan="4" class="dise zhong">&nbsp;&nbsp;<!-- <i class="fa fa-sort-amount-asc"> -->&nbsp;&nbsp;默认参数</th>
+															</tr>
+															<tr height="34px">
+																<td width="10%" class="dise zhong">排放系数</td>
+																<td width="90%" id="drain_system" class="t1"></td>
+															</tr>
+															<tr height="34px">
+																<td width="10%" class="dise zhong">去除效率</td>
+																<td width="90%" id="Removal_efficiency" class="t1"></td>
+															</tr>
+														</table>
+														
+					                                </div>
+					                            </div>
+					                        </div>
+										</div><!-- tab-j-1结束 -->
+										
+										<div id="tab-j-2" class="tab-pane"><!-- tab-j-2开始 -->
+											<div class="" >
+												<div class="row">
+					                                 <div class="panel-body" style="padding:  0px;border:0px;" id="v42">
+					                                 	
+					                                 	<div class="col-sm-7" >
+					                                        <div class="input-group group-select">
+													            <span class="input-group-addon dise zhong">数据源：</span>
+																<div class="chaxundiv_2 selectDiv" id="qyzt_2">
+																	<div style="margin-top: 5px;">
+																		<div class="radio radio-info radio-inline">
+																			<input type="radio" id="ps_s" value="p" name="correction_source" disabled="disabled"><label for="ps_s">点源</label>
+																		</div>
+																		<div class="radio radio-info radio-inline" >
+																			<input type="radio" id="ss_s" value="s" name="correction_source" disabled="disabled"><label for="ss_s">面源</label>
+																		</div>
+																		<div class="radio radio-info radio-inline" >
+																			<input type="radio" id="ef_s" value="ef" name="correction_source" disabled="disabled"><label for="ef_s">默认排放系数</label>
+																		</div>
+																		<div class="radio radio-info radio-inline" >
+																			<input type="radio" id="eta_s" value="eta" name="correction_source" disabled="disabled"><label for="eta_s">默认去除效率</label>
+																		</div>
+																	</div>
+																</div>
+												        	</div>
+					                                    </div>
+					                                 	<div class="col-sm-5" style="text-align:right;">
+					                                 		<button type="button" class="btn btn-outline btn-lG" id="correction_show"><i class='fa fa-pencil-square-o'></i> 筛选修改</button>
+					                                        <button type="button" class="btn btn-outline btn-lG" id="Data_analysis_butt" style="margin-left:10px;"><i class='fa fa-bar-chart'></i> 数据分析</button>
+					                                    </div>
+					                                 	<!-- 数据修正主要内容 -->
+					                                 	<div id="Data_correction" style="padding-top: 45px;"></div>
+														
+													</div>
+												</div><!-- row结束 -->
+											</div>
+										</div><!-- tab-j-2结束 -->
+										
+										<div id="tab-j-3" class="tab-pane" style="border: 0px;"><!-- tab-j-3开始 -->
+					                                 <div class="panel-body" style="padding: 0px 0px;border: 0px;" id="v43">
+					                                     <!-- <div class="alert alert-warning">此版本是一个维护版本，主要是升级和修复bug，让我们共同期待5.0版的到来</div> -->
+					                                     <div class="row" style="padding-left: 0px;">
+					                                     	<div class="col-sm-6">
+					                                     		<div class="input-group m-b" style="margin-bottom: 0px;padding-left:15px;">
+																	<span class="input-group-addon" style="border: 0px solid #E5E6E7;">条件： </span>
+																	<select class="form-control m-b" id="sj_left" onchange="sj_openPic('3');"></select>
+																</div>
+					                                    	</div>
+					                                    	<div class="col-sm-6">
+					                                     		<div class="input-group m-b" style="margin-bottom: 0px">
+																	<span class="input-group-addon" style="border: 0px solid #E5E6E7;">条件： </span>
+																	<select class="form-control m-b" id="sj_right" onchange="sj_openPic('4');"></select>
+																</div>
+					                                    	</div>
+														</div>
+														<div class="col-sm-6" style="padding-top:20px;">
+														<!-- style="width:780px;height:660px;" -->
+															<div id="sj_Pic_3" class="sj_Pic" ></div>
+														</div>
+														<div class="col-sm-6" style="padding-top:20px;">
+															<div id="sj_Pic_4" class="sj_Pic" ></div>
+														</div>
+					                         </div> 
+										</div><!-- tab-j-3结束 -->
+									</div><!-- tab页面的内容结束 -->
+								</div><!-- tabs-container结束 -->
+					</div>
+	   			</div>
+	   		</div>
+    	</div>
+  	</div> 
+   
+    <!-- 保存排放版本开始 -->
+    <div class="modal inmodal fade" style="margin-top: 100px" id="qingdan_save" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>保存排放版本</h2>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="col-sm-12">
+							<div class="tabs-container"> <!-- 标签体 -->
+								<ul class="nav nav-tabs" id="tab_ul">
+									<!-- 分栏目的标题 -->
+									<li class="active" id="" onclick="" style="background-color: #dff0d8;" quanming="0">
+										<a data-toggle="tab" href="#tab-pic1" aria-expanded="true">新建排放版本</a>
+									</li>
+								</ul>
+								<!-- 分栏目的标题 -->
+								<div class="tab-content">
+									<!-- tab页面的内容 -->
+									<div id="tab-pic1" class="tab-pane active">
+										<div class="panel-body">
+											<div class="row" style="height: calc(100% - 78px);">
+												<form id="changepassword_form" onsubmit="return false">
+													<div class="col-sm-12 form-group">
+														<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3><code>*</code>版本名称:</h3>
+														</label>
+														<div class="col-sm-8" id="data_1">
+															<input type="text" name="qingdan_name" id="qingdan_name" style="" required="required" cp="true" autocomplete="off" class="form-control">
+														</div>
+													</div>
+													<div class="col-sm-12 form-group">
+														<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>&nbsp;&nbsp;&nbsp;&nbsp;版本描述:</h3>
+														</label>
+														<div class="col-sm-8" id="data_1">
+															<input type="text" placeholder="例如：自主编制" name="qingdan_miaoshu" id="qingdan_miaoshu" style="" required="required" autocomplete="off" class="form-control">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div id="tab-pic2" class="tab-pane">
+										<div class="panel-body">
+											<div class="col-sm-12" style="height:200px;overflow :auto">
+												<table class="table table-bordered">
+													<thead>
+														<th style="text-align: center;">选择</th>
+														<!-- <th style="text-align: center;">序号</th> -->
+														<th style="text-align: center;">版本名称</th>
+														<th style="text-align: center;">版本描述</th>
+													</thead>
+													<tbody id="uplist" style="text-align: center;">
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 标签体 -->
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-w-m btn-info" id="jisuan_zhende_save"><i class='fa fa-binoculars'></i> 保&nbsp;存&nbsp;</button>
+					<button type="button" class="btn btn-white" style="width:120px;" data-dismiss="modal" id="jisuan_close">关&nbsp;闭&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 保存排放版本结束 -->
+	
+	<!-- 更新排放版本开始 -->
+	<div class="modal inmodal fade" style="margin-top: 100px" id="qingdan_update" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>更新排放版本</h2>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="col-sm-12">
+							<div class="tabs-container"> <!-- 标签体 -->
+								<ul class="nav nav-tabs" id="tab_ul">
+									<li class="" id="cover" style="background-color: #dff0d8;" quanming="1">
+										<a data-toggle="tab" href="#tab-pic2" aria-expanded="false">更新排放版本</a>
+									</li>
+								</ul>
+								<!-- 分栏目的标题 -->
+								<div class="tab-content">
+									<!-- tab页面的内容 -->
+									<div id="tab-pic1" class="tab-pane active">
+										<div class="panel-body">
+											<div class="row" style="height: calc(100% - 78px);">
+												<form id="changepassword_form" onsubmit="return false">
+													<div class="col-sm-12 form-group">
+														<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>版本名称:</h3>
+														</label>
+														<div class="col-sm-8" id="data_1">
+															<input type="text" name="qingdan_name" id="qingdan_name_update" style="" required="required" cp="true" autocomplete="off" class="form-control">
+														</div>
+													</div>
+													<div class="col-sm-12 form-group">
+														<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>&nbsp;&nbsp;&nbsp;&nbsp;版本描述:</h3>
+														</label>
+														<div class="col-sm-8" id="data_1">
+															<input type="text" name="qingdan_miaoshu" id="qingdan_miaoshu_update" style="" required="required" autocomplete="off" class="form-control">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div id="tab-pic2" class="tab-pane">
+										<div class="panel-body">
+											<div class="col-sm-12" style="height:200px;overflow :auto">
+												<table class="table table-bordered">
+													<thead>
+														<th style="text-align: center;">选择</th>
+														<!-- <th style="text-align: center;">序号</th> -->
+														<th style="text-align: center;">版本名称</th>
+														<th style="text-align: center;">版本描述</th>
+													</thead>
+													<tbody id="uplist" style="text-align: center;">
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 标签体 -->
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline btn-lG" id="jisuan_zhende_update"><i class='fa fa-binoculars'></i> 保存</button>
+					<button type="button" class="btn btn-white" data-dismiss="modal" id="jisuan_close_update">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 更新排放版本结束 -->
+	
+	<!-- 数据分析弹窗开始 -->
+	<div class="modal inmodal fade" style="margin-top: 100px;" id="sjfx_modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 70%;" >
+			<div class="modal-content" >
+				<div class="modal-header" style="padding:15px 15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h5 class="panel-title">
+						<span style="font-size: 25px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">数据分析</span>
+ 	                </h5> 
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="col-sm-12" style="height:100%;">
+						<div class="tabs-container" > <!-- 标签体 -->
+							<!-- 右侧部分开始 -->
+	   			<div class="col-sm-12" >
+				</div>	
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="input-group m-b" style="margin-bottom: 0px">
+								<span class="input-group-addon" style="border: 1px solid #E5E6E7;">分析指标： </span>
+								<select class="form-control m-b" id="Analysis_index">
+									<option value="active">活动水平</option>
+									<option value="ef">排放因子</option>
+									<option value="eta">去除效率</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-sm-6" >
+							<div class="input-group group-select">
+					            <span class="input-group-addon">数据源：</span>
+								<div class="chaxundiv_2 selectDiv" id="qyzt_1">
+									<div style="margin-top: 5px;">
+										<div class="radio radio-info radio-inline">
+											<input type="radio" id="ps_ss" value="1" name="Analysis_source" checked="checked" onclick="sjy_checked()" disabled="disabled"/><label for="ps_ss">点源</label>
+										</div>
+										<div class="radio radio-info radio-inline" >
+											<input type="radio" id="ss_ss" value="2" name="Analysis_source" onclick="sjy_checked()" disabled="disabled"/><label for="ss_ss">面源</label>
+										</div>
+									</div>
+								</div>
+				        	</div>
+						</div>
+					</div>
+					<br>
+					<div class="row" >
+						<div class="col-sm-6" >
+							<div class="input-group m-b" style="margin-bottom: 0px;">
+								<span class="input-group-addon" style="border: 1px solid #E5E6E7;">条件： </span>
+								<select class="form-control m-b" id="Analysis_up" onchange="openPic('1');"></select>
+							</div>
+						<div class="col-sm-12">
+							<div id="Pic_1" class="Pic_model tudiv" ></div>
+						</div>
+					</div>
+						<div class="col-sm-6" >
+							<div class="input-group m-b" style="margin-bottom: 0px">
+								<span class="input-group-addon" style="border: 1px solid #E5E6E7;">条件： </span>
+								<select class="form-control m-b" id="Analysis_down" onchange="openPic('2');"></select>
+							</div>
+							<div class="col-sm-12" >
+								<div id="Pic_2" class="Pic_model tudiv" ></div>
+							</div>
+						</div>
+				   </div>
+	   			<!-- 右侧部分结束 -->
+				</div>
+						<!-- 标签体 -->
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+	<!-- 数据分析弹窗结束 -->
+    
+    <script src="../../BackstageIP.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/content.js"></script><!-- 自定义js -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../js/jquery-ui.custom.min.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+    <!-- iCheck -->
+    <script src="../../js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../../js/ajax.js"></script>
+    
+    <!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-editable-jisuan.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+    
+    <script src="../../zp01/checkSelect.js"></script>
+    
+    
+    
+<!--     <script src="../../js/colResizable-1.6.js"></script> -->
+<!--引入bootstrap-table表格插件 该文件已被本人修改，如要用设置列宽和拖动功能必须引入这个文件 -->
+<!-- <script src="../../js/bootstrap-table.js"></script> -->
+<!-- <script src="../../js/bootstrap-table-zh-CN.js"></script> -->
+
+<!-- <script src="../../js/bootstrap-table-fixed-columns.js"></script> -->
+    
+    
+    
+    <!-- echarts -->
+    <script src="../../js/plugins/echarts/echarts.js"></script>
+    <script src="../../js/plugins/echarts/macarons.js"></script>
+    
+    <script src="../../zp02/0201/bmhy.js"></script>
+    <script src="0301.js"></script>
+ </body>
+</html>

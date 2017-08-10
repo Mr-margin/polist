@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    
+	<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../css/animate.css" rel="stylesheet">
+	<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">	
+	<link href="../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../css/style.css" rel="stylesheet">
+    <style>
+		.box_dashed {
+			padding: 7px; /* border: 1px dashed rgb(76, 177, 45); */ border-image: none; margin-top: 10px; margin-bottom: 20px;
+		}
+		.table-hover > thead > tr > th, .table-hover > thead > tr > td {
+			text-align:center; background-color: #F5F5F6;
+		}
+		.table-hover > tbody > tr > td {
+			text-align:center;
+		}
+
+		
+		.modal-header h2{
+			text-align: center;
+		}
+		.selec_1{
+			width: 100%;
+			height: 23px;
+		}
+		.chaxundiv{
+			    background-color: #F5F5F6;
+/* 			    width: 12%; */
+			    min-height: 30px;
+/* 			    line-height: 30px; */
+			    text-align: right;
+			    font-size: 12px;
+			    border:1px solid #cccccc;
+			    padding: 0;
+		}
+		.chaxundiv_2{
+			 min-height: 30px;
+/* 			 line-height: 30px; */
+			 border:1px solid #cccccc;
+		}
+		.chaxundiv h5{
+			color:black;padding-right: 8px;margin-top: 9px;
+		}
+		.checkbox  label{
+	        margin-right: 40px;
+    		margin-bottom: 5px;
+    		margin-top: 5px;
+		}
+		.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .selectDiv .noSelectBorder select{
+	    	border:0;
+	        appearance:none;
+	        -moz-appearance:none;
+	        -webkit-appearance:none;
+	        padding-right:20px;
+	    }
+	    .selectDiv .noSelectBorder{
+	    	display:inline-block;
+	    	position: relative;
+	    	margin-right:10px;
+	    }
+	    .selectDiv .noSelectBorder:hover i{
+	    	display:block;
+	    }
+	    .selectDiv .noSelectBorder i{
+	    	position:absolute;
+	    	display:none;
+	    	/* width:19px;
+	    	height:19px; */
+	    	right:0;
+	    	top:7px;
+	    	border-left:8px solid transparent;
+	    	border-top:16px solid #333;
+	    	border-right:8px solid transparent;
+	    	border-bottom:1px solid transparent;
+	    }
+	    .selectDiv select{
+	    	width:100%;
+	    	border:0;
+	    }
+	    .selectDiv select:focus{
+	    	border:0;
+	    }
+    	.zhezhao { 
+		 width:100%; 
+		 height:100%; 
+		 opacity:0.5; 
+		 left:0px; 
+		 top:0px; 
+		}
+	</style>
+  </head>
+  
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;padding-top: 10px;">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="input-group group-select">
+					<span class="input-group-addon">&nbsp;&nbsp;部&nbsp;&nbsp;门&nbsp;&nbsp;： </span>
+					<div>
+						<select class='form-control m-b' id="select_1"
+							onchange="changesele(this.value);" style="min-width: 23%;"></select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="input-group group-select">
+					<span class="input-group-addon">&nbsp;&nbsp;行&nbsp;&nbsp;业&nbsp;&nbsp;： </span>
+					<div>
+						<select class='form-control m-b' id="select_2" style="min-width: 23%;"></select>
+					</div>
+				</div>
+			</div>
+		</div><br>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 所在地区： </span>
+					<div class="chaxundiv_2 selectDiv" id="szdq_2" style="padding-bottom: 0;width:100%;"></div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 企业等级： </span>
+					<div class="chaxundiv_2 selectDiv" id="qyzt_2">
+						<div class="checkbox checkbox-info checkbox-right" style="margin-bottom:0px;margin-top:0px;">
+							<input type="checkbox" id="qyzt1" value="1" name="qyzt" checked="checked"><label for="qyzt1">简化版</label>
+							<input type="checkbox" id="qyzt2" value="2" name="qyzt" checked="checked"><label for="qyzt2">通用版</label>
+							<input type="checkbox" id="qyzt3" value="3" name="qyzt" checked="checked"><label for="qyzt3">专用版</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-3">
+				<div class="input-group">
+					<span class="input-group-addon"> 企业名称： </span>
+					<div class="chaxundiv_2 selectDiv" id="yhmc_2">
+						<input id="yhmc_inp" type="text" style="width: 100%;height: 33px;border: 0;" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5">
+					<button type="button" class="btn btn-outline btn-lG" onclick="chaxun();"><i class='fa fa-binoculars'></i> 查询</button>
+					<button type="button" class="btn btn-outline btn-lG" onclick="refresh_company();"style="margin-right: 10px;"><i class='fa fa-refresh'></i> 重置</button>
+					<button type="button" class="btn btn-outline btn-lG" onclick="creat_user();"><i class='fa fa-plus-square'></i> 创建</button>
+					<button type="button" class="btn btn-outline btn-lG" onclick="updata_qy();"><i class='fa fa-pencil'></i> 修改</button>
+					<button type="button" class="btn btn-outline btn-lG" onclick="export_all();"><i class='fa fa-external-link'></i> 导出全部</button>
+					<button type="button" class="btn btn-outline btn-lO" onclick="deleteCompany();"><i class='fa fa-close'></i> 删除账号</button>
+			</div>
+		</div><br>
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<table id='metTable1'>
+					<thead>
+                        <tr>
+                        	<th data-field="state" data-checkbox="true" formatter="stateFormatter"></th>
+                            <th data-field="userId" data-halign="center" data-align="center" data-visible="false">id</th>
+                           	<th data-field="number" data-halign="center" data-align="center">序号</th>
+                           	<th data-field="userName" data-halign="center" data-align="center">账号名称</th>
+                           	<th data-field="compnayName" data-halign="center" data-align="center">企业名称</th>
+                           	<th data-field="regionName" data-halign="center" data-align="center">所在地区</th>
+                           	<th data-field="industryName" data-halign="center" data-align="center">行业类别</th>
+                           	<th data-field="statusName" data-halign="center" data-align="center">状态</th>
+                           	<th data-field="leader" data-halign="center" data-align="center">填报人</th>
+                            <th data-field="phone" data-halign="center" data-align="center">联系电话</th>
+                            <th data-field="Email" data-halign="center" data-align="center">邮箱</th>
+                        </tr>
+                    </thead>
+    			</table>
+			</div>
+		</div>
+	   	<div class="modal inmodal" id="creat_modal" tabindex="-1"role="dialog" aria-hidden="true" style="width: 55%;margin-left: 22%;margin-top: 2%;">
+   			
+   			<div class="modal-dialog modal-lg" style="width: 100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>创建企业账号</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 100%;" >
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="height:100%;">
+							<div class="panel-group" style="height:calc(100% - 15px);"id="version">
+								<div class="panel panel-default" style="margin-bottom:0px;">
+								</div>
+								
+   			<div class="row">
+				<div class="col-sm-12">
+					<div class="tabs-container"><!-- 标签体 -->
+				   		<ul class="nav nav-tabs"><!-- 分栏目的标题 -->
+							<li class="active" id="" onclick="" style="background-color: #dff0d8;" >
+									<a data-toggle="tab" href="#tab-1" aria-expanded="true"><i class="fa fa-users"></i> 批量创建</a>
+								</li>
+			                  	<li class=""  id="" style="background-color: #dff0d8;">
+			                      	<a data-toggle="tab" href="#tab-2" aria-expanded="false"><i class="fa fa-user"></i> 单独创建</a>
+			                   </li>
+			            </ul><!-- 分栏目的标题 -->
+			               <div class="tab-content"><!-- tab页面的内容 -->
+			               	<div id="tab-1" class="tab-pane active" >
+			               		<div class="panel-body">
+									<div class="row" style="height: calc(100% - 78px);">
+										<div class="modal-content animated bounceInRight">
+											<div class="modal-header">
+							                  	<h2 class="modal-title"><img src="../zp01/9999/upload.png"  style="padding-left:12px;"></h2>
+												<h2 class="modal-title" style="font-size:20px; margin-top:12px;">选择要上传的文件</h2>
+							                    <h2 class="modal-title" style="font-size:14px; margin-top:12px;">请选择要上传的单个<span style="color: #23A40F">“.xlsx”</span>文件进行上传。</h2>
+											</div>
+											<div class="modal-body" style="background-color:#b6d8ff;padding-bottom: 10px;padding-top: 10px;">
+												<form class="form-horizontal" id="ImportForm" name="ImportForm" action="http://192.168.1.211:8090/userManager/batchCreateCompnayUser" method="post"  enctype="multipart/form-data">
+													<!-- <div class="form-group" style="padding-top:0px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+														<label class="font-noraml" style="color:#FFFFFF;">文件选择（单选）</label><a id="mbxz_a" style="float: right;color: red;text-decoration:underline;" href="">模板下载</a>
+														<input type="file" id="file" name="file" class="file" accept=".xlsx" style="width:100%;"/>
+														<div class="col-sm-12" style="text-align: center;">
+															<button type="button" class="btn btn-primary" onclick="shangchuan();"><i class='fa fa-check'></i> 确定上传</button>
+															<button type="button" class="btn btn-warning" onclick="quxiaomtk();"><i class='fa fa-undo'></i> 取消</button>
+														</div>
+													</div> -->
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>		
+			               	</div>
+			               	
+			               	<div id="tab-2" class="tab-pane">
+			               		<div class="panel-body">
+									<div class="row" style="height: calc(100% - 78px);">
+										<form class="form-horizontal" id="add_Form">
+											<div class="row" style="margin-bottom: 10px;">
+											<span class="col-sm-3" style="text-align: right;">企业名称<code>*</code></span>
+											<div class="col-sm-8">
+												<input id="qymc_in" name="qymc_in" style="width: 100%;"type="text"  required="required" mc="true" maxlength="40" />
+											</div>
+										</div>
+										
+										<div class="row" style="margin-bottom: 10px;">
+											<span class="col-sm-3" style="text-align: right;padding-top: 5px;">企业等级<code>*</code></span>
+											<div class="col-sm-8">
+												<div class="radio radio-info radio-inline" style="padding-top: 5px;">
+													<input type="radio" id="qiyezhuangtai1" value="1" name="qiyezhuangtai"checked="checked">
+													<label for="qiyezhuangtai1" id="wgt_bu">简化版</label>
+												</div>
+												<div class="radio radio-info radio-inline" style="padding-top: 5px;">
+													<input type="radio" id="qiyezhuangtai2" value="2" name="qiyezhuangtai">
+													<label for="qiyezhuangtai2">通用版</label>
+												</div>
+												<div class="radio radio-info radio-inline" style="padding-top: 5px;">
+													<input type="radio" id="qiyezhuangtai3" value="3" name="qiyezhuangtai">
+													<label for="qiyezhuangtai3">专用版</label>
+												</div>
+											</div>
+										</div>
+										
+										<div class="row" style="margin-bottom: 10px;">
+											<span class="col-sm-3" style="text-align: right;">行业类别&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<div class="col-sm-8">
+												<select id="selec_hylb"class="selec_1">
+													<option>行业类别1</option>
+													<option>行业类别2</option>
+												</select>
+											</div>
+										</div>
+										
+										<div class="row" style="margin-bottom: 20px;">
+											<span class="col-sm-3" style="text-align: right;">所在县<code>*</code></span>
+											<div class="col-sm-8">
+												<select id="sel_xian" name="sel_xian" name="sel_xian" class="selec_1"  required="required">
+												</select>
+											</div>
+										</div>
+										</form>
+										<div class="row" style="text-align:center;">
+											<button type="button" class="btn btn-outline btn-lG" onclick="chuangjian();"><i class='fa fa-check'></i> 确定创建</button>
+											<button type="button" class="btn btn-outline btn-lO" onclick="quxiaomtk();"><i class='fa fa-undo'></i> 取消</button>
+										</div>
+									</div>
+								</div>
+			               	</div>
+		              	</div>
+		           </div><!-- 标签体 -->
+				</div>
+			</div>
+			
+			
+			</div></div></div>
+			</div></div>
+			
+		</div>
+    </div>
+    
+    <div class="modal inmodal" id="up_modal" tabindex="-1"role="dialog" aria-hidden="true" style="width: 40%;margin-left: 30%;margin-top: 2%;">
+		<div class="modal-content animated bounceInRight">
+			<div class="modal-header"
+				style="padding-top:15px;padding-bottom:15px;">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<span
+					style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>用户修改</h2></span>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<form class="form-horizontal" id="up_Form">
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">账号名称<code>*</code></span>
+							<div class="col-sm-8" id="in_userName">
+							</div>
+							<input id="user_id" type="text" style="display: none;"/>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">企业名称<code>*</code></span>
+							<div class="col-sm-8">
+								<input id="in_compnayName" style="width: 100%;"type="text" required="required" mc="true" maxlength="40"/>
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 20px;">
+							<span class="col-sm-3" style="text-align: right;">所在地区<code>*</code></span>
+							<div class="col-sm-8">
+								<select id="in_region" name="in_region" class="selec_1" required="required"/>
+								</select>
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">行业类别&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<div class="col-sm-8">
+								<select id="in_industry"class="selec_1">
+								</select>
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">企业等级<code>*</code></span>
+							<div class="col-sm-8">
+								<div class="radio radio-info radio-inline">
+									<input type="radio" id="status1" value="1" name="status"><label for="status1">简化版</label>
+								</div>
+								<div class="radio radio-info radio-inline" >
+									<input type="radio" id="status2" value="2" name="status"><label for="status2">通用版</label>
+								</div>
+								<div class="radio radio-info radio-inline" >
+									<input type="radio" id="status3" value="3" name="status"><label for="status3">专用版</label>
+								</div>
+							</div>
+						</div>
+						
+<!-- 						<div class="row" style="margin-bottom: 10px;"> -->
+<!-- 							<span class="col-sm-3" style="text-align: right;">填报人</span> -->
+<!-- 							<div class="col-sm-8"> -->
+<!-- 								<input id="in_leader" style="width: 100%;"type="text" maxlength="4" chinese="true"/> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="row" style="margin-bottom: 10px;"> -->
+<!-- 							<span class="col-sm-3" style="text-align: right;">联系电话</span> -->
+<!-- 							<div class="col-sm-8"> -->
+<!-- 								<input id="in_phone" style="width: 100%;"type="text" mobile="true"/> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="row" style="margin-bottom: 10px;"> -->
+<!-- 							<span class="col-sm-3" style="text-align: right;">邮箱</span> -->
+<!-- 							<div class="col-sm-8"> -->
+<!-- 								<input id="in_Email" style="width: 100%;"type="text" email="true"/> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+					</form>
+					<div class="row" style="text-align:center;">
+						<button type="button" class="btn btn-outline btn-lB" onclick="chuangjian_2();"><i class='fa fa-check'></i> 确定修改</button>
+						<button type="button" class="btn btn-outline btn-lO" onclick="quxiaomtk_2();"><i class='fa fa-undo'></i> 取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal inmodal" id="tishi_modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 55%;margin-left: 22%;margin-top: 2%;">
+		<div class="modal-dialog modal-lg" style="width: 100%;">
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>提示</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 500px">
+					<div style="padding-top:20%;">
+						<div class="sk-spinner sk-spinner-wave" style="width: 200px;">
+							<h2>
+								<b><span >上传中......</span></b>
+							</h2>
+						</div>
+						<div class="sk-spinner sk-spinner-wave">
+							<div class="sk-rect1"></div>
+							<div class="sk-rect2"></div>
+							<div class="sk-rect3"></div>
+							<div class="sk-rect4"></div>
+							<div class="sk-rect5"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/content.js"></script><!-- 自定义js -->
+    
+    <script src="../js/jquery-ui.custom.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 表单验证 -->
+    <script src="../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../js/plugins/validate/messages_zh.min.js"></script>
+    <!-- iCheck -->
+    <script src="../js/plugins/iCheck/icheck.min.js"></script>
+    <!-- 消息框 -->
+    <script src="../js/plugins/toastr/toastr.min.js"></script>
+    <!-- 对话框 -->
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+   	<!-- 上传 -->
+    <script src="../zp01/9999/ajaxfileupload.js"></script>
+    
+    <script src="../zp02/0201/bmhy.js"></script> 
+    <script src="../BackstageIP.js"></script>   
+  
+    <script src="0701.js"></script>
+    
+ </body>
+</html>

@@ -1,0 +1,1132 @@
+
+{
+	"附件society_社会经济数据信息表":
+{
+		"表society1_社会经济数据信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":0
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":0
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":0
+					}
+				},
+{
+					"title":"GDP(万元)(必填)","field":"gdp","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"GDP(万元)","type":"text","field":"gdp","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"工业GDP(万元)(必填)","field":"igdp","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"工业GDP(万元)","type":"text","field":"igdp","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"人均GDP(元/人)(必填)","field":"capitagdp","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"人均GDP(元/人)","type":"text","field":"capitagdp","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"总人口(万人)(必填)","field":"pop","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"总人口(万人)","type":"text","field":"pop","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"城镇人口(万人)(必填)","field":"upop","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"城镇人口(万人)","type":"text","field":"upop","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"农村人口(万人)(必填)","field":"rpop","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表society1_社会经济数据信息表","editable":
+{
+						"title":"农村人口(万人)","type":"text","field":"rpop","validate":"validate_5_3","metTable":0
+					}
+				}
+			]
+		],"head":
+[
+			"表society1_社会经济数据信息表"
+		]
+	},"附件ef_排放因子信息表":
+{
+		"表ef1_排放因子信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":0
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":0
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":0
+					}
+				},
+{
+					"title":"排放源类别名称(必填)","field":"id0","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"排放源类别名称","type":"text","disabled":"true","field":"id0","metTable":0
+					}
+				},
+{
+					"title":"行业名称(必填)","field":"id1","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"行业名称","type":"text","disabled":"true","field":"id1","metTable":0
+					}
+				},
+{
+					"title":"燃料/产品(必填)","field":"id2","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"燃料/产品","type":"text","disabled":"true","field":"id2","metTable":0
+					}
+				},
+{
+					"title":"燃烧/生产技术(必填)","field":"id3","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"燃烧/生产技术","type":"text","disabled":"true","field":"id3","metTable":0
+					}
+				},
+{
+					"title":"单位(必填)","field":"unit","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"单位","type":"text","disabled":"true","field":"unit","metTable":0
+					}
+				},
+{
+					"title":"排放因子","colspan":11,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"CO(必填)","field":"efco","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"CO","type":"text","field":"efco","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"NOx(必填)","field":"efnox","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"NOx","type":"text","field":"efnox","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"SO2(必填)","field":"efso2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"SO2","type":"text","field":"efso2","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"VOC(必填)","field":"efvoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"VOC","type":"text","field":"efvoc","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"PM2.5(必填)","field":"efpm25","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"PM2.5","type":"text","field":"efpm25","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"PMcoarse(必填)","field":"efpmcoarse","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"PMcoarse","type":"text","field":"efpmcoarse","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"PM10more(必填)","field":"efpm10more","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"PM10more","type":"text","field":"efpm10more","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"BC(必填)","field":"efbc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"BC","type":"text","field":"efbc","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"OC(必填)","field":"efoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"OC","type":"text","field":"efoc","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"CO2(必填)","field":"efco2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"CO2","type":"text","field":"efco2","validate":"validate_5_3","metTable":0
+					}
+				},
+{
+					"title":"NH3(必填)","field":"efnh3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef1_排放因子信息表","editable":
+{
+						"title":"NH3","type":"text","field":"efnh3","validate":"validate_5_3","metTable":0
+					}
+				}
+			]
+		],"表ef2_数据来源信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":1
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":1
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":1
+					}
+				},
+{
+					"title":"排放源类别名称(必填)","field":"id0","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"排放源类别名称","type":"text","disabled":"true","field":"id0","metTable":1
+					}
+				},
+{
+					"title":"行业名称(必填)","field":"id1","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"行业名称","type":"text","disabled":"true","field":"id1","metTable":1
+					}
+				},
+{
+					"title":"燃料/产品(必填)","field":"id2","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"燃料/产品","type":"text","disabled":"true","field":"id2","metTable":1
+					}
+				},
+{
+					"title":"燃烧/生产技术(必填)","field":"id3","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"燃烧/生产技术","type":"text","disabled":"true","field":"id3","metTable":1
+					}
+				},
+{
+					"title":"单位(必填)","field":"unit","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"","Update":"0","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"单位","type":"text","disabled":"true","field":"unit","metTable":1
+					}
+				},
+{
+					"title":"排放因子","colspan":11,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"CO(必填)","field":"refco","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"CO","type":"text","field":"refco","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"NOx(必填)","field":"refnox","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"NOx","type":"text","field":"refnox","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"SO2(必填)","field":"refso2","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"SO2","type":"text","field":"refso2","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"VOC(必填)","field":"refvoc","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"VOC","type":"text","field":"refvoc","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"PM2.5(必填)","field":"refpm25","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"PM2.5","type":"text","field":"refpm25","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"PMcoarse(必填)","field":"refpmcoarse","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"PMcoarse","type":"text","field":"refpmcoarse","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"PM10more(必填)","field":"refpm10more","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"PM10more","type":"text","field":"refpm10more","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"BC(必填)","field":"refbc","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"BC","type":"text","field":"refbc","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"OC(必填)","field":"refoc","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"OC","type":"text","field":"refoc","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"CO2(必填)","field":"refco2","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"CO2","type":"text","field":"refco2","validate":"validate_1","metTable":1
+					}
+				},
+{
+					"title":"NH3(必填)","field":"refnh3","align":"center","valign":"middle","Op":"text","RealTemplate":"1","Select":"","Update":"1","list":"","level1":"表ef2_数据来源信息表","editable":
+{
+						"title":"NH3","type":"text","field":"refnh3","validate":"validate_1","metTable":1
+					}
+				}
+			]
+		],"head":
+[
+			"表ef1_排放因子信息表","表ef2_数据来源信息表"
+		]
+	},"附件eta_末端控制设备信息表":
+{
+		"表eta2_脱硝设备信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":0
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":0
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":0
+					}
+				},
+{
+					"title":"脱硝工艺","colspan":12,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"名称(必填)","field":"etaNOxname","align":"center","valign":"middle","rowspan":2,"Op":"list-etaNOxname","RealTemplate":"1","Select":"0","Update":"1","list":"选择性非催化还原法,选择性催化还原法,其它脱硝技术,无","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"名称","type":"select","noeditFormatter":"etaNOxname","source":"list-etaNOxname","metTable":0
+					}
+				},
+{
+					"title":"去除效率(%)","colspan":11,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"CO(必填)","field":"etaNOxco","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"CO","type":"text","field":"etaNOxco","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"NOx(必填)","field":"etaNOxnox","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"NOx","type":"text","field":"etaNOxnox","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"SO2(必填)","field":"etaNOxso2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"SO2","type":"text","field":"etaNOxso2","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"VOC(必填)","field":"etaNOxvoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"VOC","type":"text","field":"etaNOxvoc","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"PM2.5(必填)","field":"etaNOxpm25","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"PM2.5","type":"text","field":"etaNOxpm25","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"PMcoarse(必填)","field":"etaNOxpmcoarse","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"PMcoarse","type":"text","field":"etaNOxpmcoarse","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"PM10more(必填)","field":"etaNOx10more","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"PM10more","type":"text","field":"etaNOx10more","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"BC(必填)","field":"etaNOxbc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"BC","type":"text","field":"etaNOxbc","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"OC(必填)","field":"etaNOxoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"OC","type":"text","field":"etaNOxoc","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"CO2(必填)","field":"etaNOxco2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"CO2","type":"text","field":"etaNOxco2","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"NH3(必填)","field":"etaNOxnh3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta2_脱硝设备信息表","editable":
+{
+						"title":"NH3","type":"text","field":"etaNOxnh3","validate":"validate_6_2","metTable":0
+					}
+				}
+			]
+		],"表eta1_脱硫设备信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":1
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":1
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":1
+					}
+				},
+{
+					"title":"脱硫工艺","colspan":12,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"名称(必填)","field":"etaSO2name","align":"center","valign":"middle","rowspan":2,"Op":"list-etaSO2name","RealTemplate":"1","Select":"1","Update":"0","list":"烟气循环流化床法,炉内喷钙法,石灰石/石灰-石膏法,双碱法,海水法,氧化镁法,氨法,密相干法,旋转喷雾干燥法,其它脱硫技术,无","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"名称","type":"select","noeditFormatter":"etaSO2name","source":"list-etaSO2name","metTable":1
+					}
+				},
+{
+					"title":"去除效率(%)","colspan":11,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"CO(必填)","field":"etaSO2co","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"CO","type":"text","field":"etaSO2co","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"NOx(必填)","field":"etaSO2nox","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"NOx","type":"text","field":"etaSO2nox","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"SO2(必填)","field":"etaSO2so2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"SO2","type":"text","field":"etaSO2so2","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"VOC(必填)","field":"etaSO2voc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"VOC","type":"text","field":"etaSO2voc","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"PM2.5(必填)","field":"etaSO2pm25","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"PM2.5","type":"text","field":"etaSO2pm25","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"PMcoarse(必填)","field":"etaSO2pmcoarse","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"PMcoarse","type":"text","field":"etaSO2pmcoarse","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"PM10more(必填)","field":"etaSO210more","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"PM10more","type":"text","field":"etaSO210more","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"BC(必填)","field":"etaSO2bc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"BC","type":"text","field":"etaSO2bc","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"OC(必填)","field":"etaSO2oc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"OC","type":"text","field":"etaSO2oc","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"CO2(必填)","field":"etaSO2co2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"CO2","type":"text","field":"etaSO2co2","validate":"validate_6_2","metTable":1
+					}
+				},
+{
+					"title":"NH3(必填)","field":"etaSO2nh3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta1_脱硫设备信息表","editable":
+{
+						"title":"NH3","type":"text","field":"etaSO2nh3","validate":"validate_6_2","metTable":1
+					}
+				}
+			]
+		],"表eta4_除尘设备信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":2
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":2
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":2
+					}
+				},
+{
+					"title":"除尘工艺","colspan":12,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"名称(必填)","field":"etaPMname","align":"center","valign":"middle","rowspan":2,"Op":"list-etaPMname","RealTemplate":"1","Select":"0","Update":"1","list":"重力沉降法,惯性除尘法,湿法除尘法,普通静电除尘法,高效静电除尘法,过滤式除尘法,电袋复合除尘法,单筒旋风除尘法,多管旋风除尘法,无组织尘一般控制技术,无组织尘高效控制技术,其它除尘技术,无","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"名称","type":"select","noeditFormatter":"etaPMname","source":"list-etaPMname","metTable":2
+					}
+				},
+{
+					"title":"去除效率(%)","colspan":11,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"CO(必填)","field":"etaPMco","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"CO","type":"text","field":"etaPMco","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"NOx(必填)","field":"etaPMnox","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"NOx","type":"text","field":"etaPMnox","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"SO2(必填)","field":"etaPMso2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"SO2","type":"text","field":"etaPMso2","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"VOC(必填)","field":"etaPMvoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"VOC","type":"text","field":"etaPMvoc","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"PM2.5(必填)","field":"etaPMpm25","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"PM2.5","type":"text","field":"etaPMpm25","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"PMcoarse(必填)","field":"etaPMpmcoarse","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"PMcoarse","type":"text","field":"etaPMpmcoarse","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"PM10more(必填)","field":"etaPM10more","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"PM10more","type":"text","field":"etaPM10more","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"BC(必填)","field":"etaPMbc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"BC","type":"text","field":"etaPMbc","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"OC(必填)","field":"etaPMoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"OC","type":"text","field":"etaPMoc","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"CO2(必填)","field":"etaPMco2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"CO2","type":"text","field":"etaPMco2","validate":"validate_6_2","metTable":2
+					}
+				},
+{
+					"title":"NH3(必填)","field":"etaPMnh3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta4_除尘设备信息表","editable":
+{
+						"title":"NH3","type":"text","field":"etaPMnh3","validate":"validate_6_2","metTable":2
+					}
+				}
+			]
+		],"表eta3_低氮燃烧设备信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":3
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":3
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":3,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":3
+					}
+				},
+{
+					"title":"低氮燃烧","colspan":12,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"名称(必填)","field":"etaNOxxname","align":"center","valign":"middle","rowspan":2,"Op":"list-etaNOxxname","RealTemplate":"1","Select":"0","Update":"1","list":"普通低氮燃烧器,高效低氮燃烧器,无","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"名称","type":"select","noeditFormatter":"etaNOxxname","source":"list-etaNOxxname","metTable":3
+					}
+				},
+{
+					"title":"去除效率(%)","colspan":11,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"CO(必填)","field":"etaNOxxco","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"CO","type":"text","field":"etaNOxxco","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"NOx(必填)","field":"etaNOxxnox","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"NOx","type":"text","field":"etaNOxxnox","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"SO2(必填)","field":"etaNOxxso2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"SO2","type":"text","field":"etaNOxxso2","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"VOC(必填)","field":"etaNOxxvoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"VOC","type":"text","field":"etaNOxxvoc","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"PM2.5(必填)","field":"etaNOxxpm25","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"PM2.5","type":"text","field":"etaNOxxpm25","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"PMcoarse(必填)","field":"etaNOxxpmcoarse","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"PMcoarse","type":"text","field":"etaNOxxpmcoarse","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"PM10more(必填)","field":"etaNOxx10more","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"PM10more","type":"text","field":"etaNOxx10more","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"BC(必填)","field":"etaNOxxbc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"BC","type":"text","field":"etaNOxxbc","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"OC(必填)","field":"etaNOxxoc","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"OC","type":"text","field":"etaNOxxoc","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"CO2(必填)","field":"etaNOxxco2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"CO2","type":"text","field":"etaNOxxco2","validate":"validate_6_2","metTable":3
+					}
+				},
+{
+					"title":"NH3(必填)","field":"etaNOxxnh3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表eta3_低氮燃烧设备信息表","editable":
+{
+						"title":"NH3","type":"text","field":"etaNOxxnh3","validate":"validate_6_2","metTable":3
+					}
+				}
+			]
+		],"head":
+[
+			"表eta2_脱硝设备信息表","表eta1_脱硫设备信息表","表eta4_除尘设备信息表","表eta3_低氮燃烧设备信息表"
+		]
+	},"附件env_地理环境数据信息表":
+{
+		"表env1_海拔温湿度信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":0
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":0
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":0
+					}
+				},
+{
+					"title":"平均海拔(米)(必填)","field":"hight","align":"center","valign":"middle","sortable":true,"rowspan":2,"Op":"text","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"平均海拔(米)","type":"text","field":"hight","validate":"validate_5","metTable":0
+					}
+				},
+{
+					"title":"月均温度(摄氏度)","colspan":12,"align":"center"
+				},
+{
+					"title":"月均湿度(％)","colspan":12,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"1月(必填)","field":"temperature1","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"1月","type":"text","field":"temperature1","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"2月(必填)","field":"temperature2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"2月","type":"text","field":"temperature2","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"3月(必填)","field":"temperature3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"3月","type":"text","field":"temperature3","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"4月(必填)","field":"temperature4","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"4月","type":"text","field":"temperature4","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"5月(必填)","field":"temperature5","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"5月","type":"text","field":"temperature5","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"6月(必填)","field":"temperature6","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"6月","type":"text","field":"temperature6","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"7月(必填)","field":"temperature7","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"7月","type":"text","field":"temperature7","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"8月(必填)","field":"temperature8","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"8月","type":"text","field":"temperature8","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"9月(必填)","field":"temperature9","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"9月","type":"text","field":"temperature9","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"10月(必填)","field":"temperature10","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"10月","type":"text","field":"temperature10","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"11月(必填)","field":"temperature11","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"11月","type":"text","field":"temperature11","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"12月(必填)","field":"temperature12","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"12月","type":"text","field":"temperature12","validate":"validate_5_5","metTable":0
+					}
+				},
+{
+					"title":"1月(必填)","field":"RH1","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"1月","type":"text","field":"RH1","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"2月(必填)","field":"RH2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"2月","type":"text","field":"RH2","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"3月(必填)","field":"RH3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"3月","type":"text","field":"RH3","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"4月(必填)","field":"RH4","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"4月","type":"text","field":"RH4","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"5月(必填)","field":"RH5","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"5月","type":"text","field":"RH5","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"6月(必填)","field":"RH6","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"6月","type":"text","field":"RH6","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"7月(必填)","field":"RH7","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"7月","type":"text","field":"RH7","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"8月(必填)","field":"RH8","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"8月","type":"text","field":"RH8","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"9月(必填)","field":"RH9","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"9月","type":"text","field":"RH9","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"10月(必填)","field":"RH10","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"10月","type":"text","field":"RH10","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"11月(必填)","field":"RH11","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"11月","type":"text","field":"RH11","validate":"validate_6_2","metTable":0
+					}
+				},
+{
+					"title":"12月(必填)","field":"RH12","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env1_海拔温湿度信息表","editable":
+{
+						"title":"12月","type":"text","field":"RH12","validate":"validate_6_2","metTable":0
+					}
+				}
+			]
+		],"表env2_风速信息表":
+[
+			
+[
+				
+{
+					"title":"省(自治区、直辖市)(必填)","field":"prov","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"省(自治区、直辖市)","type":"text","disabled":"true","field":"prov","metTable":1
+					}
+				},
+{
+					"title":"市(地区、盟)(必填)","field":"city","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"市(地区、盟)","type":"text","disabled":"true","field":"city","metTable":1
+					}
+				},
+{
+					"title":"县(县级市、区、旗)(必填)","field":"county","align":"center","valign":"middle","rowspan":2,"Op":"focus","RealTemplate":"1","Select":"1","Update":"0","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"县(县级市、区、旗)","type":"text","disabled":"true","field":"county","metTable":1
+					}
+				},
+{
+					"title":"地面2.5m处风速(米/秒)","colspan":12,"align":"center"
+				},
+{
+					"title":"地面平均风速(米/秒)","colspan":12,"align":"center"
+				}
+			],
+[
+				
+{
+					"title":"1月(必填)","field":"windspeed251","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"1月","type":"text","field":"windspeed251","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"2月(必填)","field":"windspeed252","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"2月","type":"text","field":"windspeed252","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"3月(必填)","field":"windspeed253","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"3月","type":"text","field":"windspeed253","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"4月(必填)","field":"windspeed254","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"4月","type":"text","field":"windspeed254","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"5月(必填)","field":"windspeed255","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"5月","type":"text","field":"windspeed255","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"6月(必填)","field":"windspeed256","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"6月","type":"text","field":"windspeed256","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"7月(必填)","field":"windspeed257","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"7月","type":"text","field":"windspeed257","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"8月(必填)","field":"windspeed258","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"8月","type":"text","field":"windspeed258","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"9月(必填)","field":"windspeed259","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"9月","type":"text","field":"windspeed259","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"10月(必填)","field":"windspeed2510","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"10月","type":"text","field":"windspeed2510","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"11月(必填)","field":"windspeed2511","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"11月","type":"text","field":"windspeed2511","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"12月(必填)","field":"windspeed2512","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"12月","type":"text","field":"windspeed2512","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"1月(必填)","field":"windspeed1","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"1月","type":"text","field":"windspeed1","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"2月(必填)","field":"windspeed2","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"2月","type":"text","field":"windspeed2","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"3月(必填)","field":"windspeed3","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"3月","type":"text","field":"windspeed3","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"4月(必填)","field":"windspeed4","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"4月","type":"text","field":"windspeed4","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"5月(必填)","field":"windspeed5","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"5月","type":"text","field":"windspeed5","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"6月(必填)","field":"windspeed6","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"6月","type":"text","field":"windspeed6","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"7月(必填)","field":"windspeed7","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"7月","type":"text","field":"windspeed7","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"8月(必填)","field":"windspeed8","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"8月","type":"text","field":"windspeed8","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"9月(必填)","field":"windspeed9","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"9月","type":"text","field":"windspeed9","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"10月(必填)","field":"windspeed10","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"10月","type":"text","field":"windspeed10","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"11月(必填)","field":"windspeed11","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"11月","type":"text","field":"windspeed11","validate":"validate_5_3","metTable":1
+					}
+				},
+{
+					"title":"12月(必填)","field":"windspeed12","align":"center","valign":"middle","sortable":true,"Op":"text","RealTemplate":"1","Select":"0","Update":"1","list":"","level1":"表env2_风速信息表","editable":
+{
+						"title":"12月","type":"text","field":"windspeed12","validate":"validate_5_3","metTable":1
+					}
+				}
+			]
+		],"head":
+[
+			"表env1_海拔温湿度信息表","表env2_风速信息表"
+		]
+	}
+}

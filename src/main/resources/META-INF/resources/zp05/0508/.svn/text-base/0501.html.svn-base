@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">	
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../../css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">
+<link href="../../css/bootstrap-select.css" rel="stylesheet">
+
+
+
+<base target="_blank">
+
+<style >
+	.col{
+		position: absolute;bottom: 10px;width: 100px;height:100px;left:50%;
+	}
+	 .blurInfo {position: absolute;width: 100px;background-color: #FFFFFF;border: 2px solid #57585A; border-radius: 50%;height:100%;}
+     .btnleft {
+    	background: url(../../img/btnLeft.png);
+    	left: -50%;
+    	overflow: hidden;
+    	width: 50px;
+    	position: absolute;
+    	height: 85px;
+    	bottom:5px;
+    }
+	.btnleft:hover {
+    	background: url(../../img/btnLeft_1.png);
+    	left: -50%;
+    	overflow: hidden;
+    	width: 50px;
+    	position: absolute;
+    	height: 85px;
+    	bottom:5px;
+	}.btnright {
+		right: -50%;
+		background: url(../../img/btnRight.png);
+		overflow: hidden;
+		width: 50px;
+		position: absolute;
+		height: 85px;
+		bottom:5px;
+	}.btnright:hover {
+		right: -50%;
+		background: url(../../img/btnRight_1.png);
+		overflow: hidden;
+		width: 50px;
+		position: absolute;
+		height: 85px;
+		bottom:5px;
+	}
+	#info {
+        width: 14.0625em;
+        background-color: rgb(242, 242, 242);
+        color: #000;
+        position: absolute;
+        bottom: 0;
+        padding-left: 10px;
+        padding-top: 10px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        border-top-right-radius: 20px;
+      }
+      .group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .radio-info label {
+	    	margin-right:25px;
+	    }
+	    .checkbox-info label{
+	    	margin-right:25px;
+	    }
+	    .zdy {
+	   	 	padding-top:10px;
+	    }
+    	.zhezhao { 
+		 width:100%; 
+		 height:100%; 
+		 background-color:#000; 
+		 filter:alpha(opacity=50); 
+		 -moz-opacity:0.5; 
+		 opacity:0.5; 
+		 position:absolute; 
+		 left:0px; 
+		 top:0px; 
+		 display:none; 
+		 z-index:1000; 
+		}
+		.zhezhao_title { 
+			 width:280px; 
+			 height:180px; 
+			 position:absolute; 
+			 top:200px; 
+			 left:50%; 
+			 margin-left:-140px; 
+			 display:none; 
+			 z-index:1500; 
+		} 
+</style>
+
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="zhezhao" id="zhezhao" style="display:none;"></div>
+	<div class="zhezhao_title" id="zhezhao_title" style="display:none;">
+		<div class="sk-spinner sk-spinner-wave" style="width: 200px;">
+			<h2>
+				<b><span style="color: #fff;">努力加载中......</span></b>
+			</h2>
+		</div>
+		<div class="sk-spinner sk-spinner-cube-grid">
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+		</div>
+	</div>
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+		<div class="row" style="height:100%;padding-left:10px;">
+			<div class="col-sm-11" style="height:100%">
+				<!-- 地图 -->
+				<div id="mapDiv" style="height:100%;">
+				</div>
+				<!-- 图例 -->
+				<div id="info">
+					<div id="legendWrapper"></div>
+					<!-- 点图例 -->
+					<div id="point_tuli" style="display:none;">
+						<div class="point_html"></div>
+						<div class="row" id="point_tuli">
+							<div class="col-sm-6">
+								<div style="height:50px;width:50px;border:2px solid #57585A; border-radius: 50%;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:10px;">&gt;15000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:40px;width:40px;border:2px solid #57585A; border-radius: 50%;margin-left:5px;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:10px;">10000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:30px;width:30px;border:2px solid #57585A; border-radius: 50%;margin-left:10px;"></div>
+							</div>
+							<div class="col-sm-6" style="padding-top:5px;">3000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:20px;width:20px;border:2px solid #57585A; border-radius: 50%;margin-left:15px;"></div>
+							</div>
+							<div class="col-sm-6" >1000</div>
+						</div><br>
+						<div class="row">
+							<div class="col-sm-6">
+								<div style="height:10px;width:10px;border:2px solid #57585A; border-radius: 50%;margin-left:20px;"></div>
+							</div>
+							<div class="col-sm-6">&lt;200</div>
+						</div>
+					</div>
+				
+					<!-- 栅格图例 -->
+					<div id="grid_tuli" style ="display:none;">
+						<div class="row">
+							<div class="col-sm-12">单位：0.1*吨/网格/年</div>
+						</div>
+						<div id="SO2" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.1-0.2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">0.2-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">2-3</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">3-4</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">4-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">10-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">20-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">50-100</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">100-500</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">500-1000</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;1000</div>
+							</div>
+							
+								
+						</div>
+						<div id="BC" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.1-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">2-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">10-15</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">15-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">20-25</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">25-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;80</div>
+							</div>
+						</div>
+						<div id="CO" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.1-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">2-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">10-15</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">15-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">20-25</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">25-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;80</div>
+							</div>
+						</div>
+						<div id="NH3" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.1-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">2-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">10-15</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">15-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">20-25</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">25-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;80</div>
+							</div>
+						</div>
+						<div id="OC" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.1-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">2-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">10-15</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">15-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">20-25</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">25-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;80</div>
+							</div>
+						</div>
+						<div id="PM25" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.1-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">2-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">10-15</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">15-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">20-25</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">25-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;80</div>
+							</div>
+						</div>
+						<div id="VOC" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">1-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">10-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">20-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">80-100</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">100-200</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">200-300</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">300-1000</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;1000</div>
+							</div>
+						</div>
+						<div id="NOx" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.5-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">1-5</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">5-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">10-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">20-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">80-100</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">100-200</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">200-300</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">300-1000</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;1000</div>
+							</div>
+						</div>
+						<div id="PM10" style ="display:none;">
+							<div class="row">
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(43,65,255)"></div>
+								</div>
+								<div class="col-sm-6">0-0.2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(56,109,255)"></div>
+								</div>
+								<div class="col-sm-6">0.2-1</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(59,157,255)"></div>
+								</div>
+								<div class="col-sm-6">1-2</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(48,207,255)"></div>
+								</div>
+								<div class="col-sm-6">2-4</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(0,255,255)"></div>
+								</div>
+								<div class="col-sm-6">4-10</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(112,255,210)"></div>
+								</div>
+								<div class="col-sm-6">10-20</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(161,255,164)"></div>
+								</div>
+								<div class="col-sm-6">20-30</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(199,255,120)"></div>
+								</div>
+								<div class="col-sm-6">30-40</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(231,255,74)"></div>
+								</div>
+								<div class="col-sm-6">40-50</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,255,0)"></div>
+								</div>
+								<div class="col-sm-6">50-60</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,213,0)"></div>
+								</div>
+								<div class="col-sm-6">60-80</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,166,0)"></div>
+								</div>
+								<div class="col-sm-6">80-100</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,123,0)"></div>
+								</div>
+								<div class="col-sm-6">100-120</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,77,0)"></div>
+								</div>
+								<div class="col-sm-6">120-160</div>
+								
+								<div class="col-sm-6">
+									<div style="height:15px;width:20px;border:1px solid #57585A;background-color:rgb(255,0,0)"></div>
+								</div>
+								<div class="col-sm-6">&gt;160</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+			    <!-- 年份 -->
+				<div class="col">
+					<a class="btnleft" href="javascript:;" onclick="btnleft()"></a>
+					<a class="btnright" href="javascript:;" onclick="btnright()"></a>
+					<div class="blurInfo" ></div>
+					<div style="position: absolute;left: 30%;padding-top:25px;" >
+						<h4 id="year"></h4>
+						<input id="bookId" type="text" value="" style="display:none;">
+					</div>
+				</div>
+				<!-- 按钮 -->
+				<div style="position:absolute;top:0px;right:15px;">
+<!-- 					<button type="button" class="btn btn-info btn-lG" id="Calculation" onclick="show_color()"><i class="fa fa-deviantart"></i> 图例操作</button> -->
+					<button type="button" class="btn btn-info btn-lG" id="select_hangye" style="display:none;" data-toggle="modal" data-target="#hangye_Modal"><i class="fa fa-deviantart"></i> 选择行业</button>
+				</div>
+			</div>
+			
+			<div class="col-sm-1">
+				<div class="col-sm-12" id="species" style="float:right;">
+					<button class="btn btn-primary button-glow button-rounded" data-toggle="modal" data-target="#qdxz_Modal">&nbsp;<i class="fa fa-database"></i>&nbsp;</button><br><br>
+					<button class="btn btn-primary button-glow button-rounded" data-toggle="modal" data-target="#wz_Modal">&nbsp;<i class="fa fa-houzz">&nbsp;</i>&nbsp;</button><br><br>
+					<!-- 查看形式 -->
+					<button name="button" class="btn button-action  button-glow button-rounded" data-toggle="modal" data-target="#show_shape"><i class="fa fa-newspaper-o"></i>&nbsp;</button><br><br>
+					<!-- 查看内容 -->
+					<button name="button" class="btn btn-info button-glow button-rounded" onclick="open_hy()" >&nbsp;<i class="fa fa-book"></i>&nbsp;</button><br><br>
+					<!-- 对比分析 -->
+<!-- 					<button name="button" class="btn btn-info button-glow button-rounded" onclick="contrast_modal()" >&nbsp;<i class="fa fa-clone"></i>&nbsp;</button><br><br> -->
+					<!-- 地区选择 -->
+<!-- 					<button name="button" class="btn btn-waring  button-glow button-rounded" data-toggle="modal" data-target="#region_Modal">&nbsp;<i class="fa fa-arrows-alt"></i>&nbsp;</button><br><br> -->
+					<!-- 自定义查询 -->
+<!-- 					<button name="button" class="btn btn-warning  button-glow button-rounded" data-toggle="modal" data-target="#zdy_Modal">&nbsp;<i class="fa fa-search"></i>&nbsp;</button><br><br> -->
+					<!-- 排放分析 -->
+					<button name="button" class="btn btn-danger  button-glow button-rounded" data-toggle="modal" data-target="#tjfx_Modal" onclick="pftj_button()">&nbsp;<i class="fa fa-bar-chart"></i>&nbsp;</button><br><br>
+					<!-- 统计图 -->
+<!-- 					<button name="button" class="btn btn-white  button-glow button-rounded" onclick="chart_button()">&nbsp;<i class="fa fa-paste"></i>&nbsp;</button><br><br> -->
+					<!-- 导出 -->
+<!-- 					<button name="button" class="btn button-royal  button-glow button-rounded" onclick="export_click()">&nbsp;<i class="fa fa-picture-o"></i>&nbsp;</button><br><br> -->
+				</div>
+			</div>
+		</div>
+    </div>
+    <!-- 查看形式 -->
+    <div class="modal inmodal fade" style="margin-top: 100px" id="show_shape" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>查看形式</h2>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="">
+							<form  id="changepassword_form" onsubmit="return false" >
+								<div class="col-sm-12" style="padding-left:5">
+									<div class="input-group group-select">
+										<span class="input-group-addon">查看形式</span>
+										<div class="chaxundiv_2 selectDiv" id="">
+											<div style="margin-top: 5px;">
+												<div id="show_version" class="radio radio-info radio-inline">
+													<input type="radio" id="ver_1" value="1" name="shape" checked="checked"><label for="ver_1">非栅格</label>
+													<input type="radio" id="ver_2" value="2" name="shape"><label for="ver_2">仅点源</label>
+													<input type="radio" id="ver_3" value="3" name="shape"><label for="ver_3">栅格</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-w-m btn-info" style="" onclick="shape()" value="确&nbsp;定">
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- 清单版本选择开始 -->
+    <div class="modal inmodal fade " style="margin-top: 100px" id="qdxz_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 50%;height:100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>清单版本选择</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 500px;" >
+					<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="height:100%;">
+						<div class="panel-group" style="height:calc(100% - 15px);"id="version">
+							<div class="panel panel-default" style="margin-bottom:0px;">
+								<div class="panel-heading" style="background-color: #f5f5f5;">
+									<h5 class="panel-title">
+										<a data-toggle="collapse" data-parent="#version" href="#v41" onclick="tjqdnf()">
+											<i class="fa fa-plus" style="color: rgb(79, 135, 209);"></i><span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 10px;">添加清单年份</span>
+										</a>
+									</h5>
+								</div><br>
+							</div>
+							
+							<div class="panel-body" style="padding: 0px 0px;">
+								<table class="table table-bordered" id="metTable1">
+									<thead>
+										<tr id="qytable_th">
+											<th data-field="qd_year" data-halign="center"  data-align="center" class="text-center">清单年份</th>
+											<th data-field="qd_name" data-halign="center" data-align="center" class="text-center">清单版本名称</th>
+											<th data-field="qd_operation" data-halign="center" data-align="center" class="text-center">操作</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+							
+						</div>
+					</div>
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="jisuan_zhende_save" onclick="qd_year_name()"><i class='fa fa-check'></i> 确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- 行业选择-->
+    <div class="modal inmodal fade " style="margin-top: 100px" id="hangye_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 50%;height:100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>行业选择</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 500px;" >
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="height:100%;">
+							<div class="panel-group" style="height:calc(100% - 15px);"id="version">
+								<div class="row" style="padding-right:0px;" id="fei_grid">
+									<div class="col-sm-8" id="hy_modal_table1">
+										<table class="table table-bordered">
+											<thead>
+												<tr><th>部门</th><th>行业</th></tr>
+											</thead>
+											<tbody id="hangye_type">
+											</tbody>
+										</table>
+									</div>
+									
+									<div class="col-sm-4" id="hy_modal_table2">
+										<div class="" >
+											<table class="table table-bordered" id="">
+												<thead>
+													<tr id="">
+														<th data-field="tj_hy" data-halign="center"  data-align="center" class="text-center">行业</th>
+														<th data-field="tj_color" data-halign="center" data-align="center" class="text-center">颜色</th>
+													</tr>
+												</thead>
+												<tbody id="metTable_hangye"></tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							
+								<div class="row" id="grid_hy" style="display:none;">
+									<div class="col-sm-12">
+										<table class="table table-bordered">
+											<thead>
+												<tr><th>部门</th><th>行业</th></tr>
+											</thead>
+											<tbody id="hangye_grid">
+											</tbody>
+										</table>
+									</div>
+								
+								</div>
+								
+							</div>
+						</div>
+						
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="jisuan_zhende_save" onclick="hy_button()"><i class='fa fa-check'></i> 确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 地区选择-->
+    <div class="modal inmodal fade " id="region_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 20%;height:100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>地区选择</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 500px;" >
+						<div class="col-sm-12" style="height:100%;">
+							<div class="panel-group" style="height:90%;"id="">
+								<div style="height:100%;padding-left:15%;">
+									<ul id="treeDemo" class="ztree" style="height:98%;background:FFFFFF;"></ul>
+								</div>
+							</div>
+						</div>
+						
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="jisuan_zhende_save" onclick="region_button()"><i class='fa fa-check'></i> 确定</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- 对比分析 -->
+	 <div class="modal inmodal fade " style="margin-top: 100px" id="contrast_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 50%;height:100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>对比分析</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 300px;" >
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="height:100%;">
+							<div class="panel-group" style="height:calc(100% - 15px);"id="version">
+								<div class="row" style="padding-right:0px;">
+									<div class="col-sm-6">
+										<div class="input-group group-select">
+											<span class="input-group-addon">对比分析：</span>
+											<div class="chaxundiv_2 selectDiv" id="">
+												<div style="margin-top: 5px;">
+													<div id="show_version" class="radio radio-info radio-inline">
+														<input type="radio" id="contrast1" value="是" name="contrast" ><label for="contrast1">是</label>
+														<input type="radio" id="contrast2" value="否" name="contrast" checked="checked"><label for="contrast2">否</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div><br>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="input-group group-select">
+											<span class="input-group-addon"> 左边： </span>
+											<div>
+												<select class="form-control m-b" id="contrast_left" style="min-width: 23%;">
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="input-group group-select">
+											<span class="input-group-addon"> 右边： </span>
+											<div>
+												<select class="form-control m-b" id="contrast_right" style="min-width: 23%;" ></select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="contrast_button()"><i class='fa fa-check'></i> 确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 自定义查询 -->
+	<div class="modal inmodal fade " style="margin-top: 100px" id="zdy_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 85%;height:100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>自定义查询</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 500px;" >
+						<div class="col-sm-12" style="height:100%;">
+							<div class="panel-group" style="height:calc(100% - 15px);"id="version">
+								<div class="row" style="padding-right:0px;">
+									<div class="col-sm-6">
+										<div class="input-group group-select">
+											<span class="input-group-addon">行业:</span> 
+											<select class="form-control m-b" id="tasklist_div" onchange="changeZdy(this.value);">
+												<option value="电力">电力</option>
+												<option value="水泥">水泥</option>
+												<option value="钢铁">钢铁</option>
+												<option value="玻璃">玻璃</option>
+												<option value="独立焦化">独立焦化</option>
+												<option value="工业锅炉">工业锅炉</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<br>
+								
+								<!-- 电力 -->
+								<div id="zdy_dl">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+												<span class="input-group-addon">装机容量(兆瓦)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="zj_1" value="~10" name="zjrl">
+															<label for="zj_1">~10</label>
+															<input type="radio" id="zj_2" value="10~50" name="zjrl">
+															<label for="zj_2">10~50</label>
+															<input type="radio" id="zj_3" value="50~100" name="zjrl">
+															<label for="zj_3">50~100</label>
+															<input type="radio" id="zj_4" value="100~300" name="zjrl">
+															<label for="zj_4">100~300</label>
+															<input type="radio" id="zj_5" value="300~600" name="zjrl">
+															<label for="zj_5">300~600</label>
+															<input type="radio" id="zj_6" value="600~" name="zjrl">
+															<label for="zj_6">600~</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6" >
+											<div class="input-group group-select">
+												<span class="input-group-addon">服役年限：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dlnx_1" value="~5" name="dlnx">
+															<label for="dlnx_1">~5</label>
+															<input type="radio" id="dlnx_2" value="5~10" name=dlnx>
+															<label for="dlnx_2">5~10</label>
+															<input type="radio" id="dlnx_3" value="10~20" name="dlnx">
+															<label for="dlnx_3">10~20</label>
+															<input type="radio" id="dlnx_4" value="20~30" name="dlnx">
+															<label for="dlnx_4">20~30</label>
+															<input type="radio" id="dlnx_5" value="9999" name="dlnx">
+															<label for="dlnx_5">未知</label>
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 服役年限： </span>  -->
+<!-- 												<input type="text" class="form-control" id="d2"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+									        	<span class="input-group-addon">燃料类型：</span>
+									         	<div class="form-control m-b">
+									         		<div class="checkbox checkbox-info" style="margin:0px" id="zt_div">
+									         		<div class="row">
+									         			<div class="col-sm-4">
+									         				<input id="rl1" name="rl"  type="checkbox" value="燃煤" checked="true" onclick="rl_click(this.value,'rm')">
+									         				<label for="rl1">燃煤</label>
+									         			</div>
+									         			<div class="col-sm-4">
+									         				<input id="rl2" name="rl"  type="checkbox" value="燃油" checked="true" onclick="rl_click(this.value,'rl')">
+									         				<label for="rl2">燃油</label>
+									         			</div>
+									         			<div class="col-sm-4">
+									         				<input id="rl3" name="rl"  type="checkbox" value="燃气" checked="true" onclick="rl_click(this.value,'rq')">
+									         				<label for="rl3">燃气</label>
+									         			</div>
+									         		
+									         		</div>
+									         		</div>
+												</div>
+									        </div>
+										</div>
+										<div class="col-sm-6 zdy rm">
+											<div class="input-group group-select">
+												<span class="input-group-addon">发电标煤耗(克/千瓦时)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dlfd_1" value="~300" name="dlfd">
+															<label for="dlfd_1">~300</label>
+															<input type="radio" id="dlfd_2" value="300~350" name="dlfd">
+															<label for="dlfd_2">300~350</label>
+															<input type="radio" id="dlfd_3" value="350~400" name="dlfd">
+															<label for="dlfd_3">350~400</label>
+															<input type="radio" id="dlfd_4" value="400~450" name="dlfd">
+															<label for="dlfd_4">400~450</label>
+															<input type="radio" id="dlfd_5" value="450~" name="dlfd">
+															<label for="dlfd_5">450~</label>
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 发电标煤耗(克/千瓦时)： </span>  -->
+<!-- 												<input type="text" class="form-control" id="d3"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy rm">
+											<div class="input-group group-select">
+												<span class="input-group-addon">燃煤硫分：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dlrm_1" value="~3" name="dlrm" >
+															<label for="dlrm_1">~3</label>
+															
+															<input type="radio" id="dlrm_2" value="3~5" name="dlrm">
+															<label for="dlrm_2">3~5</label>
+															
+															<input type="radio" id="dlrm_3" value="5~8" name="dlrm" >
+															<label for="dlrm_3">5~8</label>
+															
+															<input type="radio" id="dlrm_4" value="8~10" name="dlrm" >
+															<label for="dlrm_4">8~10</label>
+															
+															<input type="radio" id="dlrm_5" value="10~" name="dlrm">
+															<label for="dlrm_5">10~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 燃煤硫分： </span>  -->
+<!-- 												<input type="text" class="form-control" id="d4"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy rm">
+											<div class="input-group group-select">
+												<span class="input-group-addon">燃煤灰分：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dlhf_1" value="~130" name="dlhf">
+															<label for="dlhf_1">~130</label>
+															<input type="radio" id="dlhf_2" value="130~150" name="dlhf">
+															<label for="dlhf_2">130~150</label>
+															<input type="radio" id="dlhf_3" value="150~180" name="dlhf">
+															<label for="dlhf_3">150~180</label>
+															<input type="radio" id="dlhf_4" value="180~200" name="dlhf">
+															<label for="dlhf_4">180~200</label>
+															<input type="radio" id="dlhf_5" value="200~" name="dlhf">
+															<label for="dlhf_5">200~</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 燃煤灰分： </span>  -->
+<!-- 												<input type="text" class="form-control" id="d5"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy rl">
+											<div class="input-group group-select">
+												<span class="input-group-addon">燃油含硫量：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dlry_1" value="~3" name="dlry">
+															<label for="dlry_1">~3</label>
+															<input type="radio" id="dlry_2" value="3~5" name="dlry">
+															<label for="dlry_2">3~5</label>
+															<input type="radio" id="dlry_3" value="5~8" name="dlry">
+															<label for="dlry_3">5~8</label>
+															<input type="radio" id="dlry_4" value="8~10" name="dlry">
+															<label for="dlry_4">8~10</label>
+															<input type="radio" id="dlry_5" value="10~" name="dlry">
+															<label for="dlry_5">10~</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										
+										
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 燃油含硫量： </span>  -->
+<!-- 												<input type="text" class="form-control" id="d6"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">是否热电联产：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="rdlc1" value="是" name="lc" checked="checked"><label for="rdlc1">是</label>
+															<input type="radio" id="rdlc2" value="否" name="lc"><label for="rdlc2">否</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">脱硫设备：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="tlsb1" value="有" name="tlsb" checked="checked" onclick="tlsb_click(this.value)"><label for="tlsb1">有</label>
+															<input type="radio" id="tlsb2" value="无" name="tlsb" onclick="tlsb_click(this.value)"><label for="tlsb2" >无</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 zdy" id="d7_div">
+											
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合脱硫效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dltlxl_1" value="~70" name="dltlxl">
+															<label for="dltlxl_1">~70</label>
+															<input type="radio" id="dltlxl_2" value="70~80" name="dltlxl">
+															<label for="dltlxl_2">70~80</label>
+															<input type="radio" id="dltlxl_3" value="80~90" name="dltlxl">
+															<label for="dltlxl_3">80~90</label>
+															<input type="radio" id="dltlxl_4" value="90~" name="dltlxl">
+															<label for="dltlxl_4">90~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 综合脱硫效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="d7"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">脱硝设备：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="txsb1" value="有" name="txsb" checked="checked" onclick="txsb_click(this.value)"><label for="txsb1">有</label>
+															<input type="radio" id="txsb2" value="无" name="txsb" onclick="txsb_click(this.value)"><label for="txsb2">无</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 zdy" id="d8_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合脱硝效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dltxxl_1" value="~30" name="dltxxl">
+															<label for="dltxxl_1">~30</label>
+															
+															<input type="radio" id="dltxxl_2" value="30~50" name="dltxxl">
+															<label for="dltxxl_2">30~50</label>
+															
+															<input type="radio" id="dltxxl_3" value="50~70" name="dltxxl">
+															<label for="dltxxl_3">50~70</label>
+															
+															<input type="radio" id="dltxxl_4" value="70~" name="dltxxl">
+															<label for="dltxxl_4">70~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon"> 综合脱硝效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="d8"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy" >
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合除尘效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dlccxl_1" value="~90" name="dlccxl">
+															<label for="dlccxl_1">~90</label>
+															
+															<input type="radio" id="dlccxl_2" value="90~93" name="dlccxl">
+															<label for="dlccxl_2">90~93</label>
+															
+															<input type="radio" id="dlccxl_3" value="93~97" name="dlccxl">
+															<label for="dlccxl_3">93~97</label>
+															
+															<input type="radio" id="dlccxl_4" value="97~99" name="dlccxl">
+															<label for="dlccxl_4">97~99</label>
+															
+															<input type="radio" id="dlccxl_5" value="99~" name="dlccxl">
+															<label for="dlccxl_5">99~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合除尘效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="d9"> -->
+<!-- 											</div> -->
+										</div>
+									</div>
+								</div>
+								
+								
+								
+								<!-- 水泥 -->
+								<div id="zdy_sn" style="display:none;">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+									        	<span class="input-group-addon">设备类别：</span>
+									         	<div class="form-control m-b">
+									         		<div class="checkbox checkbox-info" style="margin:0px" id="">
+									         			<div class="row">
+									         				<div class="col-sm-4">
+								         						<input id="sblb1" name="sblb" type="checkbox" value="新型干法" checked="true">
+								         						<label for="sblb1">新型干法</label>
+									         				</div>
+									         				<div class="col-sm-4">
+									         					<input id="sblb3" name="sblb" type="checkbox" value="立窑" checked="true" >
+									         					<label for="sblb3">立窑</label>
+									         				</div>
+									         				<div class="col-sm-4">
+									         					<input id="sblb4" name="sblb"  type="checkbox" value="粉磨" checked="true">
+									         					<label for="sblb4">粉磨</label>
+									         				</div>
+									         			</div>
+									         		</div>
+												</div>
+									        </div>
+										</div>
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+												<span class="input-group-addon">产能(吨熟料/日)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="sncn_1" value="~300" name="sncn">
+															<label for="sncn_1">~300</label>
+															
+															<input type="radio" id="sncn_2" value="300~500" name="sncn">
+															<label for="sncn_2">300~500</label>
+															
+															<input type="radio" id="sncn_3" value="500~1000" name="sncn">
+															<label for="sncn_3">500~1000</label>
+															
+															<input type="radio" id="sncn_4" value="1000~4000" name="sncn">
+															<label for="sncn_4">1000~4000</label>
+															
+															<input type="radio" id="sncn_5" value="4000~" name="sncn">
+															<label for="sncn_5">4000~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">产能(吨熟料/日)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="sn1"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">服役年限：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="snnx_1" value="~5" name="snnx">
+															<label for="snnx_1">~5</label>
+															<input type="radio" id="snnx_2" value="5~10" name="snnx">
+															<label for="snnx_2">5~10</label>
+															<input type="radio" id="snnx_3" value="10~20" name="snnx">
+															<label for="snnx_3">10~20</label>
+															<input type="radio" id="snnx_4" value="20~30" name="snnx">
+															<label for="snnx_4">20~30</label>
+															<input type="radio" id="snnx_5" value="9999" name="snnx">
+															<label for="snnx_5">未知</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">服役年限：</span>  -->
+<!-- 												<input type="text" class="form-control" id="sn2"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy" >
+											<div class="input-group group-select">
+												<span class="input-group-addon">脱硝设备：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="sn3" value="有" name="sn_txsb" checked="checked" onclick="sntx_click(this.value)"><label for="sn3">有</label>
+															<input type="radio" id="sn4" value="无" name="sn_txsb" onclick="sntx_click(this.value)"><label for="sn4">无</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 zdy" id="sn5_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合脱硝效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="sntxxl_1" value="~30" name="sntxxl">
+															<label for="sntxxl_1">~30</label>
+															
+															<input type="radio" id="sntxxl_2" value="30~50" name="sntxxl">
+															<label for="sntxxl_2">30~50</label>
+															
+															<input type="radio" id="sntxxl_3" value="50~70" name="sntxxl">
+															<label for="sntxxl_3">50~70</label>
+															
+															<input type="radio" id="sntxxl_4" value="70~" name="sntxxl">
+															<label for="sntxxl_4">70~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合脱硝效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="sn5"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合除尘效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="snccxl_1" value="~90" name="snccxl">
+															<label for="snccxl_1">~90</label>
+															
+															<input type="radio" id="snccxl_2" value="90~93" name="snccxl">
+															<label for="snccxl_2">90~93</label>
+															
+															<input type="radio" id="snccxl_3" value="93~97" name="snccxl">
+															<label for="snccxl_3">93~97</label>
+															
+															<input type="radio" id="snccxl_4" value="97~99" name="snccxl">
+															<label for="snccxl_4">97~99</label>
+															
+															<input type="radio" id="snccxl_5" value="99~" name="snccxl">
+															<label for="snccxl_5">99~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合除尘效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="sn6"> -->
+<!-- 											</div> -->
+										</div>
+									</div>
+								
+								</div>
+								
+								<!-- 钢铁 -->
+								<div id="zdy_gt" style="display:none;">
+									<div class="row">
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">服役年限：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gtnx_1" value="~5" name="gtnx">
+															<label for="gtnx_1">~5</label>
+															
+															<input type="radio" id="gtnx_2" value="5~10" name="gtnx">
+															<label for="gtnx_2">5~10</label>
+															
+															<input type="radio" id="gtnx_3" value="10~20" name="gtnx">
+															<label for="gtnx_3">10~20</label>
+															
+															<input type="radio" id="gtnx_4" value="20~30" name="gtnx">
+															<label for="gtnx_4">20~30</label>
+															
+															<input type="radio" id="gtnx_5" value="9999" name="gtnx">
+															<label for="gtnx_5">未知</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">服役年限：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt1"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+									        	<span class="input-group-addon">工序：</span>
+									         	<div class="form-control m-b">
+									         		<div class="checkbox checkbox-info" style="margin:0px" id="">
+									         			<div class="row">
+									         				<div class="col-sm-3">
+									         					<input id="gt2" name="gt_gx" type="checkbox" value="烧结" onclick="gtgx_click(this,6)" checked="checked">
+									         					<label for="gt2">烧结</label>
+									         				</div>
+									         				<div class="col-sm-3">
+									         					<input id="gt3" name="gt_gx" type="checkbox" value="炼焦" onclick="gtgx_click(this,7)" checked="checked">
+									         					<label for="gt3">炼焦</label>
+									         				</div>
+									         				<div class="col-sm-3">
+											         			<input id="gt4" name="gt_gx"  type="checkbox" value="炼铁" onclick="gtgx_click(this,8)" checked="checked">
+											         			<label for="gt4">炼铁</label>
+									         				</div>
+									         				<div class="col-sm-3">
+									         					<input id="gt5" name="gt_gx"  type="checkbox" value="炼钢" onclick="gtgx_click(this,9)" checked="checked">
+									         					<label for="gt5">炼钢</label>
+									         				</div>
+									         			</div>
+									         		</div>
+												</div>
+									        </div>
+										</div>
+										<div class="col-sm-6 zdy" id="gt6_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">烧结-产能(平方米)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gtsj_1" value="~50" name="gtsj">
+															<label for="gtsjn_1">~50</label>
+															
+															<input type="radio" id="gtsj_2" value="50~100" name="gtsj">
+															<label for="gtsj_2">50~100</label>
+															
+															<input type="radio" id="gtsj_3" value="100~300" name="gtsj">
+															<label for="gtsj_3">100~300</label>
+															
+															<input type="radio" id="gtsj_4" value="300~" name="gtsj">
+															<label for="gtsj_4">300~</label>
+															
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">烧结-产能(平方米)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt6"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy" id="gt7_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">炼焦-产能(万吨/年)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gtlj_1" value="~20" name="gtlj">
+															<label for="gtlj_1">~20</label>
+															
+															<input type="radio" id="gtlj_2" value="20~50" name="gtlj">
+															<label for="gtlj_2">20~50</label>
+															
+															<input type="radio" id="gtlj_3" value="50~" name="gtlj">
+															<label for="gtlj_3">50~</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">炼焦-产能(万吨/年)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt7"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy" id="gt8_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">炼铁-产能(立方米)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gtlt_1" value="~300" name="gtlt">
+															<label for="gtlt_1">~500</label>
+															
+															<input type="radio" id="gtlt_2" value="~500" name="gtlt">
+															<label for="gtlt_2">~5</label>
+															
+															<input type="radio" id="gtlt_3" value="500~1000" name="gtlt">
+															<label for="gtlt_3">500~1000</label>
+															
+															<input type="radio" id="gtlt_4" value="1000~4000" name="gtlt">
+															<label for="gtlt_4">1000~4000</label>
+															
+															<input type="radio" id="gtlt_5" value="4000~" name="gtlt">
+															<label for="gtlt_5">4000~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">炼铁-产能(立方米)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt8"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy" id="gt9_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">炼钢-产能(万吨)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gtlg_1" value="~50" name="gtlg">
+															<label for="gtlg_1">~50</label>
+															
+															<input type="radio" id="gtlg_2" value="50~100" name="gtlg">
+															<label for="gtlg_2">50~100</label>
+															
+															<input type="radio" id="gtlg_3" value="100~300" name="gtlg">
+															<label for="gtlg_3">100~300</label>
+															
+															<input type="radio" id="gtlg_4" value="300~" name="gtlg">
+															<label for="gtlg_4">300~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">炼钢-产能(万吨)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt9"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">脱硫设备：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gt10" value="有" name="gt_tlsb" checked="checked" onclick="gttl_click(this.value)"><label for="gt10">有</label>
+															<input type="radio" id="gt11" value="无" name="gt_tlsb" onclick="gttl_click(this.value)"><label for="gt11">无</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 zdy" id="gt12_div">
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合脱硫效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gttlxl_1" value="~70" name="gttlxl">
+															<label for="gttlxl_1">~70</label>
+															
+															<input type="radio" id="gttlxl_2" value="70~80" name="gttlxl">
+															<label for="gttlxl_2">70~80</label>
+															
+															<input type="radio" id="gttlxl_3" value="80~90" name="gttlxl">
+															<label for="gttlxl_3">80~90</label>
+															
+															<input type="radio" id="gttlxl_4" value="90~" name="gttlxl">
+															<label for="gttlxl_4">90~</label>
+															
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合脱硫效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt12"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-4 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合除尘效：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gtccxl_1" value="~90" name="gtccxl">
+															<label for="gtccxl_1">~90</label>
+															
+															<input type="radio" id="gtccxl_2" value="90~93" name="gtccxl">
+															<label for="gtccxl_2">90~93</label>
+															
+															<input type="radio" id="gtccxl_3" value="93~97" name="gtccxl">
+															<label for="gtccxl_3">93~97</label>
+															
+															<input type="radio" id="gtccxl_4" value="97~99" name="gtccxl">
+															<label for="gtccxl_4">97~99</label>
+															
+															<input type="radio" id="gtccxl_5" value="99~" name="gtccxl">
+															<label for="gtccxl_5">99~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合除尘效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gt13"> -->
+<!-- 											</div> -->
+										</div>
+									</div>
+								</div>
+								
+								<!-- 玻璃 -->
+								<div id="zdy_bl" style="display:none;">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+												<span class="input-group-addon">产能(吨/日)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="blcn_1" value="~100" name="blcn">
+															<label for="blcn_1">~100</label>
+															
+															<input type="radio" id="blcn_2" value="100~300" name="blcn">
+															<label for="blcn_2">100~300</label>
+															
+															<input type="radio" id="blcn_3" value="300~500" name="blcn">
+															<label for="blcn_3">300~500</label>
+															
+															<input type="radio" id="blcn_4" value="500~" name="blcn">
+															<label for="blcn_4">500~</label>
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">产能(吨/日)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="bl1"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合除尘效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="blccxl_1" value="~90" name="blccxl">
+															<label for="blccxl_1">~90</label>
+															
+															<input type="radio" id="blccxl_2" value="90~93" name="blccxl">
+															<label for="blccxl_2">90~93</label>
+															
+															<input type="radio" id="blccxl_3" value="93~97" name="blccxl">
+															<label for="blccxl_3">93~97</label>
+															
+															<input type="radio" id="blccxl_4" value="97~99" name="blccxl">
+															<label for="blccxl_4">97~99</label>
+															
+															<input type="radio" id="blccxl_5" value="99~" name="blccxl">
+															<label for="blccxl_5">99~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合除尘效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="bl2"> -->
+<!-- 											</div> -->
+										</div>
+									</div>
+								</div>
+								
+								<!-- 独立焦化 -->
+								<div id="zdy_tljh" style="display:none;">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+													<span class="input-group-addon">产能(吨/日)：</span>
+													<div class="chaxundiv_2 selectDiv" id="">
+														<div style="margin-top: 5px;">
+															<div id="show_version" class="radio radio-info radio-inline">
+																<input type="radio" id="dljhcn_1" value="~20" name="dljhcn">
+																<label for="dljhcn_1">~20</label>
+																
+																<input type="radio" id="dljhcn_2" value="20~40" name="dljhcn">
+																<label for="dljhcn_2">20~40</label>
+																
+																<input type="radio" id="dljhcn_3" value="40~60" name="dljhcn">
+																<label for="dljhcn_3">40~60</label>
+																
+																<input type="radio" id="dljhcn_4" value="60~" name="dljhcn">
+																<label for="dljhcn_4">60~</label>
+																
+															</div>
+														</div>
+													</div>
+												</div>
+										
+<!-- 										<div class="col-sm-4"> -->
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">产能(吨/日)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="tljh1"> -->
+<!-- 											</div> -->
+										</div>
+										
+										<div class="col-sm-6">
+										
+											<div class="input-group group-select">
+												<span class="input-group-addon">服役年限：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dljhnx_1" value="~5" name="dljhnx">
+															<label for="dljhnx_1">~5</label>
+															
+															<input type="radio" id="dljhnx_2" value="5~10" name="dljhnx">
+															<label for="dljhnx_2">5~10</label>
+															
+															<input type="radio" id="dljhnx_3" value="10~20" name="dljhnx">
+															<label for="dljhnx_3">10~20</label>
+															
+															<input type="radio" id="dljhnx_4" value="20~30" name="dljhnx">
+															<label for="dljhnx_4">20~30</label>
+															
+															<input type="radio" id="dljhnx_5" value="9999" name="dljhnx">
+															<label for="dljhnx_5">未知</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">服役年限：</span>  -->
+<!-- 												<input type="text" class="form-control" id="tljh2"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+										
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合除尘效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="dljhccxl_1" value="~90" name="dljhccxl">
+															<label for="dljhccxl_1">~90</label>
+															
+															<input type="radio" id="dljhccxl_2" value="90~93" name="dljhccxl">
+															<label for="dljhccxl_2">90~93</label>
+															
+															<input type="radio" id="dljhccxl_3" value="93~97" name="dljhccxl">
+															<label for="dljhccxl_3">93~97</label>
+															
+															<input type="radio" id="dljhccxl_4" value="97~99" name="dljhccxl">
+															<label for="dljhccxl_4">97~99</label>
+															
+															<input type="radio" id="dljhccxl_5" value="99~" name="dljhccxl">
+															<label for="dljhccxl_5">99~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+											
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合除尘效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="tljh3"> -->
+<!-- 											</div> -->
+										</div>
+									</div>
+								</div>
+								<!-- 工业锅炉 -->
+								<div id="zdy_gygl" style="display:none;">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="input-group group-select">
+												<span class="input-group-addon">设备容量(蒸吨)：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gyglrl_1" value="~10" name="gyglrl">
+															<label for="gyglrl_1">~10</label>
+															
+															<input type="radio" id="yeglrl_2" value="10~35" name="gyglrl">
+															<label for="gyglrl_2">10~35</label>
+															
+															<input type="radio" id="yeglrl_3" value="35~100" name="gyglrl">
+															<label for="gyglrl_3">35~100</label>
+															<input type="radio" id="gyglrl_4" value="100~" name="gyglrl">
+															<label for="gyglrl_4">100~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+										
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">设备容量(蒸吨)：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gygl1"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6">
+										
+											<div class="input-group group-select">
+												<span class="input-group-addon">燃煤硫分：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gyglrm_1" value="~3" name="gyglrm">
+															<label for="gyglrm_1">~5</label>
+															
+															<input type="radio" id="gyglrm_2" value="3~5" name="gyglrm">
+															<label for="gyglrm_2">3~5</label>
+															
+															<input type="radio" id="gyglrm_3" value="5~8" name="gyglrm">
+															<label for="gyglrm_3">5~8</label>
+															
+															<input type="radio" id="gyglrm_4" value="8~10" name="gyglrm">
+															<label for="gyglrm_4">8~10</label>
+															
+															<input type="radio" id="gyglrm_5" value="10~" name="gyglrm">
+															<label for="gyglrm_5">10~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">燃煤硫分：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gygl2"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+										
+											<div class="input-group group-select">
+												<span class="input-group-addon">燃煤灰分：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gyglrmhf_1" value="~130" name="gyglrmhf">
+															<label for="gyglrmhf_1">~130</label>
+															
+															<input type="radio" id="gyglrmhf_2" value="130~150" name="gyglrmhf">
+															<label for="gyglrmhf_2">130~150</label>
+															
+															<input type="radio" id="gyglrmhf_3" value="150~180" name="gyglrmhf">
+															<label for="gyglrmhf_3">150~180</label>
+															
+															<input type="radio" id="gyglrmhf_4" value="180~200" name="gyglrmhf">
+															<label for="gyglrmhf_4">180~200</label>
+															
+															<input type="radio" id="gyglrmhf_5" value="200~" name="gyglrmhf">
+															<label for="gyglrmhf_5">200~</label>
+															
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">燃煤灰分：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gygl3"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+											<div class="input-group group-select">
+												<span class="input-group-addon">脱硫设备：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gygl4" value="有" name="gygl_tlsb" checked="checked" onclick="gygltl_click(this.value)"><label for="gygl4">有</label>
+															<input type="radio" id="gygl5" value="无" name="gygl_tlsb" onclick="gygltl_click(this.value)"><label for="gygl5">无</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6 zdy" id="gygl6_div">
+										
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合脱硫效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gygltlxl_1" value="~50" name="gygltlxl">
+															<label for="gygltlxl_1">~50</label>
+															
+															<input type="radio" id="gygltlxl_2" value="50~70" name="gygltlxl">
+															<label for="gygltlxl_2">50~70</label>
+															
+															<input type="radio" id="gygltlxl_3" value="70~90" name="gygltlxl">
+															<label for="gygltlxl_3">70~90</label>
+															
+															<input type="radio" id="gygltlxl_4" value="90~" name="gygltlxl">
+															<label for="gygltlxl_4">90~</label>
+															
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合脱硫效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gygl6"> -->
+<!-- 											</div> -->
+										</div>
+										<div class="col-sm-6 zdy">
+										
+											<div class="input-group group-select">
+												<span class="input-group-addon">综合除尘效率：</span>
+												<div class="chaxundiv_2 selectDiv" id="">
+													<div style="margin-top: 5px;">
+														<div id="show_version" class="radio radio-info radio-inline">
+															<input type="radio" id="gyglccxl_1" value="~90" name="gyglccxl">
+															<label for="gyglccxl_1">~90</label>
+															
+															<input type="radio" id="gyglccxl_2" value="90~93" name="gyglccxl">
+															<label for="gyglccxl_2">90~93</label>
+															
+															<input type="radio" id="gyglccxl_3" value="93~97" name="gyglccxl">
+															<label for="gyglccxl_3">93~97</label>
+															
+															<input type="radio" id="gyglccxl_4" value="97~99" name="gyglccxl">
+															<label for="gyglccxl_4">97~99</label>
+															
+															<input type="radio" id="gyglccxl_5" value="99~" name="gyglccxl">
+															<label for="gyglccxl_5">99~</label>
+															
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class="input-group"> -->
+<!-- 												<span class="input-group-addon">综合除尘效率：</span>  -->
+<!-- 												<input type="text" class="form-control" id="gygl7"> -->
+<!-- 											</div> -->
+										</div>
+									</div>
+								
+								</div>
+								
+							</div>
+						</div>
+						
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="jisuan_zhende_save" onclick="zdy_button()"><i class='fa fa-check'></i> 确定</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- 排放分析 -->
+	<div class="modal inmodal fade " style="margin-top: 100px" id="tjfx_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 80%;height:100%;" >
+			<div class="modal-content" style="width:100%;">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2 id="pffx_name">SO2排放分析</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;height: 500px;width:100%;" >
+						<div class="col-sm-12" style="height:100%;width:100%;">
+							<div class="panel-group" id="version">
+								<div class="row">
+									<h2 id="zpl_num">所选范围内：总排量为<a onclick="show_bar()">145吨</a>。点源共计<a onclick="show_table()">123</a>个，排放分担率20%</h2>
+								</div>
+								<!-- 柱状图 -->
+								<div id="tj_bar" class="row">
+									<div class="col-sm-6">
+										<div id= "bar" style="height:400px;width:500px;">
+										</div>
+									</div>
+									<div class="col-sm-6" style="width:50%;">
+										<div id= "pie" style="height:400px;width:400px;">
+										</div>
+									</div>
+								</div>
+								<!-- 表格 -->
+								<div id="tj_table" class="row" style="display:none;">
+									<div class="col-sm-3">
+										<div class="input-group group-select">
+											<span class="input-group-addon"> 部门： </span>
+											<div>
+												<select class="form-control m-b" id="section_select" style="min-width: 23%;" onchange="section_select(this.value)">
+													<option value="化石燃料固定燃烧源">化石燃料固定燃烧源</option>
+													<option value="工艺过程源">工艺过程源</option>
+													<option value="移动源">移动源</option>
+													<option value="溶剂使用源">溶剂使用源</option>
+													<option value="农业源">农业源</option>
+													<option value="扬尘源">扬尘源</option>
+													<option value="生物质燃烧源">生物质燃烧源</option>
+													<option value="储存运输源">储存运输源</option>
+													<option value="废物处理源">废物处理源</option>
+													<option value="其他排放源">其他排放源</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="input-group group-select">
+											<span class="input-group-addon"> 行业： </span>
+											<div>
+												<select class="form-control m-b" id="section_hy" style="min-width: 23%;" >
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<button class="btn btn-outline btn-lG" style="float:right;margin-right:5px;" onclick="show_table()">
+											 <i class="fa fa-check"></i>查询
+										</button>
+									</div>
+									
+									<div class="col-sm-3"></div>
+									
+									<div class="col-sm-12" style="margin-top:20px;">
+										<table class="table table-bordered" id="dy_table"></table>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+				</div> 
+<!-- 				<div class="modal-footer"> -->
+<!-- 					<button type="button" class="btn btn-primary" id="jisuan_zhende_save" onclick="pffx_button()"><i class='fa fa-check'></i> 确定</button> -->
+<!-- 				</div> -->
+			</div>
+		</div>
+	</div>	
+	<!-- 物种选择 -->
+	<div class="modal inmodal fade " style="margin-top: 100px" id="wz_Modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 50%;height:100%;" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2>物种选择</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:5px;" >
+						<div class="col-sm-12" style="height:100%;padding-top:20px;">
+							<div class="panel-group" id="version">
+								<div class="row">
+									<div class="input-group group-select">
+										<span class="input-group-addon">物种</span>
+										<div class="chaxundiv_2 selectDiv" id="">
+											<div style="margin-top: 5px;">
+												<div id="" class="radio radio-info radio-inline">
+													<div class="col-sm-2">
+														<input type="radio" id="wz1" value="SO2" name="wz" checked="checked"><label for="wz1">SO2</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz2" value="NOx" name="wz"><label for="wz2">NOx</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz5" value="PM25" name="wz"><label for="wz5">PM2.5</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz7" value="PM10" name="wz"><label for="wz7">PM10</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz3" value="VOC" name="wz"><label for="wz3">VOC</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz4" value="NH3" name="wz"><label for="wz4">NH3</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz8" value="BC" name="wz"><label for="wz8">BC</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz9" value="OC" name="wz"><label for="wz9">OC</label>
+													</div>
+													<div class="col-sm-2">
+														<input type="radio" id="wz10" value="CO" name="wz"><label for="wz10">CO</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="jisuan_zhende_save" onclick="wzxz_button()"><i class='fa fa-check'></i> 确定</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+<!-- 	<script src="../../js/jquery-ui.custom.min.js"></script> -->
+	<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	<script src="../../js/bootstrap-select.js"></script>
+	
+	<script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	
+	<!-- 颜色选择 器-->
+	<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+    <script src="../../js/plugins/switchery/switchery.js"></script>
+    <script src="../../js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="../../js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../../js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="../../js/plugins/cropper/cropper.min.js"></script>
+    
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../../js/plugins/layer/layer.min.js"></script>
+	
+	<script type="text/javascript" src="../../js/zTree/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="../../js/zTree/jquery.ztree.excheck.js"></script>
+	
+	<script src="../../js/plugins/echarts/echarts.js"></script>
+	<script src="../../js/plugins/echarts/macarons.js"></script>
+	
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/ajax.js"></script>
+	<script src="../../js/arcgisUrl.js"></script>
+	<script src="jquery.range.js"></script>
+	<script src="0501.js"></script>
+	<script type="text/javascript" src="html.js"></script>
+	<script src="gis/surface.js"></script>
+	<script src="gis/point.js"></script>
+	<script src="gis/grid.js"></script>
+	<script src="gis/chart.js"></script>
+	<script src="gis/export.js"></script>
+</body>
+</html>

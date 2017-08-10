@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">	
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+	<link href="../../css/resolution.css" rel="stylesheet">
+	
+    <style>
+		.table-hover > thead > tr > th, .table-hover > thead > tr > td {
+			text-align:center; background-color: #F5F5F6;
+		}
+		.table-hover > tbody > tr > td {
+			text-align:center;
+		}
+		.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	    .selectDiv .noSelectBorder select{
+	    	border:0;
+	        appearance:none;
+	        -moz-appearance:none;
+	        -webkit-appearance:none;
+	        padding-right:20px;
+	    }
+	    .selectDiv .noSelectBorder{
+	    	display:inline-block;
+	    	position: relative;
+	    	margin-right:10px;
+	    }
+	    .selectDiv .noSelectBorder:hover i{
+	    	display:block;
+	    }
+	    .selectDiv .noSelectBorder i{
+	    	position:absolute;
+	    	display:none;
+	    	/* width:19px;
+	    	height:19px; */
+	    	right:0;
+	    	top:7px;
+	    	border-left:8px solid transparent;
+	    	border-top:16px solid #333;
+	    	border-right:8px solid transparent;
+	    	border-bottom:1px solid transparent;
+	    }
+	    .selectDiv select{
+	    	width:100%;
+	    	border:0;
+	    }
+	    .selectDiv select:focus{
+	    	border:0;
+	    }
+	    .checkbox-info label{
+	    	margin-right:25px;
+	    }
+	    .radio-info label {
+	    	margin-right:25px;
+	    }
+	    
+	    .tiaojian{min-height: 23px;border-bottom:1px solid #cccccc;position:relative;border-left:1px solid #cccccc;padding-bottom:1px;margin:4px 10px 0px 0px;padding-left:5px;padding-right:17px;display:block;white-space:nowrap;background:#ECECEC;float:left;height:17px;border-top:1px solid #cccccc;border-right:1px solid #cccccc;padding-top:1px;font-size:14px;}
+		.tiaojian:hover{ background-color:#fff;} 
+		.tiaojian label{font-size:12px;font-weight: 100;}
+		.tiaojian em{ background-image:url(../../zp07/close.gif);cursor:pointer;display:block;height:13px;overflow:hidden;position:absolute;right:2px;top:3px;width:13px;}
+		.zhezhao { 
+			 width:100%; 
+			 height:100%; 
+			 background-color:#000; 
+			 filter:alpha(opacity=50); 
+			 -moz-opacity:0.5; 
+			 opacity:0.5; 
+			 position:absolute; 
+			 left:0px; 
+			 top:0px; 
+			 display:none; 
+			 z-index:1000; 
+		}
+		.zhezhao_title { 
+			 width:280px; 
+			 height:180px; 
+			 position:absolute; 
+			 top:200px; 
+			 left:50%; 
+			 margin-left:-140px; 
+			 display:none; 
+			 z-index:1500; 
+		}
+	</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="zhezhao" id="zhezhao" style="display:none;"></div>
+	<div class="zhezhao_title" id="zhezhao_title" style="display:none;">
+		<div class="sk-spinner sk-spinner-wave" style="width: 200px;">
+			<h2><b><span style="color: #fff;">请稍后......</span></b></h2>
+		</div>
+		<div class="sk-spinner sk-spinner-wave">
+	        <div class="sk-rect1"></div>
+	        <div class="sk-rect2"></div>
+	        <div class="sk-rect3"></div>
+	        <div class="sk-rect4"></div>
+	        <div class="sk-rect5"></div>
+	    </div>
+	</div>
+	
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+
+		<div class="row" style="height:100%;">
+			<div class="col-sm-12">
+			<div class="col-sm-3">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 部门： </span>
+					<div>
+						<select class="form-control m-b" id="section_select" style="min-width: 23%;" >
+							<option>化石燃料固定燃烧源</option>
+							<option>工艺过程源</option>
+							<option>移动源</option>
+							<option>溶剂使用源</option>
+							<option>农业源</option>
+							<option>扬尘源</option>
+							<option>生物质燃烧源</option>
+							<option>储存运输源</option>
+							<option>废物处理源</option>
+							<option>其他排放源</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 行业： </span>
+					<div>
+						<select class="form-control m-b" id="trade" style="min-width: 23%;" ></select>
+					</div>
+				</div>
+			</div>
+			<div class='col-sm-3' >
+				<div class="input-group group-select">
+					<span class="input-group-addon">年份： </span>
+					<div>
+						<select class="form-control m-b" id="renwu_select" style="min-width: 23%;" onchange="chonse_year()"></select>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-3" id="show_button">
+				<button id="qigndan_build" class="btn btn-outline btn-lG" style="float:right;margin-right:5px;display:none;" onclick="qigndan_build()"> 清单生成</button>
+				<button id="qingdan_save" class="btn btn-outline btn-lG" style="float:right;margin-right:5px;display:none;" onclick="qingdan_save()"> 保存</button>
+				<button class="btn btn-outline btn-lG" style="float:right;margin-right:5px;" onclick="analyse()"> <i class="fa fa-bar-chart"></i>排放分析</button>
+
+			</div>
+			<div class="col-sm-12" style="margin-top:20px;" >
+				<strong> <code>*</code>共有37个行业，尚有<code><a onclick="wei_rough()" id="wei_ji"></a></code>个行业未完成排放计算 </strong>
+			</div>
+			</div>
+			
+			<div id="biao" class="col-sm-12" style="margin-top:20px;">
+				<!-- 左边 -->
+				<div class="col-sm-12">
+					<!-- 行业 -->
+					<div class="row" style="border:1px;">
+						
+						<!-- <div class='col-sm-6' style='padding-left:0'>
+							<div class="input-group group-select">
+								<span class="input-group-addon">年份： </span>
+								<div>
+									<select class="form-control m-b" id="renwu_select" style="min-width: 23%;" onchange="chonse_year()"></select>
+								</div>
+							</div>
+						</div> -->
+						<!-- 排放版本 -->
+						<div class='col-sm-12' style='padding-left:5'>
+							<div class="panel-heading" style="background-color: #f5f5f5;">
+								<h5 class="panel-title">
+									<a data-toggle="collapse" data-parent="#version" href="">
+										<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;">排放版本</span>
+									</a>
+								</h5>
+							</div><br>
+						
+							<div class="input-group group-select">
+								<span class="input-group-addon">排放版本</span>
+								<div class="chaxundiv_2 selectDiv" id="qyzt_2">
+									<div id="show_version" class="radio radio-info radio-inline row" style="margin-top: 5px;width:100%">
+<!-- 										<div  ></div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="panel-heading" style="background-color: #f5f5f5;">
+							<h5 class="panel-title">
+<!-- 								<a data-toggle="collapse" data-parent="#version" href="#v42"> -->
+									<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;">排放结果修正</span>
+<!-- 								</a> -->
+							</h5>
+						</div><br>
+					<!-- 污染物筛选 -->
+					<div style="border: 1px solid #c1bcbc;" >
+							
+						<div class="row">
+							<div class='col-sm-8' style='padding-right:0px;'>
+								<div class="input-group group-select">
+									<span class="input-group-addon">污染物筛选</span>
+									<div class="chaxundiv_2 selectDiv" id="qyzt_2" style="padding-top:;border-width:;">
+										<div style="margin-top: 5px;">
+											<div class="checkbox checkbox-info checkbox-right">
+												<input type="checkbox" id="q" value="q" name="q" onClick="all_checkbox()"><label for="q">全选</label>
+												<input type="checkbox" id="w1" value="SO2" name="w" onclick="notallsel();"><label for="w1">SO<sub>2</sub></label>
+												<input type="checkbox" id="w2" value="NOx" name="w" onclick="notallsel();"><label for="w2">NO<sub>x</sub></label>
+												<input type="checkbox" id="w3" value="VOC" name="w" onclick="notallsel();"><label for="w3">VOC</label>
+												<input type="checkbox" id="w4" value="NH3" name="w" onclick="notallsel();"><label for="w4">NH<sub>3</sub></label>
+												<input type="checkbox" id="w5" value="PM2.5" name="w" onclick="notallsel();"><label for="w5">PM<sub>2.5</sub></label>
+												<input type="checkbox" id="w6" value="PMcoarse" name="w" onclick="notallsel();"><label for="w6">PM<sub>coarse</sub></label>
+												<input type="checkbox" id="w7" value="PM10more" name="w" onclick="notallsel();"><label for="w7">PM<sub>10more</sub></label>
+												<input type="checkbox" id="w8" value="BC" name="w" onclick="notallsel();"><label for="w8">BC</label>
+												<input type="checkbox" id="w9" value="OC" name="w" onclick="notallsel();"><label for="w9">OC</label>
+												<input type="checkbox" id="w10" value="CO" name="w" onclick="notallsel();"><label for="w10">CO</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class='col-sm-4' style='padding-left:0'>
+								<div class="input-group group-select" >
+								<span class="input-group-addon" style="border-width:0px;">修正系数</span>
+									<div class="chaxundiv_2 selectDiv" id="qyzt_2"  style="height:49px;border-width:;">
+										<div class="row" style="padding-top:5px;">
+											<div class="col-sm-6" style="padding-top:5px;">
+												<input type="text" id="xzxs">
+											</div>
+											<div class="col-sm-6">
+												<button class="btn btn-outline btn-lG v1" style="float:right;margin-right:5px;" onclick="add_div()">
+													 <i class="fa fa-check"></i>确定
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 修正记录 -->
+						<div class="row" style="margin-top:0px;">
+							<div class='col-sm-12' style='padding-left:5'>
+								<div class="input-group group-select" style="width:100%;">
+									<span class="input-group-addon" style="border-width:0px;padding-left:13px;">修正记录  &nbsp;&nbsp;&nbsp;</span>
+									<div class="chaxundiv_2 selectDiv" id="qyzt_2" >
+										<div class="row" style="padding-top:5px;overflow-y:auto;height:100px;" >
+											<div class="col-sm-12">
+												<div class="col-sm-11" id="xishu"></div>
+												<button class="btn btn-outline btn-lG v1" style="float:right;margin-right:5px;" onclick="delete_div('all')">
+													<i class="fa fa-close"></i> 清除
+												</button> 
+											</div>
+											
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+							
+					</div>
+				</div>
+				<div class="row"></div><br>
+				<!-- 右边 -->
+				<div class="col-sm-12" id="paifangzhanshi" style="display:none">
+					<div class="panel-heading" style="background-color: #f5f5f5;">
+						<h5 class="panel-title">
+							<a data-toggle="collapse" data-parent="#version" href="">
+								<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;">排放结果展示</span>
+							</a>
+						</h5>
+					</div><br>
+				
+					<div class="row">
+						<div class="col-sm-6" >
+							<div id="bar"  class="bar_0401">
+							</div>
+						</div>
+						<div class="col-sm-6">
+						
+						<div class="col-sm-12" id="show_pie1" style="display:none;">
+							<div id="pie1"  class="pie1_0401">
+							</div>
+						</div>
+						<div class="col-sm-12" id="show_pie2" style="display:none;">
+							<div id="pie2"  class="pie2_0401">
+							</div>
+						</div>
+						
+						
+						</div>
+						
+						
+					</div>
+					<div class="row">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 保存 -->
+	<div class="modal inmodal fade" style="margin-top: 100px" id="show_save1" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>清单保存</h2>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="">
+							<form  id="changepassword_form" onsubmit="return false" >
+								<div class="col-sm-12 form-group">
+									<label class="col-sm-5 control-label"  style="margin-top: 3px;"><h3>清单版本任务:</h3></label>
+									<div class="col-sm-7" id="">
+										<select class="form-control m-b" id="find_Saved" name="" onchange="">
+										</select>
+				                     </div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-w-m btn-info" style="" onclick="update_formation()" value="保&nbsp;存">
+					<button type="button" class="btn btn-white" style="width:120px;" data-dismiss="modal">关&nbsp;闭&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 新建 -->
+	<div class="modal inmodal fade" style="margin-top: 100px" id="show_save" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>清单生成</h2>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="">
+							<form  id="changepassword_form" onsubmit="return false" >
+								<div class="col-sm-12">
+									<label class="col-sm-5 control-label"   style="text-align:right;"><h3>清单版本名称<code>*</code>:</h3></label>
+									<div class="col-sm-7" id="">
+				                         <input type="text" name="qingdan_name" id="qingdan_name" style="" placeholder="2015_北京市_清单版本_v1" autocomplete="off" class="form-control">
+				                     </div>
+								</div>
+								<div class="col-sm-12">
+									<label class="col-sm-5 control-label"  style="text-align:right;"><h3>年份<code>*</code>:</h3></label>
+									<div class="col-sm-7 chaxundiv_2 selectDiv" id="data_1">
+										<div class="input-group date">
+											<span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+											<input type="text" id="qdnf" style="width: 100%;height: 33px;" />
+										</div>
+				                     </div>
+								</div>
+								<div class="col-sm-12">
+									<label class="col-sm-5 control-label"  style="text-align:right;"><h3>描述:</h3></label>
+									<div class="col-sm-7" id="">
+										<textarea name="add_content" id="add_content" style="" placeholder="自主编制" autocomplete="off" class="form-control"></textarea>
+				                     </div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-w-m btn-info" style="" onclick="add_formation()" value="保&nbsp;存">
+					<button type="button" class="btn btn-white" style="width:120px;" data-dismiss="modal">关&nbsp;闭&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 未完成排放计算窗口-->
+	 <div class="modal inmodal fade in" id="show_rough" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 80%" >
+			<div class="modal-content">
+				<div class="modal-header" style="padding :0px">
+					<button type="button" style="padding-right: 10px;margin-top: 5px;" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2 style="font-size: 23px; font-weight: bold;">未完成排放计算行业列表</h2>
+				</div>
+				<div class="row" style="height:100%;width:">
+					<div class="col-sm-12" style="height:;">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>部门</th>
+									<th>行业</th>
+								</tr>
+							</thead>
+							<tbody id="table_rough">
+								<tr>
+									<td>1</td><td>1</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- 自定义js -->
+
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+	<script src="../../js/plugins/echarts/echarts.js"></script>
+	<script src="../../js/plugins/echarts/macarons.js"></script>
+	
+	<script src="../../js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	<!-- iCheck -->
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../../js/ajax.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script src="0401.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">	
+<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 任务名称： </span>
+					<div>
+						<select class="form-control m-b" id="renwu_select" style="min-width: 23%;" onchange="chonse_renwu()"></select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<button class="btn btn-outline btn-lG" style="float:right;margin-right:5px;">
+					<i class="fa fa-arrow-down"></i> 下载
+				</button>
+				<button class="btn btn-outline btn-lG" style="float:right;margin-right:5px;">
+					<i class="fa fa-commenting-o"></i> 通知
+				</button>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-12">
+				共有<a onclick="schedule_show('ALL')"><code style="color:blue;" id="all"></code></a>个城市，
+				<a onclick="schedule_show('WAIT_COMMIT')"><code id="wait_commitwait"></code></a>个未提交，
+				<a onclick="schedule_show('WAIT_REVIEW')"><code id="wait_reviewwait"></code></a>个待审核，已通过
+				<a onclick="schedule_show('PASSED')"><code id="passed"></code></a>个，已驳回<a onclick="schedule_show('REJECT')"><code id="reject"></code></a>个。
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-12"><table id="schedule_select" class="table table-hover"></table></div>
+		</div>
+	</div>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	
+	<script src="../../js/jquery-ui.custom.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../../js/content.js"></script>
+	<!-- iCheck -->
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<script src="../../js/ajax.js"></script>
+	<script src="../../BackstageIP.js"></script>
+	<script src="0203.js"></script>
+</body>
+</html>

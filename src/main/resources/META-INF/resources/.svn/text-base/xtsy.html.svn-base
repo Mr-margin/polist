@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<title></title>
+
+<!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link
+	href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css"
+	rel="stylesheet">
+<link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+<link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<style>
+.lmtitle {
+	border: 1px solid rgb(204, 204, 204);
+	border-image: none;
+	height: 54px;
+	background-color: rgb(255, 255, 255);
+}
+
+.lmtitle .name {
+	padding: 0px 10px 0px 54px;
+	color: rgb(79, 135, 209);
+	line-height: 54px;
+	font-size: 14px;
+	font-weight: bold;
+	float: left;
+	background-repeat: no-repeat;
+}
+
+.box_dashed {
+	padding: 7px;
+	border: 1px dashed rgb(76, 177, 45);
+	border-image: none;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.table-hover>thead>tr>th, .table-hover>thead>tr>td {
+	text-align: center;
+	background-color: #F5F5F6;
+}
+
+.table-hover>tbody>tr>td {
+	text-align: center;
+}
+/* .lmtitle a.more {
+			width: 82px; text-align: center; line-height: 32px; text-decoration: none; float: right; display: block;
+		}
+		.lmtitle a.more:link {
+			margin: 7px; width: 68px; color: rgb(68, 68, 68); line-height: 38px; padding-right: 15px; background-image: url("../images/more_bk2.gif");
+		}
+		.lmtitle a.more:visited {
+			margin: 7px; width: 68px; color: rgb(68, 68, 68); line-height: 38px; padding-right: 15px; background-image: url("../images/more_bk2.gif");
+		}
+		.lmtitle a.more:hover {
+			background-position: bottom; color: rgb(0, 0, 0); background-image: url("../images/more_bk2.gif");
+		}
+		.lmtitle a.more:active {
+			background-position: left bottom; color: rgb(255, 255, 255); background-image: url("../images/more_bk2.gif");
+		} */
+.checkbox-info label {
+	margin-right: 25px;
+}
+</style>
+</head>
+
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight">
+
+		<div class="row">
+			<div class="col-sm-4" id="zhongyaogonggao">
+				<DIV class="lmtitle">
+					<SPAN class="name" style='background-image: url(zp01/ui/images/icon_lm_fwdt.png);'>
+						<div class="tp-zhongduan">
+							<span>重要公告</span>
+						</div>
+					</SPAN>
+					<button id="release" type="button" class="btn btn-info btn-outline" style="float:right;margin-top:10px;margin-right:20px;" ><i class="fa fa-sticky-note-o"></i> 发布公告</button>
+				</DIV>
+				<DIV class="box_dashed" style="height:180px;overflow-y: auto;">
+					
+					<div class="tabs-container" style="width: 98%;">
+				<!-- 分栏目的标题 开始-->
+						<ul id="ul1" class="nav nav-tabs" style="width: 18rem;">
+							<li class="active"  style="background-color:#F5F5F6;width:9rem;"><a data-toggle="tab"
+								href="#tab-2" aria-expanded="false" id="sjtb_a">上级下发</a></li>
+							<li  style="background-color: #F5F5F6;width:9rem;"><a
+								data-toggle="tab" href="#tab-1" aria-expanded="true"
+								id="qytb_a">自己发布</a></li>
+						</ul>
+						<!-- 分栏目的标题   结束-->
+						<!-- tab页面的内容 开始-->
+						<div class="tab-content" style="padding-top: 5px;">
+							<div id="tab-1" class="tab-pane ">
+								<ul id="task_select">
+								</ul>
+							</div>
+							<div id="tab-2" class="tab-pane active">
+								<ul id="task_select1">
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					
+				</DIV>
+			</div>
+			<div class="col-sm-4" id ="daojishi">
+				<DIV class="lmtitle">
+					<SPAN class="name"
+						style='background-image: url(zp01/ui/images/icon_lm_fwdt.png);'>
+						<div class="tp-zhongduan">
+							<span>倒计时通知</span>
+						</div>
+					</SPAN>
+				</DIV>
+				<DIV class="box_dashed" style="height:180px;overflow :auto">
+					<div class="tabs-container" style="width: 98%;style="padding-top: 5px;"">
+				<!-- 分栏目的标题 开始-->
+						<ul id="ul2" class="nav nav-tabs" style="width: 18rem;">
+							
+							<li class="active" style="background-color: #F5F5F6;width: 9rem;"><a data-toggle="tab"
+								href="#tab-4" aria-expanded="false" id="countdown2">上级下发</a></li>
+							<li  style="background-color: #F5F5F6;width: 9rem;"><a
+								data-toggle="tab" href="#tab-3" aria-expanded="true"
+								id="countdown1">自己发布</a></li>
+						</ul>
+						<!-- 分栏目的标题   结束-->
+						<!-- tab页面的内容 开始-->
+						<div class="tab-content" style="padding-top: 5px;">
+							<div id="tab-4" class="tab-pane active">
+								<ul id="tian_num" >
+								</ul>
+							</div>
+							<div id="tab-3" class="tab-pane ">
+								<ul id="tian_num1">
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				
+				
+					
+				</DIV>
+			</div>
+			<div class="col-sm-4" id="denglurizhi">
+				<DIV class="lmtitle">
+					<SPAN class="name"
+						style='background-image: url(zp01/ui/images/icon_lm_fwdt.png);'>
+						<div class="tp-zhongduan">
+							<span>登录日志</span>
+						</div>
+					</SPAN>
+				</DIV>
+				<DIV class="box_dashed" style="height:180px;">
+					<ul id="show_journal">
+					</ul>
+				</DIV>
+			</div>
+		</div>
+		<br>
+		<div class="row" id="renwuliebiao">
+			<div class="col-sm-12">
+				<DIV class="lmtitle">
+					<SPAN class="name"
+						style='background-image: url(zp01/ui/images/icon_lm_fwdt.png);'>
+						<div class="tp-zhongduan">
+							<span id="rwlb">填报任务列表</span>
+						</div>
+					</SPAN>
+				</DIV>
+				<DIV class="box_dashed" style="overflow:auto">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>任务名称</th>
+								<th>清单年份</th>
+								<th>发布时间</th>
+								<th>截止时间</th>
+								<th>审核意见</th>
+								<th>状态</th>
+<!-- 								<th id="listAction">操作</th> -->
+							</tr>
+						</thead>
+						<tbody id="show_renwu">
+						</tbody>
+					</table>
+				</DIV>
+			</div>
+		</div>
+	</div>
+	<div class="modal inmodal fade" id="release_gg" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 60%;    padding-top: 0%;">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:15px 15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="color: rgb(79, 135, 209);"><h2>发布公告</h2></span>
+				</div>
+				<div class="modal-body" style="overflow:scroll;padding:0px;">
+					<div class="">
+						<div class="form-group">
+							<form id="changepassword_form" onsubmit="return false">
+								<div class="col-sm-12">
+									<label class="col-sm-2 control-label" style="margin-top: 3px;"><h3>选择用户:</h3></label>
+									<div class="col-sm-10" id="data_1">
+										<div id="user_select" class="checkbox checkbox-info"></div>
+									</div>
+								</div>
+								<div class="col-sm-12 ">
+									<label class="col-sm-2 control-label" style="margin-top: 3px;"><h3>发布标题:</h3></label>
+									<div class="col-sm-10" id="data_1">
+										<input type="text" name="add_title" id="add_title" style=""
+											required="required" placeholder="发布标题" autocomplete="off"
+											class="form-control">
+									</div>
+								</div>
+								<div class="col-sm-12 ">
+									<label class="col-sm-2 control-label" style="margin-top: 3px;"><h3>发布内容:</h3></label>
+									<div class="col-sm-10" id="data_1">
+										<textarea  name="add_content" id="add_content" style="height:80px;" placeholder="发布内容" autocomplete="off" class="form-control"></textarea>
+									</div>
+								</div> 
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-w-m btn-info" style=""
+						onclick="save_task();" value="发&nbsp;布&nbsp;内&nbsp;容">
+					<button type="button" class="btn btn-white" data-dismiss="modal" style="width:120px;">关&nbsp;&nbsp;闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 公告详细信息 -->
+	<div class="modal inmodal fade" id="task_message" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width:50%">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h2>公告详情</h2>
+				</div>
+				<div class="modal-body" style="overflow:scroll;">
+					<div class="">
+						<div class="">
+							<form id="changepassword_form" onsubmit="return false">
+								<div class="col-sm-12 form-group">
+									<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布公告人:</h3></label>
+									<div class="col-sm-8" id="">
+										<input type="text" name="task_fbr" id="task_fbr" style="" autocomplete="off" class="form-control" readonly="readonly">
+									</div>
+								</div>
+								<div class="col-sm-12 form-group">
+									<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布标题:</h3></label>
+									<div class="col-sm-8" id="">
+										<input type="text" name="task_title" id="task_title" style="" autocomplete="off" class="form-control" readonly="readonly">
+									</div>
+								</div>
+								<div class="col-sm-12 form-group">
+									<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布时间:</h3></label>
+									<div class="col-sm-8" id="">
+										<input type="text" name="task_time" id="task_time" autocomplete="off" class="form-control" readonly="readonly">
+									</div>
+								</div>
+								<div class="col-sm-12 form-group">
+									<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>发布内容:</h3></label>
+									<div class="col-sm-8" id="" >
+										<textarea  name="task_content" id="task_content" style="height:80px;"  autocomplete="off" class="form-control"  readonly="readonly" ></textarea>
+									</div>
+								</div>
+								<div class="col-sm-12" id="fujian" hidden>
+									<label class="col-sm-4 control-label" style="margin-top: 3px;"><h3>附件下载:</h3></label>
+									<div class="col-sm-8" id="data_2">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/content.js"></script>
+	<!-- 自定义js -->
+
+	<script src="js/jquery-ui.custom.min.js"></script>
+
+	<script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+	<!-- iCheck -->
+	<script src="js/plugins/iCheck/icheck.min.js"></script>
+	<!-- 消息框 -->
+	<script src="js/plugins/toastr/toastr.min.js"></script>
+
+	<script src="js/plugins/iCheck/icheck.min.js"></script>
+
+	<!-- 对话框 -->
+	<script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+	<script src="BackstageIP.js"></script>
+
+	<script src="js/ajax.js"></script>
+	<script src="js/public.js"></script>
+	<script src="xtsy.js"></script>
+
+</body>
+</html>

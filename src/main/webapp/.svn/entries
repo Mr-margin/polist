@@ -1,0 +1,34 @@
+10
+
+dir
+225
+http://115.29.42.107:81/svn/%E5%A4%A7%E6%B0%94%E6%B8%85%E5%8D%95/polist/src/main/webapp
+http://115.29.42.107:81/svn/%E5%A4%A7%E6%B0%94%E6%B8%85%E5%8D%95
+
+
+
+2016-12-23T03:00:15.790039Z
+225
+lyl
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3a76bc9e-f89c-2940-82c2-d45963592148
+
+WEB-INF
+dir
+
+ord_data
+dir
+

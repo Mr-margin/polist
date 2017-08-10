@@ -1,0 +1,159 @@
+/**璁剧疆涓嶅悓鍒嗚鲸鐜囨樉绀轰笉鍚岀殑鏍峰紡*/
+/* 璁剧疆浜嗘祻瑙堝櫒鍍忕礌瀹藉害灏忎簬767px鏃�鏄剧ず鐨勯珮搴﹀拰瀹藉害鍍忕礌 */ 
+@media all and (max-width: 767px) {
+  
+ .sj_Pic{
+  	
+  	height:400px;
+  }
+  .bar_0401{
+  	height: 400px;
+  }
+
+  .pie1_0401{
+  	height: 250px;
+  }
+  
+  .pie2_0401{
+  	height: 250px;
+  }
+}
+/* 璁剧疆浜嗘祻瑙堝櫒鍍忕礌瀹藉害澶т簬767px灏忎簬991px鏃�鏄剧ず鐨勯珮搴﹀拰瀹藉害鍍忕礌 */ 
+@media all and (min-width: 768px) and (max-width: 991px) {
+  .sj_Pic{
+  
+  	height:400px;
+  }
+  .bar_0401{
+  	height: 400px;
+  }
+  .pie1_0401{
+  	height: 250px;
+  }
+  .pie2_0401{
+  	height: 250px;
+  }
+ 
+}
+/* 璁剧疆浜嗘祻瑙堝櫒鍍忕礌瀹藉害澶т簬992px灏忎簬1199px鏃�鏄剧ず鐨勯珮搴﹀拰瀹藉害鍍忕礌 */ 
+@media all and (min-width: 992px) and (max-width: 1199px) {
+ 
+  .bar_0401{
+  	height: 400px;
+  }
+  .pie1_0401{
+  	height: 250px;
+  }
+
+  .sj_Pic{
+  	width: 600px;
+  	height:500px;
+  }
+  .pie2_0401{
+  	height: 250px;
+  }
+  .paifangzhanshi_echarts{
+  	width: 450px;
+  	height:350px;
+  }
+  .paifangzhanshi_pie{
+  	width: 200px;
+  	height:400px;
+  }
+}
+/* 璁剧疆浜嗘祻瑙堝櫒鍍忕礌瀹藉害澶т簬1200px灏忎簬1550px鏃�鏄剧ず鐨勯珮搴﹀拰瀹藉害鍍忕礌 */ 
+@media all and (min-width: 1200px) and (max-width: 1550px){
+  
+  .bar_0401{
+  	height: 500px;
+  }
+  .pie1_0401{
+  	height: 250px;
+  }
+  .pie2_0401{
+  	height: 250px;
+  }
+  .sj_Pic{
+  	width: 600px;
+  	height:500px;
+  }
+  .Pic_model{
+  	width: 400px;
+  	height:300px;
+  }
+  .qbwz_echarts_0501{
+  	width: 660px;
+  	height:400px;
+  }
+  /**15.36*/
+  .paifangzhanshi_echarts{
+  	width: 500px;
+  	height:400px;
+  }
+  .paifangzhanshi_pie{
+  	width: 250px;
+  	height:400px;
+  }
+}
+/* 璁剧疆浜嗘祻瑙堝櫒鍍忕礌瀹藉害澶т簬1551px灏忎簬1900px鏃�鏄剧ず鐨勯珮搴﹀拰瀹藉害鍍忕礌 */ 
+@media all and (min-width: 1551px) and (max-width: 1900px){
+  .bar_0401{
+  	width : 850px;
+  	height: 500px;
+  }
+  .pie1_0401{
+  	height: 250px;
+  }
+  .pie2_0401{
+  	height: 250px;
+  }
+  .sj_Pic{
+  	width: 780px;
+  	height:660px;
+  }	
+  .Pic_model{
+  	width: 530px;
+  	height:400px;
+  }
+  .qbwz_echarts_0501{
+  	width: 860px;
+  	height:400px;
+  }
+  .paifangzhanshi_echarts{
+  	width: 660px;
+  	height:400px;
+  }
+  .paifangzhanshi_pie{
+  	width: 300px;
+  	height:400px;
+  }
+  
+}
+/* 璁剧疆浜嗘祻瑙堝櫒鍍忕礌瀹藉害澶т簬1901px鏃�鏄剧ず鐨勯珮搴﹀拰瀹藉害鍍忕礌 */
+@media all and (min-width: 1901px) {
+  .sj_Pic{
+  	width: 780px;
+  	height:660px;
+  }		
+  .Pic_model{
+  	width: 530px;
+  	height:400px;
+  }
+	.bar_0401{
+  	height: 500px;
+  }
+  .pie1_0401{
+  	height: 250px;
+  }
+  .pie2_0401{
+  	height: 250px;
+  }
+  .paifangzhanshi_echarts{
+  	width: 660px;
+  	height:400px;
+  }
+  .paifangzhanshi_pie{
+  	width: 300px;
+  	height:400px;
+  }  
+}

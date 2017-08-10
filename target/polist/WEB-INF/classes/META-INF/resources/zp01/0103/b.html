@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+<!-- 		<META content="IE=11.0000" http-equiv="X-UA-Compatible"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<TITLE></TITLE>
+		<link href="../../css/plugins/jQueryUI/jquery-ui.css" rel="stylesheet">
+		<link href="../../css/bootstrap.qiye.css" rel="stylesheet">
+		<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+		<LINK href="../style/global_static.css" rel="stylesheet" type="text/css">
+		<LINK href="../style/main_style.css" rel="stylesheet" type="text/css">
+		
+		<link href="../../css/font-awesome.css" rel="stylesheet">
+    	<link href="../../css/animate.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		
+		<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/newAdd.css">
+
+		<style>
+			/* ul{margin-top:0;margin-bottom:10px}
+			ul{display:block;list-style-type:disc;-webkit-margin-before:1em;-webkit-margin-after:1em;-webkit-margin-start:0;-webkit-margin-end:0;-webkit-padding-start:40px}
+			li{display:list-item;text-align:-webkit-match-parent;font-size:12px;margin:0 0 8px 0}
+			.table-hover>thead>tr>td,.table-hover>thead>tr>th{text-align:center;background-color:#F5F5F6}
+			.table-hover>tbody>tr>td{text-align:center} */
+			.table-bordered{border:1px solid #ddd}
+			.table{width:100%;max-width:100%;margin-bottom:20px;margin-top:20px}
+			table{background-color:transparent}
+			table{border-spacing:0;border-collapse:collapse}
+			.dise{background-color:#F5F5F6;text-align:center}
+			.zhong{text-align:center}
+			#navgo{margin:0 30px 0 0;height:54px;text-align:center;float:right}
+			#navgo ul ul{display:none}
+			#navgo ul li:hover>ul{display:block}
+			#navgo ul{padding:0 0;border-radius:10px;height:54px;list-style:none;position:relative;display:inline-table}
+			#navgo ul:after{content:"";clear:both;display:block}
+			#navgo ul li{float:left;height:54px;}
+			/*#navgo ul li:hover{background:#72a7de}*/
+			#navgo ul li:hover a{color:#fff}
+			#navgo ul li a{display:block;padding:0 0 0px 0;color:#757575;text-decoration:none}
+			#navgo ul ul{background:#5f6975;border-radius:0;padding:0;position:absolute;top:100%}
+			#navgo ul ul li{float:none}
+			#navgo ul ul li a{padding:10px 5px;color:#fff}
+			#navgo ul ul li a:hover{background:#2e63a7}
+			#navgo ul ul ul{position:absolute;left:100%;top:0}
+			.ui-widget-header {
+			    color: rgb(32, 132, 218);
+			}
+			.anchorBL{  
+		       display:none;  
+		   	}
+			/*样式添加*/
+			.popover{
+				/*position: relative;*/
+				z-index: 9999;
+			}
+		</style>
+	</HEAD>
+	
+<BODY>
+	<span id="addFixed">
+		<DIV id="banner_qian" style="background-color: #fff"></DIV>
+		<DIV id="menu">
+			<A id="sy" style='background-image: url("../ui/images/icon_01.png");' href="#">系统首页</A>
+			<A id="gkgs" class="cur" style='background-image: url("../ui/images/icon_05.png");' href="#">企业信息</A>
+			<A id="gkgs_s" style='background-image: url("../ui/images/icon_10.png");display:none;' href="#">设备信息</A>
+		</DIV>
+		<div class="lmtitleCon">
+			<DIV class="lmtitle">
+				<SPAN class="name" style='background-image: url(../ui/images/icon_lm_fwdt.png);'>企业信息</SPAN>
+			<!-- <a id="add_sb" href="javascript:;" class="sp-column" style='background-image: url("ui/images/icon_11.png"); height:43px; font-size:14px;' onclick="SaveJjiben(0)">&nbsp;&nbsp;<span>保存</span></a> -->
+				<div id='navgo' style='float: right;'>
+					<ul>
+						<li><a id='edit' class='sp-column' style="width: 90px;"><button class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> 编辑</button></a></li>
+						<li><a id='save' class='sp-column' style="width: 90px;display:none;"><button class="btn btn-default"><span class="glyphicon glyphicon-floppy-saved"></span> 保存</button></a></li>
+						<li><a id='close' class='sp-column' style="width: 90px;display:none;"><button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> 取消</button></a></li>
+						<li><a id='look' href="b_put.html" target="_blank"><button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> 查看</button></a></li>
+						<li><a id='close_Return' class='sp-column' style="width: 90px;display:none;"><button class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> 取消</button></a></li>
+					</ul>
+				</div>
+			</DIV>
+		</div>
+
+	</span>
+	<DIV class="body_mid">
+
+		
+		<DIV class="floor" style="margin: 10px 25px 25px 25px;">
+			<DIV class="right_list" style="width: 100%;">
+				
+
+				<DIV class="box_dashed">
+					<div id="qy_title">
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">基本信息</b>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>行业类别*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="industrytype"></a></b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<a id="companyId" style="display:none;"></a>
+					</div>
+					<!-- 表p00_企业基本信息表 -->
+					<div id="p00" style="display:none;">
+						
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">企业名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">统一社会信用代码<code>*</code></td>
+								<td width="15%"><a id="companysocietynumber"></a></td>
+								<td width="10%" class="dise">法人代表</td>
+								<td width="15%"><a id="legalentity"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise" >年工业总产值<br>(万元)</td>
+								<td class="cyh"><a id="gdp"></a></td>
+								<td class="dise">开业时间<br>(年/月/日)</td>
+								<td><a id="opendate"></a></td>
+								<td class="dise">年生产天数<br>(天)</td>
+								<td><a id="openhours"></a></td>
+								<td class="dise">排污许可证编号</td>
+								<td><a id="pwnumber"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">SO2总量控制限值（吨/年）</td>
+								<td><a id="pwSO2"></a></td>
+								<td class="dise">NOx总量控制限值（吨/年）</td>
+								<td><a id="pwNOx"></a></td>
+								<td class="dise">环统是否覆盖<code>*</code></td>
+								<td><a id="htornot"></a></td>
+								<td class="dise" id="ht_f1" >环境统计年份</td>
+								<td id="ht_f2"><a id="htyear"></a></td>
+								
+								<td class="dise" id="ht_f4" style="display:none;"></td>
+								<td id="ht_f5" style="display:none;"></td>
+							</tr>
+							<tr height="51px" id="ht_f3">
+								<td class="dise">环统SO2排放量<br>（吨）</td>
+								<td><a id="htSO2"></a></td>
+								<td class="dise">环统NOx排放量<br>（吨）</td>
+								<td><a id="htNOx"></a></td>
+								<td class="dise">环统VOC排放量<br>（吨）</td>
+								<td><a id="htVOC"></a></td>
+								<td class="dise">环统烟粉尘排放量<br>（吨）</td>
+								<td><a id="htPM"></a></td>
+							</tr>
+							<tr height="51px" >
+								<td class="dise">总量核查是否覆盖<code>*</code></td>
+								<td><a id="zlornot"></a></td>
+								<td class="dise" id="hc_f1">总量核查年份</td>
+								<td id="hc_f2"><a id="zlyear"></a></td>
+								<td id="hc_f3" class="dise">总量核查SO2<br>排放量（吨）</td>
+								<td id="hc_f4"><a id="zlSO2"></a></td>
+								<td id="hc_f5" class="dise">总量核查NOx<br>排放量（吨）</td>
+								<td id="hc_f6"><a id="zlNOx"></a></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">设备统计</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">锅炉数(台)</td>
+								<td width="15%"><a id="boilernumbers"></a></td>
+								<td width="10%" class="dise">锅炉总蒸吨数<br>(吨/小时)</td>
+								<td width="15%"><a id="boilertons"></a></td>
+								<td width="10%" class="dise">自备发电机组数<code>*</code><br>(个)</td>
+								<td width="15%"><a id="zbjznums"></a></td>
+							</tr>
+							<tr>
+								<td class="dise">露天堆场个数<code>*</code><br>(个)</td>
+								<td><a id="dcnums"></a></td>
+								<td class="dise">有机液体储罐数<code>*</code><br>(个)</td>
+								<td><a id="cgnums"></a></td>
+								<td class="dise"></td>
+								<td></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱<code>*</code></td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">企业联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">企业联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+					</div>
+					
+					
+					<!-- 表p10011_餐饮业基本信息表 -->
+					<div id="p10011" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">饭店名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">餐饮类型<code>*</code></td>
+								<td width="15%"><a id="cateringtype"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">法人代表</td>
+								<td><a id="legalentity"></a></td>
+								<td class="dise">开业时间<br>(年/月/日)</td>
+								<td><a id="opendate"></a></td>
+								<td width="10%" class="dise">年用电量<br>(度)</td>
+								<td width="15%"><a id="poweramount"></a></td>
+								
+							</tr>
+							<tr height="51px">
+								<td width="10%" class="dise">营业月份<code>*</code></td>
+								<td width="15%"><a id="openmonths"></a></td>
+								<td class="dise">营业时段<code>*</code></td>
+								<td ><a id="openhourperiod"></a></td>
+								<td class="dise">年营业额(万元)</td>
+								<td ><a id="gdp"></a></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱</td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">企业联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">企业联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">活动水平</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">营业面积<br>(平方米)</td>
+								<td width="15%"><a id="workingaera"></a></td>
+								<td width="15%" class="dise">固定灶头数<code>*</code><br>(个)</td>
+								<td width="15%"><a id="acooknums"></a></td>
+<!-- 								<td width="15%"  class="dise">燃料名称<code>*</code></td> -->
+<!-- 								<td width="15%"><a id="fueltype"></a></td> -->
+							</tr>
+<!-- 							<tr height="51px" class="fj"> -->
+<!-- 								<td  class="dise">年消耗量<code>*</code></td> -->
+<!-- 								<td ><a id="aheatfueltotal"></a></td> -->
+<!-- 								<td class="dise">单位<code>*</code></td> -->
+<!-- 								<td><a id="fuelunit"></a></td> -->
+<!-- 								<td width="15%" class="dise"></td> -->
+<!-- 								<td width="25%"></td> -->
+<!-- 							</tr> -->
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">油气回收</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">油烟净化器类型<code>*</code></td>
+								<td width="15%"><a id="contype"></a></td>
+								<td width="15%" class="dise">去除效率(％)</td>
+								<td width="15%"><a id="conratio"></a></td>
+							</tr>
+						</table>
+					</div>
+					<!-- 表p101_企业基本信息表 -->
+					<div id="p101" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">企业名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">统一社会信用代码<code>*</code></td>
+								<td width="15%"><a id="companysocietynumber"></a></td>
+								<td width="10%" class="dise" >年工业总产值<br>(万元)</td>
+								<td width="15%" class="cyh"><a id="gdp"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">法人代表</td>
+								<td><a id="legalentity"></a></td>
+								<td class="dise">开业时间<br>(年/月/日)</td>
+								<td><a id="opendate"></a></td>
+								<td class="dise">年生产天数<br>(天)</td>
+								<td><a id="openhours"></a></td>
+								<td class="dise">排污许可证编号</td>
+								<td><a id="pwnumber"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">SO2总量控制限值（吨/年）</td>
+								<td><a id="pwSO2"></a></td>
+								<td class="dise">NOx总量控制限值（吨/年）</td>
+								<td><a id="pwNOx"></a></td>
+								<td class="dise">环统是否覆盖<code>*</code></td>
+								<td><a id="htornot"></a></td>
+								<td class="dise" id="ht_f1" >环境统计年份</td>
+								<td id="ht_f2"><a id="htyear"></a></td>
+								
+								<td class="dise" id="ht_f4" style="display:none;"></td>
+								<td id="ht_f5" style="display:none;"></td>
+							</tr>
+							<tr height="51px" id="ht_f3">
+								<td class="dise">环统SO2排放量<br>（吨）</td>
+								<td><a id="htSO2"></a></td>
+								<td class="dise">环统NOx排放量<br>（吨）</td>
+								<td><a id="htNOx"></a></td>
+								<td class="dise">环统VOC排放量<br>（吨）</td>
+								<td><a id="htVOC"></a></td>
+								<td class="dise">环统烟粉尘排放量<br>（吨）</td>
+								<td><a id="htPM"></a></td>
+							</tr>
+							<tr height="51px" >
+								<td class="dise">总量核查是否覆盖<code>*</code></td>
+								<td><a id="zlornot"></a></td>
+								<td class="dise" id="hc_f1">总量核查年份</td>
+								<td id="hc_f2"><a id="zlyear"></a></td>
+								<td id="hc_f3" class="dise">总量核查SO2<br>排放量（吨）</td>
+								<td id="hc_f4"><a id="zlSO2"></a></td>
+								<td id="hc_f5" class="dise">总量核查NOx<br>排放量（吨）</td>
+								<td id="hc_f6"><a id="zlNOx"></a></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">设备统计</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">锅炉数(台)</td>
+								<td width="15%"><a id="boilernumbers"></a></td>
+								<td width="10%" class="dise">锅炉总蒸吨数<br>(吨/小时)</td>
+								<td width="15%"><a id="boilertons"></a></td>
+								<td width="10%" class="dise">自备发电机组数<code>*</code><br>(个)</td>
+								<td width="15%"><a id="zbjznums"></a></td>
+								<td width="10%" class="dise">露天堆场个数<code>*</code><br>(个)</td>
+								<td width="15%"><a id="dcnums"></a></td>
+							</tr>
+							<tr>
+								<td class="dise">有机液体储罐数<code>*</code><br>(个)</td>
+								<td><a id="cgnums"></a></td>
+								<td class="dise">年煤炭消耗量<code>*</code><br>(吨)</td>
+								<td><a id="totalcoal"></a></td>
+								<td class="dise">年燃气消耗量<code>*</code><br>(万立方米)</td>
+								<td ><a id="totalgas"></a></td>
+								<td class="dise">年燃油消耗量<code>*</code><br>(吨)</td>
+								<td><a id="totaloil"></a></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱<code>*</code></td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">企业联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">企业联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+					</div>
+					
+					<!-- 表p204_企业基本信息表 -->
+					<div id="p204" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">企业名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">统一社会信用代码<code>*</code></td>
+								<td width="15%"><a id="companysocietynumber"></a></td>
+								<td width="10%" class="dise" >年工业总产值<br>(万元)</td>
+								<td width="15%" class="cyh"><a id="gdp"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">法人代表</td>
+								<td><a id="legalentity"></a></td>
+								<td class="dise">开业时间<br>(年/月/日)</td>
+								<td><a id="opendate"></a></td>
+								<td class="dise">年生产天数<br>(天)</td>
+								<td><a id="openhours"></a></td>
+								<td class="dise">排污许可证编号</td>
+								<td><a id="pwnumber"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">SO2总量控制限值（吨/年）</td>
+								<td><a id="pwSO2"></a></td>
+								<td class="dise">NOx总量控制限值（吨/年）</td>
+								<td><a id="pwNOx"></a></td>
+								<td class="dise">环统是否覆盖<code>*</code></td>
+								<td><a id="htornot"></a></td>
+								<td class="dise" id="ht_f1" >环境统计年份</td>
+								<td id="ht_f2"><a id="htyear"></a></td>
+								
+								<td class="dise" id="ht_f4" style="display:none;"></td>
+								<td id="ht_f5" style="display:none;"></td>
+							</tr>
+							<tr height="51px" id="ht_f3">
+								<td class="dise">环统SO2排放量<br>（吨）</td>
+								<td><a id="htSO2"></a></td>
+								<td class="dise">环统NOx排放量<br>（吨）</td>
+								<td><a id="htNOx"></a></td>
+								<td class="dise">环统VOC排放量<br>（吨）</td>
+								<td><a id="htVOC"></a></td>
+								<td class="dise">环统烟粉尘排放量<br>（吨）</td>
+								<td><a id="htPM"></a></td>
+							</tr>
+<!-- 							<tr height="51px" > -->
+<!-- 								<td class="dise">总量核查是否覆盖<code>*</code></td> -->
+<!-- 								<td><a id="zlornot"></a></td> -->
+<!-- 								<td class="dise" id="hc_f1">总量核查年份</td> -->
+<!-- 								<td id="hc_f2"><a id="zlyear"></a></td> -->
+<!-- 								<td id="hc_f3" class="dise">总量核查SO2<br>排放量（吨）</td> -->
+<!-- 								<td id="hc_f4"><a id="zlSO2"></a></td> -->
+<!-- 								<td id="hc_f5" class="dise">总量核查NOx<br>排放量（吨）</td> -->
+<!-- 								<td id="hc_f6"><a id="zlNOx"></a></td> -->
+<!-- 							</tr> -->
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">设备统计</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">锅炉数(台)</td>
+								<td width="15%"><a id="boilernumbers"></a></td>
+								<td width="10%" class="dise">锅炉总蒸吨数<br>(吨/小时)</td>
+								<td width="15%"><a id="boilertons"></a></td>
+								<td width="10%" class="dise">自备发电机组数<code>*</code><br>(个)</td>
+								<td width="15%"><a id="zbjznums"></a></td>
+								<td width="10%" class="dise">露天堆场个数<code>*</code><br>(个)</td>
+								<td width="15%"><a id="dcnums"></a></td>
+							</tr>
+							<tr>
+								<td class="dise">有机液体储罐数<code>*</code><br>(个)</td>
+								<td><a id="cgnums"></a></td>
+								<td width="10%"  class="dise">是否有焚烧炉<code>*</code></td>
+								<td width="15%"><a id="fsornot"></a></td>
+								<td width="10%" class="dise" id="huaxue_1">焚烧炉类型</td>
+								<td width="15%"><a id="fstype"></a></td>
+								<td width="10%" class="dise" id="huaxue_2">焚烧炉燃料使用量<br>（吨）</td>
+								<td width="15%"><a id="fsfuelamount"></a></td>
+							</tr>
+							<tr height="51px;">
+								<td  class="dise">废水排放量<code>*</code><br>（吨）</td>
+								<td><a id="wateramount"></a></td>
+								<td class="dise">废水自处理率<code>*</code>（%）</td>
+								<td><a id="waterdealratio"></a></td>
+								<td class="dise">污水处理池是否加盖<code>*</code></td>
+								<td><a id="watercoverornot"></a></td>
+								<td class="dise"></td>
+								<td></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱<code>*</code></td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">企业联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">企业联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+					</div>
+					
+					
+					<!-- 表p3031_机场基本信息表-->
+					<div id="p3031" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">机场名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise">开业时间<br>(年/月/日)</td>
+								<td width="15%"><a id="opendate"></a></td>
+								<td width="10%" class="dise">全年起降架次<code>*</code><br>(架次)</td>
+								<td width="15%"><a id="aflynums"></a></td>
+							</tr>
+						</table>
+						
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱<code>*</code></td>
+								<td width="15%"><a id="mail"></a></td>
+							</tr>
+						</table>
+					</div>
+					<!-- 表p4031_干洗店基本信息表-->
+					<div id="p4031" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">干洗店名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+							</tr>
+ 						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">设备统计</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">封闭式台数</td>
+								<td width="15%"><a id="fengbinums"></a></td>
+								<td width="10%" class="dise">开放式台数<br>（台）</td>
+								<td width="15%"><a id="kaiqinums"></a></td>
+								<td width="10%" class="dise">设备总容量<br>(升)</td>
+								<td width="15%"><a id="totalvolume"></a></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱</td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">干洗店联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+					</div>
+					
+					<!-- 表p5011_养殖厂基本信息表 -->
+					<div id="p5011" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">养殖场名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+							</tr>
+ 						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱</td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">养殖场联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+					</div>
+				
+				
+					<!-- 表p6011_工地基本信息表 -->
+					<div id="p6011" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">工地名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >施工单位<code>*</code></td>
+								<td width="15%"><a id="companynamename"></a></td>
+								<td width="10%" class="dise">开工时间<br>(年/月/日)</td>
+								<td width="15%"><a id="startdate"></a></td>
+								
+							</tr>
+							<tr height="51px;">
+								<td width="10%" class="dise">结束时间<br>(年/月/日)</td>
+								<td width="15%"><a id="enddate"></a></td>
+								<td class="dise">建筑面积<code>*</code><br>（平方米）</td>
+								<td><a id="aconsaera"></a></td>
+								<td class="dise">占地面积<code>*</code><br>（平方米）</td>
+								<td><a id="atotalaera"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">硬化道路面积<code>*</code><br>（平方米）</td>
+								<td><a id="aroadaera"></a></td>
+								<td  width="10%" class="dise">裸土面积<code>*</code><br>（平方米）</td>
+								<td  width="15%"><a id="asoilaera"></a></td>
+								<td  width="10%"></td>
+								<td  width="15%"></td>
+							</tr>
+							
+ 						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱</td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">企业联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">企业联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+					</div>
+					
+					<!-- 表p8011_加油站基本信息表 -->
+					<div id="p8011" style="display:none;">
+						<table id="" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">加油站名称<code>*</code></td>
+								<td width="15%"><a id="companyname"></a></td>
+								<td width="10%" class="dise" >组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">控股集团<code>*</code></td>
+								<td width="15%"><a id="kgcompany"></a></td>
+								<td width="10%" class="dise">开业时间<br>(年/月)</td>
+								<td width="15%"><a id="opendate"></a></td>
+								
+							</tr>
+ 						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">联系人信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">填报人<code>*</code></td>
+								<td width="15%"><a id="informant"></a></td>
+								<td width="15%" class="dise">联系电话<code>*</code></td>
+								<td width="15%"><a id="tel"></a></td>
+								<td width="15%"  class="dise">邮箱</td>
+								<td width="15%"><a id="legalmail"></a></td>
+							</tr>
+							<tr height="51px" class="fj">
+								<td  class="dise">加油站联系人<code>*</code></td>
+								<td ><a id="legalentitylx"></a></td>
+								<td class="dise">联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td width="15%" class="dise"></td>
+								<td width="25%"></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">活动水平</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">汽油销售量<code>*</code><br>(万吨)</td>
+								<td width="15%"><a id="agasolinesale"></a></td>
+								<td width="15%" class="dise">柴油销售量<code>*</code><br>(万吨)</td>
+								<td width="15%"><a id="adieselsale"></a></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">油气回收</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">回收方式<code>*</code></td>
+								<td width="15%"><a id="contype"></a></td>
+								<td width="15%" class="dise">去除效率(％)</td>
+								<td width="15%"><a id="conratio"></a></td>
+							</tr>
+						</table>
+						
+						
+						
+					</div>
+					
+					<!-- 生产线 -->
+					<div id="scx_div" style="display:none;">
+						<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">生产线/产品信息</b></div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+						<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+							<a id="add_scx" title="添加生产线/产品信息">
+								<img alt="" src="../images/jia.png" style="padding: 3px;width:24px;height:24px;">
+								<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加生产线/产品信息</span>
+							</a>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+						&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="producttype"></a></span>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="scx_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr>
+								<td width="15%" class="dise">产品名称<code>*</code></td>
+								<td width="15%" class="dise">产品产量(吨)<code>*</code></td>
+								<td width="15%" class="dise">操作</td>
+							</tr>
+						</table>
+						
+					</div>
+					
+					
+					<!--燃料信息 -->
+					<div id="ranliao_div" style="display:none;">
+						<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">燃料信息</b></div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+						<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+							<a id="add_ranliao" title="添加燃料信息">
+								<img alt="" src="../images/jia.png" style="padding: 3px;width:24px;height:24px;">
+								<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加燃料信息</span>
+							</a>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+						<table id="ranliao_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr>
+								<td width="15%" class="dise">燃料名称<code>*</code></td>
+								<td width="15%" class="dise">年消耗量<code>*</code></td>
+								<td width="15%" class="dise">单位<code>*</code></td>
+								<td width="15%" class="dise">操作</td>
+							</tr>
+						</table>
+					</div>
+					
+					
+					
+					
+					
+					
+						
+					<div id="dibu_ty">
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">所在地</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">省(自治区、直辖市)<code>*</code></td>
+								<td width="20%" id="prov"></td>
+								<td width="15%" class="dise">市(地区、盟)<code>*</code></td>
+								<td width="20%" id="city"></td>
+								<td width="15%" class="dise">县(县级市、区、旗)<code>*</code></td>
+								<td width="15%"><a id="county"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">乡(镇)</td>
+								<td><a id="vill"></a></td>
+								<td class="dise">街道(村)</td>
+								<td colspan=""><a id="street"></a></td>
+								<td class="dise">门牌号</td>
+								<td colspan=""><a id="streetNO"></a></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:12px;">精确定位</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="15%" rowspan="2">中心经度</td>
+								<td width="12%">度<code>*</code></td>
+								<td width="12%">分<code>*</code></td>
+								<td width="11%">秒<code>*</code></td>
+								<td width="15%" rowspan="2">中心纬度</td>
+								<td width="12%">度<code>*</code></td>
+								<td width="12%">分<code>*</code></td>
+								<td width="11%">秒<code>*</code></td>
+							</tr>
+							<tr height="35px">
+								<td><a id="lon1"></a></td>
+								<td><a id="lon2"></a></td>
+								<td><a id="lon3"></a></td>
+								<td><a id="lat1"></a></td>
+								<td><a id="lat2"></a></td>
+								<td><a id="lat3"></a></td>
+							</tr>
+							<tr id="map_tr">
+								<td colspan="8">
+									<div id="map" style="padding:0px 0px;height:300px;width:100%;"></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+						
+				</DIV>
+
+				<DIV style="clear: both;"></DIV>
+			</DIV>
+			<DIV style="clear: both;"></DIV>
+		</DIV>
+		
+		
+		<!-- 底部 -->
+		<DIV class="copyright" id="foouft"></DIV>
+	</DIV>
+	
+	<div id="dialog-xmsb" title="校验未通过：下列为必填项，请补充。" style="display: none;">
+		<DIV id="dialog-xmsb-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	
+	<div id="dialog-tiaozhuan" title="提示" style="display: none;">
+		<DIV id="dialog-tiaozhuan-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	
+	<div id="dialog-dengdai" title="提示" style="display: none;">
+		<DIV id="dialog-dengdai-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	<!-- 修改密码 -->
+	<div id="dialog-update" title="修改密码" style="display: none;">
+		<DIV id="dialog-update-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>原密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="old_pass" id="old_pass" style="" required="required" cp="true" placeholder="原密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5></label>
+			</div>
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>新密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass" id="new_pass" style="" required="required" placeholder="新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_2" style="color:red;"></h5></label>
+			</div>
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>确认密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass_2" id="new_pass_2" style="" required equalTo="#new_pass" placeholder="请再次输入新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_3 style="color:red;"></h5></label>
+			</div>
+
+		</DIV>
+	</div>
+	
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	
+	<!-- 消息框 -->
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+	<!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+	
+	<script src="../../js/ajax.js"></script>
+	<script src="public.js"></script>
+	<SCRIPT src="../homeUI1.js"></script>
+	<script src="b_editable.js"></script>
+	<script src="../../js/plugins/jquery-ui/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yZEmTwz9a4lk2NVBs8XigIeB"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+	<script type="text/javascript" src="b.js"></script>
+	
+</BODY>
+</HTML>

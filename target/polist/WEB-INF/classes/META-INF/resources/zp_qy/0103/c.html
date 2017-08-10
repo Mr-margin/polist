@@ -1,0 +1,2780 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+<!-- 		<META content="IE=11.0000" http-equiv="X-UA-Compatible"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<TITLE></TITLE>
+		<link href="../../css/plugins/jQueryUI/jquery-ui.css" rel="stylesheet">
+		<link href="../../css/bootstrap.qiye.css" rel="stylesheet">
+		<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+		<LINK href="../../zp01/style/global_static.css" rel="stylesheet" type="text/css">
+		<LINK href="../../zp01/style/main_style.css" rel="stylesheet" type="text/css">
+		
+		<link href="../../css/font-awesome.css" rel="stylesheet">
+    	<link href="../../css/animate.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		
+		<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+		
+		<style>
+			.table-bordered{border:1px solid #ddd}
+			.table{width:100%;max-width:100%;margin-bottom:20px;margin-top:20px}
+			table{background-color:transparent}
+			table{border-spacing:0;border-collapse:collapse}
+			.dise{background-color:#F5F5F6;text-align:center}
+			.zhong{text-align:center}
+			#navgo{margin:0 30px 0 0;height:54px;text-align:center;float:right}
+			#navgo ul ul{display:none}
+			#navgo ul li:hover>ul{display:block}
+			#navgo ul{padding:0 0;border-radius:10px;height:54px;list-style:none;position:relative;display:inline-table}
+			#navgo ul:after{content:"";clear:both;display:block}
+			#navgo ul li{float:left;height:54px;}
+			#navgo ul li:hover{background:#72a7de}
+			#navgo ul li:hover a{color:#fff}
+			#navgo ul li a{display:block;padding:0 0 0px 0;color:#757575;text-decoration:none}
+			#navgo ul ul{background:#5f6975;border-radius:0;padding:0;position:absolute;top:100%}
+			#navgo ul ul li{float:none}
+			#navgo ul ul li a{padding:10px 5px;color:#fff}
+			#navgo ul ul li a:hover{background:#2e63a7}
+			#navgo ul ul ul{position:absolute;left:100%;top:0}
+			.ui-widget-header {color: rgb(32, 132, 218);}
+			a.export-a:hover {opacity: 0.9;}
+			a.export-a {display: inline-block;padding: 0 9px;height: 21px;background: #00843e;color: #fff;line-height: 21px;border-radius: 2px;-moz-border-radius: 2px;-webkit-border-radius: 2px;}
+			a.shebei-a {width:116px; margin:3px 3px; padding:5px 5px;text-decoration:none;}
+		</style>
+	</HEAD>
+	
+<BODY>
+	<DIV class="body_mid">
+		<!-- 头部 -->
+		<DIV id="banner_qian"></DIV>
+		<!-- 一级菜单 -->
+		<DIV id="menu">
+			<A id="gkgs" style='background-image: url("../../zp01/ui/images/icon_05.png");' href="#">企业信息</A>
+			<A id="gkgs_s" class="cur" style='background-image: url("../../zp01/ui/images/icon_10.png");' href="#">设备信息</A>
+		</DIV>
+		
+		<!-- 中间部分 -->
+		<DIV class="floor" style="margin: 10px 25px 25px 25px;">
+			<DIV class="right_list" style="width: 100%;">
+				
+				<DIV class="lmtitle">
+					<SPAN class="name" style='background-image: url(../../zp01/ui/images/icon_lm_fwdt.png);'>设备总览</SPAN>
+					<div id='navgo' style='float: right;'>
+						<ul>
+<!-- 							<li><a id='synchronization' class='sp-column' style="width: 90px;"><img src='../../img/icon11.png'> 同步</a></li> -->
+							<li><a id='New_equipment' class='sp-column' style="width: 90px;"><img src='../../img/icon12.png'> 新建设备</a></li>
+						</ul>
+					</div>
+				</DIV>
+				<DIV class="box_dashed" style="font-size: 14px;">
+					<table class="table table-bordered zhong" id="shebei_list"></table>
+				</DIV>
+				<div id="zhanwei" style="display:none;"></div>
+				
+				<DIV id="xinxi_title" class="lmtitle" style="display:none;">
+					<SPAN id="xinxi_title_name" class="name" style='background-image: url(../../zp01/ui/images/icon_lm_fwdt.png);'>设备详细信息</SPAN>
+					<div id='navgo' style='float: right;'>
+						<ul>
+							<li><a id='save' class='sp-column' style="width: 90px;"><img src='../../img/icon16.png'> 保存</a></li>
+							<li><a id='close' class='sp-column' style="width: 90px;"><img src='../../img/icon24.png'> 取消</a></li>
+						</ul>
+					</div>
+				</DIV>
+				
+				<DIV id="xinxi_box" class="box_dashed" style="display:none;">
+				
+				
+<!-- 表p1011_机组信息表 -->
+<div id="shebei_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b><span style="font-size: 12px;">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">机组编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">锅炉铭牌型号</td>
+			<td width="16%"><a id="equipnumber"></a></td>
+			<td class="dise">设备类型<code>*</code></td>
+			<td ><a id="equiptype"></a></td>
+		</tr>
+		<tr>
+			
+			<td  class="dise">装机容量<code>*</code><br>(兆瓦)</td>
+			<td ><a id="capacity"></a></td>
+			<td class="dise">投运时间<br>(年/月/日)</td>
+			<td><a id="startdate"></a></td>
+			<td  class="dise">关停时间<br>(年/月/日)</td>
+			<td ><a id="enddate"></a></td>
+		</tr>
+		<tr>
+			<td class="dise">是否热&nbsp;&nbsp;&nbsp;&nbsp;<br>电联产<code>*</code></td>
+			<td ><a id="cogenerationornot"></a></td>
+			<td class="dise"></td>
+			<td ></td>
+			<td class="dise"></td>
+			<td ></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr>
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr>
+			<td class="dise">发电量<br>(亿千瓦时)</td>
+			<td><a id="powertotal"></td>
+			<td><a id="power1"></a></td>
+			<td><a id="power2"></a></td>
+			<td><a id="power3"></a></td>
+			<td><a id="power4"></a></td>
+			<td><a id="power5"></a></td>
+			<td><a id="power6"></a></td>
+			<td><a id="power7"></a></td>
+			<td><a id="power8"></a></td>
+			<td><a id="power9"></a></td>
+			<td><a id="power10"></a></td>
+			<td><a id="power11"></a></td>
+			<td><a id="power12"></a></td>
+		</tr>
+		<tr id="hotd2" style="display:none;">
+			<td class="dise">供热量<br>(万吉焦)</td>
+			<td><a id="heattotal"></a></td>
+			<td><a id="heat1"></a></td>
+			<td><a id="heat2"></a></td>
+			<td><a id="heat3"></a></td>
+			<td><a id="heat4"></a></td>
+			<td><a id="heat5"></a></td>
+			<td><a id="heat6"></a></td>
+			<td><a id="heat7"></a></td>
+			<td><a id="heat8"></a></td>
+			<td><a id="heat9"></a></td>
+			<td><a id="heat10"></a></td>
+			<td><a id="heat11"></a></td>
+			<td><a id="heat12"></a></td>
+		</tr>
+	</table>
+</div>
+				
+<!-- 表p02_锅炉信息表 -->
+<div id="shebei_2" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="13%" class="dise">锅炉编号<code>*</code></td>
+			<td width="12%"><a id="equipId"></a></td>
+			<td width="13%" class="dise">锅炉铭牌型号</td>
+			<td width="12%"><a id="equipnumber"></a></td>
+			<td class="dise">设备类型<code>*</code></td>
+			<td><a id="equiptype"></a></td>
+			<td class="dise">锅炉容量<code>*</code><br>(蒸吨)</td>
+			<td><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td class="dise">锅炉用途</td>
+			<td ><a id="arrangement"></a></td>
+			<td width="13%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="12%"><a id="startdate"></a></td>
+			<td width="13%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="12%"><a id="enddate"></a></td>
+			<td class="dise"></td>
+			<td><a id=""></a></td>
+		</tr>
+	</table>
+</div>
+				
+<!-- 表p2011_烧结工序信息表 -->
+<div id="shebei_3" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">设备类型<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨)</td>
+			<td width="16%"><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">规模<br>(平方米)</td>
+			<td width="16%"><a id="gmcapacity"></a></td>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+		
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">原料信息</b></div>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">铁矿石使用量(万吨)</td>
+			<td><a id="aroetotal"></a></td>
+			<td><a id="aroe1"></a></td>
+			<td><a id="aroe2"></a></td>
+			<td><a id="aroe3"></a></td>
+			<td><a id="aroe4"></a></td>
+			<td><a id="aroe5"></a></td>
+			<td><a id="aroe6"></a></td>
+			<td><a id="aroe7"></a></td>
+			<td><a id="aroe8"></a></td>
+			<td><a id="aroe9"></a></td>
+			<td><a id="aroe10"></a></td>
+			<td><a id="aroe11"></a></td>
+			<td><a id="aroe12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">含硫率(％)</td>
+			<td><a id="oresulfurtmean"></a></td>
+			<td><a id="oresulfur1"></a></td>
+			<td><a id="oresulfur2"></a></td>
+			<td><a id="oresulfur3"></a></td>
+			<td><a id="oresulfur4"></a></td>
+			<td><a id="oresulfur5"></a></td>
+			<td><a id="oresulfur6"></a></td>
+			<td><a id="oresulfur7"></a></td>
+			<td><a id="oresulfur8"></a></td>
+			<td><a id="oresulfur9"></a></td>
+			<td><a id="oresulfur10"></a></td>
+			<td><a id="oresulfur11"></a></td>
+			<td><a id="oresulfur12"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">烧结矿产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">煤焦油产量(万吨)</td>
+			<td><a id="aproductmjytotal"></a></td>
+			<td><a id="aproductmjy1"></a></td>
+			<td><a id="aproductmjy2"></a></td>
+			<td><a id="aproductmjy3"></a></td>
+			<td><a id="aproductmjy4"></a></td>
+			<td><a id="aproductmjy5"></a></td>
+			<td><a id="aproductmjy6"></a></td>
+			<td><a id="aproductmjy7"></a></td>
+			<td><a id="aproductmjy8"></a></td>
+			<td><a id="aproductmjy9"></a></td>
+			<td><a id="aproductmjy10"></a></td>
+			<td><a id="aproductmjy11"></a></td>
+			<td><a id="aproductmjy12"></a></td>
+		</tr>
+	</table>	
+</div>
+<!-- 表p2014_球团工序信息表 -->
+<div id="shebei_3_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">设备类型<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨)</td>
+			<td width="16%"><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">规模<code>*</code><br>(平方米)</td>
+			<td width="16%"><a id="gmcapacity"></a></td>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+		
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">原料信息</b></div>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">铁矿石使用量(万吨)</td>
+			<td><a id="aroetotal"></a></td>
+			<td><a id="aroe1"></a></td>
+			<td><a id="aroe2"></a></td>
+			<td><a id="aroe3"></a></td>
+			<td><a id="aroe4"></a></td>
+			<td><a id="aroe5"></a></td>
+			<td><a id="aroe6"></a></td>
+			<td><a id="aroe7"></a></td>
+			<td><a id="aroe8"></a></td>
+			<td><a id="aroe9"></a></td>
+			<td><a id="aroe10"></a></td>
+			<td><a id="aroe11"></a></td>
+			<td><a id="aroe12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">含硫率(％)</td>
+			<td><a id="oresulfurtmean"></a></td>
+			<td><a id="oresulfur1"></a></td>
+			<td><a id="oresulfur2"></a></td>
+			<td><a id="oresulfur3"></a></td>
+			<td><a id="oresulfur4"></a></td>
+			<td><a id="oresulfur5"></a></td>
+			<td><a id="oresulfur6"></a></td>
+			<td><a id="oresulfur7"></a></td>
+			<td><a id="oresulfur8"></a></td>
+			<td><a id="oresulfur9"></a></td>
+			<td><a id="oresulfur10"></a></td>
+			<td><a id="oresulfur11"></a></td>
+			<td><a id="oresulfur12"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">球团矿产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>	
+</div>
+				
+<!-- 表p2012_炼铁工序信息表 -->		
+<div id="shebei_4" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">设备类型<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨)</td>
+			<td width="16%"><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">高炉容积<code>*</code><br>(立方米)</td>
+			<td width="16%"><a id="gmcapacity"></a></td>
+			
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+			<tr>
+			<td width="16%" class="dise">高炉喷煤量<br>(万立方米)</td>
+			<td width="16%"><a id="ironpenmei"></a></td>
+			
+			<td width="16%" class="dise">煤气产生量<br>(万立方米)</td>
+			<td width="16%"><a id="irongasamount"></a></td>
+			<td width="16%" class="dise">热风炉煤气用量<br>(立方米)</td>
+			<td width="16%"><a id="rflgasamount"></a></td>
+		</tr>
+			<tr>
+			<td width="16%" class="dise">烟气量<br>(立方米)</td>
+			<td width="16%"><a id="gasamount"></a></td>
+			<td width="16%" class="dise">煤气回收率<br>(%)</td>
+			<td width="16%"><a id="irongasratio"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">生铁产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+<!-- 		<tr> -->
+<!-- 			<td colspan="2" class="dise">煤气产生量<br>(万立方米)</td> -->
+<!-- 			<td colspan="3"><a id="irongasamount"></a></td> -->
+<!-- 			<td colspan="2" class="dise">煤气H2S含量<br>(毫克/立方米)</td> -->
+<!-- 			<td colspan="3"><a id="ironh2sratio"></a></td> -->
+<!-- 			<td colspan="2" class="dise">高炉喷煤量<br>(万吨)</td> -->
+<!-- 			<td colspan="2"><a id="ironpenmei"></a></td> -->
+<!-- 		</tr> -->
+	</table>
+</div>
+				
+<!-- 表p2013_炼钢工序信息表 -->		
+<div id="shebei_5" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">设备类型<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨)</td>
+			<td width="16%"><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">粗钢产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p05_炼焦工序信息表 -->		
+<div id="shebei_6" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">炼焦方法<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+			<td width="16%" class="dise">煤气产生量<br>(万立方米)</td>
+			<td width="16%"><a id="cokegasamount"></a></td>
+			<td width="16%" class="dise">熄焦工艺<code>*</code></td>
+			<td width="16%"><a id="xjmethod"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨/年)</td>
+			<td width="16%"><a id="capacity"></a></td>
+			<td width="16%" class="dise">炭化室高度<br>(米)</td>
+			<td width="16%"><a id="height"></a></td>
+			<td width="16%" class="dise"></td>
+			<td width="16%"></td>
+			
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">焦炭产量<br>(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">含硫率<br>(％)</td>
+			<td><a id="sulfurpromean"></a></td>
+			<td><a id="sulfurpro1"></a></td>
+			<td><a id="sulfurpro2"></a></td>
+			<td><a id="sulfurpro3"></a></td>
+			<td><a id="sulfurpro4"></a></td>
+			<td><a id="sulfurpro5"></a></td>
+			<td><a id="sulfurpro6"></a></td>
+			<td><a id="sulfurpro7"></a></td>
+			<td><a id="sulfurpro8"></a></td>
+			<td><a id="sulfurpro9"></a></td>
+			<td><a id="sulfurpro10"></a></td>
+			<td><a id="sulfurpro11"></a></td>
+			<td><a id="sulfurpro12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">硫酸<br>(万吨)</td>
+			<td><a id="asulphatetotal"></a></td>
+			<td><a id="asulphate1"></a></td>
+			<td><a id="asulphate2"></a></td>
+			<td><a id="asulphate3"></a></td>
+			<td><a id="asulphate4"></a></td>
+			<td><a id="asulphate5"></a></td>
+			<td><a id="asulphate6"></a></td>
+			<td><a id="asulphate7"></a></td>
+			<td><a id="asulphate8"></a></td>
+			<td><a id="asulphate9"></a></td>
+			<td><a id="asulphate10"></a></td>
+			<td><a id="asulphate11"></a></td>
+			<td><a id="asulphate12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">硫磺产量<br>(万吨)</td>
+			<td><a id="asulphurtotal"></a></td>
+			<td><a id="asulphur1"></a></td>
+			<td><a id="asulphur2"></a></td>
+			<td><a id="asulphur3"></a></td>
+			<td><a id="asulphur4"></a></td>
+			<td><a id="asulphur5"></a></td>
+			<td><a id="asulphur6"></a></td>
+			<td><a id="asulphur7"></a></td>
+			<td><a id="asulphur8"></a></td>
+			<td><a id="asulphur9"></a></td>
+			<td><a id="asulphur10"></a></td>
+			<td><a id="asulphur11"></a></td>
+			<td><a id="asulphur12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">煤气产生量<br>(万立方米)</td>
+			<td><a id="agastotal"></a></td>
+			<td><a id="agas1"></a></td>
+			<td><a id="agas2"></a></td>
+			<td><a id="agas3"></a></td>
+			<td><a id="agas4"></a></td>
+			<td><a id="agas5"></a></td>
+			<td><a id="agas6"></a></td>
+			<td><a id="agas7"></a></td>
+			<td><a id="agas8"></a></td>
+			<td><a id="agas9"></a></td>
+			<td><a id="agas10"></a></td>
+			<td><a id="agas11"></a></td>
+			<td><a id="agas12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">煤气中H2S浓度<br>(毫克/立方米)</td>
+			<td><a id="agash2sratiototal"></a></td>
+			<td><a id="agash2sratio1"></a></td>
+			<td><a id="agash2sratio2"></a></td>
+			<td><a id="agash2sratio3"></a></td>
+			<td><a id="agash2sratio4"></a></td>
+			<td><a id="agash2sratio5"></a></td>
+			<td><a id="agash2sratio6"></a></td>
+			<td><a id="agash2sratio7"></a></td>
+			<td><a id="agash2sratio8"></a></td>
+			<td><a id="agash2sratio9"></a></td>
+			<td><a id="agash2sratio10"></a></td>
+			<td><a id="agash2sratio11"></a></td>
+			<td><a id="agash2sratio12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">煤气自用量<br>(万立方米)</td>
+			<td><a id="agasselftotal"></a></td>
+			<td><a id="agasself1"></a></td>
+			<td><a id="agasself2"></a></td>
+			<td><a id="agasself3"></a></td>
+			<td><a id="agasself4"></a></td>
+			<td><a id="agasself5"></a></td>
+			<td><a id="agasself6"></a></td>
+			<td><a id="agasself7"></a></td>
+			<td><a id="agasself8"></a></td>
+			<td><a id="agasself9"></a></td>
+			<td><a id="agasself10"></a></td>
+			<td><a id="agasself11"></a></td>
+			<td><a id="agasself12"></a></td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">煤焦油产量<br>(万吨)</td>
+			<td><a id="aproductmjytotal"></a></td>
+			<td><a id="aproductmjy1"></a></td>
+			<td><a id="aproductmjy2"></a></td>
+			<td><a id="aproductmjy3"></a></td>
+			<td><a id="aproductmjy4"></a></td>
+			<td><a id="aproductmjy5"></a></td>
+			<td><a id="aproductmjy6"></a></td>
+			<td><a id="aproductmjy7"></a></td>
+			<td><a id="aproductmjy8"></a></td>
+			<td><a id="aproductmjy9"></a></td>
+			<td><a id="aproductmjy10"></a></td>
+			<td><a id="aproductmjy11"></a></td>
+			<td><a id="aproductmjy12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p2015_轧钢信息表-->
+<div id="shebei_3_3" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">设备类型<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨)</td>
+			<td width="16%"><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">规模<code>*</code><br>(平方米)</td>
+			<td width="16%"><a id="gmcapacity"></a></td>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+		
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">钢材产量(吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>	
+</div>
+
+<!-- 表p2016_石灰石信息表 -->
+<div id="shebei_3_4" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">窑炉编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">设备类型<code>*</code></td>
+			<td width="16%"><a id="equiptype"></a></td>
+			<td width="16%" class="dise">产能<code>*</code><br>(万吨)</td>
+			<td width="16%"><a id="capacity"></a></td>
+		</tr>
+		<tr>
+			<td width="16%" class="dise">规模<code>*</code><br>(平方米)</td>
+			<td width="16%"><a id="gmcapacity"></a></td>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+		
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">石灰产量(吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>	
+</div>
+
+<!-- 表p07_有机液体储罐信息表-->
+<div id="shebei_3_5" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 0px;"> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise">储罐编号<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="equipId"></a></td> -->
+<!-- 			<td width="16%" class="dise">储罐类型<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="equiptype"></a></td> -->
+<!-- 			<td width="16%" class="dise" title="填写说明：&#10;1、若填了体积，则高度和直径可以不填；&#10;2、若填了直径，高度必填、体积可以不填；&#10;3、若填了高度，直径必填、体积可以不填；&#10;4、若三个参数都填，需满足高度和直径计算出的体积和实际填写的体积误差不超过0.001；&#10;5、体积、高度、直径不能全为空。">体积<br>(立方米)</td> -->
+<!-- 			<td width="16%"><a id="volume"></a></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise" title="填写说明：&#10;1、若填了体积，则高度和直径可以不填；&#10;2、若填了直径，高度必填、体积可以不填；&#10;3、若填了高度，直径必填、体积可以不填；&#10;4、若三个参数都填，需满足高度和直径计算出的体积和实际填写的体积误差不超过0.001；&#10;5、体积、高度、直径不能全为空。">高度<br>(米)</td> -->
+<!-- 			<td width="16%"><a id="height"></a></td> -->
+<!-- 			<td width="16%" class="dise" title="填写说明：&#10;1、若填了体积，则高度和直径可以不填；&#10;2、若填了直径，高度必填、体积可以不填；&#10;3、若填了高度，直径必填、体积可以不填；&#10;4、若三个参数都填，需满足高度和直径计算出的体积和实际填写的体积误差不超过0.001；&#10;5、体积、高度、直径不能全为空。">直径<br>(米)</td> -->
+<!-- 			<td width="16%"><a id=diameter></a></td> -->
+<!-- 			<td width="16%" class="dise">存储液体成分<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="component"></a></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise">年进出料次数<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="inoutnums"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+<!-- 表p08_有机液体装载信息表-->
+<div id="shebei_3_6" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 0px;"> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise">序号<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="xh"></a></td> -->
+<!-- 			<td width="16%" class="dise">作业部/车间</td> -->
+<!-- 			<td width="16%"><a id="equipname"></a></td> -->
+<!-- 			<td width="16%" class="dise">装车站台编号<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="equipId"></a></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise">装载物料名称<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="materialname"></a></td> -->
+<!-- 			<td width="16%" class="dise">装载方式<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="zztype"></a></td> -->
+<!-- 			<td width="16%" class="dise">操作方式<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="zzway"></a></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise">年装载量(吨)<code>*</code></td> -->
+<!-- 			<td width="16%"><a id=zzamount></a></td> -->
+<!-- 			<td width="16%" class="dise">装载物料密度(kg/m3)<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="density"></a></td> -->
+<!-- 			<td width="16%" class="dise">油气回收控制技术<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="recover"></a></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td width="16%" class="dise">其他油气回收控制技术</td> -->
+<!-- 			<td width="16%"><a id="otherrecover"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+
+<!-- 表p2021_熟料生产信息表 -->		
+<div id="shebei_7" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">窑炉编号<code>*</code></td>
+			<td width="15%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">设备类型<code>*</code></td>
+			<td width="15%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="15%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="15%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">熟料产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p2022_水泥生产信息表 -->
+<div id="shebei_8" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">粉磨站编号<code>*</code></td>
+			<td width="15%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">设备类型<code>*</code></td>
+			<td width="15%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="15%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="15%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">水泥产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p2031_玻璃生产信息表 -->
+<div id="shebei_9" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">设备编号<code>*</code></td>
+			<td width="15%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">设备类型<code>*</code></td>
+			<td width="15%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="15%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="15%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">原料信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">芒硝成分<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="mxtype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">芒硝用量(吨)</td>
+			<td><a id="amxtotal"></a></td>
+			<td><a id="amx1"></a></td>
+			<td><a id="amx2"></a></td>
+			<td><a id="amx3"></a></td>
+			<td><a id="amx4"></a></td>
+			<td><a id="amx5"></a></td>
+			<td><a id="amx6"></a></td>
+			<td><a id="amx7"></a></td>
+			<td><a id="amx8"></a></td>
+			<td><a id="amx9"></a></td>
+			<td><a id="amx10"></a></td>
+			<td><a id="amx11"></a></td>
+			<td><a id="amx12"></a></td>
+		</tr>
+	</table>
+	
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">平板玻璃产量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p2052_化纤生产信息表 -->
+<div id="shebei_10" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">生产线编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">生产工艺</td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品名称<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproductname"></a></span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品产量单位<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproductunit"></a></span> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise" width="9%"></td> -->
+<!-- 			<td class="dise" width="7%">全年<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">1月</td> -->
+<!-- 			<td class="dise" width="7%">2月</td> -->
+<!-- 			<td class="dise" width="7%">3月</td> -->
+<!-- 			<td class="dise" width="7%">4月</td> -->
+<!-- 			<td class="dise" width="7%">5月</td> -->
+<!-- 			<td class="dise" width="7%">6月</td> -->
+<!-- 			<td class="dise" width="7%">7月</td> -->
+<!-- 			<td class="dise" width="7%">8月</td> -->
+<!-- 			<td class="dise" width="7%">9月</td> -->
+<!-- 			<td class="dise" width="7%">10月</td> -->
+<!-- 			<td class="dise" width="7%">11月</td> -->
+<!-- 			<td class="dise" width="7%">12月</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise">产品产量</td> -->
+<!-- 			<td><a id="aproducttotal"></a></td> -->
+<!-- 			<td><a id="aproduct1"></a></td> -->
+<!-- 			<td><a id="aproduct2"></a></td> -->
+<!-- 			<td><a id="aproduct3"></a></td> -->
+<!-- 			<td><a id="aproduct4"></a></td> -->
+<!-- 			<td><a id="aproduct5"></a></td> -->
+<!-- 			<td><a id="aproduct6"></a></td> -->
+<!-- 			<td><a id="aproduct7"></a></td> -->
+<!-- 			<td><a id="aproduct8"></a></td> -->
+<!-- 			<td><a id="aproduct9"></a></td> -->
+<!-- 			<td><a id="aproduct10"></a></td> -->
+<!-- 			<td><a id="aproduct11"></a></td> -->
+<!-- 			<td><a id="aproduct12"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+
+<!-- 表p2051_化工生产信息表 -->
+<div id="shebei_11" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">生产线编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">生产工艺</td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	
+	
+	
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品名称<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproductname"></a></span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品产量单位<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproductunit"></a></span> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise" width="9%"></td> -->
+<!-- 			<td class="dise" width="7%">全年<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">1月</td> -->
+<!-- 			<td class="dise" width="7%">2月</td> -->
+<!-- 			<td class="dise" width="7%">3月</td> -->
+<!-- 			<td class="dise" width="7%">4月</td> -->
+<!-- 			<td class="dise" width="7%">5月</td> -->
+<!-- 			<td class="dise" width="7%">6月</td> -->
+<!-- 			<td class="dise" width="7%">7月</td> -->
+<!-- 			<td class="dise" width="7%">8月</td> -->
+<!-- 			<td class="dise" width="7%">9月</td> -->
+<!-- 			<td class="dise" width="7%">10月</td> -->
+<!-- 			<td class="dise" width="7%">11月</td> -->
+<!-- 			<td class="dise" width="7%">12月</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise">产品产量</td> -->
+<!-- 			<td><a id="aproducttotal"></a></td> -->
+<!-- 			<td><a id="aproduct1"></a></td> -->
+<!-- 			<td><a id="aproduct2"></a></td> -->
+<!-- 			<td><a id="aproduct3"></a></td> -->
+<!-- 			<td><a id="aproduct4"></a></td> -->
+<!-- 			<td><a id="aproduct5"></a></td> -->
+<!-- 			<td><a id="aproduct6"></a></td> -->
+<!-- 			<td><a id="aproduct7"></a></td> -->
+<!-- 			<td><a id="aproduct8"></a></td> -->
+<!-- 			<td><a id="aproduct9"></a></td> -->
+<!-- 			<td><a id="aproduct10"></a></td> -->
+<!-- 			<td><a id="aproduct11"></a></td> -->
+<!-- 			<td><a id="aproduct12"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">有机原料</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 0px;"> -->
+<!-- 		<tr> -->
+<!-- 			<td width="10%" class="dise">名称<code>*</code></td> -->
+<!-- 			<td width="20%"><a id="amaterialname"></a></td> -->
+<!-- 			<td width="10%" class="dise">使用量(吨)<code>*</code></td> -->
+<!-- 			<td width="20%"><a id="amaterialtotal"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+<!--表p2053_泄漏实施LDAR信息表-->
+<div id="shebei_11_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">生产装置总数(套)<code>*</code></td>
+			<td width="15%"><a id="sbtotal"></a></td>
+			<td width="10%" class="dise">涉及VOC装置(套)<code>*</code></td>
+			<td width="15%"><a id="vocsbtotal"></a></td>
+			<td width="10%" class="dise">开展LDAR装置(套)<code>*</code></td>
+			<td width="15%"><a id="ldarsbtotal"></a></td>
+			<td width="10%" class="dise">开展LDAR(轮)<code>*</code></td>
+			<td width="15%"><a id="ldarnums"></a></td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">未开展LDAR装置(套)<code>*</code></td>
+			<td width="15%"><a id="umldarnums"></a></td>
+			<td width="10%" class="dise">豁免装置(套)<code>*</code></td>
+			<td width="15%"><a id="freesb"></a></td>
+			<td width="10%" class="dise">动静密封点总数(个)<code>*</code></td>
+			<td width="15%"><a id="mftotalnums"></a></td>
+			<td width="10%" class="dise">不可达点(个)<code>*</code></td>
+			<td width="15%"><a id="unmums"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">设备泄漏VOC排放估算结果</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">估算方法</td>
+			<td width="15%"><a id="calmethod"></a></td>
+			<td width="10%" class="dise">泄漏排放量(吨)</td>
+			<td width="15%"><a id="xlemis"></a></td>
+			<td width="10%" class="dise">检测轮编号</td>
+			<td width="15%"><a id="ldarid"></a></td>
+			
+		</tr>
+		<tr>
+			<td width="10%" class="dise">密封点(个)</td>
+			<td width="15%"><a id="mfnums"></a></td>
+			<td width="10%" class="dise">泄漏密封点(个)</td>
+			<td width="15%"><a id="xlnums"></a></td>
+			<td width="10%" class="dise">修复(个)</td>
+			<td width="15%"><a id="repairnums"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">设备泄漏VOC损耗量削减潜力分析</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="15%" class="dise">是否达标</td>
+			<td width="10%"><a id="dbornot"></a></td>
+			<td width="15%" class="dise">是否达到国内水平</td>
+			<td width="10%"><a id="nationmeanornot"></a></td>
+			<td width="15%" class="dise">是否达到国内先进水平</td>
+			<td width="10%"><a id="nationbestornot"></a></td>
+			<td width="15%" class="dise">削减潜力(吨/年)</td>
+			<td width="10%"><a id="reduceemis"></a></td>
+		</tr>
+	</table>
+</div>
+<!--表p2054_泄漏未实施LDAR信息表-->
+<div id="shebei_11_2" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">元件数量</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td class="dise" colspan="6">阀(件)</td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">气体<code>*</code></td>
+			<td width="15%"><a id="afgasnums"></a></td>
+			<td width="10%" class="dise">轻液体<code>*</code></td>
+			<td width="15%"><a id="aflightliquidnums"></a></td>
+			<td width="10%" class="dise">重液体<code>*</code></td>
+			<td width="15%"><a id="afheavyiquidnums"></a></td>
+		</tr>
+		<tr>
+			<td class="dise" colspan="6">泵(件)</td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">轻液体<code>*</code></td>
+			<td width="15%"><a id="ablightliquidnums"></a></td>
+			<td width="10%" class="dise">重液体<code>*</code></td>
+			<td width="15%"><a id="abheavyiquidnums"></a></td>
+			<td width="10%" class="dise"></td>
+			<td width="15%"></td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise" colspan="3">压缩机(件)<code>*</code></td>
+			<td width="15%" colspan="3"><a id="aysjnums"></a></td>
+		</tr>
+		<tr>
+			<td class="dise" colspan="6">安全阀(件)</td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">气体<code>*</code></td>
+			<td width="15%"><a id="asafefgasnums"></a></td>
+			<td width="10%" class="dise">轻液体<code>*</code></td>
+			<td width="15%"><a id="asafeflightliquidnums"></a></td>
+			<td width="10%" class="dise">重液体<code>*</code></td>
+			<td width="15%"><a id="asafefheavyiquidnums"></a></td>
+		</tr>
+		<tr>
+			<td class="dise" colspan="6">法兰(件)</td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">气体<code>*</code></td>
+			<td width="15%"><a id="aflgasnums"></a></td>
+			<td width="10%" class="dise">轻液体<code>*</code></td>
+			<td width="15%"><a id="afllightliquidnums"></a></td>
+			<td width="10%" class="dise">重液体<code>*</code></td>
+			<td width="15%"><a id="aflheavyiquidnums"></a></td>
+		</tr>
+			<tr>
+			<td width="10%" class="dise">开口管线(件)<code>*</code></td>
+			<td width="15%"><a id="akkgxnums"></a></td>
+			<td width="10%" class="dise">采样连接(件)<code>*</code></td>
+			<td width="15%"><a id="acyljnums"></a></td>
+			<td width="10%" class="dise"></td>
+			<td width="15%"><a id=""></a></td>
+		</tr>
+		
+	</table>
+</div>
+
+<!-- 表p2081_其他工业生产信息表 -->
+<div id="shebei_12" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">生产线编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">生产工艺<code>*</code></td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">产品类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="aproducttype"></a></span> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise" width="9%"></td> -->
+<!-- 			<td class="dise" width="7%">全年<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">1月</td> -->
+<!-- 			<td class="dise" width="7%">2月</td> -->
+<!-- 			<td class="dise" width="7%">3月</td> -->
+<!-- 			<td class="dise" width="7%">4月</td> -->
+<!-- 			<td class="dise" width="7%">5月</td> -->
+<!-- 			<td class="dise" width="7%">6月</td> -->
+<!-- 			<td class="dise" width="7%">7月</td> -->
+<!-- 			<td class="dise" width="7%">8月</td> -->
+<!-- 			<td class="dise" width="7%">9月</td> -->
+<!-- 			<td class="dise" width="7%">10月</td> -->
+<!-- 			<td class="dise" width="7%">11月</td> -->
+<!-- 			<td class="dise" width="7%">12月</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise">产品产量(万吨)</td> -->
+<!-- 			<td><a id="aproducttotal"></a></td> -->
+<!-- 			<td><a id="aproduct1"></a></td> -->
+<!-- 			<td><a id="aproduct2"></a></td> -->
+<!-- 			<td><a id="aproduct3"></a></td> -->
+<!-- 			<td><a id="aproduct4"></a></td> -->
+<!-- 			<td><a id="aproduct5"></a></td> -->
+<!-- 			<td><a id="aproduct6"></a></td> -->
+<!-- 			<td><a id="aproduct7"></a></td> -->
+<!-- 			<td><a id="aproduct8"></a></td> -->
+<!-- 			<td><a id="aproduct9"></a></td> -->
+<!-- 			<td><a id="aproduct10"></a></td> -->
+<!-- 			<td><a id="aproduct11"></a></td> -->
+<!-- 			<td><a id="aproduct12"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+	
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">有机原料信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr> -->
+<!-- 			<td width="10%" class="dise">名称<code>*</code></td> -->
+<!-- 			<td width="20%"><a id="amaterialname"></a></td> -->
+<!-- 			<td width="10%" class="dise">使用量(吨)<code>*</code></td> -->
+<!-- 			<td width="20%"><a id="amaterialtotal"></a></td> -->
+		
+<!-- 		</tr> -->
+<!-- 	</table> -->
+	
+</div>
+
+<!-- 表p9011_废水处理信息表 -->
+<div id="shebei_13" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">设备编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">处理方式<code>*</code></td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">废水处理量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p9021_固废处理信息表 -->
+<div id="shebei_14" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">设备编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">处理方式<code>*</code></td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+		<tr height="51px">
+			<td class="dise">固废处理量(万吨)</td>
+			<td><a id="aproducttotal"></a></td>
+			<td><a id="aproduct1"></a></td>
+			<td><a id="aproduct2"></a></td>
+			<td><a id="aproduct3"></a></td>
+			<td><a id="aproduct4"></a></td>
+			<td><a id="aproduct5"></a></td>
+			<td><a id="aproduct6"></a></td>
+			<td><a id="aproduct7"></a></td>
+			<td><a id="aproduct8"></a></td>
+			<td><a id="aproduct9"></a></td>
+			<td><a id="aproduct10"></a></td>
+			<td><a id="aproduct11"></a></td>
+			<td><a id="aproduct12"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p9031_烟气脱硝信息表 -->
+<div id="shebei_15" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">设备编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">锅炉类型</td>
+			<td width="20%"><a id="boilertype"></a></td>
+			<td width="10%" class="dise">烟气脱硝<br>设施类型<code>*</code></td>
+			<td width="20%"><a id="equiptype"></a></td>
+		</tr>
+		<tr>
+			
+			<td width="10%" class="dise">排污设施<br>位置高度(米)</td>
+			<td width="20%"><a id="height"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="20%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="20%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div> -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;">燃料类型<code>*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<a id="fueltype"></a> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise" width="9%"></td> -->
+<!-- 			<td class="dise" width="7%">全年<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">1月</td> -->
+<!-- 			<td class="dise" width="7%">2月</td> -->
+<!-- 			<td class="dise" width="7%">3月</td> -->
+<!-- 			<td class="dise" width="7%">4月</td> -->
+<!-- 			<td class="dise" width="7%">5月</td> -->
+<!-- 			<td class="dise" width="7%">6月</td> -->
+<!-- 			<td class="dise" width="7%">7月</td> -->
+<!-- 			<td class="dise" width="7%">8月</td> -->
+<!-- 			<td class="dise" width="7%">9月</td> -->
+<!-- 			<td class="dise" width="7%">10月</td> -->
+<!-- 			<td class="dise" width="7%">11月</td> -->
+<!-- 			<td class="dise" width="7%">12月</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise">燃料消耗量<br>(万吨)</td> -->
+<!-- 			<td><a id="aproducttotal"></a></td> -->
+<!-- 			<td><a id="aproduct1"></a></td> -->
+<!-- 			<td><a id="aproduct2"></a></td> -->
+<!-- 			<td><a id="aproduct3"></a></td> -->
+<!-- 			<td><a id="aproduct4"></a></td> -->
+<!-- 			<td><a id="aproduct5"></a></td> -->
+<!-- 			<td><a id="aproduct6"></a></td> -->
+<!-- 			<td><a id="aproduct7"></a></td> -->
+<!-- 			<td><a id="aproduct8"></a></td> -->
+<!-- 			<td><a id="aproduct9"></a></td> -->
+<!-- 			<td><a id="aproduct10"></a></td> -->
+<!-- 			<td><a id="aproduct11"></a></td> -->
+<!-- 			<td><a id="aproduct12"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+
+<!-- 表p7011_生物质锅炉信息表 -->
+<div id="shebei_16" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">设备编号<code>*</code></td>
+			<td width="16%"><a id="equipId"></a></td>
+			<td width="16%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="16%"><a id="startdate"></a></td>
+			<td width="16%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="16%"><a id="enddate"></a></td>
+		</tr>
+		<tr><td  class="dise">锅炉铭牌型号</td>
+			<td ><a id="equipnumber"></a></td>
+			<td class="dise">设备类型<code>*</code></td>
+			<td ><a id="equiptype"></a></td>
+			<td class="dise"></td>
+			<td></td>
+		</tr>
+	</table>
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr> -->
+<!-- 			<td class="dise" width="9%"></td> -->
+<!-- 			<td class="dise" width="7%">全年<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">1月</td> -->
+<!-- 			<td class="dise" width="7%">2月</td> -->
+<!-- 			<td class="dise" width="7%">3月</td> -->
+<!-- 			<td class="dise" width="7%">4月</td> -->
+<!-- 			<td class="dise" width="7%">5月</td> -->
+<!-- 			<td class="dise" width="7%">6月</td> -->
+<!-- 			<td class="dise" width="7%">7月</td> -->
+<!-- 			<td class="dise" width="7%">8月</td> -->
+<!-- 			<td class="dise" width="7%">9月</td> -->
+<!-- 			<td class="dise" width="7%">10月</td> -->
+<!-- 			<td class="dise" width="7%">11月</td> -->
+<!-- 			<td class="dise" width="7%">12月</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td class="dise">燃料消费<br>总量(万吨)</td> -->
+<!-- 			<td><a id="afueltotal"></a></td> -->
+<!-- 			<td><a id="afuel1"></a></td> -->
+<!-- 			<td><a id="afuel2"></a></td> -->
+<!-- 			<td><a id="afuel3"></a></td> -->
+<!-- 			<td><a id="afuel4"></a></td> -->
+<!-- 			<td><a id="afuel5"></a></td> -->
+<!-- 			<td><a id="afuel6"></a></td> -->
+<!-- 			<td><a id="afuel7"></a></td> -->
+<!-- 			<td><a id="afuel8"></a></td> -->
+<!-- 			<td><a id="afuel9"></a></td> -->
+<!-- 			<td><a id="afuel10"></a></td> -->
+<!-- 			<td><a id="afuel11"></a></td> -->
+<!-- 			<td><a id="afuel12"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+
+<!-- 表p4011_印刷印染信息表 -->
+<div id="shebei_17" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">设备编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">喷涂工序<code>*</code></td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">溶剂类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="asolventtype"></a></span> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise" width="9%"></td> -->
+<!-- 			<td class="dise" width="7%">全年<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">1月</td> -->
+<!-- 			<td class="dise" width="7%">2月</td> -->
+<!-- 			<td class="dise" width="7%">3月</td> -->
+<!-- 			<td class="dise" width="7%">4月</td> -->
+<!-- 			<td class="dise" width="7%">5月</td> -->
+<!-- 			<td class="dise" width="7%">6月</td> -->
+<!-- 			<td class="dise" width="7%">7月</td> -->
+<!-- 			<td class="dise" width="7%">8月</td> -->
+<!-- 			<td class="dise" width="7%">9月</td> -->
+<!-- 			<td class="dise" width="7%">10月</td> -->
+<!-- 			<td class="dise" width="7%">11月</td> -->
+<!-- 			<td class="dise" width="7%">12月</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise">溶剂使用量(万吨)</td> -->
+<!-- 			<td><a id="asolventtotal"></a></td> -->
+<!-- 			<td><a id="asolvent1"></a></td> -->
+<!-- 			<td><a id="asolvent2"></a></td> -->
+<!-- 			<td><a id="asolvent3"></a></td> -->
+<!-- 			<td><a id="asolvent4"></a></td> -->
+<!-- 			<td><a id="asolvent5"></a></td> -->
+<!-- 			<td><a id="asolvent6"></a></td> -->
+<!-- 			<td><a id="asolvent7"></a></td> -->
+<!-- 			<td><a id="asolvent8"></a></td> -->
+<!-- 			<td><a id="asolvent9"></a></td> -->
+<!-- 			<td><a id="asolvent10"></a></td> -->
+<!-- 			<td><a id="asolvent11"></a></td> -->
+<!-- 			<td><a id="asolvent12"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+
+<!-- 表p4021_表面喷涂信息表 -->
+<div id="shebei_18" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">工序编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">喷涂工序<code>*</code></td>
+			<td width="20%"><a id="equiptype"></a></td>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p4032_干洗信息表 -->
+<div id="shebei_19" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code></span>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">干洗设备编号<code>*</code></td>
+			<td width="20%"><a id="equipId"></a></td>
+			<td width="10%" class="dise">干洗设备型号</td>
+			<td width="20%"><a id="equipxinghao"></a></td>
+			<td width="10%" class="dise">干洗设备品牌</td>
+			<td width="10%"><a id="equipbrand"></a></td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">投运时间<br>(年/月/日)</td>
+			<td width="10%"><a id="startdate"></a></td>
+			<td width="10%" class="dise">关停时间<br>(年/月/日)</td>
+			<td width="10%"><a id="enddate"></a></td>
+		</tr>
+	</table>
+	
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">有机溶剂全年使用量(吨)</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">四氯乙烯<code>*</code></td>
+			<td width="10%"><a id="asolventC2Cl4"></a></td>
+			<td width="10%" class="dise">四氯化碳<code>*</code></td>
+			<td width="10%"><a id="asolventCCl4"></a></td>
+			<td width="10%" class="dise">石油溶剂<code>*</code></td>
+			<td width="10%"><a id="asolventPetroleum"></a></td>
+			<td width="10%" class="dise">其他<code>*</code></td>
+			<td width="10%"><a id="asolventOthers"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">废弃有机溶剂处理</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">处理方式<code>*</code></td>
+			<td width="20%"><a id="solventdeal"></a></td>
+			<td width="10%" class="dise">年产生量</td>
+			<td width="20%"><a id="solventdealamount"></a></td>
+			<td width="10%" class="dise">单位</td>
+			<td width="10%"><a id="solventdealunit"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p5012_畜禽养殖量信息表 -->
+<div id="shebei_20" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">年底存栏数</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="11%" class="dise">奶牛(万头)<code>*</code></td>
+			<td width="11%" class="dise">母猪(万只)<code>*</code></td>
+			<td width="11%" class="dise">马(万匹)<code>*</code></td>
+			<td width="11%" class="dise">驴(万头)<code>*</code></td>
+			<td width="11%" class="dise">骡(万头)<code>*</code></td>
+			<td width="11%" class="dise">骆驼(万头)<code>*</code></td>
+			<td width="11%" class="dise">蛋鸡(万只)<code>*</code></td>
+			<td width="11%" class="dise">蛋鸭(万只)<code>*</code></td>
+			<td width="11%" class="dise">蛋鹅(万只)<code>*</code></td>
+		</tr>
+		<tr>
+			<td><a id="amilkingcow"></a></td>
+			<td><a id="apig"></a></td>
+			<td><a id="ahorse"></a></td>
+			<td><a id="adonkey"></a></td>
+			<td><a id="amule"></a></td>
+			<td><a id="acamel"></a></td>
+			<td><a id="alayinghen"></a></td>
+			<td><a id="alayingduck"></a></td>
+			<td><a id="alayinggoose"></a></td>
+		</tr>
+	</table>
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">出栏数</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="14%" class="dise">肉鸡(万只)<code>*</code></td>
+			<td width="15%" class="dise">肉鸭(万只)<code>*</code></td>
+			<td width="14%" class="dise">肉鹅(万只)<code>*</code></td>
+			<td width="15%" class="dise">肉牛(万头)<code>*</code></td>
+			<td width="14%" class="dise">肉猪(万头)<code>*</code></td>
+			<td width="14%" class="dise">山羊(万只)<code>*</code></td>
+			<td width="14%" class="dise">绵羊(万只)<code>*</code></td>
+		</tr>
+		<tr>
+			<td><a id="ameatchiken"></a></td>
+			<td><a id="ameatduck"></a></td>
+			<td><a id="ameatgoose"></a></td>
+			<td><a id="ameatcow"></a></td>
+			<td><a id="ameatpig"></a></td>
+			<td><a id="agoat"></a></td>
+			<td><a id="asheep"></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- 表p6012_施工扬尘信息表 -->
+<div id="shebei_21" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;施工类型<code>*</code>:&nbsp;&nbsp;&nbsp;&nbsp;<a id="constagetype"></a>
+	</div>
+</div>
+
+<!-- 表p06_堆场信息表 -->
+<div id="shebei_22" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">基本信息</b>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size:12px;"><code>调查的数据年份*</code>：</b>&nbsp;&nbsp;&nbsp;&nbsp;<code><a id="year"></a></code>
+	</div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 0px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td width="13%" class="dise">堆场编号<code>*</code></td> -->
+<!-- 			<td width="12%"><a id="equipId"></a></td> -->
+<!-- 			<td width="13%" class="dise">堆场类型<code>*</code></td> -->
+<!-- 			<td width="12%"><a id="dctype"></a></td> -->
+<!-- 			<td width="13%" class="dise">其他堆场类型</td> -->
+<!-- 			<td width="12%"><a id="otherdctype"></a></td> -->
+<!-- 			<td width="13%" class="dise">堆场材料<code>*</code></td> -->
+<!-- 			<td width="12%"><a id="dcmat"></a></td> -->
+			
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td width="13%" class="dise">其他堆场材料</td> -->
+<!-- 			<td width="12%"><a id="otherdcmat"></a></td> -->
+<!-- 			<td width="13%" class="dise">占地面积(平方米)<code>*</code></td> -->
+<!-- 			<td width="12%"><a id="dcaera"></a></td> -->
+<!-- 			<td width="13%" class="dise">最高高度(米)<code>*</code></td> -->
+<!-- 			<td width="12%"><a id="dcheight"></a></td> -->
+<!-- 			<td width="13%" class="dise">日常储存量(吨)<code>*</code></td> -->
+<!-- 			<td width="12%"><a id="dcamount"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">运载信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 0px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td width="16%" class="dise">年物料运载车次(车)<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="dcmeantrans"></a></td> -->
+<!-- 			<td width="16%" class="dise">单车运载量(吨/车)<code>*</code></td> -->
+<!-- 			<td width="16%"><a id="dctransamount"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 0px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td width="16%" class="dise">控制措施</td> -->
+<!-- 			<td width="16%"><a id="dustcontrol"></a></td> -->
+<!-- 			<td width="16%" class="dise">其他控制措施</td> -->
+<!-- 			<td width="16%"><a id="otherdustcontrol"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+</div>
+
+<div id="yjyl_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">有机原料</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_yjyl" title="添加有机原料">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加有机原料</span>
+		</a>
+	</div>
+	<table id="yjyl_table" class="table table-bordered zhong" style="margin-top: 0px;display:none;">
+		<tr>
+			<td width="20%" class="dise">名称<code>*</code></td>
+			<td width="20%" class="dise">使用量(吨)<code>*</code></td>
+			<td width="10%" class="dise">操作</td>
+		</tr>
+	</table>
+</div>
+<!-- 产品信息-表p051_炼焦工序化学加工环节信息表 -->
+<div id="chanpin_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">产品信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_lj_chanpin" title="添加产品信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加产品信息</span>
+		</a>
+	</div>
+	<table id="lj_chanpin_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">产品类型<code>*</code></td>
+			<td class="dise" width="6%">产品名称<code>*</code></td>
+			<td class="dise" width="6%"> 产品产量单位<code>*</code></td>
+			<td class="dise" width="6%">全年<code>*</code></td>
+			<td class="dise" width="5%">1月</td>
+			<td class="dise" width="5%">2月</td>
+			<td class="dise" width="5%">3月</td>
+			<td class="dise" width="5%">4月</td>
+			<td class="dise" width="5%">5月</td>
+			<td class="dise" width="5%">6月</td>
+			<td class="dise" width="5%">7月</td>
+			<td class="dise" width="5%">8月</td>
+			<td class="dise" width="5%">9月</td>
+			<td class="dise" width="5%">10月</td>
+			<td class="dise" width="5%">11月</td>
+			<td class="dise" width="5%">12月</td>
+			<td class="dise" width="5%">操作</td>
+		</tr>
+	</table>
+</div>
+
+<!-- 印刷印染信息表 -产品-->
+<div id="chanpin_2" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">活动水平</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_rj_chanpin" title="添加溶剂信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加溶剂信息</span>
+		</a>
+	</div>
+	<table id="rj_chanpin_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">溶剂类型<code>*</code></td>
+			<td class="dise" width="7%"></td>
+			<td class="dise" width="6%">全年<code>*</code></td>
+			<td class="dise" width="6%">1月</td>
+			<td class="dise" width="6%">2月</td>
+			<td class="dise" width="6%">3月</td>
+			<td class="dise" width="6%">4月</td>
+			<td class="dise" width="6%">5月</td>
+			<td class="dise" width="6%">6月</td>
+			<td class="dise" width="6%">7月</td>
+			<td class="dise" width="6%">8月</td>
+			<td class="dise" width="6%">9月</td>
+			<td class="dise" width="6%">10月</td>
+			<td class="dise" width="6%">11月</td>
+			<td class="dise" width="6%">12月</td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>
+
+<div id="chanpin_3" style="display:none;"> 
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">溶剂使用情况</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_brj_chanpin" title="添加溶剂使用">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加溶剂使用</span>
+		</a>
+	</div>
+	<table id="brj_chanpin_table" class="table table-bordered zhong" style="margin-top: 5px;">
+		<tr height="51px">
+			<td class="dise" rowspan="2" width="9%">溶剂类型<code>*</code></td>
+			<td class="dise" rowspan="2" width="9%">溶剂性质<code>*</code></td>
+			<td class="dise" colspan="2" >涂料(油漆)</td>
+			<td class="dise" colspan="2">稀释剂</td>
+			<td class="dise" colspan="2">胶黏剂</td>
+			<td class="dise" rowspan="2" width="6%">操作</td>
+		</tr>
+		<tr height="51px">
+			<td width="8%" class="dise" >年用量<code>*</code></td>
+			<td width="8%" class="dise" >单位<code>*</code></td>
+			<td width="8%" class="dise" >年用量<code>*</code></td>
+			<td width="8%" class="dise" >单位<code>*</code></td>
+			<td width="8%" class="dise" >年用量<code>*</code></td>
+			<td width="8%" class="dise" >单位<code>*</code></td>
+		</tr>
+	</table>
+</div>
+<!--机动车 -->
+<div id="jidongche_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">机动车信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_jidongche" title="添加机动车">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加机动车</span>
+		</a>
+	</div>
+	<table id="jidongche_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">施工阶段<code>*</code></td>
+			<td class="dise" width="7%"></td>
+			<td class="dise" width="6%">1月<code>*</code></td>
+			<td class="dise" width="6%">2月<code>*</code></td>
+			<td class="dise" width="6%">3月<code>*</code></td>
+			<td class="dise" width="6%">4月<code>*</code></td>
+			<td class="dise" width="6%">5月<code>*</code></td>
+			<td class="dise" width="6%">6月<code>*</code></td>
+			<td class="dise" width="6%">7月<code>*</code></td>
+			<td class="dise" width="6%">8月<code>*</code></td>
+			<td class="dise" width="6%">9月<code>*</code></td>
+			<td class="dise" width="6%">10月<code>*</code></td>
+			<td class="dise" width="6%">11月<code>*</code></td>
+			<td class="dise" width="6%">12月<code>*</code></td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>
+<!--污染控制 -->
+<div id="wuran_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">污染控制信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_wuran" title="添加污染控制">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加污染控制</span>
+		</a>
+	</div>
+	<table id="wuran_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">污染控制技术<code>*</code></td>
+			<td class="dise" width="7%">污染控制效率(％)</td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>
+<!--有机液体储罐信息表 -->
+<div id="yjytcg_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">有机液体储罐信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_yjytcg" title="添加有机液体储罐信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加有机液体储罐信息</span>
+		</a>
+	</div>
+	<table id="yjytcg_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">储罐编号<code>*</code></td>
+			<td class="dise" width="7%">储罐类型<code>*</code></td>
+			<td class="dise" width="7%" title="填写说明：&#10;1、若填了体积，则高度和直径可以不填；&#10;2、若填了直径，高度必填、体积可以不填；&#10;3、若填了高度，直径必填、体积可以不填；&#10;4、若三个参数都填，需满足高度和直径计算出的体积和实际填写的体积误差不超过0.001；&#10;5、体积、高度、直径不能全为空。">体积(立方米)</td>
+			<td class="dise" width="7%" title="填写说明：&#10;1、若填了体积，则高度和直径可以不填；&#10;2、若填了直径，高度必填、体积可以不填；&#10;3、若填了高度，直径必填、体积可以不填；&#10;4、若三个参数都填，需满足高度和直径计算出的体积和实际填写的体积误差不超过0.001；&#10;5、体积、高度、直径不能全为空。">高度(米)</td>
+			<td class="dise" width="7%" title="填写说明：&#10;1、若填了体积，则高度和直径可以不填；&#10;2、若填了直径，高度必填、体积可以不填；&#10;3、若填了高度，直径必填、体积可以不填；&#10;4、若三个参数都填，需满足高度和直径计算出的体积和实际填写的体积误差不超过0.001；&#10;5、体积、高度、直径不能全为空。">直径(米)</td>
+			<td class="dise" width="7%">占存储液体成分<code>*</code></td>
+			<td class="dise" width="7%">年进出料次数<code>*</code></td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>
+<!--有机液体装载信息表 -->
+<div id="yjytzz_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">有机液体装载信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_yjytzz" title="添加有机液体装载信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加有机液体装载信息</span>
+		</a>
+	</div>
+	<table id="yjytzz_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">序号<code>*</code></td>
+			<td class="dise" width="7%">作业部/车间</td>
+			<td class="dise" width="7%">装车站台编号<code>*</code></td>
+			<td class="dise" width="7%">装载物料名称<code>*</code></td>
+			<td class="dise" width="7%">装载方式<code>*</code></td>
+			<td class="dise" width="7%">操作方式<code>*</code></td>
+			<td class="dise" width="7%">年装载量(吨)<code>*</code></td>
+			<td class="dise" width="7%">装载物料密度(kg/m3)<code>*</code></td>
+			<td class="dise" width="7%">油气回收控制技术<code>*</code></td>
+			<td class="dise" width="7%">其他油气回收控制技术</td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>
+<!--堆场信息 -->
+<div id="duichang_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">堆场信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_duichang" title="添加堆场信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加堆场信息</span>
+		</a>
+	</div>
+	<table id="duichang_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="7%">堆场编号<code>*</code></td>
+			<td class="dise" width="7%">堆场类型<code>*</code></td>
+			<td class="dise" width="7%">其他堆场类型</td>
+			<td class="dise" width="7%">堆场材料<code>*</code></td>
+			<td class="dise" width="7%">其他堆场材料</td>
+			<td class="dise" width="7%">占地面积<code>*</code><br>(平方米)</td>
+			<td class="dise" width="7%">最高高度<code>*</code><br>(米)</td>
+			<td class="dise" width="7%">日常储存量(吨)<code>*</code></td>
+			<td class="dise" width="7%">年物料运载车次(车)<code>*</code></td>
+			<td class="dise" width="7%">单车运载量(吨/车)<code>*</code></td>
+			<td class="dise" width="7%">控制措施</td>
+			<td class="dise" width="7%">其他控制措施</td>
+			<td class="dise" width="3%">操作</td>
+		</tr>
+	</table>
+</div>
+<!--运载 -->
+<!-- <div id="yunzai_1" style="display:none;"> -->
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">运载信息</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 		<a id="add_yunzai" title="添加运载信息"> -->
+<!-- 			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;"> -->
+<!-- 			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加运载信息</span> -->
+<!-- 		</a> -->
+<!-- 	</div> -->
+<!-- 	<table id="yunzai_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;"> -->
+<!-- 		<tr> -->
+<!-- 			<td class="dise" width="7%">年物料运载车次(车)<code>*</code></td> -->
+<!-- 			<td class="dise" width="7%">单车运载量(吨/车)<code>*</code></td> -->
+<!-- 			<td class="dise" width="6%">操作</td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- </div> -->
+<!--控制措施-->
+<!-- <div id="cuoshi_1" style="display:none;"> -->
+<!-- 	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">控制措施</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 		<a id="add_cuoshi" title="添加控制措施"> -->
+<!-- 			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;"> -->
+<!-- 			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加控制措施</span> -->
+<!-- 		</a> -->
+<!-- 	</div> -->
+<!-- 	<table id="cuoshi_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;"> -->
+<!-- 		<tr> -->
+<!-- 			<td class="dise" width="7%">控制措施</td> -->
+<!-- 			<td class="dise" width="7%">其他控制措施</td> -->
+<!-- 			<td class="dise" width="6%">操作</td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- </div> -->
+<!-- 废气 -->
+<div id="feiqi_1" style="display:none;"> 
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">废气信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_feiqi" title="添加废气信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加废气信息</span>
+		</a>
+	</div>
+	<table id="feiqi_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr height="51px">
+			<td width="8%" class="dise" >废气处理方式<code>*</code></td>
+			<td width="8%" class="dise" >处理效率(％)</td>
+			<td width="8%" class="dise" >操作</td>
+		</tr>
+	</table>
+</div>
+
+<!-- <div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">溶剂使用情况</b></div> -->
+<!-- 	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 5px 0px;" width="100%" color="#ccc" size="3"> -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">溶剂类型<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="asolventtype"></a></span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;">溶剂性质<code>*</code>：&nbsp;&nbsp;&nbsp;&nbsp;<a id="solventstate"></a></span> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td class="dise" colspan="4">涂料(油漆)</td> -->
+<!-- 			<td class="dise" colspan="4">稀释剂</td> -->
+<!-- 			<td class="dise" colspan="4">胶黏剂</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td width="8%" class="dise" >年用量<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="asolventpaint"></a></td> -->
+<!-- 			<td width="8%" class="dise" >单位<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="asolventpaintunit"></a></td> -->
+<!-- 			<td width="8%" class="dise" >年用量<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="asolventdilute"></a></td> -->
+<!-- 			<td width="8%" class="dise" >单位<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="asolventdiluteunit"></a></td> -->
+<!-- 			<td width="8%" class="dise" >年用量<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="asolventglue"></a></td> -->
+<!-- 			<td width="8%" class="dise" >单位<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="asolventglueunit"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+<!-- 	<table class="table table-bordered zhong" style="margin-top: 5px;"> -->
+<!-- 		<tr height="51px"> -->
+<!-- 			<td width="8%" class="dise" >废气处理方式<code>*</code></td> -->
+<!-- 			<td width="8%"><a id="solventdeal"></a></td> -->
+<!-- 			<td width="8%" class="dise" >处理效率(％)</td> -->
+<!-- 			<td width="8%"><a id="solventdealratio"></a></td> -->
+<!-- 		</tr> -->
+<!-- 	</table> -->
+
+
+
+<div id="ranliao_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">燃料信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_fdj_rl" title="添加燃料信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加燃料信息</span>
+		</a>
+	</div>
+	<table id="fdj_rl_table" class="table table-bordered zhong" style="margin-top: 0px;display:none;">
+		<tr>
+			<td width="17%" class="dise">燃料类型<code>*</code></td>
+			<td width="15%" class="dise">燃料热值<br>(千卡/千克或千卡/标准立方米)</td>
+			<td width="10%" class="dise">燃料硫分<code>*</code><br>(%)</td>
+			<td width="10%" class="dise">燃料灰分<code>*</code><br>(%)</td>
+			<td width="10%" class="dise">燃料挥发分<code>*</code><br>(%)</td>
+			<td width="10%" class="dise">煤炭来源地</td>
+			<td width="15%" class="dise">煤炭运输方式</td>
+			<td width="10%" class="dise">操作</td>
+		</tr>
+	</table>
+	<table id="fdj_rl_table2" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="7%">全年<code>*</code></td>
+			<td class="dise" width="7%">1月</td>
+			<td class="dise" width="7%">2月</td>
+			<td class="dise" width="7%">3月</td>
+			<td class="dise" width="7%">4月</td>
+			<td class="dise" width="7%">5月</td>
+			<td class="dise" width="7%">6月</td>
+			<td class="dise" width="7%">7月</td>
+			<td class="dise" width="7%">8月</td>
+			<td class="dise" width="7%">9月</td>
+			<td class="dise" width="7%">10月</td>
+			<td class="dise" width="7%">11月</td>
+			<td class="dise" width="7%">12月</td>
+		</tr>
+	</table>
+</div>
+
+
+<div id = "ranliao_2" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">燃料信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_zgxh_rl" title="添加燃料消耗量">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加燃料信息</span>
+		</a>
+	</div>
+	<table id="zgxh_rl_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="9%">燃料类型<code>*</code></td>
+			<td class="dise" width="6%"></td>
+			<td class="dise" width="6%">全年<code>*</code></td>
+			<td class="dise" width="6%">1月</td>
+			<td class="dise" width="6%">2月</td>
+			<td class="dise" width="6%">3月</td>
+			<td class="dise" width="6%">4月</td>
+			<td class="dise" width="6%">5月</td>
+			<td class="dise" width="6%">6月</td>
+			<td class="dise" width="6%">7月</td>
+			<td class="dise" width="6%">8月</td>
+			<td class="dise" width="6%">9月</td>
+			<td class="dise" width="6%">10月</td>
+			<td class="dise" width="6%">11月</td>
+			<td class="dise" width="6%">12月</td>
+		</tr>
+	</table>
+	<table id="zgxh_rl_table2" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="6%">全年<code>*</code></td>
+			<td class="dise" width="6%">1月</td>
+			<td class="dise" width="6%">2月</td>
+			<td class="dise" width="6%">3月</td>
+			<td class="dise" width="6%">4月</td>
+			<td class="dise" width="6%">5月</td>
+			<td class="dise" width="6%">6月</td>
+			<td class="dise" width="6%">7月</td>
+			<td class="dise" width="6%">8月</td>
+			<td class="dise" width="6%">9月</td>
+			<td class="dise" width="6%">10月</td>
+			<td class="dise" width="6%">11月</td>
+			<td class="dise" width="6%">12月</td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>
+
+<div id="ranliao_3" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">燃料信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_swgl_rl" title="添加燃料信息">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加燃料信息</span>
+		</a>
+	</div>
+	<table id="swgl_rl_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+		<tr>
+			<td class="dise" width="9%">燃料类型<code>*</code></td>
+			<td class="dise" width="9%"></td>
+			<td class="dise" width="6%">全年<code>*</code></td>
+			<td class="dise" width="6%">1月</td>
+			<td class="dise" width="6%">2月</td>
+			<td class="dise" width="6%">3月</td>
+			<td class="dise" width="6%">4月</td>
+			<td class="dise" width="6%">5月</td>
+			<td class="dise" width="6%">6月</td>
+			<td class="dise" width="6%">7月</td>
+			<td class="dise" width="6%">8月</td>
+			<td class="dise" width="6%">9月</td>
+			<td class="dise" width="6%">10月</td>
+			<td class="dise" width="6%">11月</td>
+			<td class="dise" width="6%">12月</td>
+			<td class="dise" width="6%">操作</td>
+		</tr>
+	</table>
+</div>					
+<div id="moduankongzhi_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">末端控制设备信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_tl" title="添加脱硫设备">
+			<img src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加脱硫设备</span>
+		</a>
+	</div>
+	<table id="tl_table" class="table table-bordered" style="display:none;margin-bottom: 10px;margin-top: 10px;"></table>
+	
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_tx" title="添加脱硝设备">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加脱硝设备</span>
+		</a>
+	</div>
+	<table id="tx_table" class="table table-bordered" style="display:none;margin-bottom: 10px;margin-top: 10px;"></table>
+	
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_dd" title="添加低氮燃烧技术">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加低氮燃烧技术</span>
+		</a>
+	</div>
+	<table id="dd_table" class="table table-bordered" style="display:none;margin-bottom: 10px;margin-top: 10px;"></table>
+	
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_cc" title="添加除尘设备">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加除尘设备</span>
+		</a>
+	</div>
+	<table id="cc_table" class="table table-bordered" style="display:none;margin-bottom: 10px;margin-top: 10px;"></table>
+	
+	<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		<a id="add_yl" title="添加有机废气处理">
+			<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+			<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加有机废气处理</span>
+		</a>
+	</div>
+	<table id="yl_table" class="table table-bordered" style="display:none;margin-bottom: 10px;margin-top: 10px;"></table>
+</div>
+					
+<div id="zaixianjiance_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">在线监测信息</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="10%" class="dise">排放口高度(米)</td>
+			<td width="21%" colspan="3"><a id="pfkheight"></a></td>
+			<td  width="14%" colspan="2" class="dise">排放口直径(米)</td>
+			<td width="21%" colspan="3"><a id="pfkdiameter"></a></td>
+			<td width="14%" colspan="2" class="dise">排放出口废气流速(米/秒)</td>
+			<td  width="21%" colspan="3"><a id="pfkspeed"></a></td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">废气排放流量(标准立方米/小时)</td>
+			<td width="21%" colspan="3"><a id="pfkvolume"></a></td>
+			<td  width="14%" colspan="2" class="dise">废气温度(摄氏度)</td>
+			<td width="21%" colspan="3"><a id="pfktemperature"></a></td>
+			<td width="14%" colspan="2" class="dise">废气含氧量(％)</td>
+			<td  width="21%" colspan="3"><a id="pfkoratio"></a></td>
+		</tr>
+		<tr>
+			<td width="10%" class="dise">是否国控重点污染源<code>*</code></td>
+			<td width="21%" colspan="3"><a id="countrykornot"></a></td>
+			<td  width="14%" colspan="2" class="dise">是否省控重点污染源<code>*</code></td>
+			<td width="21%" colspan="3"><a id="provkornot"></a></td>
+			<td width="14%" colspan="2" class="dise">是否市控重点污染源<code>*</code></td>
+			<td  width="21%" colspan="3"><a id="citykornot"></a></td>
+		</tr>
+		
+	
+		<tr>
+			<td width="10%" class="dise">是否安装<code>*</code></td>
+			<td width="14%" colspan="2"><a id="installornot"></a></td>
+			
+			<td id="weianzhuang1" width="14%" colspan="2"></td>
+			<td id="weianzhuang2" width="14%" colspan="2"></td>
+			<td id="weianzhuang3" width="14%" colspan="2"></td>
+			<td id="weianzhuang4" width="14%" colspan="2"></td>
+			
+			<td id="weianzhuang5" width="14%" colspan="2"></td>
+			<td id="weianzhuang6" width="14%" colspan="2"></td>
+			
+			<td id="anzhuang1" style="display:none;" width="14%" colspan="2" class="dise">安装位置</td>
+			<td id="anzhuang2" style="display:none;" width="14%" colspan="2"><a id="installplace"></a></td>
+			<td id="anzhuang3" style="display:none;" width="7%" colspan="1" class="dise">是否联网</td>
+			<td id="anzhuang4" style="display:none;" width="14%" colspan="2"><a id="webornot"></a></td>
+			
+			<td id="anzhuang5" style="display:none;" width="14%" colspan="2" class="dise">是否通过验收</td>
+			<td id="anzhuang6" style="display:none;" width="14%" colspan="2"><a id="ysornot"></a></td>
+			
+		</tr>
+		<tr class="dise" id="zx_conter1" style="display:none;">
+			<td width="10%"></td>
+			<td width="7%">全年</td>
+			<td width="7%">1月</td>
+			<td width="7%">2月</td>
+			<td width="7%">3月</td>
+			<td width="7%">4月</td>
+			<td width="7%">5月</td>
+			<td width="7%">6月</td>
+			<td width="7%">7月</td>
+			<td width="7%">8月</td>
+			<td width="7%">9月</td>
+			<td width="7%">10月</td>
+			<td width="7%">11月</td>
+			<td width="7%">12月</td>
+		</tr>
+		<tr id="zx_conter2" style="display:none;">
+			<td class="dise">SO<sub>2</sub>排放浓度<br>(mg/m<sup>3</sup>)</td>
+			<td><a id="SO2conanual"></a></td>
+			<td><a id="SO2con1"></a></td>
+			<td><a id="SO2con2"></a></td>
+			<td><a id="SO2con3"></a></td>
+			<td><a id="SO2con4"></a></td>
+			<td><a id="SO2con5"></a></td>
+			<td><a id="SO2con6"></a></td>
+			<td><a id="SO2con7"></a></td>
+			<td><a id="SO2con8"></a></td>
+			<td><a id="SO2con9"></a></td>
+			<td><a id="SO2con10"></a></td>
+			<td><a id="SO2con11"></a></td>
+			<td><a id="SO2con12"></a></td>
+		</tr>
+		<tr id="zx_conter3" style="display:none;">
+			<td class="dise">NO<sub>x</sub>排放浓度<br>(mg/m<sup>3</sup>)</td>
+			<td><a id="NOxconanual"></a></td>
+			<td><a id="NOxcon1"></a></td>
+			<td><a id="NOxcon2"></a></td>
+			<td><a id="NOxcon3"></a></td>
+			<td><a id="NOxcon4"></a></td>
+			<td><a id="NOxcon5"></a></td>
+			<td><a id="NOxcon6"></a></td>
+			<td><a id="NOxcon7"></a></td>
+			<td><a id="NOxcon8"></a></td>
+			<td><a id="NOxcon9"></a></td>
+			<td><a id="NOxcon10"></a></td>
+			<td><a id="NOxcon11"></a></td>
+			<td><a id="NOxcon12"></a></td>
+		</tr>
+		<tr id="zx_conter4" style="display:none;">
+			<td class="dise">PM<sub>2.5</sub>排放浓度<br>(mg/m<sup>3</sup>)</td>
+			<td><a id="PMconanual"></a></td>
+			<td><a id="PMcon1"></a></td>
+			<td><a id="PMcon2"></a></td>
+			<td><a id="PMcon3"></a></td>
+			<td><a id="PMcon4"></a></td>
+			<td><a id="PMcon5"></a></td>
+			<td><a id="PMcon6"></a></td>
+			<td><a id="PMcon7"></a></td>
+			<td><a id="PMcon8"></a></td>
+			<td><a id="PMcon9"></a></td>
+			<td><a id="PMcon10"></a></td>
+			<td><a id="PMcon11"></a></td>
+			<td><a id="PMcon12"></a></td>
+		</tr>
+	</table>
+</div>
+
+
+
+<!-- 表p051_炼焦工序化学加工环节信息表 -->
+<div id="lianjiaohuaxuejiagong_1" style="display:none;">
+	<div class="wd-msg" style="text-align: left;"><b style="font-size:12px;">表p051_炼焦工序化学加工环节信息表</b></div>
+	<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+	<table id="p051_ljgx1" class="table table-bordered zhong" style="margin-top: 0px;">
+		<tr>
+			<td width="16%" class="dise">是否存在化学加工环节<code>*</code></td>
+			<td width="16%"><a id="isornot"></a></td>
+			<td width="16%" class="dise"></td>
+			<td width="16%"></td>
+			<td width="16%" class="dise"></td>
+			<td width="16%"></td>
+		</tr>
+	</table>
+	
+	
+	<div id="p051_ljgx" style="display:none;">
+		<div style="width: 100%;height: 28px;display: block;margin-bottom: 5px;margin-top: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;
+			<a id="add_jiaotan" title="添加焦炭产量信息">
+				<img alt="" src="../../zp01/images/jia.png" style="padding: 3px;width:24px;height:24px;">
+				<span style="font-size: 14px;line-height: 34px;padding: 5px;">添加焦炭产量信息</span>
+			</a>
+		</div>
+		<table id="lianjiao_table" class="table table-bordered zhong" style="margin-top: 5px;display:none;">
+			<tr height="51px">
+				<td class="dise" width="9%">产品类型<code>*</code></td>
+				<td class="dise" width="7%">焦炭产量</td>
+				<td class="dise" width="6%">全年<code>*</code></td>
+				<td class="dise" width="6%">1月</td>
+				<td class="dise" width="6%">2月</td>
+				<td class="dise" width="6%">3月</td>
+				<td class="dise" width="6%">4月</td>
+				<td class="dise" width="6%">5月</td>
+				<td class="dise" width="6%">6月</td>
+				<td class="dise" width="6%">7月</td>
+				<td class="dise" width="6%">8月</td>
+				<td class="dise" width="6%">9月</td>
+				<td class="dise" width="6%">10月</td>
+				<td class="dise" width="6%">11月</td>
+				<td class="dise" width="6%">12月</td>
+				<td class="dise" width="6%">操作</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	
+</div>
+
+
+
+
+					
+				</DIV>
+				
+				<DIV style="clear: both;"></DIV>
+			</DIV>
+			<DIV style="clear: both;"></DIV>
+		</DIV>
+
+
+		<!-- 底部 -->
+		<DIV class="copyright" id="foouft"></DIV>
+	</DIV>
+	
+	<div id="dialog-xmsb" title="校验未通过：下列为必填项，请补充。" style="display: none;">
+		<DIV id="dialog-xmsb-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	
+	<div id="dialog-tiaozhuan" title="提示" style="display: none;">
+		<DIV id="dialog-tiaozhuan-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	<div id="dialog-delete" title="提示" style="display: none;">
+		<DIV id="dialog-delete-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>
+	</div>
+	
+	<div id="dialog-xuanzeshebei" title="选择设备" style="display: none;">
+		<DIV id="dialog-xuanzeshebei-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 1em; font-size: 14px;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="text-align:left; background-color:#DCDCDC; height:30px; padding-top:7px; padding-left:10px; margin-bottom:5px;">
+				<tbody>
+					<tr>
+						<td scope="col"  style="width:16.6%">◎&nbsp;&nbsp;<strong>常规设备</strong></td>
+						<td scope="col"  style="width:16.6%"></td>
+						<td scope="col"  style="width:16.6%"></td>
+						<td scope="col"  style="width:16.6%">◎&nbsp;&nbsp;<strong>其他设备</strong></td>
+						<td scope="col"  style="width:16.6%"></td>
+						<td scope="col"  style="width:16.6%"></td>
+					</tr>
+				</tbody>
+			</table>
+			<TABLE width="100%" id="fd_layer" border="0" cellspacing="0" cellpadding="15">
+				<TBODY>
+					<TR>
+						<TD valign="top" style="border-right-color: rgb(204, 204, 204); border-right-width: 2px; border-right-style: dashed;">
+							<ul id="select_shebei_t"></ul>
+						</TD>
+						<TD valign="top" style="border-right-color: rgb(204, 204, 204); border-right-width: 0px; border-right-style: dashed;">
+							<ul id="select_shebei_1"></ul>
+						</TD>
+						<TD valign="top" style="border-right-color: rgb(204, 204, 204); border-right-width: 0px; border-right-style: dashed;">
+							<ul id="select_shebei_2"></ul>
+						</TD>
+						<TD valign="top" style="border-right-color: rgb(204, 204, 204); border-right-width: 0px; border-right-style: dashed;">
+							<ul id="select_shebei_3"></ul>
+						</TD>
+						<TD valign="top" style="border-right-color: rgb(204, 204, 204); border-right-width: 0px; border-right-style: dashed;">
+							<ul id="select_shebei_4"></ul>
+						</TD>
+					</TR>
+				</TBODY>
+			</TABLE>
+		</DIV>
+	</div>
+	<!-- 修改密码 -->
+	<div id="dialog-update" title="修改密码" style="display: none;">
+		<DIV id="dialog-update-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>原密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="old_pass" id="old_pass" style="" required="required" cp="true" placeholder="原密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5></label>
+			</div>
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>新密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass" id="new_pass" style="" required="required" placeholder="新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_2" style="color:red;"></h5></label>
+			</div>
+
+			<div class="col-sm-11 form-group">
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h3>确认密码:</h3></label>
+				<div class="col-sm-5" id="data_1">
+					<input type="password" name="new_pass_2" id="new_pass_2" style="" required equalTo="#new_pass" placeholder="请再次输入新密码" autocomplete="off" class="form-control">
+				</div>
+				<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_3 style="color:red;"></h5></label>
+			</div>
+
+		</DIV>
+	</div>
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<!-- 消息框 -->
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+	<!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+	
+	<script src="../../js/ajax.js"></script>
+	<script src="public.js"></script>
+	<SCRIPT src="../homeUI1.js"></script>
+	<script src="c_editable_1.js"></script>
+	<script src="../../zp01/0103/c_editable_3.js"></script>
+	<script src="../../zp01/0103/c_editable_4.js"></script>
+	<script src="../../js/plugins/jquery-ui/jquery-ui.js"></script>
+	<script type="text/javascript" src="start.js"></script>
+	<script type="text/javascript" src="c.js"></script>
+</BODY>
+</HTML>

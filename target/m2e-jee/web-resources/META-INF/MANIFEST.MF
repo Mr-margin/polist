@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: polist
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.gistone
+Build-Jdk: 1.7.0_45
+Built-By: ￥ﾤﾪ￥ﾹﾴ￨ﾽﾻ
+Created-By: Maven Integration for Eclipse
+

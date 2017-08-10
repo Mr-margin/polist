@@ -1,0 +1,56 @@
+ [{
+        "state": "130100",
+        "regular": "60022222222222222",
+        "hangye":"电力行业"
+    },
+    {
+        "state": "130200",
+        "regular": "200",
+         "hangye":"电力行业"
+    },
+    {
+        "state": "130400",
+        "regular": "600",
+         "hangye":"工业锅炉"
+    },
+    {
+        "state": "130300",
+        "regular": "2000",
+         "hangye":"其他黑色金属"
+    },
+    {
+        "state": "130500",
+        "regular": "90",
+         "hangye":"其他黑色金属"
+    },
+    {
+        "state": "130600",
+        "regular": "700",
+         "hangye":"钢铁行业"
+    },
+    {
+        "state": "130700",
+        "regular": "25.8",
+         "hangye":"其他工业"
+    },
+    {
+        "state": "130800",
+        "regular": "29.7",
+         "hangye":"水泥行业"
+    },
+    {
+        "state": "130900",
+        "regular": "39.4",
+         "hangye":"其他行业"
+    },
+    {
+        "state": "131000",
+        "regular": "42.4",
+         "hangye":"其他非金属"
+    },
+    {
+        "state": "131100",
+        "regular": "48.4",
+         "hangye":"钢铁行业"
+    }]
+	

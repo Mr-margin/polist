@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+<!-- 		<META content="IE=11.0000" http-equiv="X-UA-Compatible"> -->
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<TITLE></TITLE>
+		<link href="../../css/plugins/jQueryUI/jquery-ui.css" rel="stylesheet">
+		<link href="../../css/bootstrap.qiye.css" rel="stylesheet">
+		<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+		<LINK href="../style/global_static.css" rel="stylesheet" type="text/css">
+		<LINK href="../style/main_style.css" rel="stylesheet" type="text/css">
+		
+		<link href="../../css/font-awesome.css" rel="stylesheet">
+    	<link href="../../css/animate.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		
+		<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/reset.css">
+		<style>
+			.table-bordered{border:1px solid #ddd}
+			.table{width:100%;max-width:100%;margin-bottom:20px;margin-top:20px}
+			table{background-color:transparent}
+			table{border-spacing:0;border-collapse:collapse}
+			.dise{background-color:#F5F5F6;text-align:center}
+			.zhong{text-align:center;height: 51px!important;}
+			#navgo{margin:0 30px 0 0;height:54px;text-align:center;float:right}
+			#navgo ul ul{display:none}
+			#navgo ul li:hover>ul{display:block}
+			#navgo ul{padding:0 0;border-radius:10px;height:54px;list-style:none;position:relative;display:inline-table}
+			#navgo ul:after{content:"";clear:both;display:block}
+			#navgo ul li{float:left;height:54px;}
+			#navgo ul li:hover{background:#72a7de}
+			#navgo ul li:hover a{color:#fff}
+			#navgo ul li a{display:block;padding:0 0 0px 0;color:#757575;text-decoration:none}
+			#navgo ul ul{background:#5f6975;border-radius:0;padding:0;position:absolute;top:100%}
+			#navgo ul ul li{float:none}
+			#navgo ul ul li a{padding:10px 5px;color:#fff}
+			#navgo ul ul li a:hover{background:#2e63a7}
+			#navgo ul ul ul{position:absolute;left:100%;top:0}
+			.ui-widget-header {
+			    color: rgb(32, 132, 218);
+			}
+			.anchorBL{  
+		       display:none;  
+		   	}
+			/*新增按钮样式*/
+			.btn-default{
+				height: auto;
+				background-color: rgb(79, 135, 209);
+				outline: none;
+			}
+			.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover{
+				background-color: rgb(46, 99, 167);
+				color: #fff;
+			}
+			.btn-default:hover{
+				background-color: rgb(46, 99, 167);
+			}
+			.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+				background-color: rgb(46, 99, 167);
+			}
+		</style>
+	</HEAD>
+	
+<BODY style="background-color: #FFFFFF;">
+	<div id="fixedBtn" style="width: 1200px;margin: auto;">
+		<button style="float: right" class="btn btn-default"><span class="glyphicon glyphicon-floppy-save"></span>打印</button>
+	</div>
+	<DIV class="body_mid">
+		<style type="text/css">
+			table{
+				border-collapse:collapse;
+				width: 100%;
+			}
+			table tr td{
+				border: 1px solid #333;
+				color: #333;
+				font-family: "宋体";
+				font-weight: normal;
+				font-size: 12px;
+				text-align: center;
+			}
+			.wd-msg{
+				line-height: 34px;
+				font-weight: bold;
+				margin-top:20px ;
+				margin-bottom: 10px;
+			}
+			.dise,.dise td{
+				/*font-size:14px;*/
+				font-weight: bold;
+				height: 51px;
+			}
+			.zhong{text-align:center;height: 51px;}
+		</style>
+		<DIV class="floor" style="margin: 10px 25px 25px 25px;">
+			<DIV class="right_list" style="width: 100%;">
+				<DIV class="">
+					<form id="qiye" class="upForm">
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">一、企业基本信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<a id="companyId" style="display:none;"></a>
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">企业名称<code>*</code></td>
+								<td width="25%"><a id="companyname"></a></td>
+								<td width="20%" class="dise">组织机构代码<code>*</code></td>
+								<td width="15%"><a id="companaynumber"></a></td>
+								<td width="10%" class="dise">企业联系人<code>*</code></td>
+								<td width="15%"><a id="legalentitylx"></a></td>
+							</tr>
+							<tr  height="51px">
+								<td class="dise">联系电话<code>*</code></td>
+								<td><a id="legaltel"></a></td>
+								<td class="dise">所属行业<code>*</code></td>
+								<td><a id="industrytype"></a></td>
+								<td class="dise">年工业总产值(万元)</td>
+								<td><a id="gdp"></a></td>
+							</tr>
+							<tr  height="51px">
+								<td class="dise">用电量（度）</td>
+								<td><a id="poweramount"></a></td>
+								<td class="dise">连续／间歇生产<code>*</code></td>
+								<td><a id="intermitornot"></a></td>
+								<td class="dise">生产月份<code>*</code></td>
+								<td id="mouth" ><a id="openmonths"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">年生产天数</td>
+								<td><a id="openhours"></a></td>
+								<td class="dise">投产年份</td>
+								<td><a id="openyear"></a></td>
+								<td class="dise">调查员<code>*</code></td>
+								<td><a id="interviewperson"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">调查员手机号<code>*</code></td>
+								<td><a id="interviewtel"></a></td>
+								<td class="dise">填表人<code>*</code></td>
+								<td><a id="informant"></a></td>
+								<td class="dise">填表人手机号<code>*</code></td>
+								<td><a id="tel"></a></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">所在地</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="15%" class="dise">省(自治区、直辖市)<code>*</code></td>
+								<td width="20%" id="prov"></td>
+								<td width="15%" class="dise">市(地区、盟)<code>*</code></td>
+								<td width="20%" id="city"></td>
+								<td width="15%" class="dise">县(县级市、区、旗)<code>*</code></td>
+								<td width="15%"><a id="county"></a></td>
+							</tr>
+							<tr height="51px">
+								<td class="dise">乡(镇)</td>
+								<td><a id="vill"></a></td>
+								<td class="dise">街(村)</td>
+								<td><a id="street"></a></td>
+								<td class="dise">路/门牌号</td>
+								<td><a id="streetNO"></a></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">精确定位</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="15%" rowspan="2">中心纬度</td>
+								<td width="12%">度<code>*</code></td>
+								<td width="12%">分<code>*</code></td>
+								<td width="11%">秒<code>*</code></td>
+								<td width="15%" rowspan="2">中心经度</td>
+								<td width="12%">度<code>*</code></td>
+								<td width="12%">分<code>*</code></td>
+								<td width="11%">秒<code>*</code></td>
+							</tr>
+							<tr height="51px">
+								<td><a id="lat1"></a></td>
+								<td><a id="lat2"></a></td>
+								<td><a id="lat3"></a></td>
+								<td><a id="lon1"></a></td>
+								<td><a id="lon2"></a></td>
+								<td><a id="lon3"></a></td>
+							</tr>
+							<tr id="map_tr">
+								<td colspan="8">
+									<div id="map" style="padding:0px 0px;height:300px;width:100%;"></div>
+								</td>
+							</tr>
+						</table>
+					</form>	
+					<form id="shebei" class="upForm">
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">二、产品生产信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_sccp_table1" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise" height="51px">
+								<td width="5%" rowspan="1">生产工艺编号<code>*</code></td>
+								<td width="20%" rowspan="1">生产工段/工艺名称<code>*</code></td>
+								<td width="10%" rowspan="1">排放口高度<code>*</code><br>（米）</td>
+								<td width="5%" rowspan="1">操作</td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">产品信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_sccp_cp_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise" height="51px">
+								<td width="10%" rowspan="2">生产工艺编号<code>*</code></td>
+								<td width="37.5%" colspan="3">产品信息</td>
+								<td width="10%" rowspan="2">产品编号<code>*</code></td>
+								<td width="5%" rowspan="2">操作</td>
+							</tr>
+							<tr  class="dise" height="51px">
+								<td>产品名称<code>*</code></td>
+								<td>年产量<code>*</code></td>
+								<td>单位<code>*</code></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">原料信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_sccp_yl_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="37.5%" colspan="3">原料信息</td>
+								<td width="10%" rowspan="2">产品编号<code>*</code></td>
+								<td width="5%" rowspan="2">操作</td>
+							</tr>
+							<tr  class="dise" height="51px">
+								<td>原料名称<code>*</code></td>
+								<td>年消耗量<code>*</code></td>
+								<td>单位<code>*</code></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">燃料信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_sccp_rl_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="37.5%" colspan="3">燃料信息</td>
+								<td width="10%" rowspan="2">产品编号<code>*</code></td>
+								<td width="5%" rowspan="2">操作</td>
+							</tr>
+							<tr  class="dise">
+								<td>燃料名称<code>*</code></td>
+								<td>年消耗量<code>*</code></td>
+								<td>单位<code>*</code></td>
+							</tr>
+						</table>
+							<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">治理措施</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_sccp_zl_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="10%" rowspan="2">生产工艺编号<code>*</code></td>
+								<td width="37.5%" colspan="2">治理措施</td>
+								<td width="5%" rowspan="2">操作</td>
+							</tr>
+							<tr  class="dise">
+								<td>脱硫工艺<code>*</code></td>
+								<td>除尘工艺<code>*</code></td>
+							</tr>
+						</table>
+						
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">三、有机溶剂使用信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_yjrj_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr height="51px">
+								<td width="10%" class="dise">溶剂类型<code>*</code></td>
+								<td width="25%" class="dise">溶剂名称<code>*</code></td>
+								<td width="15%" class="dise">溶剂性质<code>*</code></td>
+								<td width="10%" class="dise">年使用量<code>*</code><br>（吨）</td>
+								<td width="30%" class="dise">VOC治理技术<code>*</code></td>
+								<td width="10%" class="dise">操作</td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">四、锅炉信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_guolu_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="5%" rowspan="2">编号<code>*</code></td>
+								<td width="30%" colspan="3">基本信息</td>
+								<td width="30%" colspan="3">燃料信息</td>
+								<td width="20%" colspan="2">治理措施</td>
+								<td width="10%" rowspan="2">排放口高度<code>*</code><br>（米）</td>
+								<td width="5%" rowspan="2">操作</td>
+							</tr>
+							<tr class="dise">
+								<td>锅炉容量<br>（吨）</td>
+								<td>投运时间</td>
+								<td>关停时间</td>
+								<td>燃料名称<code>*</code></td>
+								<td>年消耗量<code>*</code></td>
+								<td>单位<code>*</code></td>
+								<td>脱硫工艺<code>*</code></td>
+								<td>除尘工艺<code>*</code></td>
+							</tr>
+						</table>
+						<div class="wd-msg" style="text-align: left;">
+							<b style="font-size:14px;">五、露天堆场信息</b>
+						</div>
+						<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3);margin: 0px 0px;" width="100%" color="#ccc" size="3">
+						<table id="add_lydc_table" class="table table-bordered zhong" style="margin-top: 0px;">
+							<tr class="dise">
+								<td width="5%" rowspan="2">编号 <code>*</code></td>
+								<td width="50%" colspan="5">基本信息</td>
+								<td width="20%" colspan="2">运载信息</td>
+								<td width="20%" rowspan="2">扬尘控制措施<code>*</code></td>
+								<td width="5%" rowspan="2">操作</td>
+							</tr>
+							<tr class="dise">
+								<td width="10%">料堆类型<code>*</code></td>
+								<td width="10%">料堆材料<code>*</code></td>
+								<td>料堆高度<code>*</code><br>（米）</td>
+								<td>占地面积<code>*</code><br>（平方米）</td>
+								<td>日常存储量<code>*</code><br>（吨）</td>
+								<td>单车运载量<code>*</code>（吨）</td>
+								<td>年物料运载车次<code>*</code></td>
+							</tr>
+						</table>
+					</form>
+				</DIV>
+			</DIV>
+			<div style="clear: both;"></div>
+		</DIV>
+	</DIV>
+	<!-- 修改密码 -->
+	
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	
+	<!-- 消息框 -->
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/plugins/toastr/toastr.min.js"></script>
+	<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+	<!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+	
+	<script src="../../js/ajax.js"></script>
+	<script src="public.js"></script>
+	<SCRIPT src="../homeUI1.js"></script>
+	<script src="../../zp01/0101/b_editable.js"></script>
+	<script src="../../js/plugins/jquery-ui/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=yZEmTwz9a4lk2NVBs8XigIeB"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.PrintArea.js"></script>
+	<script type="text/javascript" src="b.js"></script>
+	<script>
+        $(document).ready(function(){
+            $("#fixedBtn button").click(function(){
+                $("table tr td code").text("");
+                $("#map_tr").hide();
+				$("hr").hide();
+                $(".body_mid").printArea();
+                $("table tr td code").text("*");
+                $("#map_tr").show();
+                $("hr").show();
+            });
+        });
+	</script>
+</BODY>
+</HTML>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">		
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <style>
+		.lmtitle {
+			border: 1px solid rgb(204, 204, 204); border-image: none; height: 54px; background-color: rgb(255, 255, 255);
+		}
+		.lmtitle .name {
+			padding: 0px 10px 0px 54px; color: rgb(79, 135, 209); line-height: 54px; font-size: 14px; font-weight: bold; float: left; background-repeat: no-repeat;
+		}
+		.box_dashed {
+			padding: 7px; /* border: 1px dashed rgb(76, 177, 45); */ border-image: none; margin-top: 10px; margin-bottom: 20px;
+		}
+		.table-hover > thead > tr > th, .table-hover > thead > tr > td {
+			text-align:center; background-color: #F5F5F6;
+		}
+		.table-hover > tbody > tr > td {
+			text-align:center;
+		}
+		.selec_1{
+			width: 100%;
+			height: 23px;
+		}
+		.chaxundiv{
+	    background-color: #F5F5F6;
+/* 			    width: 12%; */
+	    min-height: 30px;
+/* 			    line-height: 30px; */
+	    text-align: right;
+	    font-size: 12px;
+	    border:1px solid #cccccc;
+	    padding: 0;
+		}
+		.chaxundiv_2{
+			 /* min-height: 34px; */
+   /*	 line-height: 30px; */
+			 border:1px solid #cccccc;
+		}
+		.chaxundiv h5{
+			color:black;padding-right: 8px;margin-top: 9px;
+		}
+		.checkbox  label{
+	        margin-right: 40px;
+    		margin-bottom: 5px;
+    		margin-top: 5px;
+		}
+		.tiaojian{min-height: 23px;border-bottom:1px solid #cccccc;position:relative;border-left:1px solid #cccccc;padding-bottom:1px;margin:4px 10px 0px 0px;padding-left:5px;padding-right:17px;display:block;white-space:nowrap;background:#ECECEC;float:left;height:17px;border-top:1px solid #cccccc;border-right:1px solid #cccccc;padding-top:1px;font-size:14px;}
+		.tiaojian:hover{ background-color:#fff;}
+		.tiaojian label{font-size:14px;font-weight: 100;}
+		.tiaojian em{ background-image:url(close.gif);cursor:pointer;display:block;height:13px;overflow:hidden;position:absolute;right:2px;top:3px;width:13px;}
+		.group-select .selectDiv{
+	      border: 1px solid #e5e6e7;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      line-height: 20px;
+	      min-height: 34px;
+	    }
+	</style>
+  </head>
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;padding-top: 10px;">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="tabs-container" id="tab_jbqk">
+                    <div class="tab-content" id="jiben_tab"><!-- tab页面的内容 -->
+						<div id="tab-j-1" class="tab-pane active">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="col-sm-3">
+										<div class="input-group">
+											<span class="input-group-addon"> 填报人： </span>
+											<div class="chaxundiv_2 selectDiv" id="">
+												<input type="text" id="taskName"  placeholder="请填写填报人姓名" maxlength="20" style="width: 100%;height: 33px;"/>
+											</div>
+										</div>
+									</div>
+									<button type="button" class="btn btn-outline btn-lG" onclick="chaxun();"><i class='fa fa-binoculars'></i> 查询</button>
+									<button type="button" class="btn btn-outline btn-lG" onclick="creat_user();"><i class='fa fa-plus-square'></i> 创建</button>
+									<button type="button" class="btn btn-outline btn-lG" onclick="updata_sjtb();"><i class='fa fa-pencil'></i> 修改</button>
+<!-- 									<button type="button" class="btn btn-outline btn-lG" onclick="export();"><i class='fa fa-external-link'></i> 导出</button> -->
+									<button type="button" class="btn btn-outline btn-lO" onclick="del_dw();"><i class='fa fa-close'></i> 删除账号</button>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-12">
+									<table id="metTable1">
+	                                    <thead>
+	                                        <tr>
+	                                        	<th data-field="state" data-checkbox="true" formatter="stateFormatter"></th>
+	                                            <th data-field="userId" data-halign="center" data-align="center" data-visible="false">id</th>
+	                                           	<th data-field="order" data-halign="center" data-align="center">序号</th>
+	                                           	<th data-field="loginAccount" data-halign="center" data-align="center">账号名称</th>
+	                                           	<th data-field="informant" data-halign="center" data-align="center">填报人</th>
+	                                            <th data-field="office" data-halign="center" data-align="center">所在单位</th>
+	                                            <th data-field="department" data-halign="center" data-align="center">所在科室</th>
+	                                            <th data-field="phone" data-halign="center" data-align="center">联系电话</th>
+	                                            <th data-field="email" data-halign="center" data-align="center">邮箱</th>
+	                                        </tr>
+	                                    </thead>
+	                                </table>
+								</div>
+							</div>
+							
+    					</div>
+    				</div>
+    			</div>
+				
+			</div>
+		</div>
+    </div>
+    
+    <div class="modal inmodal" id="creat_modal" tabindex="-1"role="dialog" aria-hidden="true" style="width: 55%;margin-left: 22%;margin-top: 2%;">
+   		<div class="modal-dialog">
+			<div class="modal-content animated bounceInRight">
+				<div class="modal-header" style="padding-top:15px;padding-bottom:15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="font-size: 16px;color: rgb(79, 135, 209);padding: 0px 0px 0px 0px;"><h2 id="title_zh">账号创建</h2></span>
+				</div>
+				
+				<div class="modal-body">
+					<form class="form-horizontal" id="add_Form">
+					<div class="row">
+						<div class="row" style="margin-bottom: 10px;">
+							<input id="userid" style="display: none;"/>
+							<span class="col-sm-3" style="text-align: right;">填报人<code>*</code></span>
+							<div class="col-sm-8">
+								<input id="tbr_in" name="tbr_in" style="width: 100%;"type="text" required="true" maxlength="4" chinese="true"/>
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">所在单位<code>*</code></span>
+							<div class="col-sm-8">
+								<input id="szdw_in" name="szdw_in" style="width: 100%;"type="text" required="true" mc="true" maxlength="30"/>
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">所在科室&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<div class="col-sm-8">
+								<input id="szks_in" name="szks_in" style="width: 100%;"type="text"  maxlength="20"/>
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">联系电话<code>*</code></span>
+							<div class="col-sm-8">
+								<input id="lxdh_in" name="lxdh_in" style="width: 100%;"type="text" required="true" mobile="true" />
+							</div>
+						</div>
+						
+						<div class="row" style="margin-bottom: 10px;">
+							<span class="col-sm-3" style="text-align: right;">邮箱<code>*</code></span>
+							<div class="col-sm-8">
+								<input id="yx_in" name="yx_in" style="width: 100%;"type="text" email="true" required="required"/>
+							</div>
+						</div>
+						
+						<div class="row" style="text-align:center;">
+							<button type="button" class="btn btn-outline btn-lB" onclick="chuangjian();" id="add_button"><i class='fa fa-check'></i> 确定创建</button>
+							<button type="button" class="btn btn-outline btn-lB" onclick="xiugai();" id="up_button"><i class='fa fa-check'></i> 确定修改</button>
+							<button type="button" class="btn btn-outline btn-lO" onclick="quxiaomtk();"><i class='fa fa-undo'></i> 取消</button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>		
+	</div>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/content.js"></script><!-- 自定义js -->
+    
+    <script src="../../js/jquery-ui.custom.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- iCheck -->
+    <script src="../../js/plugins/iCheck/icheck.min.js"></script>
+    <script src="../../js/plugins/toastr/toastr.min.js"></script>
+    <!-- 表单验证 -->
+    <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="../../js/plugins/validate/messages_zh.min.js"></script>
+    <!-- 对话框 -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../js/ajax.js"></script>
+    <script src="../../BackstageIP.js"></script>   
+    
+    <script src="../../zp02/0201/bmhy.js"></script>    
+    <script src="0702.js"></script>
+    
+ </body>
+</html>

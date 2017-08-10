@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../js/plugins/webuploader/webuploader.css" rel="stylesheet">
+		
+    <style>
+		.table-hover > thead > tr > th, .table-hover > thead > tr > td {
+			text-align:center; background-color: #F5F5F6;
+		}
+		.table-hover > tbody > tr > td {
+			text-align:center;
+		}
+		.checkbox  label{
+	        margin-right: 40px;
+		}
+		.group-select .selectDiv{
+	      border: 1px solid #cccccc;
+	      border-radius: 0 2px 2px 0;
+	      padding: 6px;
+	      padding-top:0;
+	      min-height: 34px;
+	    }
+	    .thalign{
+	    	text-align: left;
+	    	display: none;
+	    }
+	    
+		#metTable2 tbody tr td a{
+			text-decoration:underline;
+		}
+		.chaxundiv_2{
+			 min-height: 30px;
+/* 			 line-height: 30px; */
+			 border:1px solid #cccccc;
+		}
+	</style>
+  </head>
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+		<div class="row">
+			<div class="col-sm-12" style="margin-bottom: 10px;">
+			
+				<div class='col-sm-4'>
+					<div class="input-group group-select" style='margin-left:-15px'>
+			          <span class="input-group-addon">任务名称：</span>
+			          <div>
+					  	<select class='form-control m-b' id="select_1" onchange="chang_sel();"></select>
+					  </div>
+			        </div>
+				</div>
+				<div class='col-sm-4' style='padding-left:0'>
+					<div class="input-group group-select">
+			          <span class="input-group-addon">部&nbsp;&nbsp;&nbsp;&nbsp;门：</span>
+			          <div>
+					  	<select class='form-control m-b' id="zhenduan_select" onchange="zhenduan_select();">
+					  	</select>
+					  </div>
+			        </div>
+				</div>
+				<div class='col-sm-4'>
+					<div class="input-group group-select">
+			          <span class="input-group-addon">行&nbsp;&nbsp;&nbsp;&nbsp;业：</span>
+			          <div >
+			          <select class='form-control m-b' id="zhenduan_select1" ></select>
+			          </div>
+			        </div>
+				</div>
+			</div>
+<!-- 			<div class="col-sm-12" style="margin-bottom: 10px;"> -->
+				
+				<div class="col-sm-12" style="margin-bottom: 10px;">
+					<div class="row">
+						<div class='col-sm-3' >
+							<div class="input-group group-select">
+					        	<span class="input-group-addon">用户类型：</span>
+					         	<div class='form-control m-b'>
+									<div id="yh5" class="radio radio-info radio-inline" style="display:none;">
+										<input type="radio" id="yonghu5" value="企业" name="yonghuname" onchange="checked_yh()" /><label for="yonghu5">企业</label>
+									</div>
+									<div id="yh4" class="radio radio-info radio-inline" style="display:none;">
+										<input type="radio" id="yonghu4" value="市填报用户"  name="yonghuname" onchange="checked_yh()"/><label for="yonghu4">市填报用户</label>
+									</div>
+									<div id="yh6" class="radio radio-info radio-inline" style="display:none;" >
+										<input type="radio" id="yonghu6" value="环保部门用户" name="yonghuname" onchange="checked_yh()" /><label for="yonghu6">环保部门用户</label>
+									</div>
+								</div>
+					        </div>
+						</div>
+						<div class='col-sm-5'>
+							<div class="input-group group-select">
+					        	<span class="input-group-addon">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</span>
+					         	<div class='form-control m-b'>
+					         		<div class='checkbox checkbox-info' style='margin:0px' id="zt_div">
+					         			<input id='zt2' name='zt'  type='checkbox' value='PASSED' checked='true'/>
+					         			<label for='zt2'>通过</label>
+					         			<input id='zt3' name='zt'  type='checkbox' value='REJECT' checked='true'/>
+					         			<label for='zt3'>驳回</label>
+					         			<input id='zt4' name='zt'  type='checkbox' value='WAIT_REVIEW' checked='true'/>
+					         			<label for='zt4'>待审核</label>
+					         			<input id='zt6' name='zt'  type='checkbox' value='ADVICE' checked='true'/>
+					         			<label for='zt6'>建议驳回</label>
+					         		</div>
+								</div>
+					        </div>
+						</div>
+						
+<!-- 						<div id="qy_name_div" class="col-sm-3" > -->
+<!-- 							<div class="input-group"> -->
+<!-- 								<span class="input-group-addon"> 企业名称： </span> -->
+<!-- 								<div class="chaxundiv_2 selectDiv" id=""> -->
+<!-- 									<input id="qy_name" type="text" -->
+<!-- 										style="width: 100%;height: 33px;border: 0;" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-sm-3" id="shr_name_div"> -->
+<!-- 							<div class="input-group"> -->
+<!-- 								<span class="input-group-addon"> 审核人： </span> -->
+<!-- 								<div class="chaxundiv_2 selectDiv" id=""> -->
+<!-- 									<input id="shr_name" type="text" style="width: 100%;height: 33px;border: 0;" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+
+					</div>
+				</div>
+<!-- 			</div> -->
+<!-- 			<div class="col-sm-12" style="margin-bottom: 20px;" id="city_allDiv"> -->
+<!-- 				<div id="qy_region" class="col-sm-12" id="caozuo_div1" style="padding-left: 0px;"> -->
+<!-- 					<div class="input-group group-select"> -->
+<!-- 			          <span class="input-group-addon">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</span> -->
+<!-- 			         	<div class="chaxundiv_2 selectDiv" id="diqu_div" style="padding-top: 5px;padding-bottom: 2px;width:100%"> -->
+<!-- 						</div> -->
+<!-- 			        </div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+   			<div class="col-sm-12" style="margin-top: 20px;">
+   				<div class='col-sm-4' id="caozuo_div2" style="padding: 0px;margin-top:0px;text-align: left;">
+					<button id="selectButton" type="button" class="btn btn-outline btn-lG" onclick="uptbody();"><i class='fa fa-binoculars'></i> 查询</button>
+					<button id="allPassid" type="button" class="btn btn-outline btn-lG" onclick="allPassbody();"><i class='fa fa-google-wallet'></i> 全部通过</button>
+					<button id="passButton" type="button" class="btn btn-outline btn-lG" onclick="passbody();"><i class='fa fa-check'></i> 通过</button>
+					<button id="rejectButton" type="button" class="btn btn-outline btn-lG" onclick="reject();"><i class='fa fa-close'></i> 驳回</button>
+<!-- 					<button id="suggestButton" type="button" class="btn btn-outline btn-lG" onclick="suggest();"><i class='fa fa-gg-circle'></i> 建议驳回</button> -->
+<!-- 					<button id="spaceButton" type="button" class="btn btn-outline btn-lG" onclick="space()"><i class='fa fa-globe'></i> 空间分析</button> -->
+				</div>
+   			</div>
+		</div>
+		
+		<!-- 企业部分  开始 -->
+    	<div class="row" style="display: none;" id="qy_table">
+    		<div class="col-sm-4">
+				<table id="metTable1">
+                   <thead>
+                   	  <tr id="qytable_th">
+                   	  	<th colspan="4"><i class="fa fa-list"></i>企业列表</th>
+                   	  </tr>
+                      <tr>
+                       	  <th data-field="state" data-checkbox="true" formatter="stateFormatter"></th>
+                          <th data-field="companyName" data-halign="center" data-align="center">企业名称</th>
+                          <th data-field="equipId" data-halign="center" data-align="center">设备编号</th>
+                          <th data-field="status" data-halign="center" data-align="center">状态</th>
+                          <th data-field="id" data-halign="center" data-align="center" data-visible="false">ID</th>
+<!--                           <th data-field="operation" data-halign="center" data-align="center">操作</th> -->
+                       </tr>
+                   </thead>
+                </table>
+    		</div>
+			<div class="col-sm-8">
+				<div class="col-sm-12" style="margin-bottom: 10px;">
+					<div class='col-sm-12' style='padding-left:0;padding-right:0px;'>
+						<div class="input-group group-select col-sm-12">
+					          <span class="input-group-addon">分析条件：</span>
+				          <div>
+						  	<select class='form-control m-b' onchange="clickTab(this.value);" id="select_a" >
+						  		<option value="a">活动水平</option>
+						  		<option value="b">排放因子</option>
+						  		<option value="c">去除效率</option>
+						  		<option value="e">排放量</option>
+						  		<option value="d">空间位置</option>
+						  	</select>
+						  </div>
+				        </div>
+					</div>
+				</div>
+				
+				<div id="pictures" class="col-sm-12"  style="margin-bottom: 0px;">
+					<div id="div_qy_sele_1" class='col-sm-6'  style="padding-left:0px;padding-right:0px;padding-bottom:0px;border-style:double;border-width:0px 0px 1px 1px;border-color:#C0C0C0;height:350px;">
+						<div class="input-group group-select col-sm-12">
+				          <span class="input-group-addon">查询条件：</span>
+				          <div>
+						  	<select class='form-control m-b' id="qy_sele_1" onchange="openPic_2('1',this.value);"></select>
+						  </div>
+				        </div>
+						<div class="col-sm-12"  style="margin-top: 10px;padding:0;">
+							<div id="qy_tudiv1" class="tudiv"></div>
+						</div>
+					</div>
+					<div id="div_qy_sele_2" class='col-sm-6' style="padding-left:0px;padding-right:0px;padding-bottom:0px;border-style:double;border-width: 1px;border-color:#C0C0C0;height:350px;">
+						<div class="input-group group-select col-sm-12">
+				          <span class="input-group-addon">查询条件：</span>
+				          <div>
+						  	<select class='form-control m-b' id="qy_sele_2" onchange="openPic_2('2',this.value);"></select>
+						  </div>
+				        </div>
+				        <div class="col-sm-12" style="margin-top: 10px;padding: 0;">
+							<div id="qy_tudiv2" class="tudiv"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+    	<!-- 企业部分 结束 -->
+    	<!-- 市级填报部分  开始-->
+    	<div class="row" style="margin-top: 15px;display: none;" id="sj_table">
+    		<div class="col-sm-4">
+				<table id="metTable2">
+                   <thead>
+                   	  <tr>
+                   	  	<th colspan="5" id="sjtable_th"><i class="fa fa-list"></i> 文件列表</th>
+                   	  </tr>
+                      <tr>
+                       	  <th data-field="state" data-checkbox="true" formatter="stateFormatter"></th>
+                          <th data-field="dataType" data-halign="center" data-align="center">文件类型</th>
+                          <th data-field="fileName" data-halign="center" data-align="center">文件名称</th>
+                          <th data-field="status" data-halign="center" data-align="center">状态</th>
+                          <th data-field="operation" data-halign="center" data-align="center">操作</th>
+                       </tr>
+                   </thead>
+                </table>
+    		</div>
+    		<div class="col-sm-8">
+				<div id="shi3" class="col-sm-12" style="margin-bottom: 10px;" hidden>
+					<div class='col-sm-12' style='padding-left:0'>
+						<div class="input-group group-select col-sm-12">
+					          <span class="input-group-addon">分析条件：</span>
+				          <div>
+						  	<select class='form-control m-b' onchange="shi_clickTab(this.value);" id="select_b">
+						  		<option value="a">活动水平</option>
+						  		<option value="b">排放因子</option>
+						  		<option value="c">去除效率</option>
+						  		<option value="e">排放量</option>
+						  		<option value="d">空间位置</option>
+						  	</select>
+						  </div>
+				        </div>
+					</div>
+				</div>
+				
+				<div id="shi_pictures" class="col-sm-12" style="margin-bottom: 10px;">
+					<div id="shi1" class='col-sm-6' style='padding-left:0' hidden>
+						<div  class="input-group group-select col-sm-12">
+				          <span class="input-group-addon">查询条件：</span>
+				          <div>
+						  	<select class='form-control m-b' id="shi_sele_1" onchange="shi_openPic_2('1',this.value);"></select>
+						  </div>
+				        </div>
+						<div class="col-sm-12" style="margin-top: 10px;padding: 0;">
+							<div id="shi_tudiv1" class="tudiv"></div>
+						</div>
+					</div>
+					<div id="shi2" class='col-sm-6' style='padding-left:0' hidden>
+						<div class="input-group group-select col-sm-12">
+				          <span class="input-group-addon">查询条件：</span>
+				          <div>
+						  	<select class='form-control m-b' id="shi_sele_2" onchange="shi_openPic_2('2',this.value);"></select>
+						  </div>
+				        </div>
+				        <div class="col-sm-12" style="margin-top: 10px;padding: 0;">
+							<div id="shi_tudiv2" class="tudiv"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </div>
+    <div class="modal inmodal fade" id="reject_table" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width: 40%;    padding-top: 0%;">
+			<div class="modal-content animated bounceInRight">
+				<div class="modal-header" id="mod_head_1" style="padding:15px 15px;">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<span style="color: rgb(79, 135, 209);"><h2>驳回内容</h2></span>
+				</div>
+				<div class="modal-header" id="mod_head_2" style="display: none;">
+					<h2 class='modal-title' style='font-size:20px; margin-top:12px;'>文件上传中，请等待。。。</h2>
+				</div>
+				<div class="modal-body" style="background-color:#b6d8ff;padding-bottom:10px;padding-top: 10px;">
+					<div class="col-sm-12">
+						<form class="form-horizontal" id="ImportForm" name="ImportForm" >
+							<div id="file-pretty" style="padding:0px; ">
+								<div class="form-group" style=" margin-bottom:0px;">
+									<div class="col-sm-3">
+										<label  style="color:#FFFFFF;text-align:left;white-space:nowrap;"><h3>文件选择:</h3></label>
+									</div>
+									<div class="col-sm-9 "><a style=""><input type="file" id="file" name="file" class="file" accept="" style="padding:10px 20px 10px 20px; width:100%;"/></a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="ImportForm_2" style="display: none;"></div>
+					<div id="modal-re" class="background-color:#b6d8ff;col-sm-12 form-group" style="padding-top:30px;">
+						<div class="col-sm-3">
+							<label class="control-label" style="white-space:nowrap;"><h3>驳回原因:</h3></label>
+						</div>
+						<div class="col-sm-9" id="data_2">
+							<textarea  name="reject_content" id="reject_content" style="height:80px;margin-bottom:10px;" placeholder="驳回原因" autocomplete="off" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal-footer" id="mod_foot">
+					<input type="submit" class="btn btn-w-m btn-info" style=""
+						onclick="rejectbody();" value="确认驳回">
+					<button type="button" class="btn btn-white" data-dismiss="modal" style="width:120px;">关&nbsp;&nbsp;闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 空间分析 -->
+	<div class="modal inmodal fade" id="space_modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" style="width:80%;height:80%; padding-top: 0%;">
+			<div class="modal-content animated bounceInRight" style="height:100%">
+			<div id="mapDiv" style="height:100%"></div>
+			
+			
+			
+				<div class="modal-footer" id="mod_foot">
+					<input type="submit" class="btn btn-w-m btn-info" style="" onclick="space_zhenduan();" value="空间诊断">
+					<button type="button" class="btn btn-white" data-dismiss="modal" style="width:120px;">关&nbsp;&nbsp;闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/content.js"></script><!-- 自定义js -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../../js/jquery-ui.custom.min.js"></script>
+    <!-- echarts -->
+    <script src="../../js/plugins/echarts/echarts.js"></script>
+    <script src="../../js/plugins/echarts/macarons.js"></script>
+    <!-- iCheck -->
+    <script src="../../js/plugins/iCheck/icheck.min.js"></script>
+	<!-- 消息框 -->
+    <script src="../../js/plugins/toastr/toastr.min.js"></script>
+    <!-- 对话框 -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../BackstageIP.js"></script>
+    <script src="../../zp01/9999/ajaxfileupload.js"></script>
+    <script src="bmhy.js" type="text/javascript"></script>
+    <script src="../../zp01/9999/Top_json.js"  type="text/javascript"></script>
+<!--     <script src="../../js/arcgisUrl.js"></script> -->
+    <script src="0205.js"></script>
+<!--     <script src="0205_gis1.js"></script> -->
+ </body>
+</html>

@@ -1,0 +1,109 @@
+var emptytext = "请填写";
+function validate_1(v){
+	if (!v) return '不能为空';
+	if (v.length>50) return "内容太多了";
+}
+var columns = [
+{
+    title:"网络化清单名称",
+    type:"text",
+    field:"netordername",
+    validate:validate_1
+},{
+    title:"模式参数版本",
+    type:"text",
+    field:"modeversion",
+    validate:validate_1
+},{
+    title:"大气化学模式",
+    type:"select",
+    field:"airmode",
+    validate:validate_1
+}
+,{
+    title:"排放文件",
+    type:"text",
+    field:"letfile",
+    validate:validate_1
+}
+,{
+    title:"投影类型",
+    type:"text",
+    field:"projectiontype",
+    validate:validate_1
+}
+,{
+    title:"标准经纬线",
+    type:"text",
+    field:"stangeographic",
+    validate:validate_1
+}
+,{
+    title:"参考点",
+    type:"text",
+    field:"referpoint",
+    validate:validate_1
+}
+,{
+    title:"嵌套层数",
+    type:"select",
+    field:"nestnum",
+    validate:validate_1
+}
+,{
+    title:"domain层",
+    type:"select",
+    field:"domainnum",
+    validate:validate_1
+}
+,{
+    title:"网格大小",
+    type:"select",
+    field:"netsize",
+    validate:validate_1
+},{
+    title:"dx",
+    type:"text",
+    field:"dx",
+    validate:validate_1
+},{
+    title:"dy",
+    type:"text",
+    field:"dy",
+    validate:validate_1
+},{
+    title:"xcells",
+    type:"text",
+    field:"xcells",
+    validate:validate_1
+},{
+    title:"ycells",
+    type:"text",
+    field:"ycells",
+    validate:validate_1
+},{
+    title:"xorlg",
+    type:"text",
+    field:"xorlg",
+    validate:validate_1
+},{
+    title:"yorlg",
+    type:"text",
+    field:"yorlg",
+},{
+    title:"开始时间",
+    type:"text",
+    field:"starttime",
+    validate:validate_1
+},{
+    title:"结束时间",
+    type:"text",
+    field:"endtime",
+    validate:validate_1
+},{
+    title:"拼接清单版本",
+    type:"text",
+    field:"listversion",
+    validate:validate_1
+}
+];

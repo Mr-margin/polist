@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta http-equiv="Cache" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="renderer" content="webkit">
+  <title></title>
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+	
+	
+  <style>
+	.box_dashed {
+		padding: 7px; /* border: 1px dashed rgb(76, 177, 45); */
+		border-image: none;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+	
+	.table-hover>thead>tr>th, .table-hover>thead>tr>td {
+		text-align: center;
+		background-color: #F5F5F6;
+	}
+	
+	.table-hover>tbody>tr>td {
+		text-align: center;
+	}
+	
+	.title_a {
+		margin-left: 6px;
+		margin-right: 6px;
+		color: red;
+		text-decoration: underline;
+	}
+</style>
+</head>
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="input-group group-select">
+					<span class="input-group-addon"> 年份： </span>
+					<div>
+						<select id="year" class='form-control m-b' style="min-width: 23%;">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="input-group">
+					<span class="input-group-addon"> 清单任务版本名称： </span> 
+					<input type="text" class="form-control" id="searchInput">
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<button class='btn btn-outline btn-lG' id="searchBtn" onclick="clickSearch()">
+					<i class='fa fa-binoculars'></i> 搜索
+				</button>
+			</div>
+			
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-sm-12">
+				<table id="list_table1"></table>
+			</div>
+		</div>
+
+</div>
+<div class="modal inmodal fade in" style="margin-top: 100px" id="save_task" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg" style="width: 40%" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h2>选择提交清单的任务</h2>
+			</div>
+			<div class="modal-body" style="overflow:scroll;">
+				<div class="">
+					<div class="">
+						<form  id="changepassword_form" onsubmit="return false" >
+							<div class="row">
+								<!-- 标签体 开始-->
+								<div class="tabs-container" style="margin-left: 20px;width: 98%;">
+									<div style="margin-top: 18px;margin-left:3px;">
+										<div id="task_select" class=""></div>
+									</div>
+					            </div>
+					            <!-- 标签体 结束-->						
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-w-m btn-info" style="" onclick="saveEquip();" value="确&nbsp;定&nbsp;">
+				<button type="button" class="btn btn-white" style="width:120px;" data-dismiss="modal">关&nbsp;闭&nbsp;</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/content.js"></script><!-- 自定义js -->
+<script src="../../js/jquery-ui.custom.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- 自定义js -->
+<script src="../../js/jquery-ui.custom.min.js"></script>
+<!-- iCheck -->
+<script src="../../js/plugins/toastr/toastr.min.js"></script>
+<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="../../BackstageIP.js"></script>
+<script src="0402.js"></script>
+</body>
+</html>

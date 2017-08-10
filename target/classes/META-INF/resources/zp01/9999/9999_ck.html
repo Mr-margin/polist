@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="../../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../css/animate.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table-9999_ck.css" rel="stylesheet">
+	<link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="../../css/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet">
+	<link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+	<link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../../js/plugins/webuploader/webuploader.css" rel="stylesheet">
+	
+	<!-- 单元格编辑 -->
+	<link href="../../css/plugins/bootstrap-table/bootstrap-editable.css" rel="stylesheet">
+	
+	<style type="text/css">  
+	    .anchorBL{  
+	       display:none;  
+	   }  
+	   .alert {
+		    margin-bottom: 5px; 
+		}
+	   .alert-warning {
+		    padding: 5px;
+		    border-color: #fcf8e3;
+		    color:red;
+		}
+		 .anchorBL{  
+	       display:none;  
+	   }  
+		 #tab_title li{
+			 background-color: #dff0d8;
+		 }
+		 .bootstrap-table .table>tbody>tr>td 
+		{
+				border: 1px solid #e7e7e7;
+				border-left-color: white;
+				border-right-color: white;
+		}
+		.lmtitle {
+			border: 1px solid rgb(204, 204, 204); border-image: none; height: 54px; background-color: rgb(255, 255, 255);
+		}
+		.lmtitle .name {
+			padding: 0px 10px 0px 54px; color: rgb(79, 135, 209); line-height: 54px; font-size: 14px; font-weight: bold; float: left; background-repeat: no-repeat;
+		}
+		
+		.lmtitle a.more {
+			width: 82px; text-align: center; line-height: 32px; text-decoration: none; float: right; display: block;
+		}
+		.lmtitle a.more:link {
+			margin: 7px; width: 68px; color: rgb(68, 68, 68); line-height: 38px; padding-right: 15px; background-image: url("../images/more_bk2.gif");
+		}
+		.lmtitle a.more:visited {
+			margin: 7px; width: 68px; color: rgb(68, 68, 68); line-height: 38px; padding-right: 15px; background-image: url("../images/more_bk2.gif");
+		}
+		.lmtitle a.more:hover {
+			background-position: bottom; color: rgb(0, 0, 0); background-image: url("../images/more_bk2.gif");
+		}
+		.lmtitle a.more:active {
+			background-position: left bottom; color: rgb(255, 255, 255); background-image: url("../images/more_bk2.gif");
+		}
+		#navgo {
+			margin: 0px 48px 0 0;
+			text-align: center;
+			float: right;
+		}
+		
+		#navgo ul ul {
+			display: none;
+		}
+		
+		#navgo ul li:hover>ul {
+			display: block;
+		}
+		
+		#navgo ul {
+			padding: 0 0px;
+			border-radius: 10px;
+			list-style: none;
+			position: relative;
+			display: inline-table;
+		}
+		
+		#navgo ul:after {
+			content: "";
+			clear: both;
+			display: block;
+		}
+		
+		#navgo ul li {
+			float: left;
+		}
+		
+		#navgo ul li:hover {
+			background: #72a7de;
+		}
+		
+		#navgo ul li:hover a {
+			color: #fff;
+		}
+		
+		#navgo ul li a {
+			display: block;
+			padding: 10px 10px 13px 10px;
+			color: #757575;
+			text-decoration: none;
+		}
+		
+		#navgo ul ul {
+			background: #5f6975;
+			border-radius: 0px;
+			padding: 0;
+			position: absolute;
+			top: 100%;
+		}
+		
+		#navgo ul ul li {
+			float: none;
+		}
+		
+		#navgo ul ul li a {
+			padding: 15px 10px;
+			color: #fff;
+		}
+		
+		#navgo ul ul li a:hover {
+			background: #2e63a7;
+		}
+		
+		#navgo ul ul ul {
+			position: absolute;
+			left: 100%;
+			top: 0;
+		}
+		#tab_body {white-space:nowrap;}
+  	</style>
+  </head>
+  
+<body class="gray-bg" style="background-color: #fff;">
+	<div class="wrapper wrapper-content animated fadeInRight" style="height:100%;padding-top: 10px"><!-- 最外部主体 -->
+		<div class="row">
+			
+			<div class="tabs-container" style="padding: 10px 15px;"><!-- 标签体 -->
+    			<div class="tab-content" id="buttons"></div>
+    			<ul class="nav nav-tabs" id="tab_title"></ul>
+                <div class="tab-content" id="tab_body"></div>
+           </div><!-- 标签体 -->
+		</div>
+	</div><!-- 最外部主体 -->
+	
+	<script src="../../BackstageIP.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/content.js"></script>
+    <!-- 表格 -->
+	<script src="../../js/plugins/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 按钮式下拉菜单组件的搜索建议插件 -->
+	<script src="../../js/plugins/suggest/bootstrap-suggest.min.js"></script>
+    <!-- 消息框 -->
+    <script src="../../js/plugins/toastr/toastr.min.js"></script>
+    <!-- 对话框 -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    
+    <!-- 单元格编辑 -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-editable.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-editable4.js"></script>
+    <script src="../../js/plugins/bootstrap-table/moment.js"></script>
+    
+    <script src="../checkSelect.js"></script>
+    
+    <script src="../zp01_public.js"></script>
+    <script src="9999_ck.js"></script>
+</body>
+</html>

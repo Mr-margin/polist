@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title></title>
+
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../../css/plugins/webuploader/webuploader.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/plugins/webuploader/webuploader-demo.min.css">
+    <link href="../../css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="../../css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <style>
+        .lmtitle {
+            border: 1px solid rgb(204, 204, 204); border-image: none; height: 54px; background-color: rgb(255, 255, 255);
+        }
+        .lmtitle .name {
+            padding: 0px 10px 0px 54px; color: rgb(79, 135, 209); line-height: 54px; font-size: 14px; font-weight: bold; float: left; background-repeat: no-repeat;
+        }
+        .box_dashed {
+            padding: 7px; /* border: 1px dashed rgb(76, 177, 45); */ border-image: none; margin-top: 10px; margin-bottom: 20px;
+        }
+        .table-hover > thead > tr > th, .table-hover > thead > tr > td {
+            text-align:center; background-color: #F5F5F6;
+        }
+        .table-hover > tbody > tr > td {
+            text-align:center;
+        }
+        .selec_1{
+            width: 100%;
+            height: 23px;
+        }
+        .chaxundiv{
+            background-color: #F5F5F6;
+            /* 			    width: 12%; */
+            min-height: 30px;
+            /* 			    line-height: 30px; */
+            text-align: right;
+            font-size: 12px;
+            border:1px solid #cccccc;
+            padding: 0;
+        }
+        .chaxundiv_2{
+            /* min-height: 34px; */
+            /*	 line-height: 30px; */
+            border:1px solid #cccccc;
+        }
+        .chaxundiv h5{
+            color:black;padding-right: 8px;margin-top: 9px;
+        }
+        .checkbox  label{
+            margin-right: 40px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        .tiaojian{min-height: 23px;border-bottom:1px solid #cccccc;position:relative;border-left:1px solid #cccccc;padding-bottom:1px;margin:4px 10px 0px 0px;padding-left:5px;padding-right:17px;display:block;white-space:nowrap;background:#ECECEC;float:left;height:17px;border-top:1px solid #cccccc;border-right:1px solid #cccccc;padding-top:1px;font-size:14px;}
+        .tiaojian:hover{ background-color:#fff;}
+        .tiaojian label{font-size:14px;font-weight: 100;}
+        .tiaojian em{ background-image:url(close.gif);cursor:pointer;display:block;height:13px;overflow:hidden;position:absolute;right:2px;top:3px;width:13px;}
+        .group-select .selectDiv{
+            border: 1px solid #e5e6e7;
+            border-radius: 0 2px 2px 0;
+            padding: 6px;
+            padding-top:0;
+            line-height: 20px;
+            min-height: 34px;
+        }
+    </style>
+</head>
+<body class="gray-bg" style="background-color: #fff;">
+<div  class="wrapper wrapper-content animated fadeInRight" style="height:100%;padding-top: 10px;" >
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="input-group group-select">
+                <span class="input-group-addon">任务列表： </span>
+                <div>
+                    <select class='form-control m-b' id="select_1"
+                            onchange="changeRw();" style="min-width: 23%;"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group group-select">
+                <span class="input-group-addon">&nbsp;&nbsp;行&nbsp;&nbsp;业&nbsp;&nbsp;： </span>
+                <div>
+                    <select class='form-control m-b' id="select_2" style="min-width: 23%;"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group group-select">
+                <span class="input-group-addon">企业任务状态:</span>
+                <select class='form-control m-b' id="qy_zhuantai">
+                    <option value="ALL">全部</option>
+                    <option value="WAIT_SURVEY">未调查</option>
+                    <option value="WAIT_COMMIT">未提交</option>
+                    <option value="WAIT_REVIEW">待审核</option>
+                    <option value="PASSED">已通过</option>
+                    <option value="REJECT">已驳回</option>
+                    <option value="ADVICE">建议驳回</option>
+                </select>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="input-group group-select">
+                <span class="input-group-addon"> 所在地区： </span>
+                <div class="chaxundiv_2 selectDiv" id="szdq_2" style="padding-bottom: 0;width:100%;padding-left:10px;"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="input-group group-select">
+                <span class="input-group-addon"> 企业等级： </span>
+                <div class="chaxundiv_2 selectDiv" id="qyzt_2">
+                    <div class="checkbox checkbox-info checkbox-right" style="margin-bottom:0px;margin-top:0px;">
+                        <input type="checkbox" id="qyzt1" value="1" name="qyzt" checked="checked"><label for="qyzt1">简化版</label>
+                        <input type="checkbox" id="qyzt2" value="2" name="qyzt" checked="checked"><label for="qyzt2">通用版</label>
+                        <input type="checkbox" id="qyzt3" value="3" name="qyzt" checked="checked"><label for="qyzt3">专用版</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group group-select">
+                <span class="input-group-addon">企业填报状态:</span>
+                <select class='form-control m-b' id="qy_tianbao">
+                    <option value="-1">全部</option>
+                    <option value="1">未填报</option>
+                    <option value="2">进行中</option>
+                    <option value="3">已完成</option>
+                </select>
+            </div>
+        </div>
+        <!--<div class="col-sm-2">-->
+            <!--<div class="input-group">-->
+                <!--<span class="input-group-addon"> 调查员： </span>-->
+                <!--<div>-->
+                    <!--<select class='form-control m-b' id="dcy" style="min-width: 23%;"></select>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-outline btn-lG" onclick="chaxun_2();"><i class='fa fa-binoculars'></i> 查询</button>
+            <!--<button type="button" class="btn btn-outline btn-lG" id="addDcy" onclick="addDcyFun();"><i class='fa fa-plus-square'></i> 添加调查员</button>-->
+            <!--<button type="button" class="btn btn-outline btn-lO" id="delDcy" onclick="delDcyFun();"><i class='fa fa-close'></i> 删除调查员</button>-->
+            <!--<button type="button" class="btn btn-outline btn-lG" onclick="updata_qy();"><i class='fa fa-pencil'></i> 修改</button>-->
+            <!--<button type="button" class="btn btn-outline btn-lG" onclick="export_all();"><i class='fa fa-external-link'></i> 导出全部</button>-->
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table id='metTable2'>
+                <thead>
+                <tr>
+                    <!--<th data-field="state" data-checkbox="true" formatter="stateFormatter"></th>-->
+                    <th data-field="companyId" data-halign="center" data-align="center" data-visible="false">id</th>
+                    <th data-field="number" data-halign="center" data-align="center">序号</th>
+                    <th data-field="name" data-halign="center" data-align="center">任务名称</th>
+                    <th data-field="industry" data-halign="center" data-align="center">行业</th>
+                    <th data-field="companyName" data-halign="center" data-align="center">企业名称</th>
+                    <th data-field="zt_Chinese" data-halign="center" data-align="center">任务状态</th>
+                    <th data-field="writeStatus_Chinese" data-halign="center" data-align="center">填报状态</th>
+                    <th data-field="publishTime" data-halign="center" data-align="center">发布时间</th>
+                    <th data-field="endTime" data-halign="center" data-align="center">截止时间</th>
+                    <th data-formatter="operating" data-halign="center" data-align="center">操作</th>
+                    <!--<th data-field="region" data-halign="center" data-align="center">所在地区</th>-->
+                    <!--<th data-field="industry" data-halign="center" data-align="center">行业</th>-->
+                    <!--<th data-field="fillUserName" data-halign="center" data-align="center">调查员</th>-->
+                    <!--<th data-field="phone" data-halign="center" data-align="center">联系电话</th>-->
+                    <!--<th data-field="email" data-halign="center" data-align="center">邮箱</th>-->
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--现场照片 Modal -->
+<div class="modal fade" id="dialog-photo" tabindex="-1" role="dialog" aria-labelledby="dialog-photo-Label">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="dialog-photo-Label">上传照片</h4>
+            </div>
+            <div class="modal-body">
+                <div id="cuoshi_img_load">
+                    <div class="page-container">
+                        <p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮。支持：gif,jpg,jpeg,png,bmp。</p>
+                        <div id="uploader" class="wu-example">
+                            <div class="queueList">
+                                <div id="dndArea" class="placeholder">
+                                    <div id="filePicker"></div>
+                                    <p>或将照片拖到这里，单次最多可选15张，单张照片限5M，总共限45M</p></div>
+                            </div>
+                            <div class="statusBar" style="display:none;">
+                                <div class="progress"><span class="text">0%</span><span class="percentage"></span></div>
+                                <div class="info"></div>
+                                <div class="btns">
+                                    <div id="filePicker2"></div>
+                                    <div class="uploadBtn">开始上传</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="" id="yidi_pic_show">
+                        <div class="" id="qilegeguaile">
+                            <div class="lightBoxGallery">
+                                <div class="queueList filled">
+                                    <ul class="filelist" id="poht_list"></ul>
+                                </div>
+                                <div id="blueimp-gallery" class="blueimp-gallery">
+                                    <div class="slides"></div>
+                                    <a class="prev">‹</a><a class="next">›</a><a class="close">×</a><a class="play-pause"></a>
+                                    <ol class="indicator"></ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <!--<button type="button" class="btn btn-primary">确定</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 未提交的原因 -->
+<div class="modal fade" id="dialog-yuanyin" tabindex="-1" role="dialog" aria-labelledby="dialog-yuanyin-Label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="dialog-yuanyin-Label">查看补充说明</h4>
+            </div>
+            <div class="modal-body">
+                <div id="oldpassword" class="col-sm-11">
+            <textarea rows="" cols="" id="yunyin"
+                      style="width :100%;height:200px;border:1px solid rgb(204, 204, 204);" disabled></textarea>
+                    <img style="display: none;width: 100%" id="showImg">
+                    <label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--提示 Modal -->
+<div class="modal fade" id="dialog-tiaozhuan" tabindex="-1" role="dialog" aria-labelledby="dialog-tiaozhuan-Label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="dialog-tiaozhuan-Label">提示</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                <!--<button type="button" class="btn btn-primary">确定</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--提示 Modal -->
+<div class="modal fade" id="dialog-chakan" tabindex="-1" role="dialog" aria-labelledby="dialog-chakan-Label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="dialog-chakan-Label">提示</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="sure_tijiao()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--&lt;!&ndash;&lt;!&ndash;未提交的原因&ndash;&gt;&ndash;&gt;-->
+<!--<div id="dialog-yuanyin" title="查看补充说明" style="display: none;">-->
+    <!--&lt;!&ndash;<div id="dialog-yuanyin" title="上传说明照片" style="display: none;">&ndash;&gt;-->
+    <!--<DIV id="dialog-update-content"-->
+         <!--style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;">-->
+        <!--<div id="oldpassword" class="col-sm-11">-->
+            <!--<textarea rows="" cols="" id="yunyin"-->
+                      <!--style="width :100%;height:200px;border:1px solid rgb(204, 204, 204);" disabled></textarea>-->
+            <!--<img style="display: none;width: 100%" id="showImg">-->
+            <!--<label class="col-sm-3 control-label" style="margin-top: 3px;"><h5 id="jiaoyan_1" style="color:red;"></h5>-->
+            <!--</label>-->
+        <!--</div>-->
+    <!--</DIV>-->
+<!--</div>-->
+
+<!--<div id="dialog-tiaozhuan" title="提示" style="display: none;">-->
+    <!--<DIV id="dialog-tiaozhuan-content"-->
+         <!--style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>-->
+<!--</div>-->
+
+<!--<div id="dialog-chakan" title="提示" style="display: none;">-->
+    <!--<DIV id="dialog-chakan-content"-->
+         <!--style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV>-->
+<!--</div>-->
+
+<!--现场照片-->
+<!--<div id="dialog-photo" title="上传照片" style="display: none;">-->
+    <!--&lt;!&ndash; 		<DIV id="dialog-xmsb-content" style="padding: 10px; color: gray; line-height: 22px; text-indent: 2em; font-size: 14px;"></DIV> &ndash;&gt;-->
+    <!--<div id="cuoshi_img_load">-->
+        <!--<div class="page-container">-->
+            <!--<p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮。支持：gif,jpg,jpeg,png,bmp。</p>-->
+            <!--<div id="uploader" class="wu-example">-->
+                <!--<div class="queueList">-->
+                    <!--<div id="dndArea" class="placeholder">-->
+                        <!--<div id="filePicker"></div>-->
+                        <!--<p>或将照片拖到这里，单次最多可选15张，单张照片限5M，总共限45M</p></div>-->
+                <!--</div>-->
+                <!--<div class="statusBar" style="display:none;">-->
+                    <!--<div class="progress"><span class="text">0%</span><span class="percentage"></span></div>-->
+                    <!--<div class="info"></div>-->
+                    <!--<div class="btns">-->
+                        <!--<div id="filePicker2"></div>-->
+                        <!--<div class="uploadBtn">开始上传</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="">-->
+        <!--<div class="" id="yidi_pic_show">-->
+            <!--<div class="" id="qilegeguaile">-->
+                <!--<div class="lightBoxGallery">-->
+                    <!--<div class="queueList filled">-->
+                        <!--<ul class="filelist" id="poht_list"></ul>-->
+                    <!--</div>-->
+                    <!--<div id="blueimp-gallery" class="blueimp-gallery">-->
+                        <!--<div class="slides"></div>-->
+                        <!--<a class="prev">‹</a><a class="next">›</a><a class="close">×</a><a class="play-pause"></a>-->
+                        <!--<ol class="indicator"></ol>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/content.js"></script><!-- 自定义js -->
+<script src="../../js/plugins/webuploader/webuploader.min.js"></script>
+<script src="../../js/Img_load.js"></script>
+<script src="../../js/jquery-ui.custom.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- iCheck -->
+<script src="../../js/plugins/iCheck/icheck.min.js"></script>
+<script src="../../js/plugins/toastr/toastr.min.js"></script>
+<!-- 表单验证 -->
+<script src="../../js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../../js/plugins/validate/messages_zh.min.js"></script>
+<!-- 对话框 -->
+<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="../../BackstageIP.js"></script>
+<script src="../../js/ajax.js"></script>
+
+<script src="../../zp02/0201/bmhy.js"></script>
+<script src="0110.js"></script>
+
+</body>
+</html>
